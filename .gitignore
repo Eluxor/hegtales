@@ -194,3 +194,21 @@ nbdist/
 .idea/vcs.xml
 
 .idea/csv-editor.xml
+.github/workflows/blacklist.txt
+.github/workflows/ReadMe.md
+.github/workflows/release.yml
+.github/workflows/runner.sh
+.github/workflows/teaser.png
+.github/workflows/zipMod.sh
+.idea/.name
+.idea/artifacts/Create__jar.xml
+.idea/jsonSchemas.xml
+.idea/kotlinc.xml
+.idea/libraries/LazyLib_Console.xml
+.idea/libraries/MagicLib.xml
+.idea/libraries/starfarer_api.xml
+.idea/misc.xml
+.idea/mod_info.schema.json
+.idea/modules.xml
+.run/Run Starsector.run.xml
+.run/Run_Starsector_w_o_Launcher.run.xml
