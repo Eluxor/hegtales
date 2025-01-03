@@ -1,3 +1,10 @@
+Versión 0.6.5
+
+- The mod can ADDED MID GAME but not REMOVED.
+- Sindrian Commission bad.
+- Unique Mission is extra hard if SWP is added. (More Easter Eggs)
+- Fixed Some stuff I forgot.
+
 Versión 0.6.2
 
 - The name change! Also, some grammar fixes
