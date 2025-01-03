@@ -1340,6 +1340,10 @@ SetTextHighlights Operation: Heritage",,,
 hegtales_Quest3Check,hegtales_Quest3Check,"$rel > 0.50 score:1000
 $global.hegtales_Quest2_missionCompleted","SetEnabled hegtales_Quest3starter0 true
 SetTooltip hegtales_Quest3starter0 ""This mission is available because of your relationship with Australis and you have helped House Ossum.""",,,
+hegtales_Quest3StarterOption1Sindrian,DialogOptionSelected,"$option == hegtales_Quest3starter0
+$player.fcm_faction == sindrian_diktat score: 1000",FireAll PopulateOptions,"Australis seems amused, but clearly is a cover for his real emotion, his face clearly betrays him. ""Operation: Heritage, yes."" he says, as he glances at the folder.
+
+""I believe you should resign your Sindrian commission before this..""",,
 hegtales_Quest3StarterOption1,DialogOptionSelected,$option == hegtales_Quest3starter0,,"Australis seems amused, as though he had expected you to notice the folder and ask about it. ""Operation: Heritage, yes."" he says, picking it up and opening it. His eyes briefly scan the document before he looks back at you.
 
 ""I need you to come personally to the Castle so we can proceed.""",hegtales_Quest3starter1:Take a shuttle to the Ossum Castle,
@@ -1709,7 +1713,8 @@ hegtales_Quest3DefectumOption3,hegtales_Quest3DefectumOptions,,,,"hegtales_Quest
 hegtales_Quest3DefectumOption4,hegtales_Quest3DefectumOptions,,,,cutCommLink:Cut the comm link,
 ,,,,,,
 hegtales_Quest3DefectumGreeting2,OpenCommLink,"$entity.hegtales_Quest3_defectum_spawn score:1000
-$areyoudefectum",FireAll hegtales_Quest3DefectumOptions,"You connect to the comms of the Sindrian $personRank. 
+$areyoudefectum","FireAll hegtales_Quest3DefectumOptions
+Call $global.hegtales_Quest3_ref playMusicDefectum","You connect to the comms of the Sindrian $personRank. 
 
 The screen flickers, and soon enough, Defectum appears, seated in his command chair. His orange sunglasses glint under the sterile bridge lighting as he lowers them just enough to meet your gaze through the comms feed.
 
@@ -1770,6 +1775,7 @@ hegtales_Quest3Question4,DialogOptionSelected,$option == hegtales_Quest3Question
 Defectum reclines back into his chair, his gaze piercing and unyielding. ""Your move, Captain.""",,
 hegtales_Quest3QuestionEnd,DialogOptionSelected,$option == hegtales_Quest3QuestionEnd,"MakeOtherFleetHostile warnAttack true
 MakeOtherFleetAggressive true
+Call $global.hegtales_Quest3_ref playMusicDefectum
 $entity.ignorePlayerCommRequests = true
 MakeOtherFleetPreventDisengage true","""I led my fleet here under the pretense of a show of exercises for the people of Nortia. Now, I’ll give them a real show, a demonstration of the Sindrian Diktat’s might,by turning you and your fleet into dust.""
 
@@ -1912,6 +1918,13 @@ $global.hegtales_Quest3_missionCompleted
 RepLTE hegemony NEUTRAL","ShowImageVisual house_ossum
 
 AddTextSmall ""Maybe it's due your low standing with the Hegemony?"" gray","Your call connects to an automated receiver.  
+
+An animated Skull spins endlessly on your display. After half a minute the call is rejected.",cutCommLink:Close comms,
+greetingBorealisIgnoreCallSindrian,PickGreeting,"$id == hegtales_borealis score:600
+$global.hegtales_Quest3_missionCompleted
+$player.fcm_faction = sindrian_diktat","ShowImageVisual house_ossum
+
+AddTextSmall ""Clearly it's due your commission"" gray","Your call connects to an automated receiver.  
 
 An animated Skull spins endlessly on your display. After half a minute the call is rejected.",cutCommLink:Close comms,
 greetingBorealisIgnoreCall,PickGreeting,$id == hegtales_borealis score:100,ShowImageVisual house_ossum,"Your call connects to an automated receiver.  
