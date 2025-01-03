@@ -1,5 +1,9 @@
+Versión 0.6.2
+
+- The name change! Also, some grammar fixes
+
 Versión 0.6.1
 
--> Released the mod, I guess?
+- Released the mod, I guess?
 
 Viva Argentina!
