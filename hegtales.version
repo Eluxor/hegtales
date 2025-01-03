@@ -1,8 +1,10 @@
 {
     "masterVersionFile":"https://raw.githubusercontent.com/Eluxor/hegtales/main/hegtales.version",
     "changelogURL":"https://raw.githubusercontent.com/Eluxor/hegtales/main/changelog.txt",
+    "directDownloadURL":"https://github.com/Eluxor/hegtales/releases/latest/download/hegtales.zip",
     "modName":"Heggie Tales",
     "modThreadId":31298,
+
     "modVersion":
     {
         "major":0,
