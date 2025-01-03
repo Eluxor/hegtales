@@ -158,6 +158,8 @@ gradle-app.setting
 # Icon must end with two \r
 Icon
 
+#VSCode
+.vscode/
 
 # Thumbnails
 ._*
