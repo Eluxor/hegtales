@@ -1922,7 +1922,7 @@ AddTextSmall ""Maybe it's due your low standing with the Hegemony?"" gray","Your
 An animated Skull spins endlessly on your display. After half a minute the call is rejected.",cutCommLink:Close comms,
 greetingBorealisIgnoreCallSindrian,PickGreeting,"$id == hegtales_borealis score:600
 $global.hegtales_Quest3_missionCompleted
-$player.fcm_faction = sindrian_diktat","ShowImageVisual house_ossum
+$player.fcm_faction == sindrian_diktat","ShowImageVisual house_ossum
 
 AddTextSmall ""Clearly it's due your commission"" gray","Your call connects to an automated receiver.  
 
