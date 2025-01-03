@@ -1,6 +1,6 @@
 {
-    "masterVersionFile":"https://raw.githubusercontent.com/Eluxor/HEGTALES/main/eluxor_hegtales.version",
-    "changelogURL":"https://raw.githubusercontent.com/Eluxor/HEGTALES/main/changelog.txt",
+    "masterVersionFile":"https://raw.githubusercontent.com/Eluxor/hegtales/main/hegtales.version",
+    "changelogURL":"https://raw.githubusercontent.com/Eluxor/hegtales/main/changelog.txt",
     "modName":"Heggie Tales",
     "modThreadId":31298,
     "modVersion":
