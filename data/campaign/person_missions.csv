@@ -1,0 +1,4 @@
+mission id,person id,tagsAll,tagsAny,tagsNotAny,tags,freq,min timeout,max timeout,min rep,max rep,importance,reqMissionAny,reqMissionAll,reqMissionNone,icon,plugin
+hegtales_Quest1,,,,,,,,,,,,,,,graphics/hegtales/icons/servum.png,data.scripts.quests.hegtales_Quest1
+hegtales_Quest2,,,,,,,,,,,,,,,graphics/hegtales/icons/hannah.png,data.scripts.quests.hegtales_Quest2
+hegtales_Quest3,,,,,,,,,,,,,,,graphics/hegtales/icons/retaliation.png,data.scripts.quests.hegtales_Quest3

@@ -1,0 +1,240 @@
+{
+    "hullName": "Retaliation",
+    "hullId": "heg_retaliation",
+    "hullSize": "CAPITAL_SHIP",
+    "style": "LOW_TECH",
+    "spriteName": "graphics/ships/retaliation.png",
+    "height": 361,
+    "width": 224,
+    "center": [
+        112, 172
+    ],
+    "collisionRadius": 210,
+    "coversColor": "",
+    "shieldCenter": [
+        -1.5, 0
+    ],
+    "shieldRadius": 200,
+    "viewOffset": 0,
+    "builtInMods": [
+        "distributed_fire_control",
+        "fourteenth"
+    ],
+    "builtInWeapons": {
+        "WS 019": "pusherplate_lt"
+    },
+    "builtInWings": [],
+    "builtInModules": null,
+    "weaponSlots": [
+        {
+            "id": "WS 000",
+            "size": "LARGE",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 190,
+            "angle": 60,
+            "locations": [
+                    53.5,     75.5
+            ]
+        },
+        {
+            "id": "WS 001",
+            "size": "LARGE",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 190,
+            "angle": -60,
+            "locations": [
+                    53.5,    -75.5
+            ]
+        },
+        {
+            "id": "WS 002",
+            "size": "LARGE",
+            "type": "COMPOSITE",
+            "mount": "TURRET",
+            "arc": 120,
+            "angle": 0,
+            "locations": [
+                   117.5,      0.5
+            ]
+        },
+        {
+            "id": "WS 003",
+            "size": "MEDIUM",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 150,
+            "angle": 30,
+            "locations": [
+                      92,     53.5
+            ]
+        },
+        {
+            "id": "WS 004",
+            "size": "MEDIUM",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 150,
+            "angle": -30,
+            "locations": [
+                      92,    -53.5
+            ]
+        },
+        {
+            "id": "WS 005",
+            "size": "MEDIUM",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 150,
+            "angle": 15,
+            "locations": [
+                    62.5,       22
+            ]
+        },
+        {
+            "id": "WS 006",
+            "size": "MEDIUM",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 150,
+            "angle": -15,
+            "locations": [
+                    62.5,      -22
+            ]
+        },
+        {
+            "id": "WS 011",
+            "size": "SMALL",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 170,
+            "angle": 60,
+            "locations": [
+                      91,       84
+            ]
+        },
+        {
+            "id": "WS 012",
+            "size": "SMALL",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 170,
+            "angle": -60,
+            "locations": [
+                      91,      -84
+            ]
+        },
+        {
+            "id": "WS 016",
+            "size": "SMALL",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 210,
+            "angle": 240,
+            "locations": [
+                     -74,      -86
+            ]
+        },
+        {
+            "id": "WS 017",
+            "size": "SMALL",
+            "type": "BALLISTIC",
+            "mount": "TURRET",
+            "arc": 210,
+            "angle": 120,
+            "locations": [
+                     -74,       86
+            ]
+        },
+        {
+            "id": "WS 018",
+            "size": "SMALL",
+            "type": "SYSTEM",
+            "mount": "HIDDEN",
+            "arc": 5,
+            "angle": 180,
+            "locations": [
+                    -134,        0
+            ]
+        },
+        {
+            "id": "WS 019",
+            "size": "LARGE",
+            "type": "DECORATIVE",
+            "mount": "TURRET",
+            "arc": 5,
+            "angle": 180,
+            "locations": [
+                    -121,        0
+            ]
+        }
+    ],
+    "engineSlots": [
+        {
+            "location": [
+                -143, 90.5
+            ],
+            "length": 50,
+            "width": 16,
+            "angle": 180,
+            "contrailSize": 36,
+            "style": "LOW_TECH"
+        },
+        {
+            "location": [
+                -143, -90.5
+            ],
+            "length": 50,
+            "width": 16,
+            "angle": 180,
+            "contrailSize": 36,
+            "style": "LOW_TECH"
+        },
+        {
+            "location": [
+                -153, 66.5
+            ],
+            "length": 80,
+            "width": 32,
+            "angle": 180,
+            "contrailSize": 70,
+            "style": "LOW_TECH"
+        },
+        {
+            "location": [
+                -153, -66.5
+            ],
+            "length": 80,
+            "width": 32,
+            "angle": 180,
+            "contrailSize": 70,
+            "style": "LOW_TECH"
+        }
+    ],
+    "bounds": [
+          -123.5,    -40.5,
+             -75,    -44.5,
+            -153,    -56.5,
+          -142.5,    -99.5,
+             -69,     -100,
+        
+            -1.5,      -70,
+              35,    -54.5,
+              25,      -93,
+              97,      -93,
+             174,     -0.5,
+        
+              97,       93,
+              25,       93,
+              35,     54.5,
+            -1.5,       70,
+             -69,      100,
+        
+          -142.5,     99.5,
+            -153,     56.5,
+             -75,     44.5,
+          -123.5,     40.5
+    # 19 points total.
+    ]
+}

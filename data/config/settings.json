@@ -1,0 +1,38 @@
+{
+	"HEGTALES_aiuse":100,
+	"graphics":{
+		"portraits":{
+			"hegtales_portrait_borealis":"graphics/hegtales/portraits/hegtales_borealis.png",
+			"hegtales_portrait_andrada":"graphics/hegtales/portraits/hegtales_andrada.png",
+			"hegtales_portrait_christian":"graphics/hegtales/portraits/hegtales_christian.png",
+			"hegtales_portrait_corby":"graphics/hegtales/portraits/hegtales_corby.png",
+			"hegtales_portrait_australis":"graphics/hegtales/portraits/hegtales_australis.png",
+			"hegtales_portrait_hannah":"graphics/hegtales/portraits/hegtales_hannah.png",
+			"hegtales_portrait_servum":"graphics/hegtales/portraits/hegtales_servum.png",
+			"hegtales_portrait_saltus":"graphics/hegtales/portraits/hegtales_saltus.png",
+			"hegtales_portrait_isaias":"graphics/hegtales/portraits/hegtales_isaias.png",
+			"hegtales_portrait_isaias_gas":"graphics/hegtales/portraits/hegtales_isaias_gas.png",
+			"hegtales_portrait_defectum":"graphics/hegtales/portraits/hegtales_defectum.png",
+			"hegtales_portrait_defectum_gas":"graphics/hegtales/portraits/hegtales_defectum_gas.png",
+			"hegtales_portrait_narcissus":"graphics/hegtales/portraits/hegtales_narcissus.png",
+			"hegtales_portrait_sidney":"graphics/hegtales/portraits/hegtales_sidney.png",
+			"hegtales_portrait_leo":"graphics/hegtales/portraits/hegtales_leo.png",
+			"hegtales_portrait_frusca":"graphics/hegtales/portraits/hegtales_frusca.png",
+			"hegtales_portrait_prima":"graphics/hegtales/portraits/hegtales_prima.png",
+			"hegtales_portrait_eridanus":"graphics/hegtales/portraits/hegtales_eridanus.png"
+		},
+		"illustrations":{
+			"ossum_castle":"graphics/hegtales/illustrations/ossum_castle.jpg",
+			"house_ossum":"graphics/hegtales/illustrations/house_ossum.jpg"
+		}
+	},
+	"ruleCommandPackages":[
+		"com.fs.starfarer.api.impl.campaign.rulecmd"
+	],
+
+	"bonusXP":{
+		"hegtales_servumBluff":1
+	}
+
+}
+
