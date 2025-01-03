@@ -380,7 +380,7 @@ hegtales_australistalkQuestionsCancel,DialogOptionSelected,$option == hegtales_a
 ,,,,,,
 ,,,,,,
 ,,,,,,
-HegtalesdevMenuOption,PopulateOptions,"$id == hegtales_australis
+HegtalesdevMenuOption,PopulateOptions,"$market.id == eventide
 $global.isDevMode","SetOptionColor hegtalestestingmenu gray
 ",,200:hegtalestestingmenu:>> (dev) Hegtales menu,
 HegtalesdevOptionOpen,DialogOptionSelected,$option == hegtalestestingmenu,FireAll hegtalesTestMenuOptions,MENU,,
@@ -401,6 +401,7 @@ FireAll hegtalesTestMenuOptions",MISSION 2 SKIPPED,,
 hegtales_finish_Quest11,DialogOptionSelected,$option == hegtales_skipquest1,"$global.hegtales_Quest1_missionCompleted = true
 SetPersonHidden hegtales_corby false
 $player.hegmod_metCorbystart = true
+SetPersonHidden hegtales_australis false
 
 FireAll hegtalesTestMenuOptions",MISSION 1 SKIPPED,,
 hegtales_finish_return,hegtalesTestMenuOptions,,,,cutCommLink:return,
@@ -1730,7 +1731,7 @@ $entity.ignorePlayerCommRequests = true
 MakeOtherFleetPreventDisengage true","""What...?"" He even seems surprised by your words, shaking his own surprise before he speaks up. ""Submit to boarding action or you will be fired upon."" 
 
 With that, the comms cut out.",cutCommLink:Cut the comm link,
-hegtales_Quest3DefectumOption2_2,DialogOptionSelected,$option == hegtales_Quest3DefectumOption2_2,,"Defectum's eyes widen behind his sunglasses for a moment.
+hegtales_Quest3DefectumOption2_2,DialogOptionSelected,$option == hegtales_Quest3DefectumOption2_2,Call $global.hegtales_Quest3_ref playMusicDefectum,"Defectum's eyes widen behind his sunglasses for a moment.
 
 ""I knew it,"" he spits, venom dripping from every word. ""Sooner or later, those pesky, honorbound boys would send someone to kill me. They don’t have the guts to do it themselves."" His tone is laced with contempt, his eyes narrow as he leans closer to the screen.
 
@@ -1777,6 +1778,11 @@ He leans closer to the comms.
 
 The transmission cuts.",cutCommLink:Cut the comm link,
 hegtales_Quest3_defectumkilled,hegtales_Quest3_defectum_kill,$someShipsDestroyed,"SetTextHighlights Duzahk
+
+AdjustRep sindrian_diktat HOSTILE -100
+
+AdjustRep lions_guard HOSTILE -100
+
 $global.hegtales_know_retaliation = true
 $global.hegtales_Quest3_FIND_RETALIATION = true
 Call $global.hegtales_Quest3_ref updateStage","Your crew gathers the remains of the destroyed ships.
@@ -2044,7 +2050,6 @@ hegtales_borealistalkQuestionsLordofBonesStart,hegtales_borealistalkQuestions,!$
 ,,,,,,
 hegtales_borealistalkQuestionsCancelStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsCancel:""That would be all.""",
 ,,,,,,
-,,,,,,
 hegtales_borealis_recruit_prima_Start,PopulateOptions,"$id == hegtales_borealis
 !$global.recruited_prima",,,"0:hegtales_recruit_prima:""Do you have any officers that can help me?""",
 hegtales_borealis_recruit_prima_fail,DialogOptionSelected,"$option == hegtales_recruit_prima
@@ -2089,7 +2094,6 @@ His green eyes locking onto yours through the comms. ""She’s more than just an
 hegtales_borealis_recruit_primano,DialogOptionSelected,$option == hegtales_borealis_recruit_prima_no,"HideSecondPerson
 FireAll PopulateOptions
 ","""Of course, if you change your mind, she will remain here.""",,
-,,,,,,
 ,,,,,,
 hegtales_borealistalkQuestionsEventide,DialogOptionSelected,$option == hegtales_borealistalkQuestionsEventide,,"""The Jewel of the Hegemony."" 
 ""Home. There’s a reason the Diktat of the Hegemony was signed here. Why High Hegemon Kail Molina chose to accept the old Houses. It's more than a planet, for 150 cycles, it has been the place where heroes are born.""
@@ -2146,6 +2150,5 @@ FireAll hegtales_borealistalkQuestions","""They call me the Lord of Bones becaus
 hegtales_borealistalkQuestionsLordofBonesNoContinue,DialogOptionSelected,$option == hegtales_borealistalkQuestionsLordOfBonesNo,FireAll hegtales_borealistalkQuestions,"""Good, I am very glad that I don’t need to waste my time explaining the foolish behaviors and misguided ideas of people outside my control.""
 
 He sighs softly. ""It’s bad enough dealing with the nonsense of the Tri-Tachyon. Let’s not add more to the pile, shall we?""",,
-,,,,,,
 ,,,,,,
 hegtales_borealistalkQuestionsCancel,DialogOptionSelected,$option == hegtales_borealistalkQuestionsCancel,FireAll PopulateOptions,"""Mhmhm. I hope you are satisfied with the information I have given you."" He seems to grab a tripad and looks at some information idly.",,

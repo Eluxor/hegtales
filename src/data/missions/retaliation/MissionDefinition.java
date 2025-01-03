@@ -26,7 +26,9 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 
 		api.addBriefingItem("Destroy the Traitors.");
 		api.addBriefingItem("Sink the HSS Executor and send Andrada to hell.");
+		api.addBriefingItem("Destroy the HSS Oaxaca and get rid of Hyder.");
 		api.addBriefingItem("You cannot win.");
+		api.addBriefingItem("This mission is truly Impossible if you got the Ship/Weapon Pack mod.");
 
 		FleetMemberAPI retaliation = api.addToFleet(FleetSide.PLAYER, "heg_retaliation_standard", FleetMemberType.SHIP, "HSS Retaliation", true);
 		PersonAPI ossum = Global.getSector().getFaction("hegemony").createRandomPerson(FullName.Gender.MALE);
@@ -39,22 +41,47 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 		ossum.setFaction("hegemony");
 		ossum.getStats().setSkillLevel(Skills.HELMSMANSHIP, 1);
 		ossum.getStats().setSkillLevel(Skills.BALLISTIC_MASTERY, 2);
-		ossum.getStats().setSkillLevel(Skills.COMBAT_ENDURANCE, 1);
+		ossum.getStats().setSkillLevel(Skills.POINT_DEFENSE, 2);
 		ossum.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 2);
 		ossum.getStats().setSkillLevel(Skills.SYSTEMS_EXPERTISE, 2);
 		ossum.getStats().setLevel(5);
 		retaliation.setCaptain(ossum);
 
-		api.addToFleet(FleetSide.PLAYER, "enforcer_Elite", FleetMemberType.SHIP, "HSS Pride of Eventide", false);
-		api.addToFleet(FleetSide.PLAYER, "enforcer_Elite", FleetMemberType.SHIP, "HSS House Ossum", false);
+		FleetMemberAPI pride = api.addToFleet(FleetSide.PLAYER, "enforcer_XIV_Elite", FleetMemberType.SHIP, "HSS Pride of Eventide", false);
+		FleetMemberAPI house = api.addToFleet(FleetSide.PLAYER, "enforcer_XIV_Elite", FleetMemberType.SHIP, "HSS House Ossum", false);
 		api.addToFleet(FleetSide.PLAYER, "lasher_CS", FleetMemberType.SHIP,"HSS Right Hook",  false);
 		api.addToFleet(FleetSide.PLAYER, "lasher_CS", FleetMemberType.SHIP,"HSS Left Hook",  false);
 		api.defeatOnShipLoss("HSS Retaliation");
 
+		PersonAPI eventide = Global.getSector().getFaction("hegemony").createRandomPerson(FullName.Gender.MALE);
+		eventide.getName().setLast("Sang");
+		eventide.getName().setGender(FullName.Gender.MALE);
+		eventide.setPersonality("aggressive");
+		eventide.setPortraitSprite("graphics/portraits/portrait_hegemony01.png");
+		eventide.setFaction("hegemony");
+		eventide.getStats().setSkillLevel(Skills.HELMSMANSHIP, 1);
+		eventide.getStats().setSkillLevel(Skills.POLARIZED_ARMOR, 2);
+		eventide.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 2);
+		eventide.getStats().setLevel(3);
+		pride.setCaptain(eventide);
+
+		PersonAPI amanda = Global.getSector().getFaction("hegemony").createRandomPerson(FullName.Gender.MALE);
+		amanda.getName().setFirst("Phillip");
+		amanda.getName().setLast("Ossum");
+		amanda.getName().setGender(FullName.Gender.FEMALE);
+		amanda.setPersonality("aggressive");
+		amanda.setPortraitSprite("graphics/portraits/portrait_hegemony17.png");
+		amanda.setFaction("hegemony");
+		amanda.getStats().setSkillLevel(Skills.HELMSMANSHIP, 1);
+		amanda.getStats().setSkillLevel(Skills.POLARIZED_ARMOR, 2);
+		amanda.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 2);
+		amanda.getStats().setLevel(3);
+		house.setCaptain(amanda);
+
 
 		// Set up the enemy fleet.
 		//api.addToFleet(FleetSide.ENEMY, "onslaught_Outdated", FleetMemberType.SHIP, "HSS Executor", false);
-		FleetMemberAPI executor = api.addToFleet(FleetSide.ENEMY, "onslaught_Outdated", FleetMemberType.SHIP, "HSS Executor", true);
+
 		PersonAPI andrada = Global.getSector().getFaction("hegemony").createRandomPerson(FullName.Gender.MALE);
 		andrada.setId("hegtales_andrada");
 		andrada.getName().setFirst("Phillip");
@@ -69,31 +96,37 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 		andrada.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 2);
 		andrada.getStats().setSkillLevel(Skills.SYSTEMS_EXPERTISE, 2);
 		andrada.getStats().setLevel(5);
-		executor.setCaptain(andrada);
 
-		FleetMemberAPI dominator = api.addToFleet(FleetSide.ENEMY, "dominator_Assault", FleetMemberType.SHIP, false);
-		PersonAPI dominatorCaptain = Global.getSector().getFaction("hegemony").createRandomPerson(FullName.Gender.MALE);
-		dominatorCaptain.getStats().setLevel(6);
-		dominatorCaptain.setPortraitSprite("graphics/portraits/portrait_hegemony06.png");
+		if (Global.getSettings().getModManager().isModEnabled("swp")) {
 
-		dominatorCaptain.getStats().setSkillLevel(Skills.DAMAGE_CONTROL, 2);
-		dominatorCaptain.getStats().setSkillLevel(Skills.POLARIZED_ARMOR, 2);
-		dominatorCaptain.getStats().setSkillLevel(Skills.MISSILE_SPECIALIZATION, 2);
-		dominatorCaptain.getStats().setSkillLevel(Skills.BALLISTIC_MASTERY, 1);
-		dominatorCaptain.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 1);
-		dominatorCaptain.getStats().setSkillLevel(Skills.HELMSMANSHIP, 1);
+			FleetMemberAPI executor = api.addToFleet(FleetSide.ENEMY, "swp_conquest_xiv_eli", FleetMemberType.SHIP,"HSS Executor", true);executor.setCaptain(andrada);;
+			api.addToFleet(FleetSide.ENEMY, "swp_hammerhead_xiv_eli", FleetMemberType.SHIP, false).getRepairTracker().setCR(0.85f);
+			api.addToFleet(FleetSide.ENEMY, "swp_hammerhead_xiv_eli", FleetMemberType.SHIP, false).getRepairTracker().setCR(0.85f);
+		}
+		else {
+			FleetMemberAPI executor = api.addToFleet(FleetSide.ENEMY, "conquest_Standard", FleetMemberType.SHIP,"HSS Executor", true);executor.setCaptain(andrada);;
+			api.addToFleet(FleetSide.ENEMY, "hammerhead_Elite", FleetMemberType.SHIP,"HSS Opis Pride", false).getRepairTracker().setCR(0.85f);
+			api.addToFleet(FleetSide.ENEMY, "hammerhead_Elite", FleetMemberType.SHIP, "HSS High on Octane",false).getRepairTracker().setCR(0.85f);
+		}
 
+		FleetMemberAPI dominator = api.addToFleet(FleetSide.ENEMY, "dominator_XIV_Elite", FleetMemberType.SHIP,"HSS Oaxaca", false);
+		PersonAPI dominatorCaptain = Global.getSector().getFaction("hegemony").createRandomPerson(FullName.Gender.FEMALE);
+		dominatorCaptain.getStats().setLevel(4);
+		dominatorCaptain.setPortraitSprite("graphics/hegtales/portraits/hegtales_hyder.png");
+		dominatorCaptain.getName().setFirst("Oxana");
+		dominatorCaptain.getName().setLast("Hyder");
+		dominatorCaptain.getStats().setSkillLevel(Skills.COORDINATED_MANEUVERS, 1);
+		dominatorCaptain.getStats().setSkillLevel(Skills.TACTICAL_DRILLS, 1);
+		dominatorCaptain.getStats().setSkillLevel(Skills.SUPPORT_DOCTRINE, 1);
 		dominatorCaptain.getStats().setSkillLevel(Skills.CREW_TRAINING, 1);
 		dominatorCaptain.setPersonality("aggressive");
 		dominator.setCaptain(dominatorCaptain);
 		dominator.getRepairTracker().setCR(0.85f);
 
-		api.addToFleet(FleetSide.ENEMY, "enforcer_Elite", FleetMemberType.SHIP, "HSS Opis Pride", false);
-		api.addToFleet(FleetSide.ENEMY, "enforcer_Assault", FleetMemberType.SHIP, "HSS High on Octane", false);
-		api.addToFleet(FleetSide.ENEMY, "condor_Support", FleetMemberType.SHIP, false);
-		api.addToFleet(FleetSide.ENEMY, "condor_Support", FleetMemberType.SHIP, false);
-		api.addToFleet(FleetSide.ENEMY, "hound_Standard", FleetMemberType.SHIP, false);
-		api.addToFleet(FleetSide.ENEMY, "hound_Standard", FleetMemberType.SHIP, false);
+		api.addToFleet(FleetSide.ENEMY, "condor_Attack", FleetMemberType.SHIP, false);
+		api.addToFleet(FleetSide.ENEMY, "condor_Attack", FleetMemberType.SHIP, false);
+		api.addToFleet(FleetSide.ENEMY, "hound_hegemony_Standard", FleetMemberType.SHIP, false);
+		api.addToFleet(FleetSide.ENEMY, "hound_hegemony_Standard", FleetMemberType.SHIP, false);
 
 		// Set up the map.
 		float width = 12000f;

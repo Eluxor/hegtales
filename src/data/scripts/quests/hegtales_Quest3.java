@@ -281,38 +281,15 @@ public class hegtales_Quest3 extends HubMissionWithSearch {
     protected boolean callAction(String action, String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params,
                                  Map<String, MemoryAPI> memoryMap) {
 
-        if ("refusedToReturn".equals(action)) {
-            if (rollProbability(0.5f)) {
-                DelayedFleetEncounter e = new DelayedFleetEncounter(genRandom, getMissionId());
-                e.setDelayMedium();
-                e.setLocationInnerSector(false, Factions.INDEPENDENT);
-                e.beginCreate();
-                e.triggerCreateFleet(FleetSize.MEDIUM, FleetQuality.VERY_HIGH, Factions.MERCENARY, FleetTypes.PATROL_LARGE, new Vector2f());
-                e.triggerSetFleetOfficers(OfficerNum.MORE, OfficerQuality.HIGHER);
-                e.triggerFleetSetFaction(Factions.INDEPENDENT);
-                e.triggerSetFleetFlag("$gaRH_consequences");
-                e.triggerMakeNoRepImpact();
-                e.triggerSetStandardAggroInterceptFlags();
-                e.endCreate();
-            }
-            return true;
-        } else if ("transferHamatsu".equals(action)) {
-            FleetMemberAPI hamatsu = null;
-            for (FleetMemberAPI member : Global.getSector().getPlayerFleet().getFleetData().getMembersListCopy()) {
-                if (member.getId().equals(TTBlackSite.HAMATSU_ID)) {
-                    hamatsu = member;
-                    break;
-                }
-            }
-            if (hamatsu != null) {
-                AddRemoveCommodity.addFleetMemberLossText(hamatsu, dialog.getTextPanel());
-                Global.getSector().getPlayerFleet().getFleetData().removeFleetMember(hamatsu);
-            }
-
+        if ("playMusicDefectum".equals(action))
+        {
+            Global.getSoundPlayer().playCustomMusic(1, 1, "music_diktat_market_hostile", true);
             return true;
         }
         return false;
     }
+
+
 
     protected void updateInteractionDataImpl() {
         set("$hegtales_Quest3_stage", getCurrentStage());
