@@ -1,0 +1,11 @@
+{
+  "starts":[
+    {
+      "id":"hegtales_customstart",
+      "name":"A Scion of House Ossum",
+      "difficulty":"Easy",
+      "desc":"You were born in luxury and nobility, amongst a very close knit family of Eventide.\n\nEven since you were a child, you felt a calling, to be an adventurer! So as soon as you could, you explored the Cosmos with the help and support of your family.\n\nAfter your last adventure, you have managed to find the ancestral ship of your family, the unique Retribution-Class Battleship...\n\nMaybe it's time to go back home?",
+      "className":"data.scripts.customstart.hegtalescustomstart"
+    }
+  ]
+}

@@ -24,9 +24,8 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 		api.setFleetTagline(FleetSide.PLAYER, "Admiral Ossum's Force");
 		api.setFleetTagline(FleetSide.ENEMY, "Traitors of the Hegemony");
 
-		api.addBriefingItem("Destroy the Traitors.");
 		api.addBriefingItem("Sink the HSS Executor and send Andrada to hell.");
-		api.addBriefingItem("Destroy the HSS Oaxaca and get rid of Hyder.");
+		api.addBriefingItem("Destroy the HSS Oaxaca and get rid of traitorous Hyder.");
 		api.addBriefingItem("You cannot win.");
 		api.addBriefingItem("This mission is truly Impossible if you got the Ship/Weapon Pack mod.");
 
@@ -100,8 +99,8 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 		if (Global.getSettings().getModManager().isModEnabled("swp")) {
 
 			FleetMemberAPI executor = api.addToFleet(FleetSide.ENEMY, "swp_conquest_xiv_eli", FleetMemberType.SHIP,"HSS Executor", true);executor.setCaptain(andrada);;
-			api.addToFleet(FleetSide.ENEMY, "swp_hammerhead_xiv_eli", FleetMemberType.SHIP, false).getRepairTracker().setCR(0.85f);
-			api.addToFleet(FleetSide.ENEMY, "swp_hammerhead_xiv_eli", FleetMemberType.SHIP, false).getRepairTracker().setCR(0.85f);
+			api.addToFleet(FleetSide.ENEMY, "swp_hammerhead_xiv_eli", FleetMemberType.SHIP,"HSS Opis Pride", false).getRepairTracker().setCR(0.85f);
+			api.addToFleet(FleetSide.ENEMY, "swp_hammerhead_xiv_eli", FleetMemberType.SHIP,"HSS High on Octane", false).getRepairTracker().setCR(0.85f);
 		}
 		else {
 			FleetMemberAPI executor = api.addToFleet(FleetSide.ENEMY, "conquest_Standard", FleetMemberType.SHIP,"HSS Executor", true);executor.setCaptain(andrada);;

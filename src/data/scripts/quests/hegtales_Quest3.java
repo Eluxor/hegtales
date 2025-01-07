@@ -147,6 +147,12 @@ public class hegtales_Quest3 extends HubMissionWithSearch {
             triggerSetGlobalMemoryValue("$hegtales_Quest3_FIGHT_ISAIAS", true);
             //beginGlobalFlagTrigger("$hegtales_Quest3_triggerIsaias", Stage.FIGHT_ISAIAS);
             triggerCreateFleet(FleetSize.LARGE, FleetQuality.HIGHER, Factions.DIKTAT, FleetTypes.PATROL_MEDIUM, a4.getStarSystem());
+        if (Global.getSettings().getModManager().isModEnabled("PAGSM"))   {
+            triggerFleetSetFlagship("sfccrius_Blaster");
+        }
+        else {
+            triggerFleetSetFlagship("eagle_LG_Assault");
+        }
             triggerSetFleetOfficers( OfficerNum.DEFAULT, OfficerQuality.LOWER);
             triggerMakeHostileAndAggressive();
             //triggerAutoAdjustFleetStrengthMajor();
@@ -159,7 +165,7 @@ public class hegtales_Quest3 extends HubMissionWithSearch {
             triggerMakeFleetIgnoreOtherFleetsExceptPlayer();
             //triggerFleetSetName("Sindrian Patrol Fleet");
             triggerFleetSetCommander(isaias);
-            triggerFleetSetFlagship("eagle_LG_Assault");
+
             triggerPickLocationAroundEntity(a4.getPlanetEntity(), 800f);
             triggerSpawnFleetAtPickedLocation("$hegtales_Quest3_isaias_spawn", null);
             triggerSetFleetMissionRef("$hegtales_Quest3_ref"); // so they can be made unimportant

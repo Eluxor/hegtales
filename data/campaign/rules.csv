@@ -2,7 +2,8 @@ id,trigger,conditions,script,text,options,notes
 ,,,,,,
 #RULESET_NAME hegmod,,,,,,
 hegmod_corbyBarMeetingEvent,AddBarEvents,"$market.id == jangala
-!$player.hegmod_metCorbystart","AddBarEvent hegmod_MeetingCorby ""Meet with the large man in the back."" ""In a far and dark spot, a large man eating a huge steak catches your eye. He seemse to be well content."" highlight",,,
+!$player.hegmod_metCorbystart
+!$global.hegtales_house_ossum_start","AddBarEvent hegmod_MeetingCorby ""Meet with the large man in the back."" ""In a far and dark spot, a large man eating a huge steak catches your eye. He seemse to be well content."" highlight",,,
 hegmod_corbyMeeting,DialogOptionSelected,$option == hegmod_MeetingCorby,"BeginConversation hegtales_corby
 ShowPersonVisual
 $player.hegmod_metCorbystart = true
@@ -221,6 +222,7 @@ You look at $himOrHer smugly while the pirates jettison the Suspicious Cargo.",c
 greetingAustralisFirstHegemony,PickGreeting,"$id == hegtales_australis score:100
 $player.fcm_faction == hegemony
 !$player.hasmetAustralis
+!$global.hegtales_house_ossum_start
 
 AdjustRepActivePerson FRIENDLY 5
 AdjustRep $faction.id COOPERATIVE 1","BeginConversation hegtales_australis
@@ -236,6 +238,7 @@ Without hesitation, they transmit a set of coordinates to your ship, accompanied
 greetingAustralisFirstFriendly,PickGreeting,"$id == hegtales_australis score:100
 RepGTE $faction.id WELCOMING
 !$player.hasmetAustralis
+!$global.hegtales_house_ossum_start
 
 AdjustRepActivePerson FRIENDLY 5
 AdjustRep $faction.id COOPERATIVE 1","BeginConversation hegtales_australis
@@ -249,7 +252,8 @@ A figure appears on the screen, their uniform adorned with the insignia of the H
 Without hesitation, they transmit a set of coordinates to your ship, accompanied by detailed authorization codes for your shuttle to land. The message ends with a subtle nod, and the connection is severed.",cutCommLink: (Cut comm-link),
 "greetingAustralisFirstNormal
 ",PickGreeting,"$id == hegtales_australis score:100
-!$player.hasmetAustralis","BeginConversation hegtales_australis
+!$player.hasmetAustralis
+!$global.hegtales_house_ossum_start","BeginConversation hegtales_australis
 $player.invitedtocastleossum = true
 $player.hasmetAustralis = true","Your comms patch through to the ID provided by Corby. The screen flickers for a moment before revealing a lavishly decorated communications room, clearly part of one of the grand estates on Eventide.
 
@@ -258,6 +262,14 @@ A figure appears on the screen, their uniform adorned with the insignia of the H
 ""Prove yourself useful, and perhaps you'll find a place as an asset to House Ossum. For now, I'll send you the coordinates to our estate so we can speak more comfortably.""
 
 Moments later, your crew receives a transmission with the coordinates of the estate, along with detailed authorization codes for your shuttle to land. The connection ends abruptly.",cutCommLink: (Cut comm-link),
+greetingAustralisFirstOssum,PickGreeting,"$id == hegtales_australis
+!$player.hasmetAustralis
+$global.hegtales_house_ossum_start score:1000","BeginConversation hegtales_australis
+$player.hasmetAustralis = true
+$player.australiscontact = true
+FireAll PopulateOptions","The man is currently looking at his tripad, almost absently before he turns his green eyes to the screen. ""Australis of House Ossum here...""
+
+""$playerFirstName! How are you? How's your mother? You have been gone for too long, if you need help... Just hit me up!""",,
 #Going to the Ossum State first time,,,,,,
 greetingAustralisIgnoreCall,PickGreeting,"$id == hegtales_australis score:200
 $player.invitedtocastleossum",ShowImageVisual house_ossum,"Your call connects to an automated receiver.  
@@ -302,6 +314,13 @@ FireAll PopulateOptions",,,
 #END Australis first contact,,,,,,
 ,,,,,,
 #startnormal australis talk,,,,,,
+greetingAustralisSpacePremission,OpenCommLink,"$id == hegtales_australis score:1400
+!$hegtalesIsMarketFaction hegemony",,"""Scanned and identified. If you need something important or Hegemony Related, speak to someone else."" $PersonRank $personName signs off with a flash of a brass skull.",0:cutCommLink:Cut the comm link,
+greetingAustralisSpace,OpenCommLink,"$id == hegtales_australis score:1500
+$player.australiscontact ",,"""Captain $playerLastname. If you got business, talk to me in the planet. I am currently in patrol."" $PersonRank $personName signs off with a flash of a brass skull.",0:cutCommLink:Cut the comm link,
+greetingAustralisSpaceNice,OpenCommLink,"$id == hegtales_australis score:2000
+$global.hegtales_Quest3_missionCompleted ",,"""Captain $playerLastname! I am currently busy! Talk to at home."" $PersonRank $personName signs off with a flash of a brass skull.",0:cutCommLink:Cut the comm link,
+,,,,,,
 greetingAustralisnormal,PickGreeting,"$id == hegtales_australis score:1000
 $player.australiscontact 
 ","BeginConversation hegtales_australis
@@ -313,11 +332,18 @@ He sighs softly and puts on a polite smile.
 
 ""What can House Ossum do for you today?""
 ",,
+greetingAustralisnormalFamily,PickGreeting,"$id == hegtales_australis score:1200
+$player.australiscontact 
+","BeginConversation hegtales_australis
+FireAll PopulateOptions","The man is currently looking at his tripad, almost absently before he turns his green eyes to the screen. ""Australis of House Ossum here...""
+
+""$playerFirstName! Your mother told me to keep you safe! But i know that you can keep yourself safe.""
+
+""What do you need?""",,
 "hegmod_Australistalkstart
 
 ",PopulateOptions,"$id == hegtales_australis score:1000
-$player.australiscontact 
-",,,"hegtales_australistalk:""I want to know more about House Ossum.""",
+$player.australiscontact",,,"hegtales_australistalk:""I want to know more about House Ossum.""",
 hegtales_australis_aicoresAustralis,DialogOptionSelected,"$option == aiCores_startTurnIn
 $id == hegtales_australis score:1000","FireAll PopulateOptions
 SetEnabled aiCores_startTurnIn false","""I am sorry, Captain $playerLastName.""
@@ -325,7 +351,8 @@ SetEnabled aiCores_startTurnIn false","""I am sorry, Captain $playerLastName.""
 ""I cannot accept these cores. Their presence conflicts with the teachings of Ludd and the principles I hold dear. Please approach any other Hegemony officials about them. They will be better suited to handle such matters."" 
 
 Australis then proceeds to do a quick prayer.",,
-hegtales_australistalk,DialogOptionSelected,$option == hegtales_australistalk,FireAll hegtales_australistalkQuestions,"
+hegtales_australistalk,DialogOptionSelected,$option == hegtales_australistalk,"FireAll hegtales_australistalkQuestions
+SetShortcut hegtales_australistalkQuestionsCancel ""ESCAPE""","
 ","hegtales_australistalkQuestionsOssum:""Tell me about House Ossum""
 hegtales_australistalkQuestionsAustralis:""Tell me about yourself.""
 hegtales_australistalkQuestionsEventide:""Tell me about Eventide.""
@@ -345,18 +372,27 @@ His expression softens as he shifts to a more personal note. ""On the home front
 FireBest DialogOptionSelected","He pauses briefly, his gaze momentarily distant. ""We're also devout Luddics, every one of us. Faith has always been the foundation of our house, and we strive to uphold its tenets in all that we do.""
 
 Australis then shifts back to his professional life, recounting a few minor tasks and missions with a casual air. ""I've handled my share of assignments—some mundane, some with a bit more excitement, but nothing you'd find particularly noteworthy."" he says, waving a hand dismissively.",,
-hegtales_australistalkQuestionsEventide,DialogOptionSelected,$option == hegtales_australistalkQuestionsEventide,,"""A place of contrasts and complexities. While the noble houses may have their differences and trust me, there are plenty, we've always managed to work together when it matters most. Unity has been our strength. It's what keeps our citizens under control and ensures stability in an otherwise chaotic sector.""
+hegtales_australistalkQuestionsEventide,DialogOptionSelected,"$option == hegtales_australistalkQuestionsEventide
+",,"""A place of contrasts and complexities. While the noble houses may have their differences and trust me, there are plenty, we've always managed to work together when it matters most. Unity has been our strength. It's what keeps our citizens under control and ensures stability in an otherwise chaotic sector.""
 
 ""Eventide isn't just a jewel in the Persean Sector; it's a cornerstone of the Hegemony. From our noble houses come the officers who lead its fleets and maintain its strength. We've upheld the sacred principles of the old Domain and passed them down through generations. It's no exaggeration to say that without Eventide, the Hegemony's foundation would be far weaker.""
 
 ""When the Domain returns, and I believe it's a matter of when, not if, they'll find Eventide ready. We are their wayward sons and daughters, and we've never forgotten our heritage. The Domain will be glad to welcome us back into the fold, and we'll be ready to take our rightful place in its grand design.""",,
+"hegtales_australistalkQuestionsOssumFamily
+",DialogOptionSelected,"$option == hegtales_australistalkQuestionsOssum
+$global.hegtales_house_ossum_start score:1000",,"Australis seems extremely amused by your question.
+
+""You are blood of my blood, your mother would be so disappointed to hear that you are asking me this."" He shakes his head slowly but then starts chuckling.
+
+""I already told you the tales of our house when you were little... Don't make me feel like an old man.""",,
 "hegtales_australistalkQuestionsOssum
-",DialogOptionSelected,$option == hegtales_australistalkQuestionsOssum,,"Australis seems eager to respond, rising from his desk with an energy that belies his otherwise composed demeanor. He strides toward a nearby shelf, retrieving an old, leather-bound book. Its worn edges and gilded lettering suggest it's more than just a family heirloom, it's a piece of history.
+",DialogOptionSelected,"$option == hegtales_australistalkQuestionsOssum
+!$global.hegtales_house_ossum_start",,"Australis seems eager to respond, rising from his desk with an energy that belies his otherwise composed demeanor. He strides toward a nearby shelf, retrieving an old, leather-bound book. Its worn edges and gilded lettering suggest it's more than just a family heirloom, it's a piece of history.
 
 ""We were originally from Sphinx,"" he begins, his voice carrying a note of pride. ""Our family was among the first settlers in the Persean Sector. When Eventide received its orbital shades and began to flourish, we made the journey here. That was generations ago, and we've lived in our ancestral castle ever since.""
 
 He pauses for a moment, flipping through the pages of the book as though searching for the right words. ""Of course, we were one of the families that signed the Eventide Diktat when the 14th Battlegroup arrived. From that moment on, we've been steadfast allies of the Hegemony, working tirelessly to uphold its vision.""",hegtales_australistalkQuestionsOssum2:Keep listening.,
-hegtales_australistalkQuestionsOssum2,DialogOptionSelected,$option == hegtales_australistalkQuestionsOssum2,,"Australis's tone shifts slightly as he continues, his gaze lingering on the open book. There's a quiet heaviness in his expression, as if the next part of his story weighs on him. ""Our father perished in Sindria,"" he says, his voice softening. ""He was part of Admiral Andrada's fleet… loyal to the Hegemony to the very end... And our ancestral flagship was lost.. We were just children, the two of us.""
+hegtales_australistalkQuestionsOssum2,DialogOptionSelected,$option == hegtales_australistalkQuestionsOssum2,"SetShortcut hegtales_australistalkQuestionsCancel ""ESCAPE""","Australis's tone shifts slightly as he continues, his gaze lingering on the open book. There's a quiet heaviness in his expression, as if the next part of his story weighs on him. ""Our father perished in Sindria,"" he says, his voice softening. ""He was part of Admiral Andrada's fleet… loyal to the Hegemony to the very end... And our ancestral flagship was lost.. We were just children, the two of us.""
 
 For a moment, the room feels heavier, the silence amplifying the loss etched into his words. Then, as if to lighten the mood, Australis closes the book gently and looks back at you with a faint smile. ""House Ossum has never been too huge, even if we are quite influential. So our numbers are few -well, unless you count our little ones."" His tone brightens slightly, a deliberate attempt to end on a more hopeful note.
 
@@ -371,13 +407,19 @@ hegtales_australistalkQuestionsBorealis,DialogOptionSelected,$option == hegtales
 He states the facts, before he seems to realize that he isn't saying much. ""He's also my twin brother. Though he came out first, which means he inherited the title of Patriarch.""
 
 ""The Lord of Bones,"" he adds with a small laugh, ""Whether he likes it or not, is a name that suits him more than he'd ever admit.""",,
-hegtales_australistalkQuestionsDaud,DialogOptionSelected,$option == hegtales_australistalkQuestionsHegemon,,"He's a great man."" he begins, his voice steady and firm. ""Resourceful and sharp like no other I've known."" For a moment, his gaze drifts to a far-off point. ""Of course, some of the nobles here on Eventide grumble about him. But House Ossum has always believed otherwise. We've long held that true success comes from one's own achievements, not from the privilege of birth."" He pauses.""My brother served as a patrol officer in Daud's fleet during the defense of Chicomoztoc. He saw firsthand the man's brilliance and resolve under pressure.""
+hegtales_australistalkQuestionsBorealisFamily,DialogOptionSelected,"$option == hegtales_australistalkQuestionsBorealis
+$global.hegtales_house_ossum_start score:1000",,"A smile appears on his lips.  ""He's your uncle. And you know he hates being called that! So don't do it to his face.""
+
+""And if you are a dummy and do not remember, he's also my twin.""
+
+""The Lord of Bones,"" he adds with a small laugh, ""Whether he likes it or not, is a name that suits him more than he'd ever admit.""",,
+hegtales_australistalkQuestionsDaud,DialogOptionSelected,$option == hegtales_australistalkQuestionsHegemon,,"""He's a great man."" he begins, his voice steady and firm. ""Resourceful and sharp like no other I've known."" For a moment, his gaze drifts to a far-off point. ""Of course, some of the nobles here on Eventide grumble about him. But House Ossum has always believed otherwise. We've long held that true success comes from one's own achievements, not from the privilege of birth."" He pauses.""My brother served as a patrol officer in Daud's fleet during the defense of Chicomoztoc. He saw firsthand the man's brilliance and resolve under pressure.""
 
 ""Unfortunately, not everyone on Eventide shares our view. Many houses here would rather bicker over status and tradition than recognize what truly matters. But House Ossum? We know better. We follow Daud's leadership to the letter, and we'll continue to do so, regardless of the mutterings of others.""
 
 ""Daikal Daud is a reliable High Hegemon, and I trust in his vision for the Hegemony's future.""",,
-hegtales_australistalkQuestionsCancel,DialogOptionSelected,$option == hegtales_australistalkQuestionsCancel,FireAll PopulateOptions,"""Of course. If you need anything more, I will be of assistance."" The officer speaks as he looks at his tripad.",,
-,,,,,,
+hegtales_australistalkQuestionsCancel,DialogOptionSelected,$option == hegtales_australistalkQuestionsCancel,"FireAll PopulateOptions
+SetShortcut hegtales_australistalkQuestionsCancel ""ESCAPE""","""Of course. If you need anything more, I will be of assistance."" The officer speaks as he looks at his tripad.",,
 ,,,,,,
 ,,,,,,
 HegtalesdevMenuOption,PopulateOptions,"$market.id == eventide
@@ -410,7 +452,7 @@ hegtales_finish_return,hegtalesTestMenuOptions,,,,cutCommLink:return,
 ,,,,,,
 #Australis Quest Hub,,,,,,
 AustralisQuestHub,PopulateOptions,"$id == hegtales_australis
-","SetOptionColor AustralisQuestHubOption highlight
+$market.id == eventide","SetOptionColor AustralisQuestHubOption highlight
 ",,"2:AustralisQuestHubOption:""How can I serve House Ossum more directly?""",
 AustralisQuestHubOption,DialogOptionSelected,$option == AustralisQuestHubOption,FireAll AustralisQuests,"$personName nods and them spins to the screen behind $himOrHer as $heOrShe seems focused.  ""Give me just a moment...""
 OR
@@ -420,6 +462,11 @@ $global.hegtales_Quest1_missionCompleted
 $global.hegtales_Quest2_missionCompleted
 $global.hegtales_Quest3_missionCompleted","SetEnabled AustralisQuestHubOption false
 FireBest AustralisQuestsallcomplete",,,
+AustralisQuestHubOptionCompleteOssum,DialogOptionSelected,"$option == AustralisQuestHubOption score:1100
+$global.hegtales_house_ossum_start","SetEnabled AustralisQuestHubOption false
+FireBest AustralisQuestsallcomplete","""Dummy, you already have done so much for your family, $playerFirstName of House Ossum."" 
+
+Australis gives you a big smile.",,
 AustralisQuestHubOptionAllComplete,AustralisQuestsallcomplete,,,"""You have done too much for us, $playerFirstName of House Ossum."" 
 
 Australis gives you a big smile.",,
@@ -1111,10 +1158,21 @@ AddTextSmall ""--Hannah can improve your relationship with the Hegemony if it go
 
 FireAll MarketPostDock",,,
 ,,,,,,
+hegtales_hannahgreet,PickGreeting,$id == hegtales_hannah,"BeginConversation hegtales_hannah
+FireAll PopulateOptions","You can see a beautiful living room, before Hannah moves in front of the screen, smiling almost politely before she gives a real big smile.
+
+""Hey $playerFirstname! How are you? Good?""",,
+hegtales_hannahgreetFamily,PickGreeting,"$id == hegtales_hannah
+$global.hegtales_house_ossum_start score: 1000","BeginConversation hegtales_hannah
+FireAll PopulateOptions","You can see a beautiful living room, before Hannah moves in front of the screen, smiling almost politely before she gives a real big smile.
+
+""Hey $playerFirstname! Have you been eating well? I haven't seen you in so long!""",,
+,,,,,,
 "hegtales_hannahtalkstart
 
 ",PopulateOptions,$id == hegtales_hannah score:1000,,,"hegtales_hannahtalk:""Can I ask you a few questions?""",
-hegtales_hannahtalk,DialogOptionSelected,$option == hegtales_hannahtalk,FireAll hegtales_hannahtalkQuestions,"She immediately lights up. ""Sure! I'd be more than happy to answer any questions or inquiries from my savior!"" she replies cheerfully, her tone light and genuine.
+hegtales_hannahtalk,DialogOptionSelected,$option == hegtales_hannahtalk,"FireAll hegtales_hannahtalkQuestions
+SetShortcut hegtales_hannahtalkQuestionsCancel ""ESCAPE""","She immediately lights up. ""Sure! I'd be more than happy to answer any questions or inquiries from my savior!"" she replies cheerfully, her tone light and genuine.
 
 Before you can continue, one of her younger children bursts into the room behind her, giggling as they run past. ""So, what's on your mind?"" She asks.","hegtales_hannahtalkQuestionsPersonal:""Tell me a bit about you.""
 hegtales_hannahtalkQuestionsLuddic:""Tell me about being a Luddic in the Hegemony.""
@@ -1132,7 +1190,7 @@ Hannah finishes with a big smile, ""And now here I am, talking to you.""",,
 hegtales_hannahtalkQuestionsLuddic,DialogOptionSelected,$option == hegtales_hannahtalkQuestionsLuddic,,"""The Hegemony, just as the Domain before it, has always been a secular polity,"" she begins. ""Our worship of Ludd… it doesn't align with some of their core beliefs. But unlike the pathers or even certain factions within the Church of Galactic Redemption, we don't see faith as a reason to reject the foundations of the Domain. We believe in using Luddic ideals and teachings to improve  ourselves and the world around us.""
 
 Her tone grows more fervent as she continues. ""AI is a sin—a fundamental wrongdoing of humanity. To create an artificial form of life, one without mothers or fathers, without a soul? It's unnatural. But the Gates, the Domain, the legacy of human ingenuity—those are not sins. That's humanity. That's us. And it's our duty to spread the teachings of Ludd across all of mankind, not to isolate ourselves in this beautiful yet fractured Persean Sector.""",hegtales_hannahtalkQuestionsLuddic2:Continue,
-hegtales_hannahtalkQuestionsLuddic2,DialogOptionSelected,$option == hegtales_hannahtalkQuestionsLuddic2,,"She pauses briefly, ""That's where our disagreements with the Church and Pathers begin. They want isolation, purity or destruction of technology, while we believe in integration and control, just like the Domain did. I believe that when the Hegemony asserts full control over the sector, we can make Luddism its official religion. Not through force, but by showing its wisdom just as Ludd taught us...""
+hegtales_hannahtalkQuestionsLuddic2,DialogOptionSelected,$option == hegtales_hannahtalkQuestionsLuddic2,"SetShortcut hegtales_hannahtalkQuestionsCancel ""ESCAPE""","She pauses briefly, ""That's where our disagreements with the Church and Pathers begin. They want isolation, purity or destruction of technology, while we believe in integration and control, just like the Domain did. I believe that when the Hegemony asserts full control over the sector, we can make Luddism its official religion. Not through force, but by showing its wisdom just as Ludd taught us...""
 
 ""And if one day we are reunied with our kin, we would preach our word to them. Showing them the fruits of our labour.""
 
@@ -1151,12 +1209,18 @@ Her tone softens but there's still a hint of frustration. ""People call him a Pa
 ""Salt is complicated. That's all I'll say.""",,
 hegtales_hannahtalkQuestionsBorealis,DialogOptionSelected,$option == hegtales_hannahtalkQuestionsBorealis,,"Hannah shakes her head. ""If he hears you call him that, he's going to kill you. He hates that nickname...""
 
-""Borealis of House Ossum. He's been my husband for almost twelve years now. We have five beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you through the screen.
+""Borealis of House Ossum. He's been my husband for almost twelve years now. We have five beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you.
 
 ""Borealis… he's a stern man. Very busy and incredibly dutiful. Most of his time is spent working with the rest of Executive Council and High Hegemon Daud. It's not the life he wanted, though. He'd much rather be patrolling with a fleet and leading from the front. But instead, he's stuck behind a desk, buried in meetings and politics."" She sighs. ""At least he does not need to worry about the... ‘Special' traditions of Eventide. But all those things fall on me nowadays."" Finally, she lifts a photo of her and Borealis in their youth, showing it to the screen.
 
 ""He does it all for his family and for the Hegemony, but I know it weighs on him.""
 ",,
+hegtales_hannahtalkQuestionsBorealisFamily,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsBorealis
+$hegtales_house_ossum_start score: 1000",,"Hannah shakes her head. ""If your uncle hears you call him that, he's going to kill you. He hates that nickname...""
+
+""Borealis of House Ossum. As you know, has been my husband for almost twelve years now. We have five beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you.
+
+""Borealis… he's a stern man. Very busy and incredibly dutiful. Most of his time is spent working with the rest of Executive Council and High Hegemon Daud. It's not the life he wanted, though. He'd much rather be patrolling with a fleet and leading from the front. But instead, he's stuck behind a desk, buried in meetings and politics."" She sighs. Finally, she lifts a photo of her and Borealis in their youth, showing it to the screen.",,
 hegtales_hannahtalkQuestionsCancel,DialogOptionSelected,$option == hegtales_hannahtalkQuestionsCancel,FireAll PopulateOptions,"""Alright! Arminius! Dont touch that."" She yells at one of her kids.",,
 hegtales_hannah_peaceBribeRep,PopulateOptions,"$id == hegtales_hannah
 ",FireAll hegtales_hannah_peaceBribeRepCheck,,"10:hegtales_hannah_peace_bribeRep:""I need to fix my reputation with the Hegemony.""",
@@ -1571,6 +1635,8 @@ Call $global.hegtales_Quest3_ref updateStage
 
 $satset = true
 
+ActivateAbility $player.fleetId sensor_burst
+
 FireAll PopulateOptions","The satellite hums to life as it drifts into orbit, its signal pulsing out across the void. Your crew monitors the transmission.
  
 ""Captain, it's him. The ship matches Isaias's profile. He's on his way."" One of the officers in the bridge speaks out.
@@ -1957,10 +2023,52 @@ Your comms connect to the office of Admiral Borealis Ossum, Councillor of the He
 He seems to speaking with another officer before he glances at you.
 
 ""Captain $playerName. How's Prima doing?""",,
+hegtales_borealisGreetingFamilyFirst,PickGreeting,"$id == hegtales_borealis
+$global.hegtales_Quest3_missionCompleted 
+$global.hegtales_house_ossum_start score:1500
+!$Borealisfamilygreet","ShowPersonVisual
+$Borealisfamilygreet = true
+SetPersonHidden hegtales_hannah false
+SetPersonHidden hegtales_australis false
+
+AdjustRepPerson hegtales_australis FRIENDLY 75
+AdjustRepPerson hegtales_borealis FRIENDLY 75
+AdjustRepPerson hegtales_hannah FRIENDLY 75
+
+FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council, your uncle.
+
+He seems to speaking with another officer before he glances at you.
+
+""You are finally back $playerName. Your mother has missed you, you should call her more often... I have heard your... problems in Galatia. I am glad that problem is over us now.""",,
+hegtales_borealisGreetingFamily,PickGreeting,"$id == hegtales_borealis
+$global.hegtales_Quest3_missionCompleted 
+$global.hegtales_house_ossum_start score:1400","ShowPersonVisual
+
+FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council, your uncle.
+
+He seems to speaking with another officer before he glances at you.
+
+""Your mother is going to kill me if she finds out... How can I help you?""
+OR
+Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council.
+
+He seems to speaking with another officer before he glances at you.
+
+""Captain $playerFirstname are you doing well? We are proud of you.""
+",,
 ,,,,,,
 hegtales_borealistalkQuestionsInspectionCom,PopulateOptions,"$id == hegtales_borealis
 $global.hegtales_Quest3_missionCompleted score:500
 !$player.discussedHegemonyDefeat",,,"5:hegtales_borealistalk_inspection:""Can you stop the AI Inspections?""",
+hegtales_borealistalkQuestionsInspection2Ossum,DialogOptionSelected,"$option == hegtales_borealistalk_inspection
+$global.hegtales_house_ossum_start score:800","SetEnabled hegtales_borealistalk_inspectionEnd false
+SetTooltip hegtales_borealistalk_inspectionEnd ""You need have at least FRIENDLY relations with the Hegemony or to be commisioned by them.""
+FireBest AustralisAIcheck","He raises an eyebrow, his surprise evident as he processes your request. It's clear from his demeanor that such an exception is far from routine. The mention of AI, outlawed by Hegemony law, immediately shifts the atmosphere in the room.
+
+He leans forward slightly, his tone firm but not yet dismissive. ""Do you really think that I would allow this to happen?"" he asks, his voice carrying the weight of authority and years of adherence to the Hegemony's strict policies, maybe even his own Luddic faith.
+
+""You are a member of t his family and your standing with the Hegemony have earned you a degree of trust, but this... This is a line not crossed lightly. Explain yourself, kid. Convince me why this should even be considered.""","hegtales_borealistalk_inspectionEnd: ""Come on uncle!""
+hegtales_borealistalk_inspectionLeave: ""No, I will deal it another way.""",
 hegtales_borealistalkQuestionsInspection2,DialogOptionSelected,$option == hegtales_borealistalk_inspection,"SetEnabled hegtales_borealistalk_inspectionEnd false
 SetTooltip hegtales_borealistalk_inspectionEnd ""You need have at least FRIENDLY relations with the Hegemony or to be commisioned by them.""
 FireBest AustralisAIcheck","He raises an eyebrow, his surprise evident as he processes your request. It's clear from his demeanor that such an exception is far from routine. The mention of AI, outlawed by Hegemony law, immediately shifts the atmosphere in the room.
@@ -2007,8 +2115,14 @@ $player.numColonies == 0",SetEnabled hegtales_borealistalk_inspection false,"He 
 ,,,,,,
 "hegtales_borealistalk_start
 ",PopulateOptions,"$id == hegtales_borealis score:1000
-$global.hegtales_Quest3_missionCompleted score:500",,,"hegtales_borealistalk:""I want to know more about your house.""",
-hegtales_borealistalk,DialogOptionSelected,$option == hegtales_borealistalk,FireAll hegtales_borealistalkQuestions,,,
+$global.hegtales_Quest3_missionCompleted score:500
+!$global.hegtales_house_ossum_start",,,"hegtales_borealistalk:""I want to know more about your house.""",
+hegtales_borealistalk_startOssum,PopulateOptions,"$id == hegtales_borealis score:1000
+$global.hegtales_Quest3_missionCompleted score:500
+$global.hegtales_house_ossum_start score:1500",,,"hegtales_borealistalk:""I want to know more about our house.""",
+hegtales_borealistalk,DialogOptionSelected,$option == hegtales_borealistalk,"FireAll hegtales_borealistalkQuestions
+SetShortcut hegtales_borealistalkQuestionsCancel ""ESCAPE""
+",,,
 hegtales_borealis_aicores,PopulateOptions,"$id == hegtales_borealis score:1000
 #AICores personCanAcceptCores",FireBest DisableTurnInCoresOptionIfNeeded,,"10:aiCores_startTurnIn:""I'd like to turn in these AI cores that I've acquired...""",
 hegtales_borealis_aicoresBorealis,DialogOptionSelected,"$option == aiCores_startTurnIn
@@ -2052,7 +2166,6 @@ SetEnabled hegtales_borealiscakegift false","Borealis immediately raises an eyeb
 
 ""You have my thanks, Captain $PlayerName. I’ll send a cadet in a shuttle to retrieve it shortly. And... I suppose I’ll have to ensure they don’t eat it on the way back.""",,
 ,,,,,,
-,,,,,,
 hegtales_borealistalkQuestionsBorealisStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsBorealis:""Tell me about yourself.""",
 hegtales_borealistalkQuestionEventideStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsEventide:""What can you tell me about Eventide?.""",
 hegtales_borealistalkQuestionsLuddicStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsLuddic:""Are you a Luddic?""",
@@ -2061,7 +2174,7 @@ hegtales_borealistalkQuestionsCouncilStart,hegtales_borealistalkQuestions,,,,"he
 hegtales_borealistalkQuestionsIronShellStart,hegtales_borealistalkQuestions,HEG_HasModId timid_xiv score:100,,,"hegtales_borealistalkQuestionsIronShell:""What do you think of Iron Shell?""",
 hegtales_borealistalkQuestionsLordofBonesStart,hegtales_borealistalkQuestions,!$askedlordofbones,,,"hegtales_borealistalkQuestionsLordOfBones:""Why do they call you the Lord of Bones?""",
 ,,,,,,
-hegtales_borealistalkQuestionsCancelStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsCancel:""That would be all.""",
+hegtales_borealistalkQuestionsCancelStart,hegtales_borealistalkQuestions,,"SetShortcut hegtales_borealistalkQuestionsCancel ""ESCAPE""",,"hegtales_borealistalkQuestionsCancel:""That would be all.""",
 ,,,,,,
 hegtales_borealis_recruit_prima_Start,PopulateOptions,"$id == hegtales_borealis
 !$global.recruited_prima",,,"0:hegtales_recruit_prima:""Do you have any officers that can help me?""",
@@ -2095,15 +2208,30 @@ hegtales_borealis_recruit_prima2,DialogOptionSelected,$option == hegtales_boreal
 AdjustRepPerson hegtales_recruit_prima FRIENDLY 40
 HEG_prima 1","Prima strides onto the bridge, her polished uniform and confident demeanor reflecting the pride of House Ossum.
 
-She halts before you  and delivers a wonderfully choreographed Hegemony salute.
+She halts before you and delivers a wonderfully choreographed Hegemony salute.
 
 ""Lieutenant Prima of House Ossum, reporting for duty, Captain $playerName!""
 
 You nod in acknowledgment, before sending her to get acquainted with the rest of the officers and settle in.",hegtales_borealis_recruit_prima3:Return to Borealis,
+hegtales_borealis_recruit_prima2Family,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima2 score:100
+$global.hegtales_house_ossum_start","BeginConversation hegtales_recruit_prima
+AdjustRepPerson hegtales_recruit_prima FRIENDLY 75
+HEG_prima 1","Prima strides onto the bridge, her polished uniform and confident demeanor reflecting the pride of House Ossum.
+
+She halts before you and delivers a wonderfully choreographed Hegemony salute before giving you a bear hug. An Ossum Family classic.
+
+""Lieutenant Prima, reporting for duty, Captain $playerFirstname!""
+
+You hug her back, before sending her to get acquainted with the rest of the officers and settle in.",hegtales_borealis_recruit_prima3:Return to Borealis,
 hegtales_borealis_recruit_prima3,DialogOptionSelected,$option == hegtales_borealis_recruit_prima3,"BeginConversation hegtales_borealis
 FireAll PopulateOptions","""Treat her well, Captain. Ossums are far and in between.""
 
 His green eyes locking onto yours through the comms. ""She’s more than just an officer. She’s family.""",,
+hegtales_borealis_recruit_prima3Family,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima3 score:100
+$global.hegtales_house_ossum_start","BeginConversation hegtales_borealis
+FireAll PopulateOptions","""Treat her well, Captain. Ossums stick together..""
+
+His green eyes locking onto yours through the comms. ""I dont have to mention that you should keep her safe.""",,
 hegtales_borealis_recruit_primano,DialogOptionSelected,$option == hegtales_borealis_recruit_prima_no,"HideSecondPerson
 FireAll PopulateOptions
 ","""Of course, if you change your mind, she will remain here.""",,
@@ -2117,6 +2245,14 @@ hegtales_borealistalkQuestionsEventide,DialogOptionSelected,$option == hegtales_
 hegtales_borealistalkQuestionsBorealis,DialogOptionSelected,$option == hegtales_borealistalkQuestionsBorealis,,"He seems momentarily taken aback by your question. It wasn’t every day that someone outside of a journalist or official inquiry asked him about his personal life.
 
 ""Borealis of House Ossum,"" he begins,""Admiral of the Hegemony Navy. Member of the Executive Council. Brother to Australis, husband to Hannah…"" He pauses briefly. ""You saved her. For that, you have my thanks. That whole ordeal was... complicated.""
+
+He shifts his stance slightly, his expression softening before continuing. ""As for my role, I’m one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You’ve likely seen for yourself how thinly we’re stretched—dangerously so at times. Yet, we endure. The Domain endures.""
+
+""Any more words about myself would be vain.""",,
+hegtales_borealistalkQuestionsBorealisOssum,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsBorealis
+$global.hegtales_house_ossum_start score:1500",,"He seems momentarily taken aback by your question. It wasn’t every day that someone outside of a journalist or official inquiry asked him about his personal life.
+
+""Borealis of House Ossum,"" he begins,""Admiral of the Hegemony Navy. Member of the Executive Council. Brother to Australis, husband to Hannah, your uncle...""
 
 He shifts his stance slightly, his expression softening before continuing. ""As for my role, I’m one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You’ve likely seen for yourself how thinly we’re stretched—dangerously so at times. Yet, we endure. The Domain endures.""
 
@@ -2138,11 +2274,13 @@ He sighs ""They’re still part of the Hegemony, and they follow orders—more o
 Borealis’s eyes narrow slightly. ""I believe the Charter’s days are numbered. It won’t be renewed indefinitely. The Hegemony needs unity, not fragmented auxiliaries.""",,
 hegtales_borealistalkQuestionsCouncil,DialogOptionSelected,$option == hegtales_borealistalkQuestionsCouncil,FireAll hegtales_borealistalkNepo,"""My father was a member of the Council."" Borealis begins. ""When he passed away, his seat was left vacant until I came of age and achieved the necessary rank. Do not call it nepotism, House Ossum has worked tirelessly to shape the Hegemony into what it is today. We have earned our place.""",,
 hegtales_borealistalkQuestionsCouncilContinueOPT,hegtales_borealistalkNepo,,,,hegtales_borealistalkQuestionsCouncilContinue: Continue,
-hegtales_borealistalkQuestionsCouncilNepoOPT,hegtales_borealistalkNepo,!$nepobaby,,,"hegtales_borealistalkQuestionsCouncilNepo: ""That sounds pretty Nepotistic.""",
+hegtales_borealistalkQuestionsCouncilNepoOPT,hegtales_borealistalkNepo,"!$nepobaby
+!$global.hegtales_house_ossum_start",,,"hegtales_borealistalkQuestionsCouncilNepo: ""That sounds pretty Nepotistic.""",
 hegtales_borealistalkQuestionsCouncilContinue,DialogOptionSelected,$option == hegtales_borealistalkQuestionsCouncilContinue,FireAll hegtales_borealistalkQuestions,"""Being part of the Executive Council is not as glamorous or perilous as some might think. Daud, as High Hegemon, must maintain an image, inspire loyalty, and entertain the masses. The Council, on the other hand, operates behind the scenes. We deliberate, debate, and ultimately decide the direction of the Hegemony. We are the ones who give the yays or nays on critical decisions without the burden of constant public scrutiny.""
 
 ""It's a good system. One that mirrors how the Domain itself used to function at its height. Efficient, balanced, and pragmatic.""",,
-hegtales_borealistalkQuestionsCouncilNepo,DialogOptionSelected,$option == hegtales_borealistalkQuestionsCouncilNepo,"AdjustRepPerson hegtales_borealis SUSPICIOUS -2
+hegtales_borealistalkQuestionsCouncilNepo,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsCouncilNepo
+","AdjustRepPerson hegtales_borealis SUSPICIOUS -2
 FireAll hegtales_borealistalkQuestions
 $nepobaby = true","""Call it what you will. The Hegemony has endured for over 150 years, and House Ossum has stood even longer. Things are the way they are for a reason. Leave your democracies or the rule of criminals, like those on Chicomoztoc, to their own chaos.""
 

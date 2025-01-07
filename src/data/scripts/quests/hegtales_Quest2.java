@@ -9,10 +9,13 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
+import com.fs.starfarer.api.fleet.FleetMemberAPI;
+import com.fs.starfarer.api.fleet.FleetMemberType;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.missions.academy.GAFindingCoureuse;
 import com.fs.starfarer.api.impl.campaign.missions.hub.ReqMode;
 import com.fs.starfarer.api.impl.campaign.missions.luddic.LuddicKnightErrant;
+import com.fs.starfarer.api.mission.FleetSide;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.impl.campaign.missions.hub.HubMissionWithSearch;
 import com.fs.starfarer.api.characters.FullName;
@@ -407,10 +410,22 @@ public class hegtales_Quest2 extends HubMissionWithSearch {
     {
         //SectorEntityToken location = probeSystem.getStar();
         beginGlobalFlagTrigger("$hegtales_Quest2_triggerCluePatherAmbush", Stage.FIND_CLUES);
-        triggerCreateFleet(FleetSize.LARGE, FleetQuality.DEFAULT, Factions.LUDDIC_PATH, FleetTypes.PATROL_LARGE, hegclueSystem);
+        if (Global.getSettings().getModManager().isModEnabled("knights_of_ludd")) {
+            triggerCreateFleet(FleetSize.LARGE, FleetQuality.DEFAULT, Factions.LUDDIC_PATH, FleetTypes.PATROL_LARGE, hegclueSystem);
+            triggerFleetSetFlagship("kol_lunaria_Knightmaster");
+        }
+        else if (Global.getSettings().getModManager().isModEnabled("PAGSM"))  {
+            triggerCreateFleet(FleetSize.LARGE, FleetQuality.DEFAULT, Factions.LUDDIC_PATH, FleetTypes.PATROL_LARGE, hegclueSystem);
+            triggerFleetSetFlagship("sfcpatherepimetheus_Barrage");
+        }
+        else {
+            triggerCreateFleet(FleetSize.LARGE, FleetQuality.DEFAULT, Factions.LUDDIC_PATH, FleetTypes.PATROL_LARGE, hegclueSystem);
+            triggerFleetSetFlagship("prometheus2_Standard");
+        }
         triggerSetFleetOfficers( OfficerNum.DEFAULT, OfficerQuality.DEFAULT);
         //triggerMakeNonHostile(); // should it be hostile?
         triggerMakeHostileAndAggressive();
+        triggerSetFleetFaction(Factions.LUDDIC_PATH);
         triggerMakeLowRepImpact();
         triggerFleetPatherNoDefaultTithe();
         triggerPickLocationAtClosestToPlayerJumpPoint(hegclueSystem);
@@ -421,7 +436,6 @@ public class hegtales_Quest2 extends HubMissionWithSearch {
         triggerFleetSetName("Pather Knights");
         triggerFleetSetCommander(saltus);
         triggerFleetSetPatrolActionText("waiting");
-        triggerFleetSetFlagship("prometheus2_Standard");
         triggerPickLocationTowardsEntity(null, 10f, getUnits(1.0f)); // towards the jump-point we just picked
         triggerSpawnFleetAtPickedLocation("$hegtales_Quest2_CluePatherAmbush", null);
         triggerSetFleetMissionRef("$hegtales_Quest2_ref"); // so they can be made unimportant

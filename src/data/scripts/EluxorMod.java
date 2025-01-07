@@ -2,15 +2,14 @@ package data.scripts;
 
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.listeners.ListenerManagerAPI;
 import com.fs.starfarer.api.characters.FullName;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.campaign.PersonImportance;
+import com.fs.starfarer.api.impl.PlayerFleetPersonnelTracker;
+import com.fs.starfarer.api.impl.campaign.econ.impl.ShipQuality;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.characters.ImportantPeopleAPI;
-import com.fs.starfarer.api.campaign.StarSystemAPI;
-import com.fs.starfarer.api.campaign.CampaignTerrainAPI;
-import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.impl.campaign.DerelictShipEntityPlugin;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.BaseThemeGenerator;
@@ -25,7 +24,15 @@ import com.fs.starfarer.api.impl.campaign.ids.Entities;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.ids.Ranks;
 
-import java.util.Random;
+import com.fs.starfarer.api.campaign.CampaignTerrainAPI;
+import com.fs.starfarer.api.campaign.PersonImportance;
+import com.fs.starfarer.api.campaign.SectorAPI;
+import com.fs.starfarer.api.campaign.SectorEntityToken;
+import com.fs.starfarer.api.campaign.StarSystemAPI;
+import com.fs.starfarer.api.impl.campaign.fleets.PersonalFleetAustralis;
+import com.fs.starfarer.api.impl.campaign.ids.People;
+import com.fs.starfarer.api.impl.campaign.ids.Personalities;
+import com.fs.starfarer.api.impl.campaign.ids.Skills;
 
 
 
@@ -38,6 +45,7 @@ public class EluxorMod extends BaseModPlugin {
 
     //@Override
     public void onGameLoad(boolean newGame)  {
+        addhegtalesScriptsIfNeeded();
         if (Global.getSector().getMemoryWithoutUpdate().get("$hegtales_characters_generated") == null) {
             Global.getSector().getMemoryWithoutUpdate().set("$hegtales_characters_generated", true);
             {
@@ -59,11 +67,18 @@ public class EluxorMod extends BaseModPlugin {
                     person.setImportance(PersonImportance.VERY_HIGH);
                     person.setPortraitSprite("graphics/hegtales/portraits/hegtales_borealis.png");
                     person.setId("hegtales_borealis");
+                    person.getStats().setSkillLevel(Skills.POINT_DEFENSE, 2);
                     person.getStats().setSkillLevel(Skills.HELMSMANSHIP, 2);
                     person.getStats().setSkillLevel(Skills.TARGET_ANALYSIS, 2);
                     person.getStats().setSkillLevel(Skills.POLARIZED_ARMOR, 2);
-                    person.getStats().setSkillLevel(Skills.POINT_DEFENSE, 2);
-                    person.getStats().setLevel(4);
+                    person.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 2);
+                    person.getStats().setSkillLevel(Skills.FIELD_MODULATION, 1);
+                    person.getStats().setSkillLevel(Skills.COMBAT_ENDURANCE, 2);
+                    person.getStats().setSkillLevel(Skills.BALLISTIC_MASTERY, 2);
+                    if (Global.getSettings().getModManager().isModEnabled("timid_xiv"))   {
+                        person.getStats().setSkillLevel("eis_xiv", 2);
+                    }
+                    person.getStats().setLevel(8); //(OP asf but its on purpose. Hes an admiral!))
                     market.getCommDirectory().addPerson(person, 0); // FIRST
                     market.getCommDirectory().getEntryForPerson(person).setHidden(false);
                     market.addPerson(person);
@@ -81,8 +96,17 @@ public class EluxorMod extends BaseModPlugin {
                     person3.setPortraitSprite("graphics/hegtales/portraits/hegtales_australis.png");
                     person3.addTag(Tags.CONTACT_MILITARY);
                     person3.setVoice(Voices.OFFICIAL);
-                    person3.getStats().setSkillLevel(Skills.HELMSMANSHIP, 1);
+                    person3.getStats().setSkillLevel(Skills.HELMSMANSHIP, 2);
                     person3.getStats().setSkillLevel(Skills.TARGET_ANALYSIS, 1);
+                    person3.getStats().setSkillLevel(Skills.POLARIZED_ARMOR, 1);
+                    person3.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 2);
+                    person3.getStats().setSkillLevel(Skills.FIELD_MODULATION, 1);
+                    person3.getStats().setSkillLevel(Skills.COMBAT_ENDURANCE, 2);
+                    person3.getStats().setSkillLevel(Skills.BALLISTIC_MASTERY, 2);
+                    if (Global.getSettings().getModManager().isModEnabled("timid_xiv"))   {
+                        person3.getStats().setSkillLevel("eis_xiv", 2);
+                    }
+                    person3.getStats().setLevel(6); //(OP asf but its on purpose))
                     market.getCommDirectory().addPerson(person3, 1); // SECOND
                     market.getCommDirectory().getEntryForPerson(person3).setHidden(true);
                     market.addPerson(person3);
@@ -99,7 +123,7 @@ public class EluxorMod extends BaseModPlugin {
                     person4.getName().setLast("Stahl-Ossum");
                     person4.setPortraitSprite("graphics/hegtales/portraits/hegtales_hannah.png");
                     person4.addTag(Tags.CONTACT_SCIENCE);
-                    person4.setVoice(Voices.BUSINESS);
+                    person4.setVoice(Voices.FAITHFUL);
                     market.getCommDirectory().addPerson(person4, 2); // THIRD
                     market.getCommDirectory().getEntryForPerson(person4).setHidden(true);
                     market.addPerson(person4);
@@ -301,7 +325,18 @@ public class EluxorMod extends BaseModPlugin {
                 }
             }
         }
+
     }
 
+    protected void addhegtalesScriptsIfNeeded() {
+        ShipQuality.getInstance();
+        SectorAPI sector = Global.getSector();
+        ListenerManagerAPI listeners = sector.getListenerManager();
+        PlayerFleetPersonnelTracker.getInstance();
+
+        if (!sector.hasScript(PersonalFleetAustralis.class)) {
+            sector.addScript(new PersonalFleetAustralis());
+        }
+    }
     // You can add more methods from ModPlugin here. Press Control-O in IntelliJ to see options.
 }
