@@ -87,7 +87,12 @@ public class MissionDefinition implements MissionDefinitionPlugin {
 		andrada.getName().setLast("Andrada");
 		andrada.getName().setGender(FullName.Gender.MALE);
 		andrada.setPersonality("aggressive");
-		andrada.setPortraitSprite("graphics/hegtales/portraits/hegtales_andrada.png");
+		if (Global.getSettings().getModManager().isModEnabled("PAGSM"))   {
+			andrada.setPortraitSprite("graphics/hegtales/portraits/hegtales_andrada_gas.png");
+		}
+		else {
+			andrada.setPortraitSprite("graphics/hegtales/portraits/hegtales_andrada.png");
+		}
 		andrada.setFaction("hegemony");
 		andrada.getStats().setSkillLevel(Skills.HELMSMANSHIP, 1);
 		andrada.getStats().setSkillLevel(Skills.BALLISTIC_MASTERY, 2);

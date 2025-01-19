@@ -410,11 +410,7 @@ public class hegtales_Quest2 extends HubMissionWithSearch {
     {
         //SectorEntityToken location = probeSystem.getStar();
         beginGlobalFlagTrigger("$hegtales_Quest2_triggerCluePatherAmbush", Stage.FIND_CLUES);
-        if (Global.getSettings().getModManager().isModEnabled("knights_of_ludd")) {
-            triggerCreateFleet(FleetSize.LARGE, FleetQuality.DEFAULT, Factions.LUDDIC_PATH, FleetTypes.PATROL_LARGE, hegclueSystem);
-            triggerFleetSetFlagship("kol_lunaria_Knightmaster");
-        }
-        else if (Global.getSettings().getModManager().isModEnabled("PAGSM"))  {
+        if (Global.getSettings().getModManager().isModEnabled("PAGSM"))  {
             triggerCreateFleet(FleetSize.LARGE, FleetQuality.DEFAULT, Factions.LUDDIC_PATH, FleetTypes.PATROL_LARGE, hegclueSystem);
             triggerFleetSetFlagship("sfcpatherepimetheus_Barrage");
         }

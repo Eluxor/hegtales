@@ -16,6 +16,7 @@ public class hegtalesIDs {
         public static String HEGTALES_FINISHED_QUEST5 = "$hegtales_Quest5_missionCompleted";
         public static String HEGTALES_FINISHED_QUEST6 = "$hegtales_Quest6_missionCompleted";
         public static String OF_HOUSE_OSSUM = "$hegtales_house_ossum_start";
+        public static String HSS_RETALIATION = "heg_retaliation";
 
         // People
         public static String HEGTALES_AUSTRALIS = "hegtales_australis";

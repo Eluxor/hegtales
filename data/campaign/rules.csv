@@ -482,7 +482,7 @@ SetTooltip AustralisQuest2StarterOption2 ""You need to have WELCOMING relations 
 FireBest AustralisQuest2Check
 
 SetOptionColor AustralisQuest2StarterOption2 highlight",,"1:AustralisQuest2StarterOption2:""Who is Stahl?"" ",
-AustralisQuest2Check,AustralisQuest2Check,$rel > 0.30 score:1000,"SetEnabled AustralisQuest2StarterOption2 true
+AustralisQuest2Check,AustralisQuest2Check,$rel > 0.24 score:1000,"SetEnabled AustralisQuest2StarterOption2 true
 SetTooltip AustralisQuest2StarterOption2 ""This mission is available because of your relationship with Australis.""",,,
 ,,,,,,
 ,,,,,,
@@ -837,6 +837,7 @@ Call $global.hegtales_Quest2_ref updateData",ShowDefaultVisual,"Your $shipOrFlee
 hegtalesQuest2_ClueEmpty1,DialogOptionSelected,"!$global.hegtales_Quest2_scavengerDroppedClue
 $option == hegtales_Quest2_ClueEmpty1
 ","Call $global.hegtales_Quest2_ref foundEmptyClue
+$global.hegtales_Quest2_cluestolen = true
 DespawnEntity","Someone has just taken all the information, texts, art and logs from it. Leaving an empty husk.
 
 ""It wasn't long ago,"" your sensors officer reports. ""Radar sweep for debris spread from intrusion incident shows minimal spread. Whoever did this, they're probably still in-system.""
@@ -852,11 +853,13 @@ Your bridge crew diligently sift through the various texts and mentions within t
 
 A soft, clear voice fills the bridge, recorded with an almost reverent tone. ""Hannah Stalh, married to Borealis Ossum, is who I am…""",hegtales_Quest2_clue1Investigation3:Continue,
 hegtalesQuest2_Clue1Investigation3,DialogOptionSelected,$option == hegtales_Quest2_clue1Investigation3,"$global.hegtales_Quest2_CluesDone++
-DespawnEntity","""Let me skim this part,"" your comms officer interjects, fast-forwarding through the introduction. The screen shifts to display additional details, snippets of Hannah's reflections and experiences. She recounts how her journey to Gilead began with purpose but transformed into something more profound. She describes a sudden revelation, one that surprised even her guards and companions, compelling her to deviate from the plan and head toward Hesperus.
+DespawnEntity
+
+FireAll hegClueGuy","""Let me skim this part,"" your comms officer interjects, fast-forwarding through the introduction. The screen shifts to display additional details, snippets of Hannah's reflections and experiences. She recounts how her journey to Gilead began with purpose but transformed into something more profound. She describes a sudden revelation, one that surprised even her guards and companions, compelling her to deviate from the plan and head toward Hesperus.
 
 Unfortunately, the logs end there, offering no further clues about her current location. The cache holds no additional insights, leaving you with only one option: to locate the next cache and continue piecing together her trail.
 
-You issue a command to your crew...",0:defaultLeave:...instructing them to leave the remaining contents of the cache undisturbed in orbit.,
+You issue a command to your crew...",,
 hegtalesQuest2_Clue2InvestigationStart,hegClueInvestigateOption,$global.hegtales_Quest2_CluesDone == 1,,"""The Exodus: In which Ludd is given a vision by God of a promised land, and leads the faithful to settle in the Persean Sector
 The Blooming: In which the faithful teach the industrial-terraformers how to shepherd the spirit of the land to create a new paradise.""
 
@@ -869,11 +872,13 @@ The log continues, but your comms officer interrupts briefly. ""Apologies for th
 hegtalesQuest2_Clue2Investigation3,DialogOptionSelected,$option == hegtales_Quest2_clue2Investigation3,"$global.hegtales_Quest2_CluesDone++
 DespawnEntity
 
-$global.hegtales_Quest2_triggerCluePatherAmbush = true","The recording resumes. ""I've placed these caches as a safeguard, just in case one day we are no longer here. To those who find them, be they human or something else, I want them to know who Ludd was… and who I am.""
+$global.hegtales_Quest2_triggerCluePatherAmbush = true
+
+FireAll hegClueGuy","The recording resumes. ""I've placed these caches as a safeguard, just in case one day we are no longer here. To those who find them, be they human or something else, I want them to know who Ludd was… and who I am.""
 
 As the log concludes, a sense of intrigue settles over the bridge. It's strange and somewhat unsettling to learn that Greenearth Salt and Hannah shared a history. The revelation adds another layer to the puzzle.
 
-Once again, you issue a command to your crew.","0:defaultLeave:""This is for the future, not for us."" The cache is left undisturbed in orbit.",
+Once again, you issue a command to your crew.",,
 hegtalesQuest2_Clue3InvestigationStart,hegClueInvestigateOption,$global.hegtales_Quest2_CluesDone == 2,,"The EVA team moves closer to the caches, carefully looking at the different screens and engraved texts on it.
 
 The Trial: In which Ludd is condemned to die by the Domain Sector-leader.
@@ -885,16 +890,25 @@ unset $global.hegtales_Quest2_CluesDone
 unset $global.hegtales_Quest2_discoveredFirstClue
 
 $global.hegtales_Quest2_goto_Beholder = true
-Call $global.hegtales_Quest2_ref updateStage","Hannah's voice fills the bridge once more, calm but with a note of wistfulness. ""What should I do now? I will go home… The Pilgrim's Path is long and hazardous, far too dangerous. But I made a promise to Saltus, to witness the beauty of Kumarian xenolife. After that… I suppose I should go home, right? Alas, that's for the future. For now, I return to civilization and to visit the station.""
+Call $global.hegtales_Quest2_ref updateStage
 
-There's a pause, and then her voice softens, tinged with affection. ""Hannah Stahl, mother of five, so far.""
+FireAll hegClueGuy","Hannah's voice fills the bridge once more, calm but with a note of wistfulness. ""What should I do now? I will go home… The Pilgrim's Path is long and hazardous, far too dangerous. But I made a promise to Saltus, to witness the beauty of Kumarian xenolife. After that… I suppose I should go home, right? Alas, that's for the future. For now, I return to civilization and to visit the station.""
+
+There's a pause, and then her voice softens, tinged with affection. ""Hannah Stahl, mother of four, so far.""
 
 The log ends, and a ripple of joy and relief spreads across the bridge. This time, the date on the log catches everyone's attention, it's only a few days old. The realization dawns quickly: Hannah is alive and likely at the Beholder Station shrine.
-","defaultLeave:Once again, you address your crew. ""Leave the remaining contents intact.""",
+",,
 hegtalesQuest2_ClueInvestigaitonWrapUp2,DialogOptionSelected,$option == hegtales_Quest2_clueInvestigationWrapUp2,"
 ",,,
 hegtalesQuest2_ClueInvestigaitonWrapUp3,DialogOptionSelected,$option == hegtales_Quest2_justleave,FireBest DialogOptionSelected,,,
 hegtalesQuest2_ClueInvestigaitonWrapUp4,DialogOptionSelected,$option == hegtales_Quest2_justleave2,FireBest DialogOptionSelected,,,
+hegtalesQuest2_ClueGoodguy,hegClueGuy,,,,defaultLeave:Leave the Cache in Orbit,
+hegtalesQuest2_ClueBadGuy,hegClueGuy,,,,hegtalesQuest2_ClueBadGuyScrap:Scrap the Cache,
+hegtalesQuest2_ClueBadGuy2,DialogOptionSelected,$option == hegtalesQuest2_ClueBadGuyScrap,"AddRemoveCommodity supplies 25
+AddRemoveCommodity metals 50
+AddRemoveCommodity fuel 10
+
+AdjustRep luddic_church SUSPICIOUS -1","You scrap the contents of the cache, leaving an empty husk.",defaultLeave:Leave,
 ,,,,,,
 # interact with the taken probe,,,,,,
 hegtales_Quest2_StolenCluePodStart,OpenInteractionDialog,$tag:hegtales_Quest2_lootedClue,"ShowDefaultVisual
@@ -928,8 +942,10 @@ $global.hegtales_Quest2_scavengerDroppedClue = true",Your sensors officer report
 Call $global.hegtales_Quest2_ref updateData","FleetDesc
 AddText ""You're being hailed by the $faction $otherShipOrFleet."" $faction.baseColor
 $hailing = true 0",,,
-hegtales_Quest2_ScavengerGreeting,OpenCommLink,$entity.hegtales_Quest2_Probe_scavengerPermanentFlag score:1000,"MakeOtherFleetImportant hegtales_Quest2 false
-# remove important tag from finding empty probe","The Luddic captain flickers into your comm display.
+hegtales_Quest2_ScavengerGreeting,OpenCommLink,"$entity.hegtales_Quest2_Probe_scavengerPermanentFlag score:1000
+$hegtales_Quest2_cluestolen","MakeOtherFleetImportant hegtales_Quest2 false
+# remove important tag from finding empty probe
+$hegtales_Quest2_cluestolen = false","The Luddic captain flickers into your comm display.
 
 ""Greetings $playerBrotherOrSister. What can this humble servant of Ludd do for you? It's a long way back to the core worlds $playerBrotherOrSister, and we must look after one another.""","hegtales_Quest2_scavengerAsk:""Did you find a cache floating around?""
 cutCommLink:Cut the comm link
@@ -1209,7 +1225,7 @@ Her tone softens but there's still a hint of frustration. ""People call him a Pa
 ""Salt is complicated. That's all I'll say.""",,
 hegtales_hannahtalkQuestionsBorealis,DialogOptionSelected,$option == hegtales_hannahtalkQuestionsBorealis,,"Hannah shakes her head. ""If he hears you call him that, he's going to kill you. He hates that nickname...""
 
-""Borealis of House Ossum. He's been my husband for almost twelve years now. We have five beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you.
+""Borealis of House Ossum. He's been my husband for almost twelve years now. We have four beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you.
 
 ""Borealis… he's a stern man. Very busy and incredibly dutiful. Most of his time is spent working with the rest of Executive Council and High Hegemon Daud. It's not the life he wanted, though. He'd much rather be patrolling with a fleet and leading from the front. But instead, he's stuck behind a desk, buried in meetings and politics."" She sighs. ""At least he does not need to worry about the... ‘Special' traditions of Eventide. But all those things fall on me nowadays."" Finally, she lifts a photo of her and Borealis in their youth, showing it to the screen.
 
@@ -1218,7 +1234,7 @@ hegtales_hannahtalkQuestionsBorealis,DialogOptionSelected,$option == hegtales_ha
 hegtales_hannahtalkQuestionsBorealisFamily,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsBorealis
 $hegtales_house_ossum_start score: 1000",,"Hannah shakes her head. ""If your uncle hears you call him that, he's going to kill you. He hates that nickname...""
 
-""Borealis of House Ossum. As you know, has been my husband for almost twelve years now. We have five beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you.
+""Borealis of House Ossum. As you know, has been my husband for almost twelve years now. We have four beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you.
 
 ""Borealis… he's a stern man. Very busy and incredibly dutiful. Most of his time is spent working with the rest of Executive Council and High Hegemon Daud. It's not the life he wanted, though. He'd much rather be patrolling with a fleet and leading from the front. But instead, he's stuck behind a desk, buried in meetings and politics."" She sighs. Finally, she lifts a photo of her and Borealis in their youth, showing it to the screen.",,
 hegtales_hannahtalkQuestionsCancel,DialogOptionSelected,$option == hegtales_hannahtalkQuestionsCancel,FireAll PopulateOptions,"""Alright! Arminius! Dont touch that."" She yells at one of her kids.",,
@@ -1709,7 +1725,7 @@ hegtales_Quest3IsaiasDrugNow2,DialogOptionSelected,$option == hegtales_Quest3Isa
 
 SetEnabled hegtales_Quest3IsaiasCrew false
 SetTooltip hegtales_Quest3IsaiasCrew ""You do not have 300 crew available.""
-FireBest hegtalesQuest3IsaiasDrugscheck2","""Now we are talking! These are the negotiations i really like."" The $personRank says as he talks with the rest of his bridge crew.
+FireBest hegtalesQuest3IsaiasCrewCheck","""Now we are talking! These are the negotiations i really like."" The $personRank says as he talks with the rest of his bridge crew.
 
 ""Now, now, I could tell you where is that annoying old man... but the Diktat is lacking several workers in Cruor, good skilled workers that is.""
 
@@ -1913,6 +1929,12 @@ FireAll PopulateSalvageOptions1","You give the fallen men and women of this spac
 
 The mood in your bridge is very grim and quiet.",,
 ,,,,,,
+hegtales_Quest3_has_retaliation,PopulateOptions,"$id == hegtales_borealis
+PlayerFleetHasShipWithBaseHull heg_retaliation
+$global.hegtales_Quest3_missionCompleted score:500",,,4:hegtales_Quest3_has_retaliation_start:I have the HSS Retaliation,
+hegtales_Quest3_has_retaliation_start,DialogOptionSelected,$option == hegtales_Quest3_has_retaliation_start,,oh you do? Right.,,
+,,,,,,
+,,,,,,
 hegtales_Quest3_ReturnRet,PickGreeting,"$id == hegtales_borealis
 $hegtales_Quest3_RETURN_EVENTIDE score:1000
 PlayerFleetHasShipWithBaseHull heg_retaliation
@@ -2031,9 +2053,9 @@ $Borealisfamilygreet = true
 SetPersonHidden hegtales_hannah false
 SetPersonHidden hegtales_australis false
 
-AdjustRepPerson hegtales_australis FRIENDLY 75
-AdjustRepPerson hegtales_borealis FRIENDLY 75
-AdjustRepPerson hegtales_hannah FRIENDLY 75
+AdjustRepPerson hegtales_australis COOPERATIVE 75
+AdjustRepPerson hegtales_borealis COOPERATIVE 75
+AdjustRepPerson hegtales_hannah COOPERATIVE 75
 
 FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council, your uncle.
 
@@ -2124,6 +2146,7 @@ hegtales_borealistalk,DialogOptionSelected,$option == hegtales_borealistalk,"Fir
 SetShortcut hegtales_borealistalkQuestionsCancel ""ESCAPE""
 ",,,
 hegtales_borealis_aicores,PopulateOptions,"$id == hegtales_borealis score:1000
+$global.hegtales_Quest3_missionCompleted
 #AICores personCanAcceptCores",FireBest DisableTurnInCoresOptionIfNeeded,,"10:aiCores_startTurnIn:""I'd like to turn in these AI cores that I've acquired...""",
 hegtales_borealis_aicoresBorealis,DialogOptionSelected,"$option == aiCores_startTurnIn
 $id == hegtales_borealis score:1000",FireAll PopulateCoresTurnInOptions,"""I do not like that you have these cores in your possession, $PlayerName, but it's good that you want to give them to House Ossum.""",,
@@ -2135,8 +2158,9 @@ $global.hegtales_Quest3_missionCompleted score:500
 Commission hasFactionCommission",,,"20:cmsn_resignCommission:""I'd like to resign my $faction commission""",
 hegtales_boreali_tax,PopulateOptions,"$id == hegtales_borealis score:1000
 $global.hegtales_Quest3_missionCompleted score:500
-!$taxedborealis",$taxedborealis = true,,"hegtales_boreali_tax2:""I'd like to file my quarterly taxes...""",
-hegtales_boreali_tax2,DialogOptionSelected,$option == hegtales_boreali_tax2,SetEnabled hegtales_boreali_tax2 false,"He fixes you with a cold, piercing stare, his expression a mask of barely contained ire. For a moment, it feels as though he might lash out, but then, with a sharp exhale he releases the tension.
+!$taxedborealis",,,"hegtales_boreali_tax2:""I'd like to file my quarterly taxes...""",
+hegtales_boreali_tax2,DialogOptionSelected,$option == hegtales_boreali_tax2,"SetEnabled hegtales_boreali_tax2 false
+$taxedborealis = true","He fixes you with a cold, piercing stare, his expression a mask of barely contained ire. For a moment, it feels as though he might lash out, but then, with a sharp exhale he releases the tension.
 
 ""You have a way of testing my patience.""
 
@@ -2177,6 +2201,7 @@ hegtales_borealistalkQuestionsLordofBonesStart,hegtales_borealistalkQuestions,!$
 hegtales_borealistalkQuestionsCancelStart,hegtales_borealistalkQuestions,,"SetShortcut hegtales_borealistalkQuestionsCancel ""ESCAPE""",,"hegtales_borealistalkQuestionsCancel:""That would be all.""",
 ,,,,,,
 hegtales_borealis_recruit_prima_Start,PopulateOptions,"$id == hegtales_borealis
+$global.hegtales_Quest3_missionCompleted
 !$global.recruited_prima",,,"0:hegtales_recruit_prima:""Do you have any officers that can help me?""",
 hegtales_borealis_recruit_prima_fail,DialogOptionSelected,"$option == hegtales_recruit_prima
 $id == hegtales_borealis","AddTextSmall ""Your reputation with Borealis is low. It should be friendly or higher."" gray
@@ -2205,7 +2230,7 @@ $global.recruited_prima = true","Prima seems to be enthusiastic about her new ta
 
 ""Good. Teach her how to manage a fleet and be a good officer. I trust your judgment."" Borealis speaks as Prima salutes him.",hegtales_borealis_recruit_prima2:Continue,
 hegtales_borealis_recruit_prima2,DialogOptionSelected,$option == hegtales_borealis_recruit_prima2,"BeginConversation hegtales_recruit_prima
-AdjustRepPerson hegtales_recruit_prima FRIENDLY 40
+AdjustRepPerson hegtales_recruit_prima COOPERATIVE 40
 HEG_prima 1","Prima strides onto the bridge, her polished uniform and confident demeanor reflecting the pride of House Ossum.
 
 She halts before you and delivers a wonderfully choreographed Hegemony salute.
@@ -2215,7 +2240,7 @@ She halts before you and delivers a wonderfully choreographed Hegemony salute.
 You nod in acknowledgment, before sending her to get acquainted with the rest of the officers and settle in.",hegtales_borealis_recruit_prima3:Return to Borealis,
 hegtales_borealis_recruit_prima2Family,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima2 score:100
 $global.hegtales_house_ossum_start","BeginConversation hegtales_recruit_prima
-AdjustRepPerson hegtales_recruit_prima FRIENDLY 75
+AdjustRepPerson hegtales_recruit_prima COOPERATIVE 75
 HEG_prima 1","Prima strides onto the bridge, her polished uniform and confident demeanor reflecting the pride of House Ossum.
 
 She halts before you and delivers a wonderfully choreographed Hegemony salute before giving you a bear hug. An Ossum Family classic.

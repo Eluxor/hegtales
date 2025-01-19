@@ -21,6 +21,7 @@ import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.missions.hub.HubMissionWithSearch;
 import com.fs.starfarer.api.impl.campaign.rulecmd.AddRemoveCommodity;
 import com.fs.starfarer.api.impl.campaign.world.TTBlackSite;
+import data.scripts.ids.hegtalesIDs;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
@@ -292,9 +293,9 @@ public class hegtales_Quest3 extends HubMissionWithSearch {
             Global.getSoundPlayer().playCustomMusic(1, 1, "music_diktat_market_hostile", true);
             return true;
         }
+       
         return false;
     }
-
 
 
     protected void updateInteractionDataImpl() {

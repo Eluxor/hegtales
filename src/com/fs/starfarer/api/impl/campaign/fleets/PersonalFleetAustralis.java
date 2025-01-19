@@ -2,6 +2,7 @@ package com.fs.starfarer.api.impl.campaign.fleets;
 
 import com.fs.starfarer.api.campaign.FleetDataAPI;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
+import data.scripts.ids.hegtalesIDs;
 import org.lwjgl.util.vector.Vector2f;
 
 import com.fs.starfarer.api.Global;
@@ -54,8 +55,18 @@ public class PersonalFleetAustralis extends PersonalFleetScript {
 
 		CampaignFleetAPI fleet = m.createFleet();
 		FleetDataAPI data = fleet.getFleetData();
-		data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "retribution_Standard"));
-		data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "retribution_Standard"));
+		if (Global.getSector().getMemoryWithoutUpdate().contains(hegtalesIDs.HEGTALES_FINISHED_QUEST3))   {
+			data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "heg_retaliation_standard"));
+			data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "heg_retaliation_standard"));
+		}
+		else if (Global.getSector().getMemoryWithoutUpdate().contains(hegtalesIDs.OF_HOUSE_OSSUM))   {
+			data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "heg_retaliation_standard"));
+			data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "heg_retaliation_standard"));
+		}
+		else {
+			data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "retribution_Standard"));
+			data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "retribution_Standard"));
+		}
 		data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "enforcer_XIV_Elite"));
 		data.addFleetMember(Global.getFactory().createFleetMember(FleetMemberType.SHIP, "enforcer_XIV_Elite"));
 		FleetMemberAPI member = null;
