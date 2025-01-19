@@ -2,7 +2,7 @@
   "id": "eluxor_hegtales",
   "name": "Heggie Tales",
   "author": "Eluxor",
-  "version":"0.6.6",
+  "version":"0.6.7",
   "description": "A simple quest mod about a Luddic House of Eventide. Start it by talking to someone in Jangala's bar.",
   "gameVersion": "0.97a-RC11",
   "jars": [ "jars/eluxormod.jar" ],
