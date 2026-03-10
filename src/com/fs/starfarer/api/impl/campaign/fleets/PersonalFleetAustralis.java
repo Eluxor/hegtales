@@ -31,9 +31,14 @@ public class PersonalFleetAustralis extends PersonalFleetScript {
 	}
 
 	@Override
+	protected MarketAPI getSourceMarket() {
+		return Global.getSector().getEconomy().getMarket("eventide");
+	}
+
+	@Override
 	public CampaignFleetAPI spawnFleet() {
 
-		MarketAPI eventide = Global.getSector().getEconomy().getMarket("eventide");
+		MarketAPI eventide = getSourceMarket();
 
 		FleetCreatorMission m = new FleetCreatorMission(random);
 		m.beginFleet();

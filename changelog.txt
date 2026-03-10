@@ -1,3 +1,14 @@
+Versión 0.6.7
+
+- Thanks to whoever JamesTripleQ is on GitHub.
+- I AM STILL STANDING!!!
+- Perhaps more stuff in the future, idk.
+
+Versión 0.6.6
+
+- Added PAGSM references to the Singular Scenario!
+- Removes some Knights of Ludd stuff that was breaking.
+
 Versión 0.6.5
 
 - The mod can ADDED MID GAME but not REMOVED.
