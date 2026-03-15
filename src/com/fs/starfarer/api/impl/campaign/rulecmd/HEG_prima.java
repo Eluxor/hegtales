@@ -41,8 +41,8 @@ public class HEG_prima extends BaseCommandPlugin {
                 text.setFontSmallInsignia();
                 String personality = Misc.lcFirst(prima.getPersonalityAPI().getDisplayName());
                 String level = Misc.lcFirst(prima.getPersonalityAPI().getDisplayName());
-                text.addParagraph("Personality: " + personality + ", level: 1" );
-                text.highlightInLastPara(hl, new String[]{personality, " 1"});
+                text.addParagraph("Personality: " + personality + ", level: 2" );
+                text.highlightInLastPara(hl, new String[]{personality, " 2"});
                 text.addParagraph(prima.getPersonalityAPI().getDescription());
                 text.setFontInsignia();
                 dialog.getVisualPanel().showSecondPerson(prima);

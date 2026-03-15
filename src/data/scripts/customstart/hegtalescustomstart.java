@@ -60,7 +60,7 @@ private static final Color HIGHLIGHT_COLOR = Global.getSettings().getColor("butt
         addFleetMember("dram_Light", dialog, data, tempFleet, "fuel");
 
         if (Global.getSettings().getModManager().isModEnabled("timid_xiv"))   {
-            dialog.getTextPanel().addParagraph("Gained skill: XIV stuff", Misc.getPositiveHighlightColor());
+            dialog.getTextPanel().addParagraph("Gained skill: Iron Heritage", Misc.getPositiveHighlightColor());
             dialog.getTextPanel().highlightInLastPara(Global.getSettings().getSkillSpec("eis_xiv").getGoverningAptitudeColor().brighter(), "Iron Heritage");
         }
 

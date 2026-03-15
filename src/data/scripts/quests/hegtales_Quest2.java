@@ -393,7 +393,7 @@ public class hegtales_Quest2 extends HubMissionWithSearch {
         //triggerMakeFleetIgnoreOtherFleetsExceptPlayer();
         triggerPickLocationAtInSystemJumpPoint(hegclueSystem); // so it's not always the one closest to the star...
         triggerSetEntityToPickedJumpPoint();
-        triggerFleetSetName("Luddic Scavengers");
+        triggerFleetSetName("Scavengers");
         triggerPickLocationAroundEntity(1500);
         triggerSpawnFleetAtPickedLocation("$hegtales_Quest2_Probe_scavengerPermanentFlag", null);
         triggerFleetSetTravelActionText("exploring system");
