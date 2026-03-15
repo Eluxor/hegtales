@@ -274,12 +274,11 @@ FireBest AustralisQuest2Check
 
 SetOptionColor AustralisQuest2StarterOption2 highlight",,"1:AustralisQuest2StarterOption2:""Who is Stahl?"" ",
 AustralisQuest1StarterOption1,DialogOptionSelected,"$option == AustralisQuest2StarterOption1",,"YAP SKIPPED FOR NOW","AustralisQuest2StarterOption2:Continue",
-AustralisQuest1StarterOption2,DialogOptionSelected,"$option == AustralisQuest2StarterOption2","hegShowQuestIntel hegtales_Quest2","""There has been a… dangerous development."" he begins, ""Borealis, my brother and the Patriarch of House Ossum, is unaware of this situation. And it must remain that way. His wife, Lady Hannah Stahl-Ossum, embarked on a pilgrimage to Gilead some time ago. She was accompanied by a contingent of guards, as is customary. But several weeks ago, all contact with her ceased. No reports, no signals, nothing.""
+AustralisQuest1StarterOption2,DialogOptionSelected,"$option == AustralisQuest2StarterOption2","hegShowQuestIntel hegtales_Quest2","""There has been a… dangerous development,"" he begins. ""Borealis, my brother and the Patriarch of House Ossum, is unaware of this situation. And it must remain that way. His wife, Lady Hannah Stahl-Ossum, embarked on a pilgrimage to Gilead some time ago. She was accompanied by a contingent of guards, as is customary. But several weeks ago, all contact with her ceased. No reports, no signals, nothing.""
 
 ""This is not just a personal matter; it's a potential crisis for our house. Lady Hannah is not only Borealis's wife but a key figure in maintaining the stability and alliances of House Ossum. Her absence, if known, could lead to… complications.""
 
-He fixes you with a piercing gaze. ""You will go in the name of House Ossum to search for her. Travel to Gilead, uncover what has happened, and bring her back, alive and unharmed. This mission must be handled with the utmost discretion. Borealis cannot know about this, not until we have answers.""
-","AustralisQuest2StarterAccept:""I'll return her safely.""
+He fixes you with a piercing gaze. ""You will go in the name of House Ossum to search for her. Travel to Gilead, uncover what has happened, and bring her back, alive and unharmed. This mission must be handled with the utmost discretion. Borealis cannot know about this. Not until we have answers.""","AustralisQuest2StarterAccept:""I'll return her safely.""
 AustralisQuest2StarterDecline:""I am having second thoughts...""",
 AustralisQuest1StarterAccept,DialogOptionSelected,"$option == AustralisQuest2StarterAccept","BeginMission hegtales_Quest2
 $global.hegtales_Quest2Accepted = true
@@ -300,7 +299,7 @@ AustralisQuest2startLater:Take care of other business first",
 AustralisQuest2startnow,DialogOptionSelected,"$option == AustralisQuest2startLater","FireBest MarketPostDock",,,
 AustralisQuest2startLater,PopulateOptions,"$market.hegtales_Quest2_wenttoseecurate
 $market.hegtales_Quest2_gilead
-$menuState == main","SetOptionColor AustralisQuest2goto_curate highlight","You need to speak with the Archcurate Eridanus to find out where Hannah Stalh-Ossum's location.","3:AustralisQuest2goto_curate:Go to visit the Archcurate for the location of Hannah
+$menuState == main","SetOptionColor AustralisQuest2goto_curate highlight","You need to speak with the Archcurate Eridanus to find out where Hannah Stahl-Ossum has gone to.","3:AustralisQuest2goto_curate:Go to visit the Archcurate for the location of Hannah
 ",
 AustralisQuest2goto_curate,DialogOptionSelected,"$option == AustralisQuest2goto_curate",,"Shortly after, your shuttle is granted clearance to land near one of the grand temples situated close to Gilead's revered shrine. The lush, green landscape surrounding the landing site is breathtaking, a serene contrast to the tension of your mission. Towering trees and vibrant flora sway gently in the breeze, their beauty masking the gravity of your purpose here.
 
@@ -315,18 +314,18 @@ AustralisQuest2MeetCurate,DialogOptionSelected,"$option == AustralisQuest2_curat
 His aging eyes meet yours as he finally speaks, his voice low and deliberate. ""Lady Hannah Stahl-Ossum is not here anymore. She has left."" His tone carries a weight that suggests more than just simple facts. He sets the parchment down carefully, his hands steady despite their wrinkles. ""She expressed her desire to follow the Pilgrim's Path, and I was not persuasive enough to dissuade her. Anyone who feels the calling of Ludd to walk the path must follow it. It is not for us to stand in their way.""
 
 He pauses. ""According to what she told me, her next destination was the Shrine of Hesperus. Beyond that, I have no further information."" His expression softens slightly, though his voice remains firm. ""Please, do not hold the Church accountable for her decisions. Instead, I ask that you deliver this gift to the Admiral.""","AustralisQuest2_curatetalk2:Continue",
-AustralisQuest2MeetCurate2,DialogOptionSelected,"$option == AustralisQuest2_curatetalk2",,"With that, he opens a drawer and retrieves a book, placing it gently on the desk before you. You step closer to examine it. The craftsmanship is exquisite—a paper book, The Book of Ludds, its cover handcrafted with intricate designs. The pages are delicate yet vibrant, the text and illustrations clearly the work of a skilled artisan. On the first page, the Ossum family name is written in elegant script, marking it as a deeply personal and irreplaceable artifact.
+AustralisQuest2MeetCurate2,DialogOptionSelected,"$option == AustralisQuest2_curatetalk2",,"With that, he opens a drawer and retrieves a book, placing it gently on the desk before you. You step closer to examine it. It is the Book of Ludd. The craftsmanship is exquisite, with intricate designs decorating its cover. The paper pages are delicate yet vibrant, the text and illustrations clearly the work of a skilled artisan. On the first page, the Ossum family name is written in elegant script, marking it as a deeply personal and irreplaceable artifact.
 
-You glance back at the Archcurate, but he has already returned to his work, his quill scratching softly against the parchment. Realizing the conversation is over, you carefully take the book and turn toward the door.","AustralisQuest2_curate_step:Return to your ship",
+You glance back at the Archcurate, who has already returned to his work, his quill scratching softly on the parchment. Realizing the conversation is over, you carefully take the book and turn toward the door.","AustralisQuest2_curate_step:Return to your ship",
 AustralisQuest2ByeCurate,DialogOptionSelected,"$option == AustralisQuest2_curate_step","$market.hegtales_Quest2_wenttoseecurate = false
 
 $global.hegtales_Quest2_GO_TO_HESPERUS = true
 
 Call $global.hegtales_Quest2_ref updateStage
 
-FireBest MarketPostDock","As you step out, your bodyguards fall into step beside you. The air feels heavy with the gravity of your task as you make your way back to the shuttle.
+FireBest MarketPostDock","As you step out, your bodyguards fall into step beside you. The air feels heavy with the gravity of your task as you make your way back to the shuttle.  
 
-Hesperus's awaits.","cutCommLinkNoText:Continue",
+Hesperus awaits.","cutCommLinkNoText:Continue",
 "#END Eridanus Meet",,,,,,
 ,,,,,,
 # CLUE IN HESPERUS,,,,,,
@@ -358,15 +357,15 @@ $global.hegtales_Quest2_FIND_CLUE_IN_HESPERUS
 hegtales_Quest2_BotherA,DialogOptionSelected,"$option == hegtales_Quest2BotherA","$askedAboutHannah = true
 FireAll PopulateOptions","""The wife of Admiral Borealis Ossum?"" $HeOrShe seems curious.
 
-""I sadly have no clue that she has even been in Hesperus. Many pilgrims come and go, without announcing themselves of course. If you're simply looking for her comms ID, I suggest you query a public search terminal.""
+""I sadly have no clue whether she has even been to Hesperus. Many pilgrims come and go, without announcing themselves of course. If you're simply looking for her comms ID, I suggest you query a public search terminal.""
 
 ""Can I help you with anything else?""",,
 hegtales_Quest2_BotherB,DialogOptionSelected,"$option == hegtales_Quest2BotherB","$askedAboutHannah = true
-FireAll PopulateOptions","""And I am supposed to know who they are?"" $HeOrShe looks annoyed,
+FireAll PopulateOptions","""And I am supposed to know who they are?"" $HeOrShe looks annoyed.
 
-""I have more important matters to attend, my assistants would be delighted to assist you... If they weren't busy."" 
+""I have more important matters to attend, but my assistants would be delighted to assist you... If they weren't busy already."" 
 
-$HeOrShe doesn't sounds honest, but your diplomatic intuition suggests it would be pointless to ask their assistants.",,
+$HeOrShe doesn't sound honest, but your diplomatic intuition suggests it would be pointless to ask their assistants.",,
 hegtales_Quest2_BotherC,DialogOptionSelected,"$option == hegtales_Quest2BotherC","$askedAboutHannah = true
 FireAll PopulateOptions","""I think I remember that name.."" $HeOrShe seems pensive as they look at their logs,
 
@@ -380,7 +379,7 @@ FireAll PopulateOptions","""I think I remember that name.."" $HeOrShe seems pens
 # Meet with the Pather in Tartessus's bar,,,,,,
 hegmod_Quest2_Pather1,AddBarEvents,"$market.id == tartessus
 $global.hegtales_Quest2_FIND_CLUE_IN_HESPERUS
-!$player.hegmod_metPatherstart","AddBarEvent hegtales_meetpather""Meet with the Pather in the dark spot."" ""In a dark spot, you notice a very suspicious individual""",,,
+!$player.hegmod_metPatherstart","AddBarEvent hegtales_meetpather""Meet with the Pather in the dark spot."" ""In a dark spot, you notice  a very suspicious individual""",,,
 hegmod_Quest2_Pather_meet1,DialogOptionSelected,"$option == hegtales_meetpather","BeginConversation hegtales_pather
 ShowPersonVisual
 $player.hegmod_metPatherstart = true
@@ -390,7 +389,7 @@ SetEnabled hegmod_Quest2_Pather_meet2 false
 SetTooltip hegmod_Quest2_Pather_meet2 ""You need to have shown luddic tendencies in the past.""
 FireBest hegmodQuest2Pathercheck","You sit down with the green haired Pather, the two of you share a few drinks, the conversation meandering through trivial, non-religious topics. Despite the reputation Pathers often carry, eccentric, devout to the point of zealotry, this particular exchange feels refreshingly grounded. Her tales and ramblings, though tinged with the occasional oddity, prove surprisingly entertaining.
 
-At last, after her fifth drink, you ask casually, ""Have you heard anything about a 'Hegemony Lady'? Or do you know anyone who might know something about it?""
+At last, after her fifth drink, you casually ask: ""Have you heard anything about a 'Hegemony Lady'? Or do you know anyone who might know something about it?""
 
 Her smile dissapears and she look at you seriously. 
 ""Why should I tell you that, friend?""","hegmod_Quest2_Pather_meet2:""Come on, I am a fellow luddic.""
@@ -405,11 +404,11 @@ AdjustRepActivePerson FRIENDLY 5
 AdjustRep luddic_path COOPERATIVE 1
 
 $global.foundinformationaboutsaltus = true
-SetPersonHidden hegtales_saltus false","She nod occasionally as you speak, listening as you recount the hardships you've endured in your search for the missing woman. Your words are careful and polite. Finally a flicker of understanding crosses her face.
+SetPersonHidden hegtales_saltus false","She nods occasionally as you speak, listening as you recount the hardships you've endured in your search for the missing woman. Your words are careful and polite. Finally a flicker of understanding crosses her face.
 
-When you finish, she lets out a quiet sigh. ""I'll be honest with you $playerBrotherOrSister, I don't have a clue about any 'Hegemony Lady.' If someone like that passed through Eos Exodus, I didn't hear about it.""
+When you finish, she lets out a quiet sigh. ""I'll be honest with you, $playerBrotherOrSister, I don't have a clue about any 'Hegemony Lady.' If someone like that passed through Eos Exodus, I didn't hear about it.""
 
-She pauses, tapping her fingers on the table thoughtfully before continuing. ""But if anyone would know, it's Greenearth Salt. He's in Hesperus. That old stern salt has his fingers in everything around here.""","backToBar:Thank them and return to the bar.",
+She pauses, tapping her fingers on the table thoughtfully before continuing. ""But if anyone would know, it's Greenearth Salt. He's on Hesperus. That old stern Salt has his fingers in everything around here.""","backToBar:Thank them and return to the bar.",
 hegmod_Quest2_Pather_meet3,DialogOptionSelected,"$option == hegmod_Quest2_Pather_meet3","AddTextSmall ""--Received comms ID for Greenearth Salt--"" highlight
 AddTextSmall ""--He's in Hesperus--"" grey
 
@@ -419,7 +418,7 @@ AdjustRep luddic_path VENGEFUL -5
 $global.foundinformationaboutsaltus = true
 SetPersonHidden hegtales_saltus false","The pather reels back from the strike, clutching her nose as blood trickles between her fingers. Around you, the murmur of the bar grows louder as several patrons begin to approach, but your bodyguards step forward, hands resting on their weapons, silently warning them to stay back.
 
-""Okay! Okay!"" she stammers, her voice panicked as she scrambles to compose herself. ""I don't know anything, I swear!"" She winces, still clutching her nose, before hurriedly adding, ""But Greenearth Salt in Hesperus, he'll know for sure! Here, take this—these are his comms!""
+""Okay! Okay!"" she stammers, her voice panicked as she scrambles to compose herself. ""I don't know anything, I swear!"" She winces, still clutching her nose, before hurriedly adding, ""But Greenearth Salt on Hesperus, he'll know for sure! Here, take this—these are his comms!""
 
 ","backToBar:Thank them and return to the bar.",
 hegmod_Quest2_Pather_meet4,DialogOptionSelected,"$option == hegmod_Quest2_Pather_meet4","SetTextHighlights 20,000
@@ -427,9 +426,9 @@ DoCanAffordCheck 20000 hegmod_Quest2_Pather_meet5 false
 
 SetEnabled hegmod_Quest2_Pather_meet2 false
 SetTooltip hegmod_Quest2_Pather_meet2 ""You need to have SUSPICIOUS relations or higher with the Luddic Path.""
-FireBest hegmodQuest2Pathercheck","The Pather raises an eyebrow and they tap their fingers lightly on the table.
+FireBest hegmodQuest2Pathercheck","The Pather raises an eyebrow and taps her fingers lightly on the table.
 
-""Hmm,"" they muse. ""Information like that doesn't come cheap, you know. But for you…"" They pause dramatically, her smile widening. ""I'd say 20,000 credits would be a fair price.""","hegmod_Quest2_Pather_meet2:""Come on, I am not so bad...""
+""Hmm,"" she muses.  ""Information like that doesn't come cheap, you know. But for you…"" She pauses dramatically, her smile widening. ""I'd say 20,000 credits would be a fair price.""","hegmod_Quest2_Pather_meet2:""Come on, I am not so bad...""
 hegmod_Quest2_Pather_meet3:""That's what I get from being nice."" (Punch the Pather in the head)
 hegmod_Quest2_Pather_meet5:""Here's the money.""",
 hegmod_Quest2_Pather_meet5,DialogOptionSelected,"$option == hegmod_Quest2_Pather_meet5","AddCredits -20000
@@ -437,10 +436,9 @@ $global.foundinformationaboutsaltus = true
 SetPersonHidden hegtales_saltus false
 
 AddTextSmall ""--Received comms ID for Greenearth Salt--"" highlight
-AddTextSmall ""--He's in Hesperus--"" grey","""Well, well,"" she speaks counting the credits in her pad, leaning back in her chair. ""To be honest, I don't have a clue about any 'Hegemony Lady.' If someone like that passed through Eos Exodus, I didn't hear about it.""
+AddTextSmall ""--He's in Hesperus--"" grey","""Well, well,"" she speaks while counting the credits on her pad, leaning back in her chair. ""To be honest, I don't have a clue about any 'Hegemony Lady.' If someone like that passed through Eos Exodus, I didn't hear about it.""
 
-They pause, her fingers drumming thoughtfully on the table as they consider her next words. ""But, if anyone would know, it's Greenearth Salt. He's in Hesperus. That old salt has his fingers in everything around here. Lemme give you his comms...""
-
+She pauses, her fingers drumming thoughtfully on the table as she considers her next words. ""But, if anyone would know, it'd be Greenearth Salt. He's on Hesperus. That old Salt has his fingers in everything around here. Lemme give you his comms...""
 ","backToBar:Nod at them and return to the bar.",
 "#END Meet with the Pather in Tartessus's bar",,,,,,
 ,,,,,,
@@ -485,16 +483,16 @@ hegtales_Quest2_Greenhearttalk_path:""I have walked the Path already…""
 hegtales_Quest2_Greenhearttalk_money:""Can I give you money to speed things along?""
 hegtales_Quest2_preRaid:""Keep him occupied talking while you send a marine raid""",
 hegtales_Quest2_Greenhearttalk_order,DialogOptionSelected,"$option == hegtales_Quest2_Greenhearttalk_order",,"Greenearth nods slowly, his expression unreadable. ""And you follow orders? That is a rightful way of doing things,"" he replies.","hegtales_Quest2_Greenhearttalk1:Continue",
-hegtales_Quest2_Greenhearttalk_family,DialogOptionSelected,"$option == hegtales_Quest2_Greenhearttalk_family",,"Greenearth's expression softens ever so slightly, the faintest flicker of emotion breaking through his stoic demeanor. ""Family,"" he murmurs, as if savoring the word. ""It is such an important part of all of us, the return of a wife to her husband, a mother to her children...""","hegtales_Quest2_Greenhearttalk1:Continue",
+hegtales_Quest2_Greenhearttalk_family,DialogOptionSelected,"$option == hegtales_Quest2_Greenhearttalk_family",,"Greenearth's expression softens ever so slightly, the faintest flicker of emotion breaking through his stoic demeanor. ""Family..."" he murmurs, as if savoring the word. ""It is such an important part of all of us, the return of a wife to her husband, a mother to her children...""","hegtales_Quest2_Greenhearttalk1:Continue",
 hegtales_Quest2_Greenhearttalk_pathCHECK,hegmodQuest2Pathwalker,"$global.lpp_completed","SetEnabled hegtales_Quest2_Greenhearttalk_path true
 
 SetTooltip hegtales_Quest2_Greenhearttalk_path ""You have walked the Pilgrim's Path."" green",,,
-hegtales_Quest2_Greenhearttalk_path,DialogOptionSelected,"$option == hegtales_Quest2_Greenhearttalk_path","$global.spokeofsaltpath = true","You quickly mention the different shrines, what makes them unique and what you have felt in your own path. Maybe speaking a bit too fervously about them to get the point across.
+hegtales_Quest2_Greenhearttalk_path,DialogOptionSelected,"$option == hegtales_Quest2_Greenhearttalk_path","$global.spokeofsaltpath = true","You quickly mention the different shrines, what makes them unique and what you have felt on your own path. Maybe speaking a bit too fervently about them to get the point across.
 
 ""You have seen our Paths, our Shrines. You know what awaits us in the end."" He pauses as he steps closer to the screen.","hegtales_Quest2_Greenhearttalk1:Continue",
-hegtales_Quest2_Greenhearttalk_money,DialogOptionSelected,"$option == hegtales_Quest2_Greenhearttalk_money",,"Greenearth's expression darkens, his stoic mask slipping for the briefest moment. ""I do not need your tithe, servant of Moloch,"" he snaps, his voice sharp with anger.
+hegtales_Quest2_Greenhearttalk_money,DialogOptionSelected,"$option == hegtales_Quest2_Greenhearttalk_money",,"Greenearth's expression darkens, his stoic mask slipping for the briefest of moments. ""I do not need your tithe, servant of Moloch,"" he snaps, his voice sharp with anger.
 
-The weight of his words lingers in the air, but just as quickly as his temper flares, he reigns it in. His features smooth, his tone returning to its usual calm, deliberate cadence. ""Your cause is just,"" he concedes. ""even if your ways are not the correct ones.""","hegtales_Quest2_Greenhearttalk1:Continue",
+The weight of his words lingers in the air, but just as quickly as his temper flared, he reigns it in. His features smoothen, his tone returning to its usual calm, deliberate cadence. ""Your cause is just,"" he concedes. ""Even if your ways are not the correct ones.""","hegtales_Quest2_Greenhearttalk1:Continue",
 hegtales_Quest2_Greenhearttalk_1,DialogOptionSelected,"$option == hegtales_Quest2_Greenhearttalk1","$hegtales_Quest2_stage = FIND_CLUES score:1000
 
 $global.hegtales_Quest2_FIND_CLUES = true
@@ -507,7 +505,7 @@ Less than a minute later, Greenearth reappears, his composure as steady as befor
 
 He pauses. ""Her mission was sacred. She sought to leave behind caches, each filled with objects of our faith, meant for future generations. Her task is one of devotion, a legacy for those who come after us.""
 ","cutCommLinkNoText:Thank him for the information and cut the comms.",
-hegtales_Quest2_PreRaid,DialogOptionSelected,"$option == hegtales_Quest2_preRaid",,"You start muttering about Luddic practices as the man stares at you and replies with monosylabes. While speaking, you give the ready-signal via datapad to your tactical officer who has been briefed for the use of marines in an extraction operation.
+hegtales_Quest2_PreRaid,DialogOptionSelected,"$option == hegtales_Quest2_preRaid",,"You start muttering about Luddic practices as the man stares at you and replies with monosyllables. While speaking, you give the ready-signal via datapad to your tactical officer who has been briefed for the use of marines in an extraction operation.
 
 You consider that no matter the criminality of your contact, there may be serious reputation consequences with the local authorities for starting a firefight within this polity.","mktRaidNonMarket:Continue",
 hegtales_Quest2_RaidFinished,hegtales_Quest2RaidFinished,,"$hegtales_Quest2_stage = FIND_CLUES score:1000
@@ -544,9 +542,9 @@ FireBest hegmodQuest2Goodcheck
 Call $entity.hegtales_Quest2_ref makeUnimportant
 
 FireAll hegtales_Quest2_saltusambush
-","The comms crackle to life, and the Knight-Captain from Hesperus stands before you.
+","The comms crackle to life, and the Knight-Captain of Hesperus stands before you.
 
-""You came here, right where I told you. You seek to disturb the peace, the pilgrimage that the Lady has made.,"" the Knight-Captain speaks without emotion. ""I told you to not come here.""
+""You came here, right where I told you. You seek to disturb the peace, the pilgrimage that the Lady has made."" The Knight-Captain speaks without emotion. ""I told you not to come here.""
 
 His eyes seeminly stare into your soul, expecting an answer.",,
 hegtales_Quest2PatherAmbushPath,hegtales_Quest2_saltusambush,"$global.spokeofsaltpath","SetOptionColor hegtales_Quest2_patherAmbushPath highlight
@@ -556,19 +554,19 @@ hegtales_Quest2PatherAmbushBad,hegtales_Quest2_saltusambush,,,,"hegtales_Quest2_
 hegtales_Quest2PatherAmbushTalk,hegtales_Quest2_saltusambush,,,,"hegtales_Quest2_patherAmbushTalk:""I know that I was wrong...""
 
 ",
-hegtales_Quest2PatherAmbushPath2,DialogOptionSelected,"$option == hegtales_Quest2_patherAmbushPath",,"""And you told me that something awaits for us in the end."" You quickly continue. 
+hegtales_Quest2PatherAmbushPath2,DialogOptionSelected,"$option == hegtales_Quest2_patherAmbushPath",,"""And you told me that something waits for us at the end,"" you quickly continue. 
 
-As he keeps staring at you.
+He keeps staring at you.
 
-""I got the feeling that today is not the day that we will see what is at the end. You walk your path. I walk mine. Maybe our Paths will converge someday"" You finish speaking. Plainly and directly.","hegtales_Quest2_patherAmbushBluffEnd:Continue",
+""I have the feeling that today is not the day that we will see what lies there. You walk your path. I walk mine. Maybe our paths will converge someday."" You finish speaking. Plain and direct.","hegtales_Quest2_patherAmbushBluffEnd:Continue",
 hegtales_Quest2PatherAmbushTalk2,DialogOptionSelected,"$option == hegtales_Quest2_patherAmbushTalk","SetStoryOption hegtales_Quest2_patherAmbushBluff1 general ""Made understand Salt that you were no threat""
 ","He stares at you silently.","hegtales_Quest2_patherAmbushBad:""I can explain myself!""
 hegtales_Quest2_patherAmbushBluff1:""You are right, but...""",
-hegtales_Quest2PatherAmbushBad2,DialogOptionSelected,"$option == hegtales_Quest2_patherAmbushBad",,"""I gave you the time of talk before.""
+hegtales_Quest2PatherAmbushBad2,DialogOptionSelected,"$option == hegtales_Quest2_patherAmbushBad",,"""I gave you the time to talk before.""
 
 ""You betrayed my trust.""
 
-""The time for talk has ended.""
+""The time for words has ended.""
 
 The comms shut off as the enemy fleet moves to attack.","cutCommLink:Cut the comm link",
 hegmod_Quest2_PatherGood_check,hegmodQuest2Goodcheck,,,,,
@@ -582,7 +580,7 @@ hegtales_Quest2PatherAmbushBluff1,DialogOptionSelected,"$option == hegtales_Ques
 
 ""I came here seeking clues,"" you continue, your voice rising as you gesture dramatically, ""clues that would lead me to the location of the Lady."" You stop abruptly, turning to face the screen and pointing an accusatory hand toward the Knight-Captain. ""That is why I sought your help, why I requested this location. And now... now I know where she is.""
 
-You pause, letting the weight of your words hang in the air before softening your tone. ""If you let me go, she will be reunited with her family—those who seek her with every ounce of their hearts and souls.""","hegtales_Quest2_patherAmbushBluff2:Continue",
+You pause, letting the weight of your words hang in the air before softening your tone. ""If you let me go, she will be reunited with her family — those who seek her with every ounce of their hearts and souls.""","hegtales_Quest2_patherAmbushBluff2:Continue",
 hegtales_Quest2PatherAmbushBluff2,DialogOptionSelected,"$option == hegtales_Quest2_patherAmbushBluff2",,"Your gaze hardens, and you step closer to the comms screen, your voice taking on a persuasive edge. ""Helping a poor woman return to her family, when they search for her so fervently... is that not a faithful and righteous act? Is it not the very essence of Ludd, who you claim to serve?""","hegtales_Quest2_patherAmbushBluffEnd:Continue",
 hegtales_Quest2PatherAmbushBluffEnd,DialogOptionSelected,"$option == hegtales_Quest2_patherAmbushBluffEnd","MakeOtherFleetGoAway true
 $entity.ignorePlayerCommRequests = true
@@ -591,9 +589,9 @@ MakeOtherFleetAvoidContact true
 
 ","The Knight-Commander expression is unreadable at first, but there's a flicker of something... curiosity, perhaps even respect, in his eyes. Slowly, he lifts a hand, a silent command that ripples through his fleet. 
 
-""You speak like a true believer $playerBrotherOrSister,"" he says at last, his voice steady and resolute, carrying the weight of command. His gaze lingers on you for a moment longer, as though searching for any trace of deceit, before a faint nod signals his decision.
+""You speak like a true believer, $playerBrotherOrSister,"" he says at last, his voice steady and resolute, carrying the weight of command. His gaze lingers on you for a moment longer, as though searching for any trace of deceit, before a faint nod signals his decision.
 
-""Help the Lady,"" he continues, his tone softening ever so slightly. ""If you want to help the Path, find me in Hesperus. My $playerBrotherOrSister in Ludd.""
+""Help the Lady,"" he continues, his tone softening ever so slightly. ""If you want to help the Path, find me on Hesperus. My $playerBrotherOrSister in Ludd.""
 
 With that, the transmission ends.","cutCommLink:Cut the comm link",
 hegtales_Quest2_Saltuskilled,hegtales_Quest2_Saltuskilled,"$someShipsDestroyed","$global.hegtales_Quest2_Saltus_killed = true","Your sensors officer reports that there were no survivors from the Luddic capital ship.",,
@@ -627,13 +625,13 @@ DespawnEntity","Someone has just taken all the information, texts, art and logs 
 In system. With the information you need.","defaultLeave:Leave",
 hegtalesQuest2_ClueEmpty1Dropped,DialogOptionSelected,"$global.hegtales_Quest2_scavengerDroppedClue
 $option == hegtales_Quest2_ClueEmpty1","Call $global.hegtales_Quest2_ref foundEmptyClue
-DespawnEntity","It was the cache those Luddics opened, its scrap now.","defaultLeave:Leave",
+DespawnEntity","It was the cache those Luddics opened, it's scrap now.","defaultLeave:Leave",
 hegtalesQuest2_clueInvestigate,DialogOptionSelected,"$option == hegtales_Quest2_clueInvestigate","FireBest hegClueInvestigateOption",,,
-hegtalesQuest2_Clue1InvestigationStart,hegClueInvestigateOption,"$global.hegtales_Quest2_CluesDone == 0",,"""The Innocence: The birth of the one-who-will-become-Ludd. Themes of innocence, connection the humanity pre-sin. It is important that the Luddics make no record of any personal characteristics of their prophet and in so emphasize the-one-who-would-become-Ludd's oneness with the experience of all humanity. This allows any individual to put themselves into the role of Ludd in the stations of the Path, as subject or observer.""
+hegtalesQuest2_Clue1InvestigationStart,hegClueInvestigateOption,"$global.hegtales_Quest2_CluesDone == 0",,"""The Innocence: The birth of the one-who-will-become-Ludd. Themes of innocence, connection the humanity pre-sin. It is important that the Luddics make no record of any personal characteristics of their prophet and in doing so emphasize the-one-who-would-become-Ludd's oneness with the experience of all humanity. This allows any individual to put themselves into the role of Ludd in the stations of the Path, as subject or observer.""
 
 Your bridge crew diligently sift through the various texts and mentions within the cache, uncovering fragments of information. Amid the data, they locate a series of personal logs left by Hannah Stalh-Ossum herself. Your comms officer patches the logs through to your console.
 
-A soft, clear voice fills the bridge, recorded with an almost reverent tone. ""Hannah Stalh, married to Borealis Ossum, is who I am…""","hegtales_Quest2_clue1Investigation3:Continue",
+A soft, clear voice fills the bridge, recorded with an almost reverent tone. ""Hannah Stahl, married to Borealis Ossum, is who I am…""","hegtales_Quest2_clue1Investigation3:Continue",
 hegtalesQuest2_Clue1Investigation3,DialogOptionSelected,"$option == hegtales_Quest2_clue1Investigation3","$global.hegtales_Quest2_CluesDone++
 DespawnEntity
 
@@ -642,13 +640,13 @@ FireAll hegClueGuy","""Let me skim this part,"" your comms officer interjects, f
 Unfortunately, the logs end there, offering no further clues about her current location. The cache holds no additional insights, leaving you with only one option: to locate the next cache and continue piecing together her trail.
 
 You issue a command to your crew...",,
-hegtalesQuest2_Clue2InvestigationStart,hegClueInvestigateOption,"$global.hegtales_Quest2_CluesDone == 1",,"""The Exodus: In which Ludd is given a vision by God of a promised land, and leads the faithful to settle in the Persean Sector
+hegtalesQuest2_Clue2InvestigationStart,hegClueInvestigateOption,"$global.hegtales_Quest2_CluesDone == 1",,"""The Exodus: In which Ludd is given a vision by God of a promised land, and leads the faithful to settle in the Persean Sector.
 The Blooming: In which the faithful teach the industrial-terraformers how to shepherd the spirit of the land to create a new paradise.""
 
 Just as before, your crew locates the second cache with relative ease, the process unfolding much like the previous one. The operation is smooth and efficient, and soon enough, your comms officer's voice cuts through the comms.","hegtales_Quest2_clue2Investigation2:Continue",
 hegtalesQuest2_Clue2Investigation2,DialogOptionSelected,"$option == hegtales_Quest2_clue2Investigation2",,"""Captain, we've accessed the second cache,"" they report. ""Patching through another log from Lady Hannah.""
 
-Once again, her voice fills the bridge, calm yet tinged with a sense of purpose. ""It was surprisingly easy to find Greenearth—or as I call him, Saltus. He was a friend of mine, from a long time ago when I worked with Tri-Tachyon, before I met Borealis and everything changed…""
+Once again, her voice fills the bridge, calm yet tinged with a sense of purpose. ""It was surprisingly easy to find Greenearth — or as I call him, Saltus. He was a friend of mine, from a long time ago when I worked with Tri-Tachyon, before I met Borealis and everything changed…""
 
 The log continues, but your comms officer interrupts briefly. ""Apologies for the skip, Captain. Most of this section is about her personal history and reflections. Here's the final part of the log.""","hegtales_Quest2_clue2Investigation3:Continue",
 hegtalesQuest2_Clue2Investigation3,DialogOptionSelected,"$option == hegtales_Quest2_clue2Investigation3","$global.hegtales_Quest2_CluesDone++
@@ -656,7 +654,7 @@ DespawnEntity
 
 $global.hegtales_Quest2_triggerCluePatherAmbush = true
 
-FireAll hegClueGuy","The recording resumes. ""I've placed these caches as a safeguard, just in case one day we are no longer here. To those who find them, be they human or something else, I want them to know who Ludd was… and who I am.""
+FireAll hegClueGuy","The recording resumes. ""I've placed these caches as a safeguard, just in case that one day, we are no longer here. To those who find them, be they human or something else, I want them to know who Ludd was… and who I am.""
 
 As the log concludes, a sense of intrigue settles over the bridge. It's strange and somewhat unsettling to learn that Greenearth Salt and Hannah shared a history. The revelation adds another layer to the puzzle.
 
@@ -690,7 +688,7 @@ hegtalesQuest2_ClueBadGuy2,DialogOptionSelected,"$option == hegtalesQuest2_ClueB
 AddRemoveCommodity metals 50
 AddRemoveCommodity fuel 10
 
-AdjustRep luddic_church SUSPICIOUS -1","You scrap the contents of the cache, leaving an empty husk.","defaultLeave:Leave",
+AdjustRep luddic_church SUSPICIOUS -1","You scrap the contents of the cache, leaving an empty husk behind.","defaultLeave:Leave",
 "#END Probes taken from the Coureuse probe interactions",,,,,,
 ,,,,,,
 # The funny Church guy,,,,,,
@@ -703,9 +701,9 @@ $hailing = true 0",,,
 hegtales_Quest2_ScavengerGreeting,OpenCommLink,"$entity.hegtales_Quest2_Probe_scavengerPermanentFlag score:1000
 $hegtales_Quest2_cluestolen","MakeOtherFleetImportant hegtales_Quest2 false
 # remove important tag from finding empty probe
-$hegtales_Quest2_cluestolen = false","The Luddic captain flickers into your comm display.
+$hegtales_Quest2_cluestolen = false","The Luddic captain flickers onto your comms display.
 
-""Greetings $playerBrotherOrSister. What can this humble servant of Ludd do for you? It's a long way back to the core worlds $playerBrotherOrSister, and we must look after one another.""","hegtales_Quest2_scavengerAsk:""Did you find a cache floating around?""
+""Greetings $playerBrotherOrSister. What can this humble servant of Ludd do for you? It's a long way back to the core worlds, $playerBrotherOrSister, and we must look after one another.""","hegtales_Quest2_scavengerAsk:""Did you find a cache floating around?""
 cutCommLink:Cut the comm link
 ",
 hegtales_Quest2_ScavengerGreetingLeaving,OpenCommLink,"$entity.hegtales_Quest2_Probe_scavengerPermanentFlag score:1000
@@ -729,13 +727,13 @@ MakeOtherFleetGoAway true
 MakeOtherFleetNonHostile true
 MakeOtherFleetAvoidContact true
 $hegtales_Quest2_Probe_finishedEncounter = true
-$global.hegtales_Quest2_scavengerDroppedClue = true","""Well, Well, show me."" The Luddic captain looks at you curiously.
+$global.hegtales_Quest2_scavengerDroppedClue = true","""Well, well, show me."" The Luddic captain looks at you curiously.
 
 You take a moment to gather your thoughts, then begin recounting the tale with reverence. ""Captain. Ludd's journey was one of hardship and sacrifice. He stood as a lone figure against the vast and oppressive machinery of the Domain, their iron grip tightening on every soul across the stars. Where others saw no escape, he saw a path—a path to liberation.""
 
 You describe how Ludd through sheer will and unwavering faith, defied the Domain's might, challenging their dominance not with fleets or weapons, but with ideals that resonated deeply with the oppressed.
 
-""It's a legacy that endures, Captain"" You conclude.
+""It's a legacy that endures, Captain,"" you conclude.
 
 ""Very well. The cache is yours"" The pleased captain speaks and soon enough the cache is ejected.","cutCommLink:Cut the comm link",
 hegtales_Quest2_ScavengerBribe1,DialogOptionSelected,"$option == hegtales_Quest2_scavengerBribe
@@ -744,9 +742,9 @@ DoCanAffordCheck $hegtales_Quest2_bribeCost hegtales_Quest2_scavengerBribe2 fals
 
 SetEnabled hegtales_Quest2_scavengerWait false
 SetTooltip hegtales_Quest2_scavengerWait ""You need to have a FAVORABLE relationship with the Luddic Church.""
-FireBest hegtales_Quest2_ScavengerAskCheck","""We are no Pathers but...."" The Luddic captain seems unsure about what $heOrShe is saying.
+FireBest hegtales_Quest2_ScavengerAskCheck","""We are no Pathers, but..."" The Luddic captain seems unsure about what $heOrShe is saying.
 
-""I am willing to speed things up and send you the cache for... $hegtales_Quest2_bribeCost credits... that seems like a fair and friendly tithe.""","hegtales_Quest2_scavengerBribe2:""I'll transfer those credits.""
+""I am willing to speed things up and send you the cache for... $hegtales_Quest2_bribeCost credits... That seems like a fair and friendly tithe.""","hegtales_Quest2_scavengerBribe2:""I'll transfer those credits.""
 hegtales_Quest2_scavengerWait:""What do the writtings say about helping a fellow Luddic?""
 hegtales_Quest2_scavengerThreaten:""Maybe it will be easier to blow you up.""",
 hegtales_Quest2_ScavengerBribe2,DialogOptionSelected,"$option == hegtales_Quest2_scavengerBribe2","RemoveCommodity credits $hegtales_Quest2_bribeCost
@@ -764,7 +762,7 @@ $global.hegtales_Quest2_scavengerDroppedClue = true
 ""Glad we could do business, captain. I've ordered my quartermaster to eject the cargo pod in question, so it's all yours,"" the scavenger says magnanimously. 
 
 ""Burn bright captain, I'm sure we'll meet again!"" $HeOrShe closes the comms before you can comment on the uncannily speedy 'discovery' of the Galatia Academy probe.","cutCommLinkNoText:Continue",
-hegtales_Quest2_ScavengerThreaten1,DialogOptionSelected,"$option == hegtales_Quest2_scavengerThreaten",,"The Luddic captain's face shows a frown as $heOrShe taps at a console and appears to think for about a second. 
+hegtales_Quest2_ScavengerThreaten1,DialogOptionSelected,"$option == hegtales_Quest2_scavengerThreaten",,"The Luddic captain's face shows a frown as $heOrShe taps at a console and appears to think for a second. 
 
 $HeOrShe looks at you with a dissapointed look. ""I would have given it to you, if you were polite and kind.""","hegtales_Quest2_scavengerThreaten2:Continue",
 hegtales_Quest2_ScavengerThreaten2,DialogOptionSelected,"$option == hegtales_Quest2_scavengerThreaten2","AdjustRepActivePerson INHOSPITABLE -20
@@ -776,7 +774,7 @@ MakeOtherFleetAvoidContact true
 $hegtales_Quest2_Probe_finishedEncounter = true
 $global.hegtales_Quest2_scavengerDroppedClue = true
 
-","""I've ordered my men to eject the cache, it's all yours."" the captain says with a somber tone. ""Ludd be with you.""
+","""I've ordered my men to eject the cache, it's all yours,"" the captain says with a somber tone. ""Ludd be with you.""
 
 The comms are abruptly disconnected.","cutCommLinkNoText:Continue",
 hegtales_Quest2_scavengerNice,DialogOptionSelected,"$option == hegtales_Quest2_scavengerNice","AdjustRepActivePerson FRIENDLY 20
@@ -790,7 +788,7 @@ $global.hegtales_Quest2_scavengerDroppedClue = true
 
 ","""I've ordered my men to eject the cache, it's all yours."" 
 
-""So few people are polite and nice nowadays, you are a shining star."" the captain says with a happy tone. ""Ludd be with you.""
+""So few people are polite and nice nowadays, you are a shining star,"" the captain says with a happy tone. ""Ludd be with you.""
 
 The comms are simply disconnected.","cutCommLinkNoText:Continue",
 hegtales_Quest2_ScavengerDefeated,hegtales_Quest2_churccluedefenderDefeated,"$someShipsDestroyed
@@ -802,24 +800,23 @@ $global.hegtales_Quest2_scavengerDroppedClue = true","Your sensors officer repor
 # Stolen Probe Interactions,,,,,,
 hegtales_Quest2_StolenCluePodStart,OpenInteractionDialog,"$tag:hegtales_Quest2_lootedClue","ShowDefaultVisual
 FireBest hegtales_Quest2_StolenCluePodStartOption",,,
-hegtales_Quest2_StolenCluePodStartOption1,hegtales_Quest2_StolenCluePodStartOption,"$global.hegtales_Quest2_CluesDone == 0",,"Your bridge crew diligently sift through the various texts and mentions within the cache, uncovering fragments of information. Amid the data, they locate a series of personal logs left by Hannah Stalh-Ossum herself. Your comms officer gives you a thumbs up and patches the logs through to your console.
+hegtales_Quest2_StolenCluePodStartOption1,hegtales_Quest2_StolenCluePodStartOption,"$global.hegtales_Quest2_CluesDone == 0",,"Your bridge crew diligently sift through the various texts and mentions within the cache, uncovering fragments of information. Amid the data, they locate a series of personal logs left by Hannah Stahl-Ossum herself. Your comms officer gives you a thumbs up and patches the logs through to your console.
 
-A soft, clear voice fills the bridge, recorded with an almost reverent tone. ""Hannah Stalh, married to Borealis Ossum, is who I am…""
+A soft, clear voice fills the bridge, recorded with an almost reverent tone. ""Hannah Stahl, married to Borealis Ossum, is who I am…""
 ","hegtales_Quest2_clue1Investigation3:Continue",
 hegtales_Quest2_StolenCluePodStartOption2,hegtales_Quest2_StolenCluePodStartOption,"$global.hegtales_Quest2_CluesDone == 1",,"Your crew moves closer to the caches, carefully looking at the different screens and engraved texts on it.
 
-""The Exodus: In which Ludd is given a vision by God of a promised land, and leads the faithful to settle in the Persean Sector
+""The Exodus: In which Ludd is given a vision by God of a promised land, and leads the faithful to settle in the Persean Sector.
 The Blooming: In which the faithful teach the industrial-terraformers how to shepherd the spirit of the land to create a new paradise.""
 
-Just as before, your crew locates the second cache with relative ease, the process unfolding much like the previous one. The operation is smooth and efficient, and soon enough, your comms officer's voice cuts through the comms.
-","hegtales_Quest2_clue2Investigation2:Continue",
+Just as before, your crew locates the second cache with relative ease, the process unfolding much like the previous one. The operation is smooth and efficient, and soon enough, your comms officer's voice cuts through the comms.","hegtales_Quest2_clue2Investigation2:Continue",
 hegtales_Quest2_StolenCluePodStartOption3,hegtales_Quest2_StolenCluePodStartOption,"$global.hegtales_Quest2_CluesDone == 2
 ",,"The EVA team moves closer to the caches, carefully looking at the different screens and engraved texts on it.
 
 The Trial: In which Ludd is condemned to die by the Domain Sector-leader.
 The Discontinuity: In which Ludd enters the Gate system and is taken by God; the Gates are sealed in the promise of redemption for humanity.
 
-Your crew begins the now-familiar process of accessing the cache. The routine is efficient, as if the team has become experts in preserving these sacred relics. Soon, yourcomms officer's voice breaks through the comms.","hegtales_Quest2_clueInvestigationWrapUp1:""Report?""",
+Your crew begins the now-familiar process of accessing the cache. The routine is efficient, as if the team has become experts in preserving these sacred relics. Soon, your comms officer's voice breaks through the comms.","hegtales_Quest2_clueInvestigationWrapUp1:""Report?""",
 "#END Stolen Probe Interactions",,,,,,
 "#END Probe Stuff",,,,,,
 ,,,,,,
@@ -831,7 +828,7 @@ HailPlayer",,,
 hegtales_Quest2MercGreeting,OpenCommLink,"$entity.hegtales_Quest2_tritach score:1000","Call $entity.hegtales_Quest2_ref makeUnimportant
 FireAll hegtales_Quest2MercHubOptions","The comms open.
 
-A young Tritachyon Executive appears in front of the screen. ""You are herebly getting the way of bussiness of the company. Let us recover Hannah Stahl and we will let you live.""
+A young Tri-Tachyon Executive appears in front of the screen. ""You are hereby getting in the way of business of the company. Let us recover Hannah Stahl and we will let you live.""
 
 Then $heOrShe waits for your response.",,
 hegtales_Quest2MercHubReturn,DialogOptionSelected,"$option == hegtales_Quest2_tritachHubReturn","FireAll hegtales_Quest2MercHubOptions",,,
@@ -842,7 +839,7 @@ hegtales_Quest2MercLetsDeal,DialogOptionSelected,"$option == hegtales_Quest2_tri
 Call $global.hegtales_Quest2_ref updateData","Highlight $hegtales_Quest2_sellOutPrice
 DoCanAffordCheck $hegtales_Quest2_sellOutPrice hegtales_Quest2_tritachDealAccept false
 
-$letsDeal = true","The executive seems surprised at the proposal. ""Well... I can make some lie.. if the price is good enough. Let's say $hegtales_Quest2_sellOutPrice credits, to let you go and do whatever you want with the woman.""","hegtales_Quest2_tritachDealAccept:Accept the deal
+$letsDeal = true","The executive seems surprised at the proposal. ""Well... I can make up some lie.. if the price is good enough. Let's say $hegtales_Quest2_sellOutPrice credits, to let you go and do whatever you want with the woman.""","hegtales_Quest2_tritachDealAccept:Accept the deal
 hegtales_Quest2_tritachGetNothing:Reject the deal",
 hegtales_Quest2MercAcceptDeal,DialogOptionSelected,"$option == hegtales_Quest2_tritachDealAccept","AddRemoveCommodity credits -$hegtales_Quest2_sellOutPrice
 AdjustRepActivePerson COOPERATIVE 5
@@ -861,11 +858,11 @@ FireAll hegtales_Quest2MercHubOptions","""That was not a question.""
 
 The young executive squints his eyes.",,
 hegtales_Quest2MercGetNothing,DialogOptionSelected,"$option == hegtales_Quest2_tritachGetNothing","$noDeal = true
-$entity.ignorePlayerCommRequests = true","A big smile appears in the executive's lips.
+$entity.ignorePlayerCommRequests = true","A big smile appears on the executive's lips.
 
 ""That's what I wanted to hear.""
 
-The enemy fleet moves in an attack possition.","cutCommLink:Cut the comm link",
+The enemy fleet moves to assume an attack position.","cutCommLink:Cut the comm link",
 "#END Tri-Taychion Narcissus Encounter",,,,,,
 ,,,,,,
 # Beholder Station,,,,,,
@@ -899,13 +896,13 @@ Without another word, he storms out, his footsteps echoing down the corridor as 
 hegtales_Quest2_beholderFindHannah3,DialogOptionSelected,"$option == hegtales_Quest2_HannahSaltalive","
 AdjustRepPerson hegtales_hannah FRIENDLY 5","You take a deep breath and explain what had happened.
 
-The Pather listens intently, as he nods slowly, a faint smirk tugging at the corner of his lips. It's clear that Salt's behavior was no shock to him. ""Well, that sounds like Salt."" Without another word, he takes a deliberate step forward, offering what could only be described as the most uncourteous bow you've ever witnessed.
+The Pather listens intently, and as he nods slowly, a faint smirk tugs at the corners of his lips. It's clear that Salt's behavior was no shock to him. ""Well, that sounds like Salt."" Without another word, he takes a deliberate step forward, offering what could only be described as the most uncourteous bow you've ever witnessed.
 
 Straightening up, he turns on his heel and begins striding toward the docks, his movements brisk and purposeful. It's clear he had no intention of staying any longer than necessary.","hegtales_Quest2_Hannahleave:Continue",
 hegtales_Quest2_beholderFindHannah4,DialogOptionSelected,"$option == hegtales_Quest2_Hannahleave","$global.hegtales_Quest2_return_eventide = true
 Call $global.hegtales_Quest2_ref updateStage
 Call $global.hegtales_Quest2_ref updateData
-","Hannah takes a deep sigh. Her family had been too worried, and this journey had been fraught with danger. Who knew if Salt could have truly protected her from the Tri-Tachyon goons that had been waiting to strike?
+","Hannah sighs deeply. Her family had been too worried, and this journey had been fraught with danger. Who knew if Salt could have truly protected her from the Tri-Tachyon goons that had been waiting to strike?
 
 Finally, she opens her mouth, and the voice you had heard in the logs resonates clearly. ""Take me home, Captain $playerLastName. I will continue my path someday, but not today. I thank you for all the troubles you've endured on my behalf."" With that, she falls into step beside you, following you toward the shuttle.
 
@@ -916,32 +913,32 @@ hegtales_Quest2_returnEventide,PopulateOptions,"$id == hegtales_australis
 $hegtales_Quest2_australis_eventide_return","SetOptionColor hegtalesQuest2Reward highlight",,"0:hegtalesQuest2Reward:""I have found Hannah.""",
 hegtales_Quest2_returnEventide1,DialogOptionSelected,"$option == hegtalesQuest2Reward","ShowSecondPerson hegtales_hannah","Australis seems momentarily stunned by your words. Before he can respond, Hannah herself steps into view on the bridge's comms screen.
 
-""Australis, I am fine."" she says, her voice steady but warm, clearly aimed at putting her brother-in-law at ease.
+""Australis, I am fine,"" she says, her voice steady but warm, clearly aimed at putting her brother-in-law at ease.
 
 The Rear Admiral nods eagerly, his earlier tension melting away. ""Your husband has been looking for you,"" he replies. ""Come to the castle as soon as possible.""
 
 Hannah glances toward you, her expression softening with gratitude. Without wasting any time, you both make your way to the shuttle.","0:hegtalesQuest2Reward1:Continue",
 hegtales_Quest2_returnEventide2,DialogOptionSelected,"$option == hegtalesQuest2Reward1","ShowImageVisual ossum_castle","Hannah sits by one of the shuttle's wide observation windows, her gaze fixed on the surface of Eventide as it grows larger with each passing moment.
 
-She turns her head to look at you, you've been by her side for most of the journey since finding her on Beholder Station, and it's clear she's noticed. Hannah Stahl-Ossum may carry herself with the grace of a matriarch, but her mischievous streak has made it necessary to keep a close eye on her.","0:hegtalesQuest2Reward2:Continue",
+She turns her head to look at you, having been been by her side for most of the journey since finding her on Beholder Station, and it's clear she's noticed. Hannah Stahl-Ossum may carry herself with the grace of a matriarch, but her mischievous streak has made it necessary to keep a close eye on her.","0:hegtalesQuest2Reward2:Continue",
 hegtales_Quest2_returnEventide3,DialogOptionSelected,"$option == hegtalesQuest2Reward2","BeginConversation hegtales_hannah
 ShowPersonVisual
 ","""I miss my family,"" she says, ""I cannot thank you enough for bringing me back home, Captain $playerLastName."" A playful glint flashes in her eyes as her smile widens. ""Maybe I'll even name my fifth child after you. Borealis might not like it, but I'm sure he'll come around.""
 
-She chuckles, her gaze returning to the sky above. The Stellar Mirrors shimmer like celestial ornaments, their light guiding the shuttle toward its destination. Her eyes follow the path of the mirror that reflects over her estate and the towering Ossum Castle. ""I have a cousin about your age,"" she adds teasingly, ""Perhaps you'd like to join the family?""
+She chuckles, her gaze returning to the sky above. The stellar mirrors shimmer like celestial ornaments, their light guiding the shuttle toward its destination. Her eyes follow the path of the mirror that reflects Samarra's light onto her estate and the towering Ossum Castle. ""I have a cousin about your age,"" she adds teasingly, ""perhaps you'd like to join the family?""
 
-Her words hang in the air for a moment, drawing a chuckle or a polite smile from you. Before you can respond, the shuttle's landing gear engages, and the craft begins its descent into the castle's grand landing pad.","0:hegtalesQuest2Reward3:Continue",
+Her words hang in the air for a moment, drawing a chuckle or a polite smile from you. Before you can respond, the shuttle's landing gear engages, and the craft begins its descent onto the castle's grand landing pad.","0:hegtalesQuest2Reward3:Continue",
 hegtales_Quest2_returnEventide4,DialogOptionSelected,"$option == hegtalesQuest2Reward3","BeginConversation hegtales_australis
-ShowSecondPerson hegtales_hannah","Australis, flanked by several guards bearing the sigils of House Ossum, stands at the edge of the landing pad. Behind him, a small crowd of family members and attendants gathers, their faces a mixture of excitement and relief.
+ShowSecondPerson hegtales_hannah","Australis, flanked by several guards bearing the heraldry of House Ossum, stands at the edge of the landing pad. Behind him, a small crowd of family members and attendants gathers, their faces a mixture of excitement and relief.
 
 As Hannah steps out with her entourage, a wave of emotion ripples through the gathered group. The children are the first to react, their delighted cheers filling the air as they spot their mother. The youngest, barely old enough to walk, begins crawling determinedly toward her. A maid hurries forward, scooping the child into her arms and bringing them closer to Hannah, who laughs warmly as she takes the little one into her embrace.
 
 Australis steps forward, his expression softening as he watches the reunion…","0:hegtalesQuest2Reward4:Continue",
-hegtales_Quest2_returnEventide5,DialogOptionSelected,"$option == hegtalesQuest2Reward4","ShowThirdPerson hegtales_borealis","Suddenly, a tall and robust man, bearing a striking resemblance to Australis, strides forward and pulls Hannah into a firm embrace as she cradles her youngest child. His commanding presence and the insignia on his uniform leave no room for doubt—this is the Lord of Bones himself, Admiral Borealis Ossum of the Hegemony Executive Council. His expression softens as he speaks quietly with Hannah, their reunion charged with emotion. He pays you no mind, entirely absorbed in his family as they share words that seem long overdue.","0:hegtalesQuest2Reward5:Continue",
+hegtales_Quest2_returnEventide5,DialogOptionSelected,"$option == hegtalesQuest2Reward4","ShowThirdPerson hegtales_borealis","Suddenly, a tall and robust man, bearing a striking resemblance to Australis, strides forward and pulls Hannah into a firm embrace as she cradles her youngest child. His commanding presence and the insignia on his uniform leave no room for doubt — this is the Lord of Bones himself, Admiral Borealis Ossum of the Hegemony Executive Council. His expression softens as he speaks quietly with Hannah, their reunion charged with emotion. He pays you no mind, entirely absorbed in his family as they share words that seem long overdue.","0:hegtalesQuest2Reward5:Continue",
 hegtales_Quest2_returnEventide6,DialogOptionSelected,"$option == hegtalesQuest2Reward5","HideSecondPerson
 HideThirdPerson","Meanwhile, Australis steps closer to you, motioning for a private word. ""Your mission is complete,"" he begins, his tone warm yet formal. ""Your payment has been sent, and House Ossum is deeply grateful for your service. I'll ensure your bridge crew coordinates with us to provide a detailed report.""
 
-He places a hand on your shoulder, his smile sincere and filled with gratitude. ""You've done a great service, not just for us but for the Hegemony as a whole. Blessings of Ludd be upon you, brother. May your path always be guided.""","0:hegtalesQuest2End:Continue",
+He places a hand on your shoulder, his smile sincere and filled with gratitude. ""You've done a great service, not just for us but for the Hegemony as a whole. Blessings of Ludd be upon you, $playerBrotherOrSister. May your path always be guided.""","0:hegtalesQuest2End:Continue",
 hegtales_Quest2End,DialogOptionSelected,"$option == hegtalesQuest2End","AddStoryPoints 1
 
 $global.hegtales_Quest2_missionCompleted = true
@@ -972,31 +969,30 @@ hegtales_Quest3Check,hegtales_Quest3Check,"$rel > 0.50 score:1000
 $global.hegtales_Quest2_missionCompleted","SetEnabled hegtales_Quest3starter0 true
 SetTooltip hegtales_Quest3starter0 ""This mission is available because of your relationship with Australis and you have helped House Ossum.""",,,
 hegtales_Quest3StarterOption1Sindrian,DialogOptionSelected,"$option == hegtales_Quest3starter0
-$player.fcm_faction == sindrian_diktat score: 1000","FireAll PopulateOptions","Australis seems amused, but clearly is a cover for his real emotion, his face clearly betrays him. ""Operation: Heritage, yes."" he says, as he glances at the folder.
+$player.fcm_faction == sindrian_diktat score: 1000","FireAll PopulateOptions","Australis seems amused, but his face clearly betrays this attempt to cover his real emotions. ""Operation: Heritage, yes."" he says, as he glances at the folder.
 
-""I believe you should resign your Sindrian commission before this..""",,
+""I believe you should resign your Sindrian commission first, however...""",,
 hegtales_Quest3StarterOption1,DialogOptionSelected,"$option == hegtales_Quest3starter0",,"Australis seems amused, as though he had expected you to notice the folder and ask about it. ""Operation: Heritage, yes."" he says, picking it up and opening it. His eyes briefly scan the document before he looks back at you.
 
-""I need you to come personally to the Castle so we can proceed.""","hegtales_Quest3starter1:Take a shuttle to the Ossum Castle",
-hegtales_Quest3StarterOption2,DialogOptionSelected,"$option == hegtales_Quest3starter1","ShowImageVisual ossum_castle","Without hesitation, you prepare for the journey. Taking a shuttle back down to the planet, you soon find yourself within the grand Ossum estate. The room you are escorted into is breathtakingly luxurious, adorned with ornate furnishings and tapestries that speak to the family's wealth and prominence.","hegtales_Quest3starter2:""Continue""",
+""I need you to personally come to the Castle so we can proceed.""","hegtales_Quest3starter1:Take a shuttle to the Ossum Castle",
+hegtales_Quest3StarterOption2,DialogOptionSelected,"$option == hegtales_Quest3starter1","ShowImageVisual ossum_castle","Without hesitation, you prepare for the journey. Taking a shuttle back down to the planet, you soon find yourself within the grand Ossum estate. The room you are escorted to is breathtakingly luxurious, adorned with ornate furnishings and tapestries that tell of the family's wealth and prominence.","hegtales_Quest3starter2:""Continue""",
 hegtales_Quest3StarterOption3,DialogOptionSelected,"$option == hegtales_Quest3starter2","BeginConversation hegtales_borealis
 ShowSecondPerson hegtales_australis","Admiral Borealis Ossum enters the room, his presence commanding as always, followed closely by his twin brother, Australis. This time, it is Borealis who takes the lead in speaking.
 
 ""The HSS Retaliation was the ancestral ship of House Ossum,"" his tone steady and authoritative. ""It had been under the control of our family since Commander Nord Ossum married Admiral Janice Smollett in C+49, and thus, the ship was passed down through the generations. Until it was lost in Askonia, with our father on it.""
 
-""We never knew what truly happened to it, though. It wasn't destroyed during Andrada's rebellion, as we initially believed. The ship disappeared, and with it, the remains of our father.,"" Borealis continues, ""But we recently discovered that my father's second-in-command, the man who betrayed him, Defectum, is now part of the Lion's Guard and has kept the ship somewhere."" He pauses, letting the significance of the revelation sink in, before Australis steps forward.","hegtales_Quest3starter3:""Continue""",
+""We never knew what truly happened to it, though. It wasn't destroyed during Andrada's rebellion, as we initially believed. The ship disappeared, and with it, the remains of our father,"" Borealis continues. ""But recently, we discovered that my father's second-in-command - the man who betrayed him, Defectum - is now part of the Lion's Guard and has hidden the ship somewhere."" He pauses, letting the significance of the revelation sink in, before Australis steps forward.","hegtales_Quest3starter3:""Continue""",
 hegtales_Quest3StarterOption4,DialogOptionSelected,"$option == hegtales_Quest3starter3","BeginConversation hegtales_australis
 ShowSecondPerson hegtales_borealis
 
-","""We have made a plan to deal with him and return our father home."" Australis says, the implication of the plan is clear.","hegtales_Quest3starter2Accept:""I'll help House Ossum.""
+","""We have made a plan to deal with him and return our father home."" Australis says, the implication of the plan becoming clear.","hegtales_Quest3starter2Accept:""I'll help House Ossum.""
 hegtales_Quest3starter1Decline:""I am currently busy.""",
 hegtales_Quest3starter2Accept,DialogOptionSelected,"$option == hegtales_Quest3starter2Accept","SetTooltip hegtales_Quest3starter1Accept ""This will make you go HOSTILE towards the Sindrian Diktat during its progress.""
 
 AddTextSmall ""If you accept, this quest will make you go HOSTILE towards the Sindrian Diktat during its progress."" gray
 SetTextHighlights HOSTILE","""Are you sure you want to help us with this task?"" Australis asks. His gaze shifts between you and his twin brother.
 
-Borealis, continues ""It will surely make you hostile toward the Sindrians,"" he states bluntly, ""This isn't just a recovery mission. You will be killing some of them —there's no way around it.""
-","hegtales_Quest3starter1Accept:""Yes.""
+Borealis continues. ""It will surely make you hostile toward the Sindrians,"" he states bluntly. ""This isn't just a recovery mission. You will be killing some of them — there's no way around it.""","hegtales_Quest3starter1Accept:""Yes.""
 hegtales_Quest3starter1Decline:""No, I need to think about it.""",
 hegtales_Quest3StarterAccept,DialogOptionSelected,"$option == hegtales_Quest3starter1Accept","BeginConversation hegtales_australis
 ShowSecondPerson hegtales_borealis
@@ -1005,10 +1001,9 @@ BeginMission hegtales_Quest3
 $global.hegtales_Quest3Accepted = true
 FireAll PopulateOptions","""Good!"" Borealis declares, his tone sharper now. ""Then you should start by speaking with our less scrupulous man, Corby. He has a contact in the Askonian pirate haven of Umbra. Corby will provide you with the details and ensure you're equipped for what lies ahead.""
 
-The Admiral's eyes glint with anticipation. ""Our involvement in this matter must remain hidden,"" he continues firmly. ""The HSS Retaliation is more than a ship to us—it's a symbol of our legacy. Bring it back, and you will have the eternal gratitude of House Ossum.""
+The Admiral's eyes glint with anticipation. ""Our involvement in this matter must remain a secret,"" he continues firmly. ""The HSS Retaliation is more than a ship to us — it's a symbol of our legacy. Bring it back, and you will have the eternal gratitude of House Ossum.""
 
-Australis gives you a faint nod. ""Corby will be expecting you. Good luck, Captain.""
-",,
+Australis gives you a faint nod. ""Corby will be expecting you. Good luck, Captain.""",,
 hegtales_Quest3StarterAcceptFUEL,DialogOptionSelected,"$option == hegtales_Quest3starter1Accept
 HEG_HasModId PAGSM score:1000","BeginConversation hegtales_borealis
 ShowSecondPerson hegtales_australis
@@ -1020,18 +1015,17 @@ BeginMission hegtales_Quest3
 $global.hegtales_Quest3Accepted = true
 FireAll PopulateOptions","""Gas!"" Borealis declares, his tone sharper now. ""Then you should start by speaking with our less scrupulous man, Corby. He has a contact in the Askonian pirate haven of Umbra. Corby will provide you with the details and ensure you're equipped for what lies ahead.""
 
-The Admiral's eyes glint with anticipation. ""Our involvement in this matter must remain hidden,"" he continues firmly. ""The HSS Retaliation is more than a ship to us—it's a symbol of our legacy. Bring it back, and you will have the eternal gratitude of House Ossum.""
+The Admiral's eyes glint with anticipation. ""Our involvement in this matter must remain a secret,"" he continues firmly. ""The HSS Retaliation is more than a ship to us — it's a symbol of our legacy. Bring it back, and you will have the eternal gratitude of House Ossum.""
 
-Australis gives you a faint nod. ""Corby will be expecting you. Good luck, Captain.""
-",,
+Australis gives you a faint nod. ""Corby will be expecting you. Good luck, Captain.""",,
 hegtales_Quest3StarterDecline,DialogOptionSelected,"$option == hegtales_Quest3starter1Decline","BeginConversation hegtales_borealis
-ShowSecondPerson hegtales_australis","Borealis lifts an eyebrow, before glancing toward Australis. The twins exchange a brief, knowing look before nodding in unison. The former speaks first.
+ShowSecondPerson hegtales_australis","Borealis lifts an eyebrow before glancing toward Australis. The twins exchange a brief, knowing look before nodding in unison. The former speaks first.
 
 ""It's a dangerous mission,"" he says. ""It's acceptable that you wouldn't want to take the risks at this moment. The Retaliation isn't going anywhere, and we understand the constraints of your priorities. For us, direct confrontation with Sindria is not an option right now. But you, as an independent agent, have the freedom we lack.""
 
 Australis steps forward, his demeanor lighter than his brother's but no less serious. ""The mission will wait for you, Captain,"" he assures you, his voice tinged with understanding. He personally escorts you back to your shuttle.
 
-As you board, Australis gives you a nod of respect. ""Ludd's light guide you,""
+As you board, Australis gives you a nod of respect. ""Ludd's light guide you.""
 ","cutCommLink:""..."" (cut comm-link)",
 "#END Quest 3 Start!",,,,,,
 ,,,,,,
@@ -1039,7 +1033,7 @@ As you board, Australis gives you a nod of respect. ""Ludd's light guide you,""
 hegtales_Quest3Corbyask,PopulateOptions,"$id == hegtales_corby
 $global.hegtales_Quest3Accepted
 !$askedcorbyaboutfrusca","SetOptionColor hegtales_Quest3Corbytalk0 highlight",,"0:hegtales_Quest3Corbytalk0:""Corby. I got a mission.""",
-hegtales_Quest3Corbytalk0,DialogOptionSelected,"$option == hegtales_Quest3Corbytalk0",,"""Well, well, kid,"" he says, leaning back in his chair making it creak so loudly that it's heard through the comms. ""Didn't think I'd be hearing from you again, not after you went straight to the big shots. Guess I underestimated you… or maybe I should've expected you'd be back for something big.""
+hegtales_Quest3Corbytalk0,DialogOptionSelected,"$option == hegtales_Quest3Corbytalk0",,"""Well, well, kid,"" he says, leaning back in his chair, making it creak so loudly that you can hear it through the comms. ""Didn't think I'd be hearing from you again, not after you went straight to the big shots. Guess I underestimated you… or maybe I should've expected you'd be back for something big.""
 
 His grin widens. ""I know exactly why you're here. You're after Defectum, aren't you? That traitorous bastard's been a thorn in the side of House Ossum for far too long. But getting to him? That's no easy feat. Lucky for you, I've got just the lead you need.""
 
@@ -1050,9 +1044,9 @@ $rel > 0.59 score:1000","$askedcorbyaboutfrusca = true
 
 $global.hegtales_Quest3_GO_TO_UMBRA = true
 
-Call $global.hegtales_Quest3_ref updateStage","Corby gestures with his hands as he explains. ""This isn't just any piece of junk, mind you. This satellite is custom-made for a specific purpose. Once you deploy it in orbit around the Umbra, it'll send out a coded alarm. And not just any alarm—it's designed to reach a particular fleet.""
+Call $global.hegtales_Quest3_ref updateStage","Corby gestures with his hands as he explains. ""This isn't just any piece of junk, mind you. This satellite is custom-made for a specific purpose. Once you deploy it in orbit around Umbra, it'll send out a coded alarm. And not just any alarm — it's designed to reach a particular fleet.""
 
-""Now, listen carefully. This is your one and only shot. Once that fleet gets the signal, you'll have to act fast. The commander of that fleet has the information you need, but getting it won't be a walk in the park. You'll need to extract it... Somehow""
+""Now, listen carefully. This is your one and only shot. Once that fleet gets the signal, you'll have to act fast. The commander of that fleet has the information you need, but getting it won't be a walk in the park. You'll need to extract it... somehow.""
 
 Corby's eyes narrow as he leans closer to the screen. ""This is high-stakes, kid. You screw this up, and the trail goes cold. So don't mess it up. Get to Umbra, find Frusca, and make it happen. House Ossum's counting on you, and frankly, so am I.""
 
@@ -1069,9 +1063,9 @@ FireBest hegtales_Quest3CorbyThreaten","He looks around as a plate of fries is p
 
 He gives you a big grin.","hegtales_Quest3Corbythreaten:Threaten Corby with your marines.
 cutCommLink: Cut the comm link",
-hegtales_Quest3Corbythreaten1,DialogOptionSelected,"$option == hegtales_Quest3Corbythreaten",,"""You know I got a squad of 60 marines with me, ready to raid you if you don't speak."" You say as the whole demeanor of Corby's face changes. Simply nodding as he takes a deep breath.","hegtales_Quest3Corbythreatened:""Continue""",
+hegtales_Quest3Corbythreaten1,DialogOptionSelected,"$option == hegtales_Quest3Corbythreaten",,"""You know I got a squad of 60 marines with me, ready to visit you if you don't speak."" As you speak, you can see the demeanor of Corby's face change with every second. Simply nodding, he takes a deep breath.","hegtales_Quest3Corbythreatened:""Continue""",
 hegtales_Quest3CorbythreatenCheck,hegtales_Quest3CorbyThreaten,"$player.marines > 59","SetEnabled hegtales_Quest3Corbythreaten true",,,
-hegtales_Quest3Corbythreaten2,DialogOptionSelected,"$option == hegtales_Quest3Corbythreatened",,"Corby speaks seriously ""This satellite is custom-made for a specific purpose. Once you deploy it in orbit around the Umbra, it'll send out a coded alarm. And not just any alarm—it's designed to reach a particular fleet.""
+hegtales_Quest3Corbythreaten2,DialogOptionSelected,"$option == hegtales_Quest3Corbythreatened",,"Corby speaks in a serious tone. ""This satellite is custom-made for a specific purpose. Once you deploy it in orbit around the Umbra, it'll send out a coded alarm. And not just any alarm — it's designed to reach a particular fleet.""
 
 ""Now, listen carefully. This is your one and only shot. Once that fleet gets the signal, you'll have to act fast. The commander of that fleet has the information you need.""
 
@@ -1083,7 +1077,7 @@ $askedcorbyaboutfrusca = true
 
 $global.hegtales_Quest3_GO_TO_UMBRA = true
 
-Call $global.hegtales_Quest3_ref updateStage","""And kid."" The man speaks dead serious.
+Call $global.hegtales_Quest3_ref updateStage","""And kid."" The man says dead serious.
 
 ""Don't ever bother me again.""","cutCommLink:""..."" (cut comm-link)",
 hegtales_Quest3CorbyMoney,PopulateOptions,"$id == hegtales_corby
@@ -1091,22 +1085,22 @@ $global.wheredamoneycorby
 !$global.gotcorbymoney","$global.gotcorbymoney = true",,"0:hegtales_Quest3CorbyMoney2: ""You owe Frusca a millon credits.""",
 hegtales_Quest3CorbyMoney2,DialogOptionSelected,"$option == hegtales_Quest3CorbyMoney2",,"""Ah... I forgot about that..."" Corby seems pensive as he brings a hand to his beard, starting to rub it.
 
-Before he shrugs, smirking about an old memory before he realizes that you are still staring at him.
+He shrugs, smirking about an old memory before he realizes that you are still staring at him.
 
 ""Ah, yes. The money.""","hegtales_Quest3CorbyMoney3: Continue",
-hegtales_Quest3CorbyMoney3,DialogOptionSelected,"$option == hegtales_Quest3CorbyMoney3","AddCredits 500000","""I don't have the full tab, but I believe this will help... Say hello to the old man in my name... I forgot to tell you that the last time."" He says as he pats his belly.
+hegtales_Quest3CorbyMoney3,DialogOptionSelected,"$option == hegtales_Quest3CorbyMoney3","AddCredits 500000","""I dont have the full tab, but I believe this will help... Say hello to the old man for me... I forgot to tell you that the last time,"" he says as he pats his belly.
 
-""He should come to visit me someday!","cutCommLink:""It's something."" (cut comm-link)",
+""He should come visit me someday!""","cutCommLink:""It's something."" (cut comm-link)",
 "#END Corby 3rd Quest Dialogue",,,,,,
 ,,,,,,
 # Frusca Stuff!,,,,,,
 hegtales_Quest3Fruscastart,PickGreeting,"$id == hegtales_frusca
 $global.hegtales_Quest3_GO_TO_UMBRA
-!$metfrusca","BeginConversation hegtales_frusca","""Eh? Who is it?"" The man's gruff voice crackles through the comms as his face appears on the screen. His rugged appearance is matched by the worn but unmistakable gear of an ex-Navy Sindrian Diktat officer —now clearly turned to piracy and lawlessness.
+!$metfrusca","BeginConversation hegtales_frusca","""Eh? Who is it?"" The man's gruff voice crackles through the comms as his face appears on the screen. His rugged appearance is matched by the worn but unmistakable gear of an ex-navy officer of the Sindrian Diktat — now clearly turned to piracy and lawlessness.
 
 ""Well? What do you want?""
 ","hegtales_frusca_start1:""Corby sent me. ‘Special Satelite' ring any bells?""",
-hegtales_Quest3FruscaStart1,DialogOptionSelected,"$option == hegtales_frusca_start1","$metfrusca = true","The man's brow furrows deeply, ""That fat bastard owes me money,"" he growls, leaning closer to the screen as if to emphasize his point. ""I've told him repeatedly —pay his debt or don't bother sending anyone my way.""
+hegtales_Quest3FruscaStart1,DialogOptionSelected,"$option == hegtales_frusca_start1","$metfrusca = true","The man's brow furrows deeply. ""That fat bastard owes me money,"" he growls, leaning closer to the screen as if to emphasize his point. ""I've told him repeatedly — either pay your debt or don't bother sending anyone my way.""
 
 He crosses his arms, his posture radiating defiance. ""So, unless you're here to settle his tab or offer me something better, I suggest you turn that ship of yours around and get lost.""","cutCommLink:Close comms",
 hegtales_Quest3FruscaTalk,PopulateOptions,"$id == hegtales_frusca
@@ -1115,15 +1109,15 @@ $metfrusca
 !$global.hegtales_Quest2_SET_THE_BEACON",,,"hegtales_frusca_talk1:""How much is Corby's tab?""",
 hegtales_Quest3FruscaTalk1,DialogOptionSelected,"$option == hegtales_frusca_talk1","SetTextHighlights 1,000,000
 DoCanAffordCheck 1000000 hegtales_frusca_talkAccept false
-#AddTextSmall ""This will make increase your relations with the Luddic Path, so they will not be hostile anymore. There are many Fanatic and Hostile Luddic Path fleets around, so still be watchful for them."" gray","The man raises an eyebrow, clearly surprised you're even entertaining the idea of settling Corby's debt. He swivels in his chair, glancing at a screen off-camera. His fingers tap rapidly as he scrolls through a list of entries, muttering under his breath.
+","The man raises an eyebrow, clearly surprised you're even entertaining the idea of settling Corby's debt. He swivels in his chair, glancing at a screen off-camera. His fingers tap rapidly as he scrolls through a list of entries, muttering under his breath.
 
-""The Chico job… The whole mess in Ragnar… And that thing in…"" He trails off,.
+""The Chico job… The whole mess in Ragnar… And that thing in…"" He trails off.
 
 ""1,000,000 credits, give or take,"" he finally declares, ""So, unless you've got that kind of cash lying around, I don't see how we're going to do business.""","hegtales_frusca_talkAccept:""Here you go.""
 hegtales_frusca_talkAsk:""1,000,000 credits? What did he even do?""
 hegtales_frusca_talkCancel:""I will think about it.""",
 hegtales_frusca_talkAsk,DialogOptionSelected,"$option == hegtales_frusca_talkAsk","$global.wheredamoneycorby = true
-SetEnabled hegtales_frusca_talkAsk false","""Owe me money. Ask him, he will surely tell you.""
+SetEnabled hegtales_frusca_talkAsk false","""Owes me money. Ask him, he will surely tell you.""
 
 ""Or not.""",,
 hegtales_frusca_talkCancel,DialogOptionSelected,"$option == hegtales_frusca_talkCancel","FireAll PopulateOptions","""Don't waste my time.""",,
@@ -1135,8 +1129,8 @@ Call $global.hegtales_Quest3_ref updateStage","Frusca glances at the screen as t
 
 ""Good. The satellite is stored in a nearby warehouse. I’m sending you the coordinates now."" Your comms officer signals a thumbs-up, confirming the data has been received.
 
-Frusca leans closer to the screen ""Just a little reminder, $playerName. Isaias, the Sindrian, is expecting a drug shipment. If you’re clever, you might be able to use that to get the information you need from him without a pointless fight.""","hegtales_frusca_talkAccept2:Continue",
-hegtales_frusca_talkAccept2,DialogOptionSelected,"$option == hegtales_frusca_talkAccept2","AddPotentialContact hegtales_frusca","He reclines back into his chair. ""In any case, if you’re looking for more work, feel free to contact me. You seem like a... useful individual.""","cutCommLink:Close comms",
+Frusca leans closer to the screen. ""Just a little reminder, $playerName. Isaias, the Sindrian, is expecting a drug shipment. If you’re clever, you might be able to use that to get the information you need from him without a pointless fight.""","hegtales_frusca_talkAccept2:Continue",
+hegtales_frusca_talkAccept2,DialogOptionSelected,"$option == hegtales_frusca_talkAccept2","AddPotentialContact hegtales_frusca","He leans back in his chair. ""In any case, if you’re looking for more work, feel free to contact me. You seem like a... useful individual.""","cutCommLink:Close comms",
 hegtales_Quest3_frusca_raid,PopulateOptions,"$id == hegtales_frusca
 $global.hegtales_Quest3_GO_TO_UMBRA
 $metfrusca
@@ -1150,7 +1144,7 @@ hegtales_Quest3_frusca_PreRaid,DialogOptionSelected,"$option == hegtales_Quest3_
 hegtales_Quest3RaidFinishedB,hegtales_Quest3RaidFinishedB,,,"Soon enough, your marines storm into Frusca's compound, located in the heart of the command center of the pirate haven of Umbra. The sudden and decisive assault throws most of the pirates into complete disarray, scattering them like leaves in the wind. Your men swiftly subdue the resistance, escorting the old pirate to a shuttle amidst the chaos.",,
 hegtales_Quest3RaidFinishedC,hegtales_Quest3RaidFinishedC,,"AdjustRepPerson hegtales_frusca VENGEFUL -50
 AddTextSmall ""Extracted Frusca from his compound."" highlight
-$global.wheredamoneycorby = false","Before long, Frusca finds himself on the brig of your ship, bound and visibly roughed up from the confrontation.
+$global.wheredamoneycorby = false","Before long, Frusca finds himself in the brig of your ship, bound and visibly roughed up from the confrontation.
 
 ","hegtales_Quest3_frusca_RaidFinished2:Go to the brig",
 hegtales_Quest3_frusca_RaidFinishedContinue2,DialogOptionSelected,"$option == hegtales_Quest3_frusca_RaidFinished2","BeginConversation hegtales_frusca
@@ -1163,7 +1157,7 @@ $global.raidedfrusca = true
 #$option = cutCommLinkNoText 0
 #FireBest DialogOptionSelected","""So, that's how you treat the people you need help from, huh?"" He spits out a broken tooth, the sound of it hitting the deck adding weight to his words.
 
-""The satellite you're looking for is in a warehouse, not far from the place you blew up. Activate it, and it’ll send a signal to Isaias. He’s a Diktat Lieutenant running a smuggling ring with some of the pirates around here. That’s how they usually summon him. Once the signal’s sent, he’ll come to you.'
+""The satellite you're looking for is in a warehouse, not far from the place you blew up. Activate it, and it’ll send a signal to Isaias. He’s a Diktat lieutenant running a smuggling ring with some of the pirates around here. That’s how they usually summon him. Once the signal’s sent, he’ll come to you.""
 
 Frusca struggles with his binds. ""Now, can you unbind me and take me back to Umbra? I’ve got more work to do.""","hegtales_frusca_RaidKill:""Space him.""
 hegtales_frusca_RaidLive:""Let him go.""",
@@ -1192,7 +1186,7 @@ $global.hegtales_Quest3_SET_THE_BEACON
 !$satset","SetOptionColor setumbrasatellite highlight",,"0:setumbrasatellite:Set up Frusca's Satellite",
 hegtales_Quest3_sat_set,DialogOptionSelected,"$option == setumbrasatellite","AddTextSmall ""Launching the satellite will undoubtedly draw the Sindrian Diktat attention, most likely turning them hostile and forcing you into conflict with their forces."" gray","Your crew works efficiently, preparing the satellite in your ship's hold. Engineers double-check its systems and readiness, ensuring it’s primed to be launched into orbit. 
 
-The comms officer approaches, their expression in their usual cheery self. ""Captain, the satellite is ready. Once deployed and activated, it will transmit the signal to summon the Diktat fleet.""","setumbrasatellite_yes:Activate the Sat.
+The comms officer approaches, their expression its usual cheery self. ""Captain, the satellite is ready. Once deployed and activated, it will transmit the signal to summon the Diktat fleet.""","setumbrasatellite_yes:Activate the Sat.
 setumbrasatellite_no:Not now.",
 hegtales_Quest3_sat_set_yes,DialogOptionSelected,"$option == setumbrasatellite_yes","$global.hegtales_Quest3_FIGHT_ISAIAS = true
 Call $global.hegtales_Quest3_ref updateStage
@@ -1203,7 +1197,7 @@ ActivateAbility $player.fleetId sensor_burst
 
 FireAll PopulateOptions","The satellite hums to life as it drifts into orbit, its signal pulsing out across the void. Your crew monitors the transmission.
  
-""Captain, it's him. The ship matches Isaias's profile. He's on his way."" One of the officers in the bridge speaks out.
+""Captain, it's him. The ship matches Isaias' profile. He's on his way."" One of the officers in the bridge speaks out.
 
 Now all that remains is to wait.",,
 hegtales_Quest3_sat_set_no,DialogOptionSelected,"$option == setumbrasatellite_no","FireAll PopulateOptions","Your crew exchanges glances, their expressions a mixture of disappointment and frustration as they halt the preparations. 
@@ -1216,7 +1210,7 @@ hegtales_Quest3Isaias,BeginFleetEncounter,"$hegtales_Quest3_isaias_spawn score:1
 !$encounteredIsaiasAlready","$encounteredIsaiasAlready = true
 FleetDesc
 HailPlayer",,,
-hegtales_Quest3IsaiasGreeting,OpenCommLink,"$entity.hegtales_Quest3_isaias_spawn score:1000","FireAll hegtales_Quest3IsaiasOptions","Your comms connect to that of the Sindrian before you.
+hegtales_Quest3IsaiasGreeting,OpenCommLink,"$entity.hegtales_Quest3_isaias_spawn score:1000","FireAll hegtales_Quest3IsaiasOptions","Your comms connect to that of the Sindrian ship before you.
 
 After some flickering from the screen, a surprisingly decorated bridge appears before you, with a bored looking $personRank sitting before you.
 
@@ -1253,14 +1247,14 @@ hegtales_Quest3IsaiasEndHostile:Tell him that you aren't giving him drugs",
 hegtales_Quest3IsaiasOption2_check,hegtalesQuest3IsaiasDrugscheck,"PlayerHasCargo drugs 200","SetEnabled hegtales_Quest3IsaiasDrugAccept true
 SetTooltip hegtales_Quest3IsaiasDrugAccept ""Give 200 Recreational Drugs to Isaias""",,,
 hegtales_Quest3IsaiasDrugAccept,DialogOptionSelected,"$option == hegtales_Quest3IsaiasDrugAccept","AddRemoveCommodity drugs -200 true
-AddCredits 30000","""There we go... Someone, go check that cargo!"" Isaias barks at one of his crew members.
+AddCredits 30000","""There we go... Someone, go check that cargo!"" Isaias barks at one of his crew.
 
-He turns his attention back to the comms, his gaze locking onto you with an air of impatience. ""You’re still here,"" he remarks, ""Your payment has been sent. What else do you need?""
+He turns his attention back to the comms, his gaze locking onto you with an air of impatience. ""You’re still here,"" he remarks,  ""your payment has been sent. What else do you need?""
 
 His expression betrays a hint of suspicion.","hegtales_Quest3IsaiasDrugNow:""Now that you know I mean business. Where is Defectum?""",
 hegtales_Quest3IsaiasDrugNow,DialogOptionSelected,"$option == hegtales_Quest3IsaiasDrugNow","SetEnabled hegtales_Quest3IsaiasDrugAccept2 false
 SetTooltip hegtales_Quest3IsaiasDrugAccept2 ""You do not have 200 units of Recreational drugs.""
-FireBest hegtalesQuest3IsaiasDrugscheck2","Isaias's expression shifts, a flicker of surprise crossing his face as he hears the name. 
+FireBest hegtalesQuest3IsaiasDrugscheck2","Isaias' expression shifts, a flicker of surprise crossing his face as he hears the name. 
 
 He leans back in his captain's chair, crossing one leg over the other in a display of calculated nonchalance. His eyes narrow as he studies you through the comms.
 
@@ -1272,9 +1266,9 @@ hegtales_Quest3IsaiasDrugNow2,DialogOptionSelected,"$option == hegtales_Quest3Is
 
 SetEnabled hegtales_Quest3IsaiasCrew false
 SetTooltip hegtales_Quest3IsaiasCrew ""You do not have 300 crew available.""
-FireBest hegtalesQuest3IsaiasCrewCheck","""Now we are talking! These are the negotiations i really like."" The $personRank says as he talks with the rest of his bridge crew.
+FireBest hegtalesQuest3IsaiasCrewCheck","""Now we are talking! These are the negotiations I really like,"" the $personRank says as he talks to the rest of his bridge crew.
 
-""Now, now, I could tell you where is that annoying old man... but the Diktat is lacking several workers in Cruor, good skilled workers that is.""
+""Now, now, I could tell you where that annoying old man is... but the Diktat is lacking several workers on Cruor, good and skilled workers that is.""
 
 ""Do you have any spare crew?""","hegtales_Quest3IsaiasCrew:Agree to send him the 300 crew
 hegtales_Quest3IsaiasOption1_2:""I can't do that. What else do you want?""
@@ -1291,13 +1285,13 @@ MakeOtherFleetAvoidContact true
 SetTextHighlights Nortia
 
 $global.hegtales_Quest3_DEAL_WITH_DEFECTUM = true
-Call $global.hegtales_Quest3_ref updateStage","""You are a true negotiatior! Captain $playerLastName!"" Isaias boasts as he nods along as he watches the crew transfer into his fleet.
+Call $global.hegtales_Quest3_ref updateStage","""You are a true negotiatior, captain $playerLastName!"" Isaias boasts as he approvingly watches the crew being transferred to his fleet.
 
-""You wanted to know where Defectum is? Well, he is around Nortia, doing some excercises with his huge fleet.""
+""You wanted to know where Defectum is? Well, he is around Nortia, doing some exercises with his huge fleet.""
 
-Your comm's officer gives you thumbs up as he recieves the coordinates.
+Your comm's officer gives you a thumbs up as he receives the coordinates.
 
-""Good luck, you will need it.""","cutCommLink:Cut the comm link",
+""Good luck. You'll need it.""","cutCommLink:Cut the comm link",
 ,,,,,,
 hegtales_Quest3IsaiasOptionDefectum2,DialogOptionSelected,"$option == hegtales_Quest3IsaiasDefectum2","MakeOtherFleetHostile true
 MakeOtherFleetAggressive true
@@ -1333,7 +1327,7 @@ hegtales_Quest3DefectumGreeting,OpenCommLink,"$entity.hegtales_Quest3_defectum_s
 
 The screen flickers, and soon enough, Defectum appears, seated in his command chair. His orange sunglasses glint under the sterile bridge lighting as he lowers them just enough to meet your gaze through the comms feed.
 
-""Comms on protocol Saturn-Delta established, if you have information leading to ARCists or ANTIs, submit it to your local information officer for a possible reward.""
+""Comms established on protocol Saturn-Delta, if you have information leading to ARCists or ANTIs, submit it to your local information officer for a possible reward.""
 
 He leans back slightly, his expression a mix of mild annoyance and impatience. ""Is there a problem? No? Then move along, citizen.""",,
 hegtales_Quest3DefectumHubReturn,DialogOptionSelected,"$option == hegtales_Quest3_DefectumHubReturn","FireAll hegtales_Quest3DefectumOptions",,,
@@ -1350,7 +1344,7 @@ The screen flickers, and soon enough, Defectum appears, seated in his command ch
 ""You again?""",,
 hegtales_Quest3DefectumOption1_2,DialogOptionSelected,"$option == hegtales_Quest3DefectumOption1_2
 !$areyoudefectum","$areyoudefectum = true
-MakeOtherFleetPreventDisengage false","""Do not waste our time citizen.""
+MakeOtherFleetPreventDisengage false","""Do not waste our time, citizen.""
 
 With that, the communications are cut.","cutCommLink:Cut the comm link",
 hegtales_Quest3DefectumOption1_2angery,DialogOptionSelected,"$option == hegtales_Quest3DefectumOption1_2","MakeOtherFleetHostile true
@@ -1362,7 +1356,7 @@ With that, the comms cut out.","cutCommLink:Cut the comm link",
 hegtales_Quest3DefectumOption1_2annoyed,DialogOptionSelected,"$option == hegtales_Quest3DefectumOptionAnnoyed","MakeOtherFleetHostile true
 MakeOtherFleetAggressive true
 $entity.ignorePlayerCommRequests = true
-MakeOtherFleetPreventDisengage true","""What...?"" He even seems surprised by your words, shaking his own surprise before he speaks up. ""Submit to boarding action or you will be fired upon."" 
+MakeOtherFleetPreventDisengage true","""What...?"" He seems surprised by your words, shaking his head in disbelief before he speaks up. ""Submit to boarding action or you will be fired upon."" 
 
 With that, the comms cut out.","cutCommLink:Cut the comm link",
 hegtales_Quest3DefectumOption2_2,DialogOptionSelected,"$option == hegtales_Quest3DefectumOption2_2","Call $global.hegtales_Quest3_ref playMusicDefectum","Defectum's eyes widen behind his sunglasses for a moment.
@@ -1378,34 +1372,34 @@ hegtales_Quest3Question2:""Why you didn't return the HSS Retaliation?""
 hegtales_Quest3Question3:""Are you sure that I am not going to kill you?""
 hegtales_Quest3Question4:""Can't we resolve this peacefully?""
 hegtales_Quest3QuestionEnd:""It's time.""",
-hegtales_Quest3Question1,DialogOptionSelected,"$option == hegtales_Quest3Question1",,"""Under Andrada, the Hegemony was at its peak,"" Defectum begins, ""We were so close to consolidating the sector, to bringing true order to this fractured corner of humanity. And yet, the Hegemony Council, those self-serving bureaucrats and nobles, blamed him for what happened to Opis. They wanted to kill our hero, the man who destroyed Warlord Loke.""
+hegtales_Quest3Question1,DialogOptionSelected,"$option == hegtales_Quest3Question1",,"""Under Andrada, the Hegemony was at its peak,"" Defectum begins. ""We were so close to consolidating the sector, to bringing true order to this fractured corner of humanity. And yet, the Hegemony Council, those self-serving bureaucrats and nobles, blamed him for what happened to Opis. They wanted to kill our hero, the man who destroyed Warlord Loke.""
 
 ""When Christian Ossum told us to fire upon our own men, to ram our way into Andrada’s ship..."" He pauses, his gaze distant as if replaying the moment in his mind. ""I had to act. And so we did it."" He exhales softly.
 
-""Nowadays, things are more complicated, ""People speak. Even in the Lion’s Guard, whispers of dissent and doubt grow louder. But until the day Phillip Andrada breathes his last breath, I will follow his dream. His vision for a unified sector, a sector that bows to no one.""
+""Nowadays, things are more complicated. People talk. Even in the Lion’s Guard, whispers of dissent and doubt grow louder. But until the day Philip Andrada breathes his last, I will follow his dream. His vision for a unified sector, a sector that bows to no one.""
 
 Defectum’s eyes meet yours. ""You may call it treason. I call it loyalty to a greater cause.""",,
-hegtales_Quest3Question2,DialogOptionSelected,"$option == hegtales_Quest3Question2",,"""Christian Ossum represented the rot that has seeped into the Hegemony. Those damn Luddics with their sanctimonious ideals and backward thoughts. The Hegemony was supposed to be the continuation of the Domain—the pinnacle of humanity, the best of the best. But Eventide and its so-called noble houses? They’ve dragged the Hegemony into decay. They’re rotten to the core, clinging to outdated traditions and petty squabbles.""
+hegtales_Quest3Question2,DialogOptionSelected,"$option == hegtales_Quest3Question2",,"""Christian Ossum represented the rot that has seeped into the Hegemony. Those damn Luddics with their sanctimonious ideals and backward thoughts. The Hegemony was supposed to be the continuation of the Domain — the pinnacle of humanity, the best of the best. But Eventide and its so-called noble houses? They’ve dragged the Hegemony into decay. They’re rotten to the core, clinging to outdated traditions and petty squabbles.""
 
-""Under the Lion of Sindria, Philip Andrada, we’ve found purpose. He is the only one who saw through the Hegemony’s hypocrisy. In Sindria, the Luddics have no influence. There, we forge our own path, unshackled by their nonsense.""
+""Under the Lion of Sindria, Philip Andrada, we’ve found purpose. He is the only one who saw through the Hegemony’s hypocrisy. On Sindria, the Luddics have no influence. There, we forge our own path, unshackled by their nonsense.""
 
 ""I know exactly where it is. It’s a grave now. Those men who refused to see the truth, who clung to their hollow ideals, they lie there as a testament to their failure.""",,
-hegtales_Quest3Question3,DialogOptionSelected,"$option == hegtales_Quest3Question3",,"Defectum smirks as he adjusts his sunglasses. ""For more than twenty years, I have lived with an Ossum family target painted squarely on my back. And yet, here I am—still standing, still leading my men. You’re not the first upstart captain to come after me, not the first to talk about settling some so-called debt.""
+hegtales_Quest3Question3,DialogOptionSelected,"$option == hegtales_Quest3Question3",,"Defectum smirks as he adjusts his sunglasses. ""For more than twenty years, I have lived with an Ossum family target painted squarely on my back. And yet, here I am — still standing, still leading my men. You’re not the first upstart captain to come after me, not the first to talk about settling some so-called debt.""
 
-""Let me give you some advice,"" he continues ""Make yourself useful and walk away. Some things are best left buried, forgotten in the ashes of the past. And let’s be honest —your so-called family? They’ll never truly see you as one of their own.""
+""Let me give you some advice,"" he continues, ""make yourself useful and walk away. Some things are best left buried, forgotten in the ashes of the past. And let’s be honest — your so-called family? They’ll never truly see you as one of their own.""
 ",,
 hegtales_Quest3Question4,DialogOptionSelected,"$option == hegtales_Quest3Question4",,"His face hardens. ""No,"" he says flatly, his tone leaving no room for negotiation. 
 
 ""I will never give you the access codes to the minefield guarding the HSS Retaliation. I will never reveal its location. And with that minefield in place, you’ll never reach it without blowing it, and yourself, to smithereens.""
 
-""There’s only one way this ends peacefully: you turn around, leave, and stop playing lapdog to those Hegemonic blue-blooded morons. Walk away, and maybe, just maybe—you’ll live to regret it.""
+""There’s only one way this ends peacefully: you turn around, leave, and stop playing lapdog to those Hegemonic blue-blooded morons. Walk away, and maybe, just maybe — you’ll live to regret it.""
 
 Defectum reclines back into his chair, his gaze piercing and unyielding. ""Your move, Captain.""",,
 hegtales_Quest3QuestionEnd,DialogOptionSelected,"$option == hegtales_Quest3QuestionEnd","MakeOtherFleetHostile warnAttack true
 MakeOtherFleetAggressive true
 Call $global.hegtales_Quest3_ref playMusicDefectum
 $entity.ignorePlayerCommRequests = true
-MakeOtherFleetPreventDisengage true","""I led my fleet here under the pretense of a show of exercises for the people of Nortia. Now, I’ll give them a real show, a demonstration of the Sindrian Diktat’s might,by turning you and your fleet into dust.""
+MakeOtherFleetPreventDisengage true","""I led my fleet here under the pretense of a show of exercises for the people of Nortia. Now I’ll give them a real show, a demonstration of the Sindrian Diktat’s might, by turning you and your fleet into dust.""
 
 He leans closer to the comms. 
 ""Burn bright, Captain. And when you meet Christian in the void, be sure to give him my regards.""
@@ -1421,9 +1415,9 @@ $global.hegtales_know_retaliation = true
 $global.hegtales_Quest3_FIND_RETALIATION = true
 Call $global.hegtales_Quest3_ref updateStage","Your crew gathers the remains of the destroyed ships.
 
-In the bridge of the destroyed Executor, you find a blackbox. Clearly left by Defectum on purpose.
+On the bridge of the destroyed Executor, you find a blackbox. Clearly left by Defectum on purpose.
 
-Your salvage crew manages to recover some codes, amongst them that seem to be for some explosives and a minefield in the inner Duzahk system.",,
+Your salvage crew manages to recover some codes, amongst them some that seem to be for some explosives and a minefield in the inner Duzahk system.",,
 "#END Defectum's Talk",,,,,,
 ,,,,,,
 # End Talk,,,,,,
@@ -1436,7 +1430,7 @@ AdjustRepPerson hegtales_borealis FRIENDLY 10","His eyes widen in shock while he
 
 ""Do you have the HSS Retaliation?"" He wonders like a child.
 
-""That's... incredible. Impressive... Amazing..."" he murmurs, ""You have no idea what this means. For the me... for House Ossum... for all of us. This means you dealt with Defectum?""","hegtales_Quest3_ReturnRet2:""Yes.""",
+""That's... incredible. Impressive... amazing..."" he murmurs. ""You have no idea what this means. For me... for House Ossum... for all of us. Does this mean that you dealt with Defectum?""","hegtales_Quest3_ReturnRet2:""Yes.""",
 hegtales_Quest3_Return,PickGreeting,"$id == hegtales_borealis
 $hegtales_Quest3_RETURN_EVENTIDE score:600
 Call $global.hegtales_Quest3_ref updateData
@@ -1448,18 +1442,18 @@ In response, you lift the brass pin recovered from the wreck of the HSS Retaliat
 Borealis seems shocked. ""Tell me everything. How did you manage this?""","hegtales_Quest3_ReturnRet3:Tell him what happened",
 hegtales_Quest3_ReturnRet3,DialogOptionSelected,"$option == hegtales_Quest3_ReturnRet3","ShowImageVisual ossum_castle","Not long after presenting proof of your success, Borealis insists, almost demands, that you bring his father’s belongings and remains to Ossum Castle aboard a shuttle. 
 
-As your shuttle touches down on the castle’s expansive landing pad, you’re greeted by an imposing scene. Guards stand at attention in formal Hegemony attire, their polished armor reflecting the dim light of the overcast sky. Officers in dress uniforms form a quiet, respectful line. All of House Ossum is present. Evem Hannah stands with a composed yet somber air, her hands clasped tightly before her. Beside Australis is a woman wearing glasses, her presence unassuming but her closeness to him evident. Most likely his wife.","hegtales_Quest3_ReturnRet4:Continue",
-hegtales_Quest3_ReturnRet4,DialogOptionSelected,"$option == hegtales_Quest3_ReturnRet4","ShowImageVisual eventide","As the shuttle’s ramp lowers with a metallic hiss, you and an escort of Hegemony Marines carefully carry the casket down to the platform. The casket is draped in a ceremonial cloth bearing the Ossum family crest. Borealis steps forward, his normally stoic demeanor faltering as he takes hold of the front of the casket. For a moment, he becomes just a grieving son rather than a high-ranking Hegemony official. Without a word, he helps bear the weight, leading the procession past his family and through the towering gates of the castle.","hegtales_Quest3_ReturnRet5:Continue",
+As your shuttle touches down on the castle’s expansive landing pad, you’re greeted by an imposing scene. Guards stand at attention in formal Hegemony attire, their polished armor reflecting the dim light of the overcast sky. Officers in dress uniforms form a quiet, respectful line. All of House Ossum is present. Even Hannah stands with a composed yet somber air, her hands clasped tightly before her. Beside Australis is a woman wearing glasses, her presence unassuming but her closeness to him evident. Most likely his wife.","hegtales_Quest3_ReturnRet4:Continue",
+hegtales_Quest3_ReturnRet4,DialogOptionSelected,"$option == hegtales_Quest3_ReturnRet4","ShowImageVisual eventide","As the shuttle’s ramp lowers with a metallic hiss, you and an escort of Hegemony marines carefully carry the casket down to the platform. The casket is draped in a ceremonial cloth bearing the Ossum family crest. Borealis steps forward, his usually stoic demeanor faltering as he takes hold of the front of the casket. For a moment, he becomes just a grieving son, rather than a high-ranking Hegemony official. Without a word, he helps bear the weight, leading the procession past his family and through the towering gates of the castle.","hegtales_Quest3_ReturnRet5:Continue",
 hegtales_Quest3_ReturnRet5,DialogOptionSelected,"$option == hegtales_Quest3_ReturnRet5","BeginConversation hegtales_australis
 AdjustRepPerson hegtales_australis FRIENDLY 10","You pause at the entrance, watching as Borealis and his family carry the casket into the castle’s shadowed interior. Before you can linger too long, Australis approaches you, placing a hand on your shoulder, his grip firm but not unkind.
 
-""You’ve done well, Captain,"" he says, ""You can leave if you wish. This is a family matter now.""
+""You’ve done well, Captain,"" he says. ""You can leave if you wish. This is a family matter now.""
 
-He pauses, glancing toward the castle’s entrance where the procession has disappeared., ""But know this, you’ve earned the respect of House Ossum. That’s no small thing.""","hegtales_Quest3_ReturnRet6:""I want to stay.""
+He pauses, glancing toward the castle’s entrance where the procession has disappeared. ""But know this, you’ve earned the respect of House Ossum. That’s no small thing.""","hegtales_Quest3_ReturnRet6:""I want to stay.""
 hegtales_Quest3_ReturnEnd:Say your goodbyes",
 hegtales_Quest3_ReturnRet6,DialogOptionSelected,"$option == hegtales_Quest3_ReturnRet6","ShowImageVisual house_ossum","Your words catch Australis off guard. His brow raises slightly, but he doesn’t question your decision. With a small nod, he gestures for you to follow, leading you inside the grand halls of Ossum Castle. There is a huge contrast, the laughter and playful chatter of children echo through the corridors. They dart past, their carefree energy a stark juxtaposition to the heavy air surrounding the ceremony.
 
-The procession moves deeper into the castle, its path deliberate and unhurried. Finally, it comes to a halt in a vast hall. The space is grand yet somber, its vaulted ceilings adorned with banners bearing the Ossum family crest and Hegemony flags, you even notice the flag of the Dominion. At the center of the hall stands a pedestal, intricately carved from dark stone, clearly prepared for this moment. The casket is carefully placed upon it.","hegtales_Quest3_ReturnRet7:Continue",
+The procession moves deeper into the castle, its path deliberate and unhurried. Finally, it comes to a halt in a vast hall. The space is grand yet somber, its vaulted ceilings adorned with banners bearing the Ossum family crest and Hegemony flags, and you even notice the flag of the Domain. At the center of the hall stands a pedestal, intricately carved from dark stone, clearly prepared for this moment. The casket is carefully placed upon it.","hegtales_Quest3_ReturnRet7:Continue",
 hegtales_Quest3_ReturnRet7,DialogOptionSelected,"$option == hegtales_Quest3_ReturnRet7","BeginConversation hegtales_borealis
 AdjustRepPerson hegtales_borealis FRIENDLY 5","As the family and their attendants step back, their attention shifts to the casket, each lost in their own thoughts. You remain near the entrance, observing the scene. Borealis notices you haven’t left. His green eyes lock onto yours, and for a moment, he seems unsure of what to say. Then, with purposeful strides, he approaches you.
 
@@ -1467,26 +1461,26 @@ Without a word, he extends his hand, and you meet it with a firm handshake.
 
 ""Thank you, the Hegemony... No, I thank you, $playerName.""
 
-For a man of his stature and rank.. It’s not just gratitude—it’s respect, the kind earned through action and trust.","hegtales_Quest3_ReturnRet8:Continue",
+For a man of his stature and rank.. It’s not just gratitude — it’s respect, the kind earned through action and trust.","hegtales_Quest3_ReturnRet8:Continue",
 hegtales_Quest3_ReturnRet8,DialogOptionSelected,"$option == hegtales_Quest3_ReturnRet8","ShowImageVisual eventide
 AdjustRep hegemony FRIENDLY 5","The remainder of the day unfolds in a mixture of solemnity and celebration. The ceremony honoring Admiral Christian Ossum is a grand affair, attended by members of numerous noble houses. Among them is the increasingly influential House Rao. The great hall is filled with quiet murmurs of condolences and speeches extolling the Admiral's virtues, his dedication to the Hegemony and his loyalty.
 
 Throughout the event, no one dares to mention how the information leading to his remains was obtained. It’s an unspoken agreement, a shared understanding that some truths are best left unspoken.
 
-A banquet follows the ceremony, transforming the somber atmosphere into one of camaraderie and celebration. The clinking of glasses, the low hum of music, and the laughter of nobles fill the air. Stories are shared, toasts are made, and bonds between houses are reaffirmed. The event becomes as much about the living as it is about honoring the dead.","hegtales_Quest3_ReturnRet9:Continue",
+A banquet follows the ceremony, transforming the somber atmosphere into one of camaraderie and celebration. The clinking of glasses, the low hum of music and the laughter of nobles fill the air. Stories are shared, toasts are made and bonds between houses reaffirmed. The event becomes as much about the living as it is about honoring the dead.","hegtales_Quest3_ReturnRet9:Continue",
 hegtales_Quest3_ReturnRet9,DialogOptionSelected,"$option == hegtales_Quest3_ReturnRet9","ShowImageVisual ossum_castle","You navigate the crowd with quiet grace, exchanging nods and pleasantries but remaining an outsider to the intricate dance of noble politics. Eventually, the festivities wind down, and you find yourself stepping away from the opulence of Ossum Castle. You finally return to your shuttle.
 
-As the shuttle ascends, you take a moment to reflect. The day has been one of closure for the Ossum family and a reminder of the complex web of duty, honor, and sacrifice that binds the Hegemony together. Yet, for you, it’s another day.","hegtales_Quest3_ReturnEnd:Continue",
+As the shuttle ascends, you take a moment to reflect. The day has been one of closure for the Ossum family and a reminder of the complex web of duty, honor, and sacrifice that binds the Hegemony together. Yet, for you, it’s just another day.","hegtales_Quest3_ReturnEnd:Continue",
 hegtales_Quest3_ReturnEnd,DialogOptionSelected,"$option == hegtales_Quest3_ReturnEnd","BeginConversation hegtales_borealis","A few hours later, your comms officer informs you of an incoming transmission from Borealis. Though he appears immersed in his work, the presence of a half-empty bottle of Eventide brandy nearby suggests he’s taken a moment to unwind after the day’s events.
 
-""Captain $playerLastName."" his tone measured but carrying a hint of warmth. ""House Ossum is sending you the reward for your mission, as previously agreed. The transfer should be completed shortly.""","hegtales_Quest3_ReturnEnd2:Continue",
+""Captain $playerLastName."" His tone is measured but carries a hint of warmth. ""House Ossum is sending you the reward for your mission, as previously agreed. The transfer should be completed shortly.""","hegtales_Quest3_ReturnEnd2:Continue",
 hegtales_Quest3_ReturnEnd2,DialogOptionSelected,"$option == hegtales_Quest3_ReturnEnd2","AddStoryPoints 1
 
 $global.hegtales_Quest3_missionCompleted = true
 Call $global.hegtales_Quest3_ref updateStage
 
 AddTextSmall ""--With this quest finished, you are the new member of House Ossum and you have finished 'Heggie Tales' for now! Borealis has a lot of dialogue and some interesting things!--"" grey
-SetTextHighlights House Ossum","He pauses briefly, his green eyes meeting yours through the screen. Then, with a weighty tone, he continues, ""And there is another reward. As the patriarch of House Ossum, I hereby declare you a member of House Ossum from this day forward. Your deeds have earned you this honor. If you need anything, resources, protection, or counsel, know that House Ossum will stand behind you.""
+SetTextHighlights House Ossum","He pauses briefly, his green eyes meeting yours through the screen. Then, with a weighty tone, he continues. ""And there is another reward. As the patriarch of House Ossum, I hereby declare you a member of House Ossum from this day forward. Your deeds have earned you this honor. If you need anything, resources, protection, or counsel, know that House Ossum will stand behind you.""
 
 A faint smile crosses his lips as he raises a glass. ""Have a nice day, $playerFirstName of House Ossum.""","cutCommLink: Cut the comm link",
 "#END End Talk",,,,,,
@@ -1522,7 +1516,7 @@ hss_retaliation_salvage,DialogOptionSelected,"$option == salExplore
 $global.hegtales_know_retaliation
 $hegtales_ret_eventRef != null",,"The codes from Defectum work flawlessly, and the once-imposing minefield deactivates in real time, its deadly presence reduced to inert silence. 
 
-Your Operations Officer turns to you and gives a confident thumbs-up.
+Your Operations officer turns to you and gives a confident thumbs-up.
 
 Without hesitation, you give the order to dispatch the salvage crews, entering the hulk of the ship.","hss_retaliation_continue:Continue",
 hss_retaliation_continueLoot,DialogOptionSelected,"$option == hss_retaliation_continue","hss_retaliation
@@ -1533,9 +1527,9 @@ Call $global.hegtales_Quest3_ref updateStage
 AddTextSmall ""You should totally recover the HSS Retaliation, House Ossum would love to see it again.."" gray
 SetTextHighlights HSS Retaliation","The salvage crew reports back with a somber tone. ""Captain, we've reached the bridge. It's… not a pleasant sight. He's still in his command chair.""
 
-You give the order to recover his remains with the utmost care, and for them to bring them to the fleet.
+You give the order to recover his remains with the utmost care and bring them to the fleet.
 
-Alongside the Admiral's remains, they collect personal effects—a rusted badge of rank, a brass skull family pin, and a tripad clutched in his skeletal hand.
+Alongside the Admiral's remains, they collect personal effects — a rusted badge of rank, a brass skull family pin, and a TriPad clutched in his skeletal hand.
 
 ","0:salExplore:Continue",
 HssretaliationCheck2Check,hssretaliationCheck,"$global.hegtales_know_retaliation","SetEnabled salExplore true
@@ -1547,7 +1541,7 @@ hss_retaliation_openPray1,DialogOptionSelected,"$option == hss_retaliation_openp
 $global.hegtales_pray_retribution = true
 FireAll PopulateSalvageOptions1","You give the fallen men and women of this spaceship a moment of silence.
 
-The mood in your bridge is very grim and quiet.",,
+The mood on your bridge is very grim and quiet.",,
 "#END Retaliation Interactions",,,,,,
 ,,,,,,
 # Character Dialogues!,,,,,,
@@ -1593,7 +1587,7 @@ hegtales_Quest2_Greenhearttalk_pathpeacecheck,hegtales_salt_peacecheck,"RepLTE l
 hegtales_Quest2_Greenhearttalk_pathpeaceaccept,DialogOptionSelected,"$option == hegtales_Greenhearth_peaceaccept","AddRemoveCommodity credits -500000 true
 AdjustRep $personFaction.id INHOSPITABLE 50
 ShowSecondPerson hegtales_leo
-$global.saltpeace = true","The other pather, the one from Beholder Station appears on screen next to Salt simply looking at his 'leader'.
+$global.saltpeace = true","The other pather, the one from Beholder Station appears on screen next to Salt, simply looking at his 'leader'.
 
 ""Good. I will send Leo to spread the word."" 
 
@@ -1609,9 +1603,9 @@ His answer is simple and direct.
 ",,
 hegtales_Quest2_Greenhearttalk_ask_true,DialogOptionSelected,"$option == hegtales_Greenhearth_ask score:500
 $rel > 0.50 
-!$askedsaltusstupid",,"""I will give you the benefit of the doubt,"" he speaks
+!$askedsaltusstupid",,"""I will give you the benefit of the doubt,"" he says.
 
-""Ask me a few questions. But if you ask a stupid one…"" His eyes narrow,
+""Ask me a few questions. But if you ask a stupid one…,"" his eyes narrow,
 
 ""I am never going to let you ask me a question ever again.""
 ","hegtales_Greenhearth_ask_knight:""Why did you leave the Knights of Ludd?""
@@ -1625,14 +1619,14 @@ $askedsaltusstupid","SetEnabled hegtales_Greenhearth_ask false
 AddTextSmall ""You shouldn't have asked a stupid question."" gray","""No.""
 
 His answer is simple and direct.",,
-hegtales_Quest2_Greenhearttalk_ask_knight,DialogOptionSelected,"$option == hegtales_Greenhearth_ask_knight",,"Greenheart Salt clears his throat,
-""I have always been a follower of Ludd. Since my childhood, I’ve fought for the Greater Ludd. I rose through the ranks of the Knights to become a captain, leading my own men into battle. But the doctrine of the Church… It's too restrictive. Why do they seek to control us? Why do they dictate which of Ludd’s words are ‘correct,’ as if the rest are meaningless? Why must they decide where we can live, how we must live, and when we can live freely?""
+hegtales_Quest2_Greenhearttalk_ask_knight,DialogOptionSelected,"$option == hegtales_Greenhearth_ask_knight",,"Greenheart Salt clears his throat. 
+""I have always been a follower of Ludd. Since my childhood, I’ve fought for the Greater Ludd. I rose through the ranks of the Knights to become a captain, leading my own men into battle. But the doctrine of the Church… It's too restrictive. Why do they seek to control us? Why do they dictate which of Ludd’s words are ‘correct’, as if the rest are meaningless? Why must they decide where we can live, how we must live, and when we can live freely?""
 
-Salt’s expression hardens, ""Each day, more Knights desert their ranks to join the Path. And those who follow me know we are not bloodthirsty maniacs. We are not terrorists, as some would label us. We simply seek freedom—to interpret Ludd’s teachings without the chains of the Church’s dogma.""
+Salt’s expression hardens, ""Each day, more Knights desert their ranks to join the Path. And those who follow me know we are not bloodthirsty maniacs. We are not terrorists, as some would label us. We simply seek freedom — to interpret Ludd’s teachings without the chains of the Church’s dogma.""
 
-He pauses, his voice softening slightly. ""That is why I remain here, in Hesperus. To be open, to guide, and to help any brother or sister who wishes to walk the Path freely, without fear or coercion.""",,
+He pauses, his voice softening slightly. ""That is why I remain here, on Hesperus. To be open, to guide, and to help any brother or sister who wishes to walk the Path freely, without fear or coercion.""",,
 hegtales_Quest2_Greenhearttalk_ask_pather,DialogOptionSelected,"$option == hegtales_Greenhearth_ask_pather
-",,"""I am a leader of men, if that’s what you’re asking,"" Saltus replies, ""The Luddic Path, what most outsiders call the countless, perhaps infinite, groupings of divergent Luddic beliefs, is not centralized. Not even the Church operates that way. Why would we?""
+",,"""I am a leader of men, if that’s what you’re asking,"" Saltus replies, ""the Luddic Path, what most outsiders call the countless, perhaps infinite, groupings of divergent Luddic beliefs, is not centralized. Not even the Church operates that way. Why would we?""
 
 For a brief moment, the faintest hint of a smile touches his lips.
 
@@ -1641,9 +1635,9 @@ hegtales_Quest2_Greenhearttalk_ask_saltus,DialogOptionSelected,"$option == hegta
 $askedsaltusstupid = true","""Because she finds it funny.""",,
 hegtales_Quest2_Greenhearttalk_ask_cotton,DialogOptionSelected,"$option == hegtales_Greenhearth_ask_cotton",,"""He walks his own path,"" Salt speaks ominously, before he realizes he should say something more. 
 
- ""I’ve met him a few times. He claims angels sang to him. I have never heard an angel, so I can’t say if what he heard was true.""
+ ""I’ve met him a few times. He claims angels sang to him. I have never heard an angel, so I can’t say if what he heard was truly one.""
  
-He pauses, ""Brother Cotton might be the most wanted terrorist in the sector, but he tries, every single day, to do something for Ludd. His methods might be extreme, even misguided to some, but his conviction? That’s undeniable.""
+He pauses. ""Brother Cotton might be the most wanted terrorist in the sector, but he tries, every single day, to do something for Ludd. His methods might be extreme, even misguided to some, but his conviction? That’s undeniable.""
 
 ""And conviction like that… it’s a Path worth respecting, even if not everyone agrees with how he walks it.""",,
 hegtales_Quest2_Greenhearttalk_ask_cancel,DialogOptionSelected,"$option == hegtales_Greenhearth_ask_cancel","FireAll salthuboptions","""...""",,
@@ -1679,7 +1673,7 @@ hegtales_boreali_tax,PopulateOptions,"$id == hegtales_borealis score:1000
 $global.hegtales_Quest3_missionCompleted score:500
 !$taxedborealis",,,"hegtales_boreali_tax2:""I'd like to file my quarterly taxes...""",
 hegtales_boreali_tax2,DialogOptionSelected,"$option == hegtales_boreali_tax2","SetEnabled hegtales_boreali_tax2 false
-$taxedborealis = true","He fixes you with a cold, piercing stare, his expression a mask of barely contained ire. For a moment, it feels as though he might lash out, but then, with a sharp exhale he releases the tension.
+$taxedborealis = true","He affixes you with a cold, piercing stare, his expression a mask of barely contained ire. For a moment, it feels as though he might lash out, but then, exhaling sharply, he releases the tension.
 
 ""You have a way of testing my patience.""
 
@@ -1690,18 +1684,18 @@ hegtales_borealistalkQuestionsLuddicStart,hegtales_borealistalkQuestions,,,,"heg
 hegtales_borealistalkQuestionsDaudStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsHegemon:""What can you tell me about the High Hegemon?""",
 hegtales_borealistalkQuestionsCouncilStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsCouncil:""How did you become part of the Council?",
 hegtales_borealistalkQuestionsEventide,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsEventide",,"""The Jewel of the Hegemony."" 
-""Home. There’s a reason the Diktat of the Hegemony was signed here. Why High Hegemon Kail Molina chose to accept the old Houses. It's more than a planet, for 150 cycles, it has been the place where heroes are born.""
+""Home. There’s a reason the Declaration of Hegemony was signed here. Why High Hegemon Kali Molina chose to accept the old Houses. It's more than a planet. For 150 cycles, it has been the place where heroes are born.""
 
-""Australis has likely told you about our ancestors, about the bloodlines and their storied past. But understand this: we are the true Perseans. We’ve been here longer than anyone, even before the Luddics arrived, heeding Ludd’s call to this sector. Our roots run deeper than any doctrine or rebellion, we worked the machines that made this planet what it is today, blood of my kin remains in the stellar mirrors. House Ossum will always exist, even if Eventide does not.""
+""Australis has likely told you about our ancestors, about the bloodlines and their storied past. But understand this: we are the true Perseans. We’ve been here longer than anyone, even before the Luddics arrived, heeding Ludd’s call to this sector. Our roots run deeper than any doctrine or rebellion, we worked the machines that made this planet what it is today,  and the blood of my kin remains in the stellar mirrors. House Ossum will always exist, even if Eventide does not.""
 
 ""We are the Domain’s legacy. The last bastion of its ideals, its strength. And we will prevail.""",,
 hegtales_borealistalkQuestionsBorealis,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsBorealis",,"He seems momentarily taken aback by your question. It wasn’t every day that someone outside of a journalist or official inquiry asked him about his personal life.
 
 ""Borealis of House Ossum,"" he begins,""Admiral of the Hegemony Navy. Member of the Executive Council. Brother to Australis, husband to Hannah…"" He pauses briefly. ""You saved her. For that, you have my thanks. That whole ordeal was... complicated.""
 
-He shifts his stance slightly, his expression softening before continuing. ""As for my role, I’m one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You’ve likely seen for yourself how thinly we’re stretched—dangerously so at times. Yet, we endure. The Domain endures.""
+He shifts his stance slightly, his expression softening before continuing. ""As for my role, I’m one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You’ve likely seen for yourself how thinly we’re stretched — dangerously so at times. Yet, we endure. The Domain endures.""
 
-""Any more words about myself would be vain.""",,
+""Any more words about myself would be in vain.""",,
 hegtales_borealistalkQuestionsBorealisOssum,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsBorealis
 $global.hegtales_house_ossum_start score:1500",,"He seems momentarily taken aback by your question. It wasn’t every day that someone outside of a journalist or official inquiry asked him about his personal life.
 
@@ -1709,23 +1703,23 @@ $global.hegtales_house_ossum_start score:1500",,"He seems momentarily taken abac
 
 He shifts his stance slightly, his expression softening before continuing. ""As for my role, I’m one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You’ve likely seen for yourself how thinly we’re stretched—dangerously so at times. Yet, we endure. The Domain endures.""
 
-""Any more words about myself would be vain.""",,
-hegtales_borealistalkQuestionsDaud,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsHegemon",,"""He is one of those rare men who define their generation,"" Borealis speaks, his tone measured but respectful. ""I cannot imagine another man in his position. Humble, pragmatic... and simply efficient.""
+""Any more words about myself would be in vain.""",,
+hegtales_borealistalkQuestionsDaud,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsHegemon",,"""He is one of those rare men who define their generation,"" Borealis says, his tone measured but respectful. ""I cannot imagine another man in his position. Humble, pragmatic... and simply efficient.""
 
-""I’ve served with him since my academy days. I fought alongside him in orbit over Chicomoztoc during the final days of the Second AI War... And he ordered me to rescue the disabled ship of my future wife... He is the godfather of my second son. He is precisely what the Hegemony needs, a strong, decisive, and unwavering High Hegemon. House Ossum supports him wholeheartedly.""
+""I’ve served with him since my academy days. I fought alongside him in orbit over Chicomoztoc during the final days of the Second AI War... And he ordered me to rescue the disabled ship of my future wife... He is the godfather of my second son. He is precisely what the Hegemony needs, a strong, decisive and unwavering High Hegemon. House Ossum supports him wholeheartedly.""
 
-He pauses for a moment. ""But even a man like Daud needs a counterbalance. That’s why the Council exists. We’re here to maintain equilibrium, to ensure that no single vision dominates the Hegemony entirely. As much as I respect him, we cannot simply do everything he wants or wishes. Balance is the key to enduring strength.""",,
-hegtales_borealistalkQuestionsLuddic,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsLuddic",,"The Admiral rests his hands on the desk, a thoughtful expression crossing his face. ""I suppose I could be considered one, when I was young, my father took my brother and me to all the shrines. Back then, I could recite a large part of the Book of Ludd from memory..."" His voice trails off momentarily, as if lost in the echoes of the past.
+He pauses for a moment. ""But even a man like Daud needs a counterweight. That’s why the Council exists. We’re here to maintain equilibrium, to ensure that no single vision dominates the Hegemony entirely. As much as I respect him, we cannot simply do everything he wants or wishes. Balance is the key to enduring strength.""",,
+hegtales_borealistalkQuestionsLuddic,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsLuddic",,"The Admiral rests his hands on the desk, a thoughtful expression crossing his face. ""I suppose I could be considered one. When I was young, my father took my brother and me to all the shrines. Back then, I could recite a large part of the Book of Ludd from memory..."" His voice trails off momentarily, as if lost in the echoes of the past.
 
-Returning to the present, he continues, ""The Hegemony has always been pragmatic. My wife and brother might lean a bit too heavily into their faith, but that devotion gives us allies—something the Hegemony desperately needs these days. Ludd’s teachings about a simpler, more grounded life... they’ve always stayed with me, even if I don’t follow them as strictly as others. As the Domain taught us, AI is a tool. A tool to be controlled and guarded, by those rightful enough to wield it. Not for the masses.""
+Returning to the present, he continues, ""The Hegemony has always been pragmatic. My wife and brother might lean a bit too heavily into their faith, but that devotion gives us allies — something the Hegemony desperately needs these days. Ludd’s teachings about a simpler, more grounded life... they’ve always stayed with me, even if I don’t follow them as strictly as others. As the Domain taught us, AI is a tool. A tool to be controlled and guarded, by those rightful enough to wield it. Not for the masses.""
 
 He meets your gaze, a faint smile tugging at his lips. ""Does that answer your question?""",,
-hegtales_borealistalkQuestionsIronShell,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsIronShell",,"""I deal with Quy in our weekly meetings with the rest of the council,"" His tone dismissive.""The Iron Shell Charter was something I opposed and voted against. It stretches our resources too thin, diluting what little strength we have left to consolidate. But Daud, in his usual wisdom and charisma, managed to push it through.""
+hegtales_borealistalkQuestionsIronShell,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsIronShell",,"""I deal with Quy in our weekly meetings with the rest of the council,"" his tone dismissive. ""The Iron Shell Charter was something I opposed and voted against. It stretches our resources too thin, diluting what little strength we have left to consolidate. But Daud, in his usual wisdom and charisma, managed to push it through.""
 
-He sighs ""They’re still part of the Hegemony, and they follow orders—more or less. Their focus, however, seems to drift toward... taxation and administrative matters, rather than true military or logistical support. A bureaucracy within a bureaucracy.""
+He sighs. ""They’re still part of the Hegemony, and they follow orders — more or less. Their focus, however, seems to drift toward... taxation and administrative matters, rather than true military or logistical support. A bureaucracy within a bureaucracy.""
 
-Borealis’s eyes narrow slightly. ""I believe the Charter’s days are numbered. It won’t be renewed indefinitely. The Hegemony needs unity, not fragmented auxiliaries.""",,
-hegtales_borealistalkQuestionsCouncil,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsCouncil","FireAll hegtales_borealistalkNepo","""My father was a member of the Council."" Borealis begins. ""When he passed away, his seat was left vacant until I came of age and achieved the necessary rank. Do not call it nepotism, House Ossum has worked tirelessly to shape the Hegemony into what it is today. We have earned our place.""",,
+Borealis’ eyes narrow slightly. ""I believe the Charter’s days are numbered. It won’t be renewed indefinitely. The Hegemony needs unity, not fragmented auxiliaries.""",,
+hegtales_borealistalkQuestionsCouncil,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsCouncil","FireAll hegtales_borealistalkNepo","""My father was a member of the Council,"" Borealis begins. ""When he passed away, his seat was left vacant until I came of age and achieved the necessary rank. Do not call it nepotism, House Ossum has worked tirelessly to shape the Hegemony into what it is today. We have earned our place.""",,
 hegtales_borealistalkQuestionsCouncilContinueOPT,hegtales_borealistalkNepo,,,,"hegtales_borealistalkQuestionsCouncilContinue: Continue",
 hegtales_borealistalkQuestionsCouncilNepoOPT,hegtales_borealistalkNepo,"!$nepobaby
 !$global.hegtales_house_ossum_start",,,"hegtales_borealistalkQuestionsCouncilNepo: ""That sounds pretty Nepotistic.""",
@@ -1735,12 +1729,12 @@ hegtales_borealistalkQuestionsCouncilContinue,DialogOptionSelected,"$option == h
 hegtales_borealistalkQuestionsCouncilNepo,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsCouncilNepo
 ","AdjustRepPerson hegtales_borealis SUSPICIOUS -2
 FireAll hegtales_borealistalkQuestions
-$nepobaby = true","""Call it what you will. The Hegemony has endured for over 150 years, and House Ossum has stood even longer. Things are the way they are for a reason. Leave your democracies or the rule of criminals, like those on Chicomoztoc, to their own chaos.""
+$nepobaby = true","""Call it what you will. The Hegemony has endured for over 150 cycles, and House Ossum has stood even longer. Things are the way they are for a reason. Leave your democracies or the rule of criminals, like those on Chicomoztoc, to their own chaos.""
 
 ""The Houses of Eventide are the backbone of the Persean Sector. We are the reason the Domain's legacy still endures here. Stability, order, and strength do not come from pandering to fleeting ideals. They come from leadership, tradition, and an unyielding commitment to survival.""
 
 ""Criticize it if you must, but do not forget: without us, there would be no Hegemony or order to question.""",,
-hegtales_borealistalkQuestionsLordOfBonesYesOpt,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsLordOfBones","FireAll hegtales_borealistalkBones","He has a expression a mix of irritation and weariness. his green eyes lock onto yours. 
+hegtales_borealistalkQuestionsLordOfBonesYesOpt,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsLordOfBones","FireAll hegtales_borealistalkBones","His expression is a mix of irritation and weariness. His green eyes lock onto yours. 
 
 ""Do you really want to know?"" ",,
 hegtales_borealistalkQuestionsLordOfBonesYes,hegtales_borealistalkBones,,"$askedlordofbones = true",,"hegtales_borealistalkQuestionsLordOfBonesYes:""Yes, I want to know.""",
@@ -1753,11 +1747,11 @@ FireAll hegtales_borealistalkQuestions","""They call me the Lord of Bones becaus
 ""Happy?""",,
 hegtales_borealistalkQuestionsLordofBonesNoContinue,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsLordOfBonesNo","FireAll hegtales_borealistalkQuestions","""Good, I am very glad that I don’t need to waste my time explaining the foolish behaviors and misguided ideas of people outside my control.""
 
-He sighs softly. ""It’s bad enough dealing with the nonsense of the Tri-Tachyon. Let’s not add more to the pile, shall we?""",,
+He sighs softly. ""It’s bad enough dealing with the nonsense of Tri-Tachyon. Let’s not add any more to the pile, shall we?""",,
 hegtales_borealistalkQuestionsIronShellStart,hegtales_borealistalkQuestions,"HEG_HasModId timid_xiv score:100",,,"hegtales_borealistalkQuestionsIronShell:""What do you think of Iron Shell?""",
 hegtales_borealistalkQuestionsLordofBonesStart,hegtales_borealistalkQuestions,"!$askedlordofbones",,,"hegtales_borealistalkQuestionsLordOfBones:""Why do they call you the Lord of Bones?""",
 hegtales_borealistalkQuestionsCancelStart,hegtales_borealistalkQuestions,,"SetShortcut hegtales_borealistalkQuestionsCancel ""ESCAPE""",,"hegtales_borealistalkQuestionsCancel:""That would be all.""",
-hegtales_borealistalkQuestionsCancel,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsCancel","FireAll PopulateOptions","""Mhmhm. I hope you are satisfied with the information I have given you."" He seems to grab a tripad and looks at some information idly.",,
+hegtales_borealistalkQuestionsCancel,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsCancel","FireAll PopulateOptions","""Mhmhm. I hope you are satisfied with the information I have given you."" He seems to grab a TriPad and looks at some information idly.",,
 "#END Borealis Mid Dialogue",,,,,,
 ,,,,,,
 # AI inspection Talk,,,,,,
@@ -1779,7 +1773,7 @@ FireBest AustralisAIcheck","He raises an eyebrow, his surprise evident as he pro
 
 He leans forward slightly, his tone firm but not yet dismissive. ""Do you really think that I would allow this to happen?"" he asks, his voice carrying the weight of authority and years of adherence to the Hegemony's strict policies, maybe even his own Luddic faith.
 
-""You are a member of t his family and your standing with the Hegemony have earned you a degree of trust, but this... This is a line not crossed lightly. Explain yourself, kid. Convince me why this should even be considered.""","hegtales_borealistalk_inspectionEnd: ""Come on uncle!""
+""You are a member of this family and your standing with the Hegemony has earned you a degree of trust, but this... This is a line not crossed lightly. Explain yourself, kid. Convince me why this should even be considered.""","hegtales_borealistalk_inspectionEnd: ""Come on uncle!""
 hegtales_borealistalk_inspectionLeave: ""No, I will deal it another way.""",
 hegtales_borealistalkQuestionsInspection2Com,DialogOptionSelected,"$option == hegtales_borealistalk_inspection
 $player.fcm_faction == hegemony score:100","SetEnabled hegtales_borealistalk_inspectionEnd false
@@ -1801,7 +1795,7 @@ AddTextSmall ""--But if you have the crisis going it will still progress!..--"" 
 
 ""Alright,"" he begins, ""I get it. You've proven yourself to the family. You've dealt with Defectum, earned your place among us, and now you're asking for something that goes against everything the Hegemony stands for.""
 
-""AI use is... mostly a matter of principle; for the common citizen. But... I'll speak with the rest of the Council and the Hegemon about this. If they agree, you might get your exception. But understand this, Captain—this is no small favor. If you misuse this trust, even your ties to this family won't save you.""
+""AI use is... mostly a matter of principle; for the common citizen. But... I'll speak with the rest of the Council and the High Hegemon about this. If they agree, you might get your exception. But understand this, Captain — this is no small favor. If you misuse this trust, even your ties to this family won't save you.""
 
 ""Do not make me regret this.""","cutCommLink: Cut the comm link",
 hegtales_borealistalkQuestionsInspectionCheck,AustralisAIcheck,"RepGTE hegemony FRIENDLY
@@ -1812,7 +1806,7 @@ $player.numColonies > 0","SetEnabled hegtales_borealistalk_inspectionEnd true
 SetTooltip hegtales_borealistalk_inspectionEnd ""This is available due your commision.""",,,
 hegtales_borealistalkQuestionsInspectionCancel,DialogOptionSelected,"$option == hegtales_borealistalk_inspectionLeave","FireAll PopulateOptions","""Understood.""",,
 hegtales_borealistalkQuestionsNoColony,DialogOptionSelected,"$option == hegtales_borealistalk_inspection score:1000
-$player.numColonies == 0","SetEnabled hegtales_borealistalk_inspection false","He quints his eyes at you.
+$player.numColonies == 0","SetEnabled hegtales_borealistalk_inspection false","He squints his eyes at you.
 
 ""You don't have any planets, colonies or entities under your control. The Hegemony does not have the resources to search every individual, you should be fine for now.""",,
 "#END AI inspection Talk",,,,,,
@@ -1841,10 +1835,10 @@ AddTextSmall ""Prima can have 1 extra elite skill and her max level is 8 by defa
 SetTextHighlights 1 extra elite skill 8 max level
 
 
-SetShortcut hegtales_borealis_recruit_prima_no ""ESCAPE""","Borealis seems to think for a moment, before simply calling from his tripad. ""Prima get here.""","0:hegtales_borealis_recruit_prima_yes:Let her join
+SetShortcut hegtales_borealis_recruit_prima_no ""ESCAPE""","Borealis seems to think for a moment, before simply calling from his TriPad. ""Prima, get here.""","0:hegtales_borealis_recruit_prima_yes:Let her join
 1:hegtales_borealis_recruit_prima_no:""Not at the moment.""",
 hegtales_borealis_recruit_prima1,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima_yes","#FireAll PopulateOptions
-$global.recruited_prima = true","Prima seems to be enthusiastic about her new tasks, as you hand her a tripad with the current status of your fleet.
+$global.recruited_prima = true","Prima seems to be enthusiastic about her new tasks as you hand her a TriPad with the current status of your fleet.
 
 ""Good. Teach her how to manage a fleet and be a good officer. I trust your judgment."" Borealis speaks as Prima salutes him.","hegtales_borealis_recruit_prima2:Continue",
 hegtales_borealis_recruit_prima2,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima2","BeginConversation hegtales_recruit_prima
@@ -1869,12 +1863,12 @@ You hug her back, before sending her to get acquainted with the rest of the offi
 hegtales_borealis_recruit_prima3,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima3","BeginConversation hegtales_borealis
 FireAll PopulateOptions","""Treat her well, Captain. Ossums are far and in between.""
 
-His green eyes locking onto yours through the comms. ""She’s more than just an officer. She’s family.""",,
+His green eyes lock onto yours through the comms. ""She’s more than just an officer. She’s family.""",,
 hegtales_borealis_recruit_prima3Family,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima3 score:100
 $global.hegtales_house_ossum_start","BeginConversation hegtales_borealis
-FireAll PopulateOptions","""Treat her well, Captain. Ossums stick together..""
+FireAll PopulateOptions","""Treat her well, Captain. Ossums stick together.""
 
-His green eyes locking onto yours through the comms. ""I don't have to mention that you should keep her safe.""",,
+His green eyes lock onto yours through the comms. ""I dont have to mention that you should keep her safe.""",,
 hegtales_borealis_recruit_primano,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima_no","HideSecondPerson
 FireAll PopulateOptions
 ","""Of course, if you change your mind, she will remain here.""",,
@@ -1892,7 +1886,7 @@ hegtales_borealiscakegiftAlreadyMade,DialogOptionSelected,"$option == hegtales_b
 PlayerHasCargo uaf_bakery_choco_lava
 $borealiscakeoffered score:100","SetEnabled hegtales_borealiscakegift false","Borealis shakes his head gently.
 
-""I cannot accept the gift, Ludd taught us moderation, and as a follower of his teachings, I must uphold that principle. It would set a bad precedent if I let my children indulge too much, even in something as simple as cake.""
+""I cannot accept this gift, for Ludd taught us moderation, and as a follower of his teachings, I must uphold that principle. It would set a bad precedent if I let my children indulge too much, even in something as simple as cake.""
 
 ""Your thoughtfulness is appreciated, Captain. But perhaps this gift could be shared among your own crew. They deserve such kindness.""",,
 hegtales_borealiscakegiftGood,DialogOptionSelected,"$option == hegtales_borealiscakegift
@@ -1901,7 +1895,7 @@ AddRemoveCommodity uaf_bakery_choco_lava -1 true
 $borealiscakeoffered = true 60
 SetEnabled hegtales_borealiscakegift false","Borealis immediately raises an eyebrow, giving you an expression so unique and fleeting that it might never be seen again.
 
-""A cake?"" he repeats. Then, after a moment he nods. ""Yes... Of course. I’ll share it with my wife and children. They’ll appreciate the gesture.""
+""A cake?"" he repeats. Then, after a moment, he nods. ""Yes... Of course. I’ll share it with my wife and children. They’ll appreciate the gesture.""
 
 ""You have my thanks, Captain $PlayerName. I’ll send a cadet in a shuttle to retrieve it shortly. And... I suppose I’ll have to ensure they don’t eat it on the way back.""",,
 "#END UAF CAKE BOMB",,,,,,
@@ -1911,44 +1905,44 @@ greetingBorealisIgnoreCallLow,PickGreeting,"$id == hegtales_borealis score:600
 $global.hegtales_Quest3_missionCompleted
 RepLTE hegemony NEUTRAL","ShowImageVisual house_ossum
 
-AddTextSmall ""Maybe it's due your low standing with the Hegemony?"" gray","Your call connects to an automated receiver.
+AddTextSmall ""Maybe it's due your low standing with the Hegemony?"" gray","Your call connects to an automated receiver.  
 
-An animated Skull spins endlessly on your display. After half a minute the call is rejected.","cutCommLink:Close comms",
+An animated skull spins endlessly on your display. After half a minute the call is rejected.","cutCommLink:Close comms",
 greetingBorealisIgnoreCallSindrian,PickGreeting,"$id == hegtales_borealis score:600
 $global.hegtales_Quest3_missionCompleted
 $player.fcm_faction == sindrian_diktat","ShowImageVisual house_ossum
 
-AddTextSmall ""Clearly it's due your commission"" gray","Your call connects to an automated receiver.
+AddTextSmall ""Clearly it's due your commission"" gray","Your call connects to an automated receiver.  
 
-An animated Skull spins endlessly on your display. After half a minute the call is rejected.","cutCommLink:Close comms",
-greetingBorealisIgnoreCall,PickGreeting,"$id == hegtales_borealis score:100","ShowImageVisual house_ossum","Your call connects to an automated receiver.
+An animated skull spins endlessly on your display. After half a minute the call is rejected.","cutCommLink:Close comms",
+greetingBorealisIgnoreCall,PickGreeting,"$id == hegtales_borealis score:100","ShowImageVisual house_ossum","Your call connects to an automated receiver.  
 
-An animated Skull spins endlessly on your display. After half a minute the call is rejected.","cutCommLink:Close comms",
+An animated skull spins endlessly on your display. After half a minute the call is rejected.","cutCommLink:Close comms",
 hegtales_borealisGreeting,PickGreeting,"$id == hegtales_borealis
 $global.hegtales_Quest3_missionCompleted score:500","ShowPersonVisual
-FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council.
+FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum of the Hegemony Council.
 
 His bright green eyes turn to look at you through the screen.
 
 ""Captain $playerName.""
 OR
-Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council.
+Your comms connect to the office of Admiral Borealis Ossum of the Hegemony Council.
 
-He seems to speaking with another officer before he glances at you.
+He seems to be speaking with another officer before he glances at you.
 
 ""Captain $playerName. What do you need today?""",,
 hegtales_borealisGreetingPrima,PickGreeting,"$id == hegtales_borealis
 $global.hegtales_Quest3_missionCompleted 
 $global.recruited_prima score:1000","ShowPersonVisual
-FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council.
+FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum of the Hegemony Council.
 
 His bright green eyes turn to look at you through the screen.
 
 ""Captain $playerName.""
 OR
-Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council.
+Your comms connect to the office of Admiral Borealis Ossum of the Hegemony Council.
 
-He seems to speaking with another officer before he glances at you.
+He seems to be speaking with another officer before he glances at you.
 
 ""Captain $playerName. How's Prima doing?""",,
 hegtales_borealisGreetingFamilyFirst,PickGreeting,"$id == hegtales_borealis
@@ -1963,26 +1957,26 @@ AdjustRepPerson hegtales_australis COOPERATIVE 75
 AdjustRepPerson hegtales_borealis COOPERATIVE 75
 AdjustRepPerson hegtales_hannah COOPERATIVE 75
 
-FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council, your uncle.
+FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum of the Hegemony Council, your uncle.
 
-He seems to speaking with another officer before he glances at you.
+He seems to be speaking with another officer before he glances at you.
 
-""You are finally back $playerName. Your mother has missed you, you should call her more often... I have heard your... problems in Galatia. I am glad that problem is over us now.""",,
+""You are finally back $playerName. Your mother has missed you, you should call her more often... I have heard of your... problems in Galatia. I am glad that problem is past us now.""",,
 hegtales_borealisGreetingFamily,PickGreeting,"$id == hegtales_borealis
 $global.hegtales_Quest3_missionCompleted 
 $global.hegtales_house_ossum_start score:1400","ShowPersonVisual
 
-FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council, your uncle.
+FireAll PopulateOptions","Your comms connect to the office of Admiral Borealis Ossum of the Hegemony Council, your uncle.
 
-He seems to speaking with another officer before he glances at you.
+He seems to be speaking with another officer before he glances at you.
 
 ""Your mother is going to kill me if she finds out... How can I help you?""
 OR
-Your comms connect to the office of Admiral Borealis Ossum, Councillor of the Hegemony Council.
+Your comms connect to the office of Admiral Borealis Ossum of the Hegemony Council.
 
-He seems to speaking with another officer before he glances at you.
+He seems to be speaking with another officer before he glances at you.
 
-""Captain $playerFirstname are you doing well? We are proud of you.""
+""Captain $playerFirstname! Are you doing well? We are proud of you.""
 ",,
 "#END Borealis Greet",,,,,,
 "#END Borealis Dialogue!",,,,,,
@@ -1991,7 +1985,7 @@ He seems to speaking with another officer before he glances at you.
 greetingCorbyDefault,PickGreeting,"$id == hegtales_corby score:1000","BeginConversation hegtales_corby
 FireAll PopulateOptions","Almost immediately you see the large man, once again eating in front of the screen.
 
-""Its you, ehm.... $playerName! Right?"" He says hurriedly. ""Are you here for work?""",,
+""Its you, ehm... $playerName! Right?"" He says hurriedly. ""Are you here for work?""",,
 hegmod_corbyAskForContactAccept,DialogOptionSelected,"$option == hegmod_corbyAskForContact score:10000
 $player.corbycompletedquest1","$player.hasAustraliscommsid = true
 SetPersonHidden hegtales_australis false
@@ -2061,12 +2055,12 @@ hegtales_hannahgreetFamily,PickGreeting,"$id == hegtales_hannah
 $global.hegtales_house_ossum_start score: 1000","BeginConversation hegtales_hannah
 FireAll PopulateOptions","You can see a beautiful living room, before Hannah moves in front of the screen, smiling almost politely before she gives a real big smile.
 
-""Hey $playerFirstname! Have you been eating well? I haven't seen you in so long!""",,
+""Hey $playerFirstname! Have you been eating well? I haven't seen you for so long!""",,
 hegtales_hannahtalkstart,PopulateOptions,"$id == hegtales_hannah score:1000",,,"hegtales_hannahtalk:""Can I ask you a few questions?""",
 hegtales_hannahtalk,DialogOptionSelected,"$option == hegtales_hannahtalk","FireAll hegtales_hannahtalkQuestions
 SetShortcut hegtales_hannahtalkQuestionsCancel ""ESCAPE""","She immediately lights up. ""Sure! I'd be more than happy to answer any questions or inquiries from my savior!"" she replies cheerfully, her tone light and genuine.
 
-Before you can continue, one of her younger children bursts into the room behind her, giggling as they run past. ""So, what's on your mind?"" She asks.","hegtales_hannahtalkQuestionsPersonal:""Tell me a bit about you.""
+Before you can continue, one of her younger children bursts into the room behind her, giggling as they run past. ""So, what's on your mind?"" she asks.","hegtales_hannahtalkQuestionsPersonal:""Tell me a bit about you.""
 hegtales_hannahtalkQuestionsLuddic:""Tell me about being a Luddic in the Hegemony.""
 hegtales_hannahtalkQuestionsBorealis:""Tell me about the Lord of Bones.""
 hegtales_hannahtalkQuestionsSalt:""Tell me about Greenearth Salt.""
@@ -2075,40 +2069,40 @@ hegtales_hannahtalkQuestionsPersonal,DialogOptionSelected,"$option == hegtales_h
 
 ""I was born on Eochu Bres, the daughter of a somewhat influential executive. We always traveled across the Core Worlds until one day we found ourselves on the wrong side of the Pathers. They captured us and held us for ransom. During my time in captivity, I became friends with a kid named Greenearth... and sort of started to believe in Ludd."" She pauses, ""To my father's and family's dismay.""
 
-""After some disagreements with them and a failed attempt at becoming a subcurate, I ended up working as a civilian advisor to one of the off-the-books auxiliary Luddic patrol fleets during the Second AI War. We were stationed in Chicomoztoc when the big attack happened —you know the one… When the CGR Ludd's Ham was too damaged, we were rescued by a very handsome patrol officer in an Eagle Cruiser. The rest... well, it's history.""
+""After some disagreements with them and a failed attempt at becoming a subcurate, I ended up working as a civilian advisor to one of the off-the-books auxiliary Luddic patrol fleets during the Second AI War. We were stationed in Chicomoztoc when the big attack happened  — you know the one… When the CGR Ludd's Ham was too damaged, we were rescued by a very handsome patrol officer in an Eagle cruiser. The rest... well, it's history.""
 
 Hannah finishes with a big smile, ""And now here I am, talking to you.""",,
-hegtales_hannahtalkQuestionsLuddic,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsLuddic",,"""The Hegemony, just as the Domain before it, has always been a secular polity,"" she begins. ""Our worship of Ludd… it doesn't align with some of their core beliefs. But unlike the pathers or even certain factions within the Church of Galactic Redemption, we don't see faith as a reason to reject the foundations of the Domain. We believe in using Luddic ideals and teachings to improve ourselves and the world around us.""
+hegtales_hannahtalkQuestionsLuddic,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsLuddic",,"""The Hegemony, just as the Domain before it, has always been a secular polity,"" she begins. ""Our worship of Ludd… it doesn't align with some of their core beliefs. But unlike the pathers or even certain factions within the Church of Galactic Redemption, we don't see faith as a reason to reject the foundations of the Domain. We believe in using Luddic ideals and teachings to improve  ourselves and the world around us.""
 
-Her tone grows more fervent as she continues. ""AI is a sin—a fundamental wrongdoing of humanity. To create an artificial form of life, one without mothers or fathers, without a soul? It's unnatural. But the Gates, the Domain, the legacy of human ingenuity—those are not sins. That's humanity. That's us. And it's our duty to spread the teachings of Ludd across all of mankind, not to isolate ourselves in this beautiful yet fractured Persean Sector.""","hegtales_hannahtalkQuestionsLuddic2:Continue",
+Her tone grows more fervent as she continues. ""AI is a sin — a fundamental wrongdoing of humanity. To create an artificial form of life, one without mothers or fathers, without a soul? It's unnatural. But the Gates, the Domain, the legacy of human ingenuity — those are not sins. That's humanity. That's us. And it's our duty to spread the teachings of Ludd across all of mankind, not to isolate ourselves in this beautiful yet fractured Persean Sector.""","hegtales_hannahtalkQuestionsLuddic2:Continue",
 hegtales_hannahtalkQuestionsLuddic2,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsLuddic2","SetShortcut hegtales_hannahtalkQuestionsCancel ""ESCAPE""","She pauses briefly, ""That's where our disagreements with the Church and Pathers begin. They want isolation, purity or destruction of technology, while we believe in integration and control, just like the Domain did. I believe that when the Hegemony asserts full control over the sector, we can make Luddism its official religion. Not through force, but by showing its wisdom just as Ludd taught us...""
 
-""And if one day we are reunied with our kin, we would preach our word to them. Showing them the fruits of our labour.""
+""And if one day we are reunited with our kin, we would preach our word to them. Show them the fruits of our labour.""
 
-Her voice drops to a whisper. ""There are more Luddics in the Hegemony's high command than you might imagine, $BrotherOrSister."" 
+Her voice drops to a whisper. ""There are more Luddics in the Hegemony's High Command than you might imagine, $BrotherOrSister."" 
 
 She gives you a polite small smile.","hegtales_hannahtalkQuestionsPersonal:""Tell me a bit about you.""
 hegtales_hannahtalkQuestionsLuddic:""Tell me about being a Luddic in the Hegemony.""
 hegtales_hannahtalkQuestionsBorealis:""Tell me about the Lord of Bones.""
 hegtales_hannahtalkQuestionsSalt:""Tell me about Greenearth Salt.""
 hegtales_hannahtalkQuestionsCancel:""That's all for now.""",
-hegtales_hannahtalkQuestionsSalt,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsSalt",,"""He's an old friend of mine,"" she begins curtly, ""He used to be a Knight of Ludd, the official ones, at least until he had some disagreements. Let's just say he walked a different path after that.""
+hegtales_hannahtalkQuestionsSalt,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsSalt",,"""He's an old friend of mine,"" she begins curtly, ""he used to be a Knight of Ludd, the official ones, at least until they had some disagreements. Let's just say he walked a different path after that.""
 
-Her tone softens but there's still a hint of frustration. ""People call him a Pather, but he's not a terrorist… not like the others. His people, they're good folk—not crazed fanatics like so many of the pathers these days. But it's always half and half now, isn't it? Some are true believers, others…"" She trails off, shaking her head before concluding.
+Her tone softens but there's still a hint of frustration. ""People call him a Pather, but he's not a terrorist… not like the others. His people, they're good folk — not crazed fanatics like so many of the pathers these days. But it's always half and half now, isn't it? Some are true believers, others…"" She trails off, shaking her head before concluding.
 
 ""Salt is complicated. That's all I'll say.""",,
 hegtales_hannahtalkQuestionsBorealis,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsBorealis",,"Hannah shakes her head. ""If he hears you call him that, he's going to kill you. He hates that nickname...""
 
-""Borealis of House Ossum. He's been my husband for almost twelve years now. We have four beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you.
+""Borealis of House Ossum. He's been my husband for almost twelve years now. We have four beautiful children, and who knows? Maybe a fifth is on the way, who might even end up with someone's special name."" She winks at you.
 
-""Borealis… he's a stern man. Very busy and incredibly dutiful. Most of his time is spent working with the rest of Executive Council and High Hegemon Daud. It's not the life he wanted, though. He'd much rather be patrolling with a fleet and leading from the front. But instead, he's stuck behind a desk, buried in meetings and politics."" She sighs. ""At least he does not need to worry about the... ‘Special' traditions of Eventide. But all those things fall on me nowadays."" Finally, she lifts a photo of her and Borealis in their youth, showing it to the screen.
+""Borealis… he's a stern man. Very busy and incredibly dutiful. Most of his time is spent working with the rest of the Executive Council and High Hegemon Daud. It's not the life he wanted, though. He'd much rather be patrolling with a fleet and leading from the front. But instead, he's stuck behind a desk, buried in meetings and politics."" She sighs. ""At least he does not need to worry about the... ‘special' traditions of Eventide. But all those things fall on me nowadays."" Finally, she lifts a photo of her and Borealis in their youth, showing it to the screen.
 
 ""He does it all for his family and for the Hegemony, but I know it weighs on him.""
 ",,
 hegtales_hannahtalkQuestionsBorealisFamily,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsBorealis
 $hegtales_house_ossum_start score: 1000",,"Hannah shakes her head. ""If your uncle hears you call him that, he's going to kill you. He hates that nickname...""
 
-""Borealis of House Ossum. As you know, has been my husband for almost twelve years now. We have four beautiful children, and who knows? Maybe a fifth on the way, who might even end up with someone's special name."" She winks at you.
+""Borealis of House Ossum. As you know, has been my husband for almost twelve years now. We have four beautiful children, and who knows? Maybe a fifth is on the way, who might even end up with someone's special name."" She winks at you.
 
 ""Borealis… he's a stern man. Very busy and incredibly dutiful. Most of his time is spent working with the rest of Executive Council and High Hegemon Daud. It's not the life he wanted, though. He'd much rather be patrolling with a fleet and leading from the front. But instead, he's stuck behind a desk, buried in meetings and politics."" She sighs. Finally, she lifts a photo of her and Borealis in their youth, showing it to the screen.",,
 hegtales_hannahtalkQuestionsCancel,DialogOptionSelected,"$option == hegtales_hannahtalkQuestionsCancel","FireAll PopulateOptions","""Alright! Arminius! Don't touch that."" She yells at one of her kids.",,
@@ -2120,31 +2114,31 @@ hegtales_hannah_peaceBribeRepIntroButWar,DialogOptionSelected,"$option == hegtal
 Commission hasOtherCommission
 Commission commissionFactionIsAtWarWith hegemony","FireAll PopulateOptions","$HeOrShe gives you a confused look, then speaks. ""You got a commission with $theOtherCommissionFaction. And they're at war with the Hegemony.""
 
-""I cannot talk to the other nobles if you still flow their flag?"" $HeOrShe seems pensive. ""Resign the commission, and then we can talk.""
+""I cannot talk to the other nobles if you still fly under their flag?"" $HeOrShe seems pensive. ""Resign the commission, and then we can talk.""
 
-""Otherwise its a no-go.""",,
+""Otherwise it's a no-go.""",,
 hegtales_hannah_peaceBribeRepIntro,DialogOptionSelected,"$option == hegtales_hannah_peace_bribeRep",,"$HeOrShe seems pretty amused by the situation.
 
-""You are in total trouble... But the Hegemony needs less enemies, not more. Even then, you have murdered so many sons and daughters of Eventide and Chicomoztoc...""
+""You are in quite some trouble... But the Hegemony needs less enemies, not more. Even then, you have murdered so many sons and daughters of Eventide and Chicomoztoc...""
 
-$HeOrShe considers this for a moment. ""Some credits can be used for funerals, a ceremony in the name of the fallen... and other noble-ish things. Don't you think?""","hegtales_hannah_peace_bribeRep2:Continue",
+$HeOrShe considers this for a moment. ""Some credits can be used for funerals, a ceremony in the name of the fallen... and other noble-ish things. Dont you think?""","hegtales_hannah_peace_bribeRep2:Continue",
 hegtales_hannah_peaceBribeRep500kOffer,DialogOptionSelected,"$option == hegtales_hannah_peace_bribeRep2","SetTextHighlights ""500,000""
-DoCanAffordCheck 500000 hegtales_hannah_peace_bribeRep500kAccept false","""I can arrange things for 500,000 credits. Everyone will look pretty suspiciously at you but this is a first step to get into the good graces of the Hegemony.""","hegtales_hannah_peace_bribeRep500kAccept:""Great. Transferring credits now.""
+DoCanAffordCheck 500000 hegtales_hannah_peace_bribeRep500kAccept false","""I can arrange things for 500,000 credits. Everyone will look at you with suspicion, but this is a first step to get into the good graces of the Hegemony.""","hegtales_hannah_peace_bribeRep500kAccept:""Great. Transferring credits now.""
 hegtales_hannah_peace_bribeRepDecline:Decline",
 hegtales_hannah_peaceBribeRep500kAccept,DialogOptionSelected,"$option == hegtales_hannah_peace_bribeRep500kAccept","AddRemoveCommodity credits -500000 true
 AdjustRep $personFaction.id INHOSPITABLE 50
-$global.didHEGrepBribe++","$HeOrShe smiles. You can see $heOrShe has a happy look, now that the Hegemony seemingly has one less enemy to worry about
+$global.didHEGrepBribe++","$HeOrShe smiles. You can see $heOrShe is happy, now that the Hegemony seemingly has one less enemy to worry about.
 
-""Now I've got some calls and meetings to do, starting with preparing a ball... Be on your best behavior, $playerName, and all wounds will be healed.""","cutCommLink:Cut the comm link",
+""Now I've got some calls and meetings to attend to, starting with preparing a ball... Be on your best behavior, $playerName, and all wounds will be healed.""","cutCommLink:Cut the comm link",
 hegtales_hannah_peaceBribeRep1mOffer,DialogOptionSelected,"$option == hegtales_hannah_peace_bribeRep2
 $global.didHEGrepBribe == 1","SetTextHighlights ""1,000,000""
-DoCanAffordCheck 1000000 hegtales_hannah_peace_bribeRep1mAccept false","""Again? You have made E-V-E-R-Y-O-N-E mad $playerName,"" $heOrShe shakes $hisOrHer head. ""I would need... 1,000,000 credits. Yes. A big party. Lots invitations and groveling...""","hegtales_hannah_peace_bribeRep1mAccept:""One million, let's do it.""
+DoCanAffordCheck 1000000 hegtales_hannah_peace_bribeRep1mAccept false","""Again? You have made E-V-E-R-Y-O-N-E mad, $playerName,"" $heOrShe shakes $hisOrHer head. ""I would need... 1,000,000 credits. Yes. A big party. Lots of invitations and groveling...""","hegtales_hannah_peace_bribeRep1mAccept:""One million, let's do it.""
 hegtales_hannah_peace_bribeRepDecline:Decline",
 hegtales_hannah_peaceBribeRep1mAccept,DialogOptionSelected,"$option == hegtales_hannah_peace_bribeRep1mAccept","AddRemoveCommodity credits -1000000 true
 AdjustRep $personFaction.id INHOSPITABLE 50
-$global.didHEGrepBribe++","$HeOrShe smiles. You can see $heOrShe has a happy look, now that the Hegemony seemingly has one less enemy to worry about
+$global.didHEGrepBribe++","$HeOrShe smiles. You can see $heOrShe is happy, now that the Hegemony seemingly has one less enemy to worry about.
 
-""Now I've got some calls and meetings to do, starting with preparing a tournament... Be on your best behavior, $playerName, and all wounds will be healed.""","cutCommLink:Cut the comm link",
+""Now I've got some calls and meetings to attend to, starting with preparing a tournament... Be on your best behavior, $playerName, and all wounds will be healed.""","cutCommLink:Cut the comm link",
 hegtales_hannah_peaceBribeRep10mIntro,DialogOptionSelected,"$option == hegtales_hannah_peace_bribeRep2
 $global.didHEGrepBribe == 2",,"""You. Again. I used to be happy to see you after you brought me back... But now."" $heOrShe shakes her head. ""You keep becoming an enemy of the Hegemony. You keep putting me in trouble for... what reason exactly? You don't care... do you? This will cost a fortune!""
 ","hegtales_hannah_peace_bribeRep3:""How much...?""",
@@ -2174,7 +2168,7 @@ $global.didHEGrepBribe > 2","AdjustRepActivePerson HOSTILE -1","""No."" $heOrShe
 ""No."" $heOrShe she finishes.
 
 $PersonName terminates the comm-link.","cutCommLink:Cut the comm link",
-hegtales_hannah_peaceBribeRepDecline,DialogOptionSelected,"$option == hegtales_hannah_peace_bribeRepDecline","FireAll PopulateOptions","""If that's what you want..."" $heOrShe say's a bit curious. ""Wait a minute, how did you get here? Are you not wanted?""",,
+hegtales_hannah_peaceBribeRepDecline,DialogOptionSelected,"$option == hegtales_hannah_peace_bribeRepDecline","FireAll PopulateOptions","""If that's what you want..."" $heOrShe says, now a bit curious. ""Wait a minute, how did you get here? Are you not wanted?""",,
 "#END Hannah Dialogue!",,,,,,
 ,,,,,,
 # Australis Dialogue!,,,,,,
