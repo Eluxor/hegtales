@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class EluxorMod extends BaseModPlugin {
+public class hegtales extends BaseModPlugin {
 
     //Characters and the Retribution Generation
     protected SectorEntityToken debris;

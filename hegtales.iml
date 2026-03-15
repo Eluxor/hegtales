@@ -10,7 +10,7 @@
     <orderEntry type="library" name="starfarer.api" level="project" />
     <orderEntry type="library" name="LazyLib-Console" level="project" />
     <orderEntry type="library" name="LazyLib" level="project" />
-    <orderEntry type="library" name="MagicLib" level="project" />
+    <orderEntry type="library" name="MagicLib+Lazylib" level="project" />
     <orderEntry type="library" name="ExerelinCore" level="project" />
   </component>
 </module>

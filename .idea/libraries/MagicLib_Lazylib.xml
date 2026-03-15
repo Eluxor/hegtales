@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="MagicLib+Lazylib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../MagicLib/jars/MagicLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../MagicLib/jars/MagicLib-Kotlin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../LazyLib/jars/LazyLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../LazyLib/jars/LazyLib-Kotlin.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../LazyLib/javadoc.zip!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../MagicLib/jars/MagicLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../MagicLib/jars/MagicLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../MagicLib/jars/MagicLib-Kotlin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../LazyLib/jars/LazyLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../LazyLib/jars/LazyLib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../LazyLib/jars/LazyLib-Kotlin.jar!/" />
+    </SOURCES>
+  </library>
+</component>
