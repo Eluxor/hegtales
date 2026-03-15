@@ -1,3 +1,10 @@
+Versión 0.6.8D
+- Thanks to whoever JamesTripleQ is on GitHub.
+- I AM STILL STANDING!!!
+- Perhaps more stuff in the future, idk.
+- Localization and rules.csv Rework thanks to PROM!
+- Fixes a problem. The mod should work now.
+
 Versión 0.6.7
 
 - Thanks to whoever JamesTripleQ is on GitHub.
