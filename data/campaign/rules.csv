@@ -6,12 +6,12 @@ hegmod_corbyMeeting,DialogOptionSelected,"$option == hegmod_MeetingCorby","Begin
 ShowPersonVisual
 $player.hegmod_metCorbystart = true
 SetPersonHidden hegtales_corby false
-AddPotentialContact hegtales_corby","
-The large man observes your approach without interrupting his meal, only stopping as you sit down opposite to him.
+AddPotentialContact hegtales_corby","The large man observes your approach without stopping eating his steak, he stops as you sit in front of him..
 
-You both talk at length about a variety of topics. As he keeps devouring more meat, he tells you that he’s been traveling through hyperspace since his youth, telling you of the vastness of space and the profits that could be taken from it. Not to be gluttonous for the sake of it, but as a reward for a job well done.
+You speak with the man at length about a variety of topics. As he keeps devouring more meat, he tells you that he been traveling the hyperspace since his youth. He speaks of the vastness of space and the profit that could be taken from it. Not to be gluttonous for the sake of it, but as a reward of a job well done.
 
-""Listen, if you need some work, you can come see me. I know some of the uppity folks over on Eventide... So if you want even more money, I can give you some contacts."" The man, finally introducing himself as Corby, finishes.","hegmod_corby_barEvent1:""I'll think about it..""
+""Hear me, if you need some work, you can come to me. I know some of the uppity folks here in Eventide... So if  you want even more money, I can give you some contacts."" The man named Corby finishes.
+","hegmod_corby_barEvent1:""I'll think about it..""
 hegmod_corby_barEvent2:""Thanks. I appreciate it.""",
 hegmod_corbyMeeting1,DialogOptionSelected,"$option == hegmod_corby_barEvent1","$option = hegmod_corby_barEvent4 0
 FireBest DialogOptionSelected",,,
@@ -19,7 +19,7 @@ hegmod_corbyMeeting2,DialogOptionSelected,"$option == hegmod_corby_barEvent2","$
 FireBest DialogOptionSelected
 $player.ethosOrder++",,,
 hegmod_corbyMeeting4,DialogOptionSelected,"$option == hegmod_corby_barEvent4","AdjustRepActivePerson WELCOMING 1
-BarCMD returnFromEvent false","Corby gives you a broad smile as he pats his now satisfied belly.
+BarCMD returnFromEvent false","Corby smiles widely with his huge smile as he pats his now satisfied belly.
 
 ""Remember kid, wherever money is made, that's where there's a chance of profit. Find me in Jangala if you need work.""
 
@@ -29,6 +29,9 @@ A hearty laugh escapes his lips as another bar patron hands him a huge glass of 
 hegmod_corbyBarMeetingEvent,AddBarEvents,"$market.id == jangala
 !$player.hegmod_metCorbystart
 !$global.hegtales_house_ossum_start","AddBarEvent hegmod_MeetingCorby ""Meet with the large man in the back."" ""In a far and dark spot, a large man eating a huge steak catches your eye. He seemse to be well content."" highlight",,,
+,,,,,,
+# NEW DIRECTORY,,,,,,
+"#END NEW DIRECTORY",,,,,,
 "#END Corby Meet",,,,,,
 ,,,,,,
 # Hegtales First Quest!,,,,,,
@@ -38,17 +41,17 @@ CorbyQuest1StarterOption,PopulateOptions,"$id == hegtales_corby
 # $rel > 0.35 score:1000
 !$global.hegtales_Quest1_ref score:1000
 !$global.hegtales_Quest1Accepted","SetOptionColor CorbyQuest1StarterOption2 highlight",,"CorbyQuest1StarterOption2:""Do you have any interesting jobs?""",
-CorbyQuest1StarterOption1,DialogOptionSelected,"$option == CorbyQuest1StarterOption1",,"The large man leans back and seems deeply immersed in thought for a moment, a lightbulb turning on behind him at the same time as he starts speaking.
+CorbyQuest1StarterOption1,DialogOptionSelected,"$option == CorbyQuest1StarterOption1",,"""The large man leans back and seems deep in thought, a lightbulb turning on behind him at the same time as he starts speaking.
 
 ""There's a group of annoying pirates in Corvus, lead by some psycho called Servum. They usually hang out in the orbit of Asharu... They are technically not pirates... but you get the idea. Deal with him, recover some of his cargo and I will speak with my contact.""","CorbyQuest1StarterOption2:Continue",
 CorbyQuest1StarterOption2,DialogOptionSelected,"$option == CorbyQuest1StarterOption2","hegShowQuestIntel hegtales_Quest1","Corby taps his greasy pad. ""They seem pretty dangerous, but as I told you. They are just pirates and you seem like the kind of kid that knows how to deal with them.""
 
-""Get me their cargo. Don’t worry about the authorities, I will use some of those 'contacts' that you want so much."" He wiggles his eyebrows.","CorbyQuest1StarterAccept:""I'll get rid of them.""
+""Get me their cargo, don't worry about the authorities, I will use some of those 'contacts' that you want so much."" He wiggles his eyebrows","CorbyQuest1StarterAccept:""I'll get rid of them.""
 CorbyQuest1StarterDecline:""I am having second thoughts...""",
 CorbyQuest1StarterAccept,DialogOptionSelected,"$option == CorbyQuest1StarterAccept","BeginMission hegtales_Quest1
 $global.hegtales_Quest1Accepted = true
-FireAll PopulateOptions","""Great! I got a meal to eat, but go ahead, and don’t forget to bring me their shipment!""",,
-CorbyQuest1StarterDecline,DialogOptionSelected,"$option == CorbyQuest1StarterDecline","AdjustRepActivePerson SUSPICIOUS -5","""You are seriously testing my patience, kid."" Corby simply cuts the comms.","cutCommLink:""Okay?"" (cut comm-link)",
+FireAll PopulateOptions","""Great! I got a meal to eat, but go ahead, don't forget to bring me their shipment!""",,
+CorbyQuest1StarterDecline,DialogOptionSelected,"$option == CorbyQuest1StarterDecline","AdjustRepActivePerson SUSPICIOUS -5","""You are seriously testing my patience kid."" Corby simply cuts the comms.","cutCommLink:""Okay?"" (cut comm-link)",
 "#END Start talk!",,,,,,
 ,,,,,,
 # servum meet,,,,,,
@@ -60,18 +63,18 @@ hegtalesservumOpenComm,OpenCommLink,"$entity.hegtales_Quest1_pirate score:1000
 # !$entity.ignorePlayerCommRequests
 Call $global.hegtales_Quest1_ref updateData","$entity.ignorePlayerCommRequests = true
 SetStoryOption hegtales_servumBluff 1 hegtales_servumBluff general ""Convinced pirate kidnapper you were working for Kanta""
-$servumPayment = $hegtales_servumPayment","Servum, the pirate captain, comes into view as the comms line flickers to clarity.
+$servumPayment = $hegtales_servumPayment","Servum, the pirate captain comes into view as the comms line flickers to clarity.
 
-""Captain! How can I help you today?"", $heOrShe says theatrically. ""I can imagine why you are here..."" $HeOrShe leans in for a moment and you are deafened by the sound of music and roaring engines, as if you were standing on your own ship’s engineering deck. ""The fat man has sent you to kill us.""
+""Captain! How can I help you?"" $heOrShe says theatrically. ""I can imagine why you are here..."" $HeOrShe leans in for a moment and you are deafened by the sound of music and engines, you almost feel like you are in engineering. ""The fat man has sent you to kill us.""
 
-The music and engines in the background fall silent for just a moment.
+The music and engine sounds stop momentarily.
 
-""No one needs to die today. Pay us, we’ll give you the cargo the fat man wants and then we’ll go our separate ways.""","hegtales_servumRefuse:Politely refuse.
+""No one need's to die today. Pay us, we will give you the Suspicious Cargo the fat man wants and we go in our way.""","hegtales_servumRefuse:Politely refuse.
 hegtales_servumOffer:Offer them to buy the cargo.
 hegtales_servumBluff:Bluff Servum by saying you're working for Warlord Kanta",
-hegtalesservumRefuse,DialogOptionSelected,"$option == hegtales_servumRefuse",,"Servum turns up the music to the maximum before and you can hear engines scream under stress as you refuse $hisOrHer terms.
+hegtalesservumRefuse,DialogOptionSelected,"$option == hegtales_servumRefuse",,"Servum turns the music and engine sounds to the maximun as he starts crackling, as you refused $hisOrHer terms.
 
-""It’s ride or die!"", $heOrShe yells with a wicked grin.
+""Its ride or die!"" $heOrShe yells.
 
 The comms are cut as the pirate fleet moves to engage.","cutCommLinkNoText:Continue",
 hegtalesservumOffer,DialogOptionSelected,"$option == hegtales_servumOffer","SetTextHighlights $hegtales_servum_Payment
@@ -91,14 +94,14 @@ Call $entity.hegtales_Quest1_ref makeUnimportant
 $global.hegtales_letServumlive = true
 
 RemoveCommodity credits $hegtales_servumPayment
-AdjustRepPerson hegtales_corby SUSPICIOUS -5","""Great! My good captain, I am so pleased we could come to an agreement.""
+AdjustRepPerson hegtales_corby SUSPICIOUS -5","""Great! my good captain. I am so pleased we could come to an agreement.""
 
-As soon the credits are sent, the pirate fleet jettisons a number of cargo crates.","cutCommLinkNoText:Continue",
-hegtalesservumBuyDecline,DialogOptionSelected,"$option == hegtales_servumbuyDecline",,"""Nah, I’d win."" Servum turns the music to the maximum and makes the engines roar intimidatingly, cackling in anticipation as you refuse $hisOrHer terms.
+As soon the credits are sent, the pirates jettison the Suspicious Cargo.","cutCommLinkNoText:Continue",
+hegtalesservumBuyDecline,DialogOptionSelected,"$option == hegtales_servumbuyDecline",,"""Nah, I would win."" Servum turns the music and engine sounds to the maximun as he starts crackling, as you refused $hisOrHer terms.
 
 The comms are cut as the pirate fleet moves to engage.","hegtales_servumEndangery:continue",
 hegtalesservumEndAngy,DialogOptionSelected,"$option == hegtales_servumEndangery","EndConversation
-ShowDefaultVisual","""Nah, I’d win."" Servum turns the music to the maximum and makes the engines roar intimidatingly, cackling in anticipation as you refuse $hisOrHer terms.
+ShowDefaultVisual","""Nah, I would win."" Servum turns the music and engine sounds to the maximun as he starts crackling, as you refused $hisOrHer terms.
 
 The comms are cut as the pirate fleet moves to engage.",,
 hegtalesservumBluff,DialogOptionSelected,"$option == hegtales_servumBluff","$player.kantaBluffs++","Servum seems extremely confused.
@@ -118,16 +121,16 @@ Call $global.hegtales_Quest1_ref updateStage
 
 $global.hegtales_letServumlive = true
 
-AdjustRepPerson hegtales_corby SUSPICIOUS -1","Servum seems extremely disappointed.
+AdjustRepPerson hegtales_corby SUSPICIOUS -1","Servum seems extremely dissapointed
 
-""Okay..."" $heOrShe begins. ""I get it..."" $heOrShe lowers $hisOrHer head. ""Be on your way then... give Kanta... bah, don’t bother.""
+""Okay...."" $heOrShe ""I get it..."" $heOrShe leans $hisOrHer head down. ""Be on your way then... give Kanta... bah, don't bother.""
 
-You look at $himOrHer smugly while the pirates jettison the cargo crates in question.","cutCommLinkNoText:Bye-Bye.",
+You look at $himOrHer smugly while the pirates jettison the Suspicious Cargo.","cutCommLinkNoText:Bye-Bye.",
 hegtales_Quest1PirateDefeated,hegtales_Quest1PirateDefeated,"$someShipsDestroyed","SetTextHighlights ""Suspicious Cargo""
 
 $global.hegtales_Quest1_suspicious_cargo = true
 Call $global.hegtales_Quest1_ref updateStage
-","Your salvage crews comb through the quickly cooling remains of the destroyed ships. They soon tag some suspicious cargo crates and you order them secured in your ships’ holds.",,
+","Your crew gathers the remains of the destroyed ships. You find some crates of Suspicious Cargo and bring them to your ships.",,
 hegtales_Quest1PirateDefeatedOption,PopulateOptions,"$id == hegtales_corby
 $hegtales_Quest1_contact","SetOptionColor CorbyQuest1RewardOption highlight",,"CorbyQuest1RewardOption:""The Servos won't be a problem anymore.""",
 "#END servum meet",,,,,,
@@ -138,22 +141,22 @@ $option == $global.hegtales_letServumlive","$global.hegtales_Quest1GotReward = t
 Call $global.hegtales_Quest1_ref updateStage
 SetTextHighlights ""Suspicious Cargo""
 AdjustRepActivePerson SUSPICIOUS -5
-IncreaseSmugglingSuspicion 0.6","""What do you mean kiddo? I just got a report that they’re still alive!"" Corby sounds disappointed. Annoyed even, judging by how he looks at his TriPad. You quickly gesture to your quartermaster to send a shuttle and begin offloading the recovered crates.
+IncreaseSmugglingSuspicion 0.6","""What do you mean kiddo? I just got a report that they are still alive!"" Corby speaks with dissapointment. Looking at his tripad as he seems quite annoyed with it. But in the meanwhile you order a shuttle to be sent with the Suspicious Cargo.
 
 ""What? Why haven't you cut the comms already?""","CorbyQuest1RewardOption1:""And the reward for the shipment?""",
 CorbyQuest1RewardServumkill,DialogOptionSelected,"$option == CorbyQuest1RewardOption","$global.hegtales_Quest1GotReward = true
 Call $global.hegtales_Quest1_ref updateStage
 SetTextHighlights ""Suspicious Cargo""
-IncreaseSmugglingSuspicion 0.3","""That's amazing, kid!"" Corby enthusiastically scrolls through the contents on his screen while you order a shuttle to begin offloading the recovered crates.
+IncreaseSmugglingSuspicion 0.3","""That's amazing kid!"" Corby speaks with enthusiasm. Looking at his screen as you send him the information and you order a shuttle to be sent with the Suspicious Cargo.
 
-He seems very interested in the reports as he transfers your credits without looking.","CorbyQuest1RewardOption1:""And the reward for the shipment?""",
+He seems very interested on the reports as he absently sends the credits.","CorbyQuest1RewardOption1:""And the reward for the shipment?""",
 CorbyQuest1RewardOption1,DialogOptionSelected,"$option == CorbyQuest1RewardOption1","$player.unlockedAustraliscommsid = true
 $player.corbycompletedquest1 = true
 AddRemoveCommodity hand_weapons 100 true
 AddTextSmall ""Automated traffic monitoring flags suspicious cargo transfer"" highlight
-FireAll PopulateOptions","""Of course, of course... here are your credits and some of that cargo for the trouble. Don’t tell the authorities.""
+FireAll PopulateOptions","""Of course, of course... here are some credits and some of that cargo for the trouble. Don't tell the authorities.""
 
-Your transport shuttle returns with an ample stock of heavy armaments, just as a chime from your TriPad announces a credit transfer.",,
+Your transport shuttle returns with the reward and an ample stock of Heavy Weapons.",,
 "#END Returning to Corby",,,,,,
 "#END Hegtales First Quest!",,,,,,
 ,,,,,,
@@ -170,11 +173,11 @@ AdjustRep $faction.id COOPERATIVE 1","BeginConversation hegtales_australis
 $player.invitedtocastleossum = true
 $player.hasmetAustralis = true","Your comms patch through to the ID provided by Corby. The screen flickers for a moment before revealing a lavishly decorated communications room, clearly part of one of the grand estates on Eventide.
 
-A figure appears on the screen, their uniform adorned with the insignia of the Hegemony and with a pin depicting a skull on their cap. They greet you with a warm, practiced smile.
+A figure appears on the screen, their uniform adorned with the insignia of the Hegemony, on his cap a Skull pin. They greet you with a warm, practiced smile.
 
 ""Ah, auxiliary-captain $playerLastName! Your reputation precedes you. Praise Ludd for this fortunate meeting. We would be honored to host you at our estate, where we can discuss matters in greater comfort.""
 
-Without hesitation, they transmit a set of coordinates to your ship, accompanied by authorization codes for your shuttle to land. The message ends with a subtle nod, and the connection is severed.
+Without hesitation, they transmit a set of coordinates to your ship, accompanied by detailed authorization codes for your shuttle to land. The message ends with a subtle nod, and the connection is severed.
 ","cutCommLink: Cut the comm link",
 greetingAustralisFirstFriendly,PickGreeting,"$id == hegtales_australis score:100
 RepGTE $faction.id WELCOMING
@@ -186,22 +189,22 @@ AdjustRep $faction.id COOPERATIVE 1","BeginConversation hegtales_australis
 $player.invitedtocastleossum = true
 $player.hasmetAustralis = true","Your comms patch through to the ID provided by Corby. The screen flickers for a moment before revealing a lavishly decorated communications room, clearly part of one of the grand estates on Eventide. 
 
-A figure appears on the screen, their uniform adorned with the insignia of the Hegemony and with a pin depicting a skull on their cap. They greet you with a warm, practiced smile.
+A figure appears on the screen, their uniform adorned with the insignia of the Hegemony, on his cap a Skull pin. They greet you with a warm, practiced smile.
 
 ""Ah, $playerLastName Your reputation precedes you. Praise Ludd for this fortunate meeting. We would be honored to host you at our estate, where we can discuss matters in greater comfort.""
 
-Without hesitation, they transmit a set of coordinates to your ship, accompanied by authorization codes for your shuttle to land. The message ends with a subtle nod, and the connection is severed.","cutCommLink: Cut the comm link",
+Without hesitation, they transmit a set of coordinates to your ship, accompanied by detailed authorization codes for your shuttle to land. The message ends with a subtle nod, and the connection is severed.","cutCommLink: Cut the comm link",
 greetingAustralisFirstNormal,PickGreeting,"$id == hegtales_australis score:100
 !$player.hasmetAustralis
 !$global.hegtales_house_ossum_start","BeginConversation hegtales_australis
 $player.invitedtocastleossum = true
 $player.hasmetAustralis = true","Your comms patch through to the ID provided by Corby. The screen flickers for a moment before revealing a lavishly decorated communications room, clearly part of one of the grand estates on Eventide.
 
-A figure appears on the screen, their uniform adorned with the insignia of the Hegemony and with a pin depicting a skull on their cap. They lean slightly forward, studying you with a mix of curiosity and skepticism.
+A figure appears on the screen, their uniform adorned with the insignia of the Hegemony, on his cap a Skull pin. They lean slightly forward, studying you with a mix of curiosity and skepticism.
 
-""Prove yourself useful, and perhaps you'll find a place as an asset to House Ossum. For now, I'll send you the coordinates to our estate so we can speak more comfortably.""
+""Prove yourself useful, and perhaps you'll find a place as an asset to House Ossum. For now, I'll send you the coordinates to our estate so we can speak more comfortably in person.""
 
-Moments later, your crew receives a transmission with the coordinates of the estate, along with authorization codes for your shuttle to land. The connection ends abruptly.","cutCommLink: Cut the comm link",
+Moments later, your crew receives a transmission with the coordinates of the estate, along with detailed authorization codes for your shuttle to land. The connection ends abruptly.","cutCommLink: Cut the comm link",
 greetingAustralisFirstOssum,PickGreeting,"$id == hegtales_australis
 !$player.hasmetAustralis
 $global.hegtales_house_ossum_start score:1000","BeginConversation hegtales_australis
@@ -209,48 +212,48 @@ $player.hasmetAustralis = true
 $player.australiscontact = true
 FireAll PopulateOptions","The man is currently looking at his tripad, almost absently before he turns his green eyes to the screen. ""Australis of House Ossum here...""
 
-""$playerFirstName! How are you? How's your mother? You have been gone for too long, if you need help... just hit me up!""",,
+""$playerFirstName! How are you? How's your mother? You have been gone for too long, if you need help... Just hit me up!""",,
 "#END Australis First Meet",,,,,,
 ,,,,,,
 # Ossum State,,,,,,
 greetingAustralisIgnoreCall,PickGreeting,"$id == hegtales_australis score:200
-$player.invitedtocastleossum","ShowImageVisual house_ossum","Your call connects to an automated receiver.  
+$player.invitedtocastleossum","ShowImageVisual house_ossum","Your call connects to an automated receiver.
 
-An animated Skull spins endlessly on your display. After half a minute, your connection request is denied.","cutCommLink:Close comms",
+An animated Skull spins endlessly on your display. After half a minute the call is rejected.","cutCommLink:Close comms",
 hegtales_ossumcastlestart,PopulateOptions,"$hasMarket
 $market.id == eventide
 $menuState == main
 $player.invitedtocastleossum","SetOptionColor visitCastleOssum highlight",,"3:visitCastleOssum:Take a Shuttle to the Ossum estate.",
-hegtales_ossumcastle,DialogOptionSelected,"$option == visitCastleOssum","ShowLargePlanet","Your shuttle descends through the atmosphere, following the navigation data provided to your crew. 
+hegtales_ossumcastle,DialogOptionSelected,"$option == visitCastleOssum","ShowLargePlanet","Your shuttle descends through the atmosphere, guided by the authorization codes provided to your crew. 
 
-As the shuttle approaches its destination, the landscape below begins to unfold in breathtaking detail. Rising majestically from a fertile, well-protected forest are the towers of House Ossum's castle. Yet, just beyond the edges of this idyllic scenery, vast storm clouds churn ominously, their tendrils stretching toward the horizon. Beyond the storms lies only darkness, a reminder of the volatile nature of this planet.
+As the shuttle approaches its destination, the landscape below begins to unfold in breathtaking detail. Rising majestically from a fertile, well-protected forest are the towers of House Ossum's castle. Yet, just beyond the edges of this idyllic scenery, vast storm clouds churn ominously, their tendrils stretching toward the horizon. Beyond the storms lies only darkness, a stark reminder of the volatile nature of this planet.
 
-Despite the imposing view, you can't help but feel a faint twinge of surprise. You had expected the castle of House Ossum to exude even greater opulence and indulgence. Instead, it is an austere sight, a true fortification. Its design speaks to purpose over extravagance, though it does not lack a certain refined elegance.
+Despite the grandeur of the view, you can't help but feel a faint twinge of surprise. You had expected the castle of House Ossum to exude even greater opulence and indulgence. Instead, it is a structure of substance and strength, a true fortification. Its design speaks to purpose over extravagance, though it does not lack a certain refined elegance.
 
-Your shuttle touches down on the castle's landing pad, where a small entourage awaits your arrival. Hegemony soldiers stand at attention. From their midst, a dignified figure steps forward: the butler of House Ossum, clad in traditional livery that reflects the house's heraldry, a brass skull.","visitCastleOssum1:Continue",
-hegtales_ossumcastleVisit1,DialogOptionSelected,"$option == visitCastleOssum1","ShowImageVisual ossum_castle","The butler greets you with a polite bow before leading you and your bodyguards into the depths of the castle. The halls you traverse are steeped in history, their walls adorned with an eclectic mix of paintings, artifacts, and war trophies. Each piece tells a story—some of noble pursuits, others of brutal conquest. Hunting trophies share space with salvaged spaceship parts.
+Your shuttle touches down on the castle's landing pad, where a small entourage awaits your arrival. Hegemony soldiers stand at attention. Beside them, a dignified figure steps forward: the House Ossum butler, clad in traditional livery that reflects the house's martial heritage, a Brass Skull","visitCastleOssum1:Continue",
+hegtales_ossumcastleVisit1,DialogOptionSelected,"$option == visitCastleOssum1","ShowImageVisual ossum_castle","The butler greets you with a polite bow before leading you and your bodyguards into the depths of the castle. The halls you traverse are steeped in history, their walls adorned with an eclectic mix of paintings, artifacts, and war trophies. Each piece tells a story—some of noble pursuits, others of brutal conquest. Hunting trophies share space with salvaged spaceship parts, a testament to House Ossum's dominance both on the ground and among the stars.
 
 Finally, you arrive at an imposing door. The butler turns to your bodyguards, gesturing for them to remain behind with the soldiers. ""Your companions will wait here."" 
 
 With a nod, you step inside alone, leaving the others behind as the door closes softly behind you.
 ","visitCastleOssum2:Continue",
-hegtales_ossumcastleVisit2,DialogOptionSelected,"$option == visitCastleOssum2","BeginConversation hegtales_australis false true","Before the door closes behind you, the man begins to speak.
+hegtales_ossumcastleVisit2,DialogOptionSelected,"$option == visitCastleOssum2","BeginConversation hegtales_australis false true","Before you can even close the door, you hear the man speaking.
 
-""Usually, I prefer to conduct my business through comms,"" the officer begins, ""but there's something about meeting face-to-face that allows me to gauge a person's true character."" He leans back slightly, his eyes narrowing as he studies you. ""Corby's report described you as a resourceful individual, and from what I see, I'm inclined to agree. So, I'll keep this brief.""
+""Usually, I prefer to conduct my business through comms,"" the officer begins, ""But there's something about meeting face-to-face that allows me to gauge a person's true character."" He leans back slightly, his eyes narrowing as he studies you. ""Corby's report described you as a resourceful individual, and from what I see, I'm inclined to agree. So, I'll keep this brief.""
 
-The officer, a stern figure with a brass skull pin gleaming on his cap, gestures for you to sit as he lowers himself into a high-backed chair behind his desk. His attention flits between the screens in front of him and the TriPad in his hand before settling back on you.
+The officer, a stern figure with a brass skull pin gleaming on his cap, gestures for you to sit as he lowers himself into a high-backed chair behind his desk. His attention flits between the screens in front of him and the tripad in his hand before settling back on you.
 
-""House Ossum...” He pauses for a moment, before continuing. “We've been training officers for the Navy before and after the Collapse. Our work has always been in service to the Domain and its continuation, even in these fractured times. But such dedication comes at a cost.""","visitCastleOssum3:Continue",
+""House Ossum has a legacy."" he continues, ""We've been training officers for the Navy before and after the Collapse. Our work has always been in service to the Domain and its continuation, even in these fractured times. But such dedication comes at a cost.""","visitCastleOssum3:Continue",
 hegtales_ossumcastleVisit3,DialogOptionSelected,"$option == visitCastleOssum3","EndConversation DO_NOT_FIRE
 AddPotentialContact hegtales_australis
 $player.invitedtocastleossum = false
-$player.australiscontact = true","He pauses again, placing the cap on the desk with deliberate care. 
+$player.australiscontact = true","He pauses, placing the cap on the desk with deliberate care. 
 
 ""It means we've made enemies—many of them. And here on Eventide, prying eyes are everywhere. That's why I needed to meet you in person.""
 
-The weight of his words lingers in the air, his bright eyes stare down at you. ""I need someone outside the usual channels. Someone who can act with discretion and resolve. Do some tasks for me. Help House Ossum, and I'll make sure your efforts are rewarded handsomely. Very handsomely.""
+The weight of his words lingers in the air, his expression hardening. ""I need someone outside the usual channels. Someone who can act with discretion and resolve. Do some tasks for me. Help House Ossum, and I'll make sure your efforts are rewarded handsomely. Very handsomely.""
 
-He stands abruptly, the conversation clearly at an end. ""Blessings of Ludd be upon you,"" he says. With a curt nod, he dismisses you, turning his attention back to the screens as though you had already left.","visitCastleOssum4:Return to your shuttle.",
+He stands abruptly, the conversation clearly at an end. ""Blessing of Ludd be upon you."" he says. With a curt nod, he dismisses you, turning his attention back to the screens as though you had already left.","visitCastleOssum4:Return to your shuttle.",
 hegtales_ossumcastleVisit4,DialogOptionSelected,"$option == visitCastleOssum4","ShowDefaultVisual
 FireAll PopulateOptions",,,
 "#END Ossum State",,,,,,
@@ -1995,33 +1998,33 @@ SetPersonHidden hegtales_australis false
 AddTextSmall ""--Received comms ID for Australis Ossum--"" highlight
 AddTextSmall ""--He's located in Eventide--"" grey","The large man seems to have been annihilating a volturnian lobster, his usual smile appearing on his big face. You can almost smell him through the screen.
 
-""Young $ManOrWoman! You have made me make a huge amount of money. I have sent your information to Australis... He's from House Ossum, you know. Big old family. One of the bigger ones on Eventide. Enjoy yourself. Here's his comm ID...""","cutCommLink:""Thanks"" (cut comm-link)",
+""Young $ManOrWoman! you have made me make a huge amount of money. I have sent your information to Australis... He's from House Ossum, you know. Big old family. One of the big ones in Eventide. Enjoy yourself. Here's his comm ID...""","cutCommLink:""Thanks"" (cut comm-link)",
 hegmod_corbyQuestion1,PopulateOptions,"$id == hegtales_corby score:1000
 !$player.hasAustraliscommsid
 ",,,"hegmod_corbyAskForContact:""I want to meet your Hegemony contact.""",
 hegmod_corbyAskForContactDenyFirstTime,DialogOptionSelected,"$option == hegmod_corbyAskForContact
 !$askedForAustralis","AddPotentialContact hegtales_corby
-$askedForAustralis = true","Corby just starts laughing, putting his hands on his massive belly. Maybe he should move the camera closer to his face.
+$askedForAustralis = true","Corby just starts laughing, putting his hands on his massive belly. Maybe he should put the camera closer to his face.
 
-""If I gave my 'noble' contact to every fool that came around askin' it wouldn't be a contact for long. Work for me. Do some jobs for me, then come back. We’ll work something out.""",,
+""If I gave my 'noble' contact to every fool that came around asking' it wouldn't be a contact for long. Work for me. Do some of my missions, then come back to me. We can work something out.""",,
 hegmod_corbyAskForContactDeny,DialogOptionSelected,"$option == hegmod_corbyAskForContact
-","AddPotentialContact hegtales_corby","""I still don't know if I can trust you, kid. Maybe do some more work for me.""",,
+","AddPotentialContact hegtales_corby","""I still don't know if I can trust you kid, maybe do some more work for me.""",,
 hegmod_corbytalkstart,PopulateOptions,"$id == hegtales_corby score:1000
 ",,,"hegtales_corbytalk:""I want to know more about you.""",
-hegtales_corbytalk,DialogOptionSelected,"$option == hegtales_corbytalk","FireAll hegtales_corbytalkQuestions","$personName seems surprised that anyone would want to know more about him, putting his food aside for a moment as he nods slowly.
+hegtales_corbytalk,DialogOptionSelected,"$option == hegtales_corbytalk","FireAll hegtales_corbytalkQuestions","$personName seems surprised that anyone wants to know more about him, putting his food aside for a moment as he nods slowly.
 ","hegtales_corbytalkQuestionsCorby:""Ask him about his work.""
 hegtales_corbytalkQuestionsEventide:""Ask him about Eventide.""
 hegtales_corbytalkQuestionsContact:""Who's your contact?""
 hegtales_corbytalkQuestionsCancel:""On a second thought...""",
-hegtales_corbytalkQuestionsCorby,DialogOptionSelected,"$option == hegtales_corbytalkQuestionsCorby",,"Corby looks around the room he's in, observing the numerous expensive luxuries and old trophies. 
+hegtales_corbytalkQuestionsCorby,DialogOptionSelected,"$option == hegtales_corbytalkQuestionsCorby",,"Corby looks around the room he's inside. Seeing the many expensive luxuries and old trophies. 
 
-""I used to be a spacer like you, kid. Couple cycles ago. Did runs from Asher to Gilead. Made my own name and my group. The Luddic Church enjoyed my services, until I met an ambassador from the Hegemony on one of those trips. He convinced me to move my operation to Jangala and here I am... working for the nobles of Eventide.""
+""I used to be a spacer like you, kid. Few years ago. Did runs from Asher to Gilead. Made my own name and my group. The Luddic Church enjoyed my services, but in one of those trips I met an ambassador from the Hegemony. He convinced me to move my operation to Jangala and here I am... Working for the nobles of Eventide."" 
 
-""Let me tell you a thing or two about space trading kid, you can smuggle and do whatever those shady folks do, but it's dangerous. Better stick to a large trade fleet."" There is a hint of insincerity about what he is saying.",,
-hegtales_corbytalkQuestionsEventide,DialogOptionSelected,"$option == hegtales_corbytalkQuestionsEventide",,"""Nobles and serfs, a tale as old as time. Rich people in castles and mansions live in normal conditions, like in Gilead, but then you have the poor sods living in perpetual darkness. Not a nice life. I have been in both places but nowadays I enjoy staying in space. Helps with my weight."" 
+""Let me tell you a thing or two about space trading kid, you can smuggle and do whatever those shady folks do, but it's dangerous. Better stick to a large trade fleet."" There is a hint of sarcasm about what he is saying.",,
+hegtales_corbytalkQuestionsEventide,DialogOptionSelected,"$option == hegtales_corbytalkQuestionsEventide",,"""Nobles and serfs, a tale old as time. Rich people in castles and mansions live in normal conditions, like in Gilead, but then you have the poor sods living in perpetual darkness. Not a nice life. I have been in both places but nowadays I enjoy staying in space. Help me with my weight."" 
 
-He gives a hearty laugh before looking serious. ""You might think the Lords and Nobles are annoying and scheming and you might be right... but there are a few ones that work for the betterment of all the people in the Hegemony.""",,
-hegtales_corbytalkQuestionsContact,DialogOptionSelected,"$option == hegtales_corbytalkQuestionsContact",,"""He's the less known brother to the so-called Lord of Bones, part of the House of Ossum. They have huge ties to the Luddic Church through their common faith in the prophet and so on. One of the reasons why I got along with them pretty well. His father is the reason I moved to this place after all. Smart guy. Easy going. If you want to get in good with the Hegemony and earn some credits on the side, he's your man.”",,
+He gives a hearty laugh before looking serious. ""You might think the Lords and Nobles are quite annoying and scheming, you might be right... but there are a few ones that work for the best of all people in the Hegemony.""",,
+hegtales_corbytalkQuestionsContact,DialogOptionSelected,"$option == hegtales_corbytalkQuestionsContact",,"""He's the less known brother to the so-called Lord of Bones, part of the House of Ossum. They have huge ties with the Luddic Church since they are quite faithful and all those things. One of the reasons why I got along with them pretty well. His father is the reason why I moved to this place after all. Smart guy. Easy going. If you want to get in the good graces with the Hegemony and make some credits on the side, that's your man.""",,
 hegtales_corbytalkQuestionsCancel,DialogOptionSelected,"$option == hegtales_corbytalkQuestionsCancel","FireAll PopulateOptions",,,
 ,,,,,,
 # Corby Gifting!,,,,,,
@@ -2036,9 +2039,9 @@ $offeringMade score:100",,"""I would love to accept this gift..."" Corby mumbles
 He gives a small wink.",,
 CorbyOfferingEnough,DialogOptionSelected,"$option == CorbyMakeOffering","SetTextHighlightColors buttonShortcut
 SetTextHighlights ""100"" ""luxury goods""
-","""A gift! I knew that I could trust you, kid."" The large man gives a huge smile and looks at his screens. 
+","""A gift! I knew that I could trust you kid."" The large man gives a huge smile and looks at his screens. 
 
-He explains how a shuttle could approach the station with the transferred goods without alerting the patrols.","0:CorbyGiveOffering:Transfer 100 luxury goods
+He explains how a shuttle can be sent to his station with the transferred goods without a single inspection or problem.","0:CorbyGiveOffering:Transfer 100 luxury goods
 1:CorbyCancelOffering:Never mind",
 CorbyGiveOffering,DialogOptionSelected,"$option == CorbyGiveOffering","AddText ""The arrangements are made and Corby promises that his contact will surely accept this expensive gift.""
 AddRemoveCommodity luxury_goods -100 true
@@ -2180,39 +2183,32 @@ hegtales_hannah_peaceBribeRepDecline,DialogOptionSelected,"$option == hegtales_h
 ,,,,,,
 # Australis Space Talk,,,,,,
 greetingAustralisSpacePremission,OpenCommLink,"$id == hegtales_australis score:1400
-!$hegtalesIsMarketFaction hegemony",,"""Scanned and identified. If you need something important or Hegemony-related, speak to someone else."" $PersonRank $personName signs off with the flash of a brass skull.","0:cutCommLink:Cut the comm link",
+!$hegtalesIsMarketFaction hegemony",,"""Scanned and identified. If you need something important or Hegemony Related, speak to someone else."" $PersonRank $personName signs off with a flash of a brass skull.","0:cutCommLink:Cut the comm link",
 greetingAustralisSpace,OpenCommLink,"$id == hegtales_australis score:1500
-$player.australiscontact ",,"""Captain $playerLastname. If you’ve got business to talk, find me planetside. I am currently on patrol."" $PersonRank $personName signs off with the flash of a brass skull.","0:cutCommLink:Cut the comm link",
+$player.australiscontact ",,"""Captain $playerLastname. If you got business, talk to me in the planet. I am currently in patrol."" $PersonRank $personName signs off with a flash of a brass skull.","0:cutCommLink:Cut the comm link",
 greetingAustralisSpaceNice,OpenCommLink,"$id == hegtales_australis score:2000
-$global.hegtales_Quest3_missionCompleted ",,"""Captain $playerLastname! I am currently busy! Talk to me at home."" $PersonRank $personName signs off with the flash of a brass skull.","0:cutCommLink:Cut the comm link",
+$global.hegtales_Quest3_missionCompleted ",,"""Captain $playerLastname! I am currently busy! Talk to at home."" $PersonRank $personName signs off with a flash of a brass skull.","0:cutCommLink:Cut the comm link",
 "#END Australis Space Talk",,,,,,
 ,,,,,,
 # Australis Dialogue,,,,,,
 greetingAustralisnormal,PickGreeting,"$id == hegtales_australis score:1000
 $player.australiscontact 
 ","BeginConversation hegtales_australis
-FireAll PopulateOptions","The man is currently looking at his TriPad almost absently before he turns his green eyes to the screen. ""Australis of House Ossum here...""
+FireAll PopulateOptions","The man is currently looking at his tripad, almost absently before he turns his green eyes to the screen. ""Australis of House Ossum here...""
 
 ""Captain $playerLastName.""
 
 He sighs softly and puts on a polite smile.
 
 ""What can House Ossum do for you today?""
-OR
-The man is currently looking at his TriPad almost absently before he turns his green eyes to the screen. ""Australis of House Ossum here...""
-
-""Captain $playerLastName.""
-
-He sighs softly and puts on a polite smile.
-
-""What can I do for you today?""",,
+",,
 greetingAustralisnormalFamily,PickGreeting,"$id == hegtales_australis score:1200
 $global.hegtales_house_ossum_start score:1000
 $player.australiscontact 
 ","BeginConversation hegtales_australis
-FireAll PopulateOptions","The man is currently looking at his TriPad almost absently before he turns his green eyes to the screen. ""Australis of House Ossum here...""
+FireAll PopulateOptions","The man is currently looking at his tripad, almost absently before he turns his green eyes to the screen. ""Australis of House Ossum here...""
 
-""$playerFirstName! Your mother told me to keep you safe! But I know that you can keep yourself safe.""
+""$playerFirstName! Your mother told me to keep you safe! But i know that you can keep yourself safe.""
 
 ""What do you need?""",,
 hegmod_Australistalkstart,PopulateOptions,"$id == hegtales_australis score:1000
@@ -2223,7 +2219,7 @@ SetEnabled aiCores_startTurnIn false","""I am sorry, Captain $playerLastName.""
 
 ""I cannot accept these cores. Their presence conflicts with the teachings of Ludd and the principles I hold dear. Please approach any other Hegemony officials about them. They will be better suited to handle such matters."" 
 
-Australis then proceeds to whisper a quick prayer.",,
+Australis then proceeds to do a quick prayer.",,
 hegtales_australistalk,DialogOptionSelected,"$option == hegtales_australistalk","FireAll hegtales_australistalkQuestions
 SetShortcut hegtales_australistalkQuestionsCancel ""ESCAPE""","
 ","hegtales_australistalkQuestionsOssum:""Tell me about House Ossum""
@@ -2234,18 +2230,19 @@ hegtales_australistalkQuestionsHegemon:""Tell me about the High Hegemon.""
 hegtales_australistalkQuestionsCancel:""I got all the information I wanted.""",
 hegtales_australistalkQuestionsAustralis,DialogOptionSelected,"$option == hegtales_australistalkQuestionsAustralis",,"Australis raises an eyebrow at the question, a faint smile playing on his lips. For a moment, he seems to search for the right words, his amusement evident in the way he leans back slightly in his chair.
 
-""I am a Rear Admiral of the Hegemony Navy,"" he begins, his tone measured but carrying a hint of pride. ""Currently, I serve in… let's call it an unspecified ministry. The less I say about it, the better —for both of us."" He chuckles softly, though his words leave no doubt about the secrecy surrounding his work.
+""I am a Rear Admiral of the Hegemony Navy."" he begins, his tone measured but carrying a hint of pride. ""Currently, I serve in… let's call it an unspecified ministry. The less I say about it, the better —for both our sakes."" He chuckles softly, though his words leave no doubt about the secrecy surrounding his work.
 
-His expression softens as he shifts to a more personal note. ""On the home front, I'm a very happily married man,"" he continues, his voice warming. ""My wife and I have three children. You might have heard their giggles during our meeting, or perhaps not. Our castle is far more spacious than the cramped corridors of a spaceship, so they have plenty of room to run around without causing too much of a ruckus.""","hegtales_australistalkQuestionsAustralis2:Keep listening.",
+His expression softens as he shifts to a more personal note. ""On the home front, I'm a very happily married man,"" he continues, his voice warming. ""My wife and I have three children. You might have heard their giggles during our meeting or perhaps not. Our castle is far more spacious than the cramped corridors of a spaceship, so they have plenty of room to run around without causing too much of a ruckus.""
+","hegtales_australistalkQuestionsAustralis2:Keep listening.",
 hegtales_australistalkQuestionsAustralis2,DialogOptionSelected,"$option == hegtales_australistalkQuestionsAustralis2
 ","$option = hegtales_australistalk 0
 FireBest DialogOptionSelected","He pauses briefly, his gaze momentarily distant. ""We're also devout Luddics, every one of us. Faith has always been the foundation of our house, and we strive to uphold its tenets in all that we do.""
 
-Australis then shifts back to his professional life, recounting a few minor tasks and missions with a casual air. ""I've handled my share of assignments—some mundane, some with a bit more excitement, but nothing you'd find particularly noteworthy,"" he says, waving a hand dismissively.",,
+Australis then shifts back to his professional life, recounting a few minor tasks and missions with a casual air. ""I've handled my share of assignments—some mundane, some with a bit more excitement, but nothing you'd find particularly noteworthy."" he says, waving a hand dismissively.",,
 hegtales_australistalkQuestionsEventide,DialogOptionSelected,"$option == hegtales_australistalkQuestionsEventide
-",,"""A place of contrasts and complexities. While the noble houses may have their differences – and trust me, there are plenty –  we've always managed to work together when it mattered most. Unity is our strength. It's what keeps our citizens under control and ensures stability in an otherwise chaotic sector.""
+",,"""A place of contrasts and complexities. While the noble houses may have their differences and trust me, there are plenty, we've always managed to work together when it matters most. Unity has been our strength. It's what keeps our citizens under control and ensures stability in an otherwise chaotic sector.""
 
-""Eventide isn't just a jewel of the Persean Sector; it's a cornerstone of the Hegemony. From our noble houses come the officers who lead its fleets and maintain its strength. We've upheld the sacred principles of the old Domain and passed them down through generations. It's no exaggeration to say that without Eventide, the Hegemony's foundation would be far weaker.""
+""Eventide isn't just a jewel in the Persean Sector; it's a cornerstone of the Hegemony. From our noble houses come the officers who lead its fleets and maintain its strength. We've upheld the sacred principles of the old Domain and passed them down through generations. It's no exaggeration to say that without Eventide, the Hegemony's foundation would be far weaker.""
 
 ""When the Domain returns, and I believe it's a matter of when, not if, they'll find Eventide ready. We are their wayward sons and daughters, and we've never forgotten our heritage. The Domain will be glad to welcome us back into the fold, and we'll be ready to take our rightful place in its grand design.""",,
 hegtales_australistalkQuestionsOssumFamily,DialogOptionSelected,"$option == hegtales_australistalkQuestionsOssum
@@ -2255,16 +2252,16 @@ $global.hegtales_house_ossum_start score:1000",,"Australis seems extremely amuse
 
 ""I already told you the tales of our house when you were little... Don't make me feel like an old man.""",,
 hegtales_australistalkQuestionsOssum,DialogOptionSelected,"$option == hegtales_australistalkQuestionsOssum
-!$global.hegtales_house_ossum_start",,"Australis seems eager to respond, rising from his desk with an energy that belies his otherwise composed demeanor. He strides toward a nearby shelf, retrieving an old, leather-bound book. Its worn edges and gilded lettering suggest it's more than just a family heirloom; it's a piece of history.
+!$global.hegtales_house_ossum_start",,"Australis seems eager to respond, rising from his desk with an energy that belies his otherwise composed demeanor. He strides toward a nearby shelf, retrieving an old, leather-bound book. Its worn edges and gilded lettering suggest it's more than just a family heirloom, it's a piece of history.
 
 ""We were originally from Sphinx,"" he begins, his voice carrying a note of pride. ""Our family was among the first settlers in the Persean Sector. When Eventide received its orbital shades and began to flourish, we made the journey here. That was generations ago, and we've lived in our ancestral castle ever since.""
 
 He pauses for a moment, flipping through the pages of the book as though searching for the right words. ""Of course, we were one of the families that signed the Eventide Diktat when the 14th Battlegroup arrived. From that moment on, we've been steadfast allies of the Hegemony, working tirelessly to uphold its vision.""","hegtales_australistalkQuestionsOssum2:Keep listening.",
-hegtales_australistalkQuestionsOssum2,DialogOptionSelected,"$option == hegtales_australistalkQuestionsOssum2","SetShortcut hegtales_australistalkQuestionsCancel ""ESCAPE""","Australis's tone shifts slightly as he continues, his gaze lingering on the open book. There's a quiet heaviness in his expression, as if the next part of his story weighs on him. ""Our father perished in Askonia,"" he says, his voice softening. ""He was part of Admiral Andrada's fleet… loyal to the Hegemony to the very end... Our ancestral flagship was lost that day... We were just children, the two of us.""
+hegtales_australistalkQuestionsOssum2,DialogOptionSelected,"$option == hegtales_australistalkQuestionsOssum2","SetShortcut hegtales_australistalkQuestionsCancel ""ESCAPE""","Australis's tone shifts slightly as he continues, his gaze lingering on the open book. There's a quiet heaviness in his expression, as if the next part of his story weighs on him. ""Our father perished in Sindria,"" he says, his voice softening. ""He was part of Admiral Andrada's fleet… loyal to the Hegemony to the very end... And our ancestral flagship was lost.. We were just children, the two of us.""
 
-For a moment, the room feels heavier, the silence amplifying the loss etched into his words. Then, as if to lighten the mood, Australis closes the book gently and looks back at you with a faint smile. ""House Ossum has never been too huge, even if we are quite influential. So our numbers are few – well, unless you count our little ones."" His tone brightens slightly, a deliberate attempt to end on a more hopeful note.
+For a moment, the room feels heavier, the silence amplifying the loss etched into his words. Then, as if to lighten the mood, Australis closes the book gently and looks back at you with a faint smile. ""House Ossum has never been too huge, even if we are quite influential. So our numbers are few -well, unless you count our little ones."" His tone brightens slightly, a deliberate attempt to end on a more hopeful note.
 
-He places the book back on the shelf and returns to his seat.","hegtales_australistalkQuestionsOssum:""Tell me about House Ossum""
+He places the book back on the shelf and returns to his seat, his movements deliberate and measured.","hegtales_australistalkQuestionsOssum:""Tell me about House Ossum""
 hegtales_australistalkQuestionsAustralis:""Tell me about yourself.""
 hegtales_australistalkQuestionsEventide:""Tell me about Eventide.""
 hegtales_australistalkQuestionsBorealis:""Tell me about the Lord of Bones.""
@@ -2274,20 +2271,20 @@ hegtales_australistalkQuestionsBorealis,DialogOptionSelected,"$option == hegtale
 
 He states the facts, before he seems to realize that he isn't saying much. ""He's also my twin brother. Though he came out first, which means he inherited the title of Patriarch.""
 
-""The Lord of Bones,"" he adds with a small laugh, ""Whether he likes it or not, it's a name that suits him more than he'd ever admit.""",,
+""The Lord of Bones,"" he adds with a small laugh, ""Whether he likes it or not, is a name that suits him more than he'd ever admit.""",,
 hegtales_australistalkQuestionsBorealisFamily,DialogOptionSelected,"$option == hegtales_australistalkQuestionsBorealis
-$global.hegtales_house_ossum_start score:1000",,"A smile appears on his lips.  ""He's your uncle. And you know he hates being called that! So don't say it to his face.""
+$global.hegtales_house_ossum_start score:1000",,"A smile appears on his lips. ""He's your uncle. And you know he hates being called that! So don't do it to his face.""
 
 ""And if you are a dummy and do not remember, he's also my twin.""
 
-""The Lord of Bones,"" he adds with a small laugh, ""whether he likes it or not, it's a name that suits him more than he'd ever admit.""",,
-hegtales_australistalkQuestionsDaud,DialogOptionSelected,"$option == hegtales_australistalkQuestionsHegemon",,"""He's a great man."" Australis' voice is steady and firm. ""Resourceful and sharp like no other I've known."" For a moment, his gaze drifts to a far-off point. ""Of course, some of the nobles here on Eventide grumble about him. But House Ossum has always believed otherwise. We've long held that true success comes from one's own achievements, not from the privilege of birth."" He pauses. ""My brother served as a patrol officer in Daud's fleet during the defense of Chicomoztoc. He saw firsthand the man's brilliance and resolve under pressure.""
+""The Lord of Bones,"" he adds with a small laugh, ""Whether he likes it or not, is a name that suits him more than he'd ever admit.""",,
+hegtales_australistalkQuestionsDaud,DialogOptionSelected,"$option == hegtales_australistalkQuestionsHegemon",,"""He's a great man."" he begins, his voice steady and firm. ""Resourceful and sharp like no other I've known."" For a moment, his gaze drifts to a far-off point. ""Of course, some of the nobles here on Eventide grumble about him. But House Ossum has always believed otherwise. We've long held that true success comes from one's own achievements, not from the privilege of birth."" He pauses.""My brother served as a patrol officer in Daud's fleet during the defense of Chicomoztoc. He saw firsthand the man's brilliance and resolve under pressure.""
 
 ""Unfortunately, not everyone on Eventide shares our view. Many houses here would rather bicker over status and tradition than recognize what truly matters. But House Ossum? We know better. We follow Daud's leadership to the letter, and we'll continue to do so, regardless of the mutterings of others.""
 
-""Baikal Daud is a reliable High Hegemon, and I trust in his vision for the Hegemony's future.""",,
+""Daikal Daud is a reliable High Hegemon, and I trust in his vision for the Hegemony's future.""",,
 hegtales_australistalkQuestionsCancel,DialogOptionSelected,"$option == hegtales_australistalkQuestionsCancel","FireAll PopulateOptions
-SetShortcut hegtales_australistalkQuestionsCancel ""ESCAPE""","""Of course. If you need anything else, I will be of assistance."" The officer speaks as he looks at his TriPad.",,
+SetShortcut hegtales_australistalkQuestionsCancel ""ESCAPE""","""Of course. If you need anything more, I will be of assistance."" The officer speaks as he looks at his tripad.",,
 "#END Australis Dialogue",,,,,,
 ,,,,,,
 # Hub Options,,,,,,
@@ -2298,9 +2295,9 @@ hegtales_Quest2NotDone,AustralisQuests,"$id == hegtales_australis
 !$global.hegtales_Quest2Accepted
 ","AddTextSmall ""You see him looking over at one of his screens repeatly, the only word you can see is 'Stahl'."" gray
 SetTextHighlights Stahl",,,
-AustralisQuestHubOption,DialogOptionSelected,"$option == AustralisQuestHubOption","FireAll AustralisQuests","$personName nods and then spins to the screen behind $himOrHer as $heOrShe focuses. ""Give me just a moment...""
+AustralisQuestHubOption,DialogOptionSelected,"$option == AustralisQuestHubOption","FireAll AustralisQuests","$personName nods and them spins to the screen behind $himOrHer as $heOrShe seems focused. ""Give me just a moment...""
 OR
-""Let's see here..."" $heOrShe taps at $hisOrHer datapad, then spins to the screen behind $himOrHer as $heOrShe focuses.",,
+""Let's see here,"" $heOrShe taps at $hisOrHer datapad, them spins to the screen behind $himOrHer as $heOrShe seems focused.",,
 AustralisQuestHubOptionComplete,DialogOptionSelected,"$option == AustralisQuestHubOption score:1000
 $global.hegtales_Quest1_missionCompleted
 $global.hegtales_Quest2_missionCompleted
