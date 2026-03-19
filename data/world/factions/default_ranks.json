@@ -1,10 +1,12 @@
 {
 	"ranks":{
+		"warmaster":{"name":"Warmaster"},
 		"rearadmiral":{"name":"Rear Admiral"}
 	},
 	
 	"posts":{
-		"councillor":{"name":"Councillor"}
+		"councillor":{"name":"Councillor"},
+		"bartender":{"name":"Bartender"}
 	}
 }
 

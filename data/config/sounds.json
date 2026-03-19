@@ -1,0 +1,10 @@
+{
+"music":{
+		"bone_dancer_song_theme":[
+			{"file":"bone_dancer_song.ogg","source":"sounds/music","volume":0.8,"randomStart":false},
+		],
+	},
+}
+
+
+

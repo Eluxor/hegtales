@@ -1,6 +1,8 @@
 id,trigger,conditions,script,text,options,notes
 "#RULESET_NAME Hegtales",,,,,,
 ,,,,,,
+# Hegemony Storyline!,,,,,,
+,,,,,,
 # Corby Meet,,,,,,
 hegmod_corbyMeeting,DialogOptionSelected,"$option == hegmod_MeetingCorby","BeginConversation hegtales_corby
 ShowPersonVisual
@@ -154,6 +156,9 @@ FireAll PopulateOptions","""Of course, of course... here are some credits and so
 
 Your transport shuttle returns with the reward and an ample stock of Heavy Weapons.",,
 "#END Returning to Corby",,,,,,
+,,,,,,
+# NEW DIRECTORY,,,,,,
+"#END NEW DIRECTORY",,,,,,
 "#END Hegtales First Quest!",,,,,,
 ,,,,,,
 # Australis Meet,,,,,,
@@ -1542,6 +1547,7 @@ FireAll PopulateSalvageOptions1","You give the fallen men and women of this spac
 
 The mood on your bridge is very grim and quiet.",,
 "#END Retaliation Interactions",,,,,,
+"#END Hegemony Storyline!",,,,,,
 ,,,,,,
 # Character Dialogues!,,,,,,
 ,,,,,,
@@ -2308,6 +2314,124 @@ AustralisQuestHubCancel,DialogOptionSelected,"$option == AustralisQuestHubCancel
 "#END Australis Quest Hub",,,,,,
 "#END Australis Dialogue!",,,,,,
 "#END Character Dialogues!",,,,,,
+,,,,,,
+# The Pirate Storyline!,,,,,,
+,,,,,,
+# Finding the Club!,,,,,,
+,DialogOptionSelected,"$option == hegtales_bonedancer_vip
+!$player.hasenteredbd","$player.hasenteredbd = true",,,
+,,,,,,
+# First Entrance to BD,,,,,,
+hegtales_bonedancer_start,PopulateOptions,"$hasMarket
+$market.id == qaras
+$menuState == main","SetOptionColor visitBoneDancer highlight",,"3:visitBoneDancer:Take a shuttle to the Bone Dancer",
+hegtales_THE_BONE_DANCER FIRST TIME,DialogOptionSelected,"$option == visitBoneDancer  score:1000
+!$player.hasenteredbd","sfcplaymusic ""bone_dancer_song_theme""","You eventually arrive at the coordinates, your shuttle descending through layers of dim industrial haze before touching down nearby.
+The establishment in question is... underwhelming.
+
+From the outside, the building looks like it’s been standing purely out of spite. Rust creeps along its metal panels, and several sections appear to have been hastily repaired or barely repaired at all. Whatever this place once was, it certainly wasn’t built to be a club.
+And yet, there it is.
+
+A large neon sign flickers above the entrance, the words “The Bone Dancer” sputtering in uneven intervals, occasionally plunging the façade into momentary darkness before buzzing back to life. Despite the state of the exterior, a low, heavy rhythm leaks from inside, the bass strong enough to be felt through the ground.
+
+Standing at the entrance is a bouncer watching everything.
+His gaze settles on you as you approach, giving you a slow, deliberate once-over. For a moment, it seems like he might stop you.
+Then he notices your shuttle.
+
+Whatever conclusions he draws, they seem to work in your favor. He steps aside without a word, granting you entry.
+","hegtales_bonedancer_first_enter: Enter the Club
+hegtales_bonedancer_leave: Leave the Club",
+hegtales_THE_BONE_DANCER FIRST ENTER,DialogOptionSelected,"$option == hegtales_bonedancer_first_enter","$player.hasenteredbd = true
+ShowImageVisual bone_dancer
+FireAll hegtales_bonedancer","The moment you step inside, the noise hits you like a physical force.
+The music is loud, aggressively so, looping in a relentless rhythm that drowns out nearly everything else. Layers of distorted beats and synthetic tones pulse through the space, vibrating through the floor and into your bones. The air is thick. Smoke hangs low, mixed with the sharp tang of cheap stimulants and something less identifiable something stale.
+
+You take a moment to adjust and then you notice the crowd.
+It’s... not what you expected.
+
+The interior, while dimly lit and chaotic, is far more alive than the exterior suggested. Patrons pack the space, traders, drifters, mercenaries and figures that don’t quite fit into any category you’d care to define. Conversations happen in tight clusters, deals likely being made just out of earshot.
+
+Still, there’s a pattern to it. Most of them carry themselves with a certain edge. The kind of people who prefer places where questions aren’t asked and answers aren’t recorded.
+A pirate crowd, if you had to name it.
+
+This place is loud, dirty and probably dangerous.
+
+The question is—
+Do you stay?
+","hegtales_bonedancer_vip:Go to the VIP Area
+hegtales_bonedancer_bar:Go to the Bar
+hegtales_bonedancer_bastard:Go to the Shady Corner
+hegtales_bonedancer_dancefloor:Head to the Dancer Floor
+hegtales_bonedancer_leave: Leave the Club",
+"#END First Entrance to BD",,,,,,
+,,,,,,
+# Bone Dancer Hub!,,,,,,
+hegtales_THE_BONE_DANCER,DialogOptionSelected,"$option == visitBoneDancer","FireAll hegtales_bonedancer
+ShowImageVisual bone_dancer
+SetShortcut hegtales_bonedancer_leave ""ESCAPE""
+sfcplaymusic ""bone_dancer_song_theme""","Outside, the bouncer barely spared you a glance this time.
+
+You step into the club once more. The music crashes into you in heavy, distorted waves, while the thick air laden with smoke, cheap stimulants and something harder to place, settles in your lungs like an old habit. Whatever initial shock this place once had is gone now.",,
+hegtales_bonedancer_vip,hegtales_bonedancer,"$option == hegtales_bonedancer_vip",,,,
+Bone Dancer Club Bar Start,hegtales_bonedancer,,,,"hegtales_bonedancer_bar:Go to the Bar",
+Bone Dancer Club Bar,DialogOptionSelected,"$option == hegtales_bonedancer_bar","FireAll hegtales_bonedancer_bar
+SetShortcut hegtales_granger_leave_bar ""ESCAPE""","You make your way to the bar, pushing past the crowd until the noise settles into something more manageable. The counter is worn and stained, its surface telling the story of years of heavy use. Behind it stands a middle-aged woman with red hair, calmly washing a glass as if the chaos around her doesn’t exist.","
+
+",
+hegtales_bonedancer_bastard,hegtales_bonedancer,"$option == hegtales_bonedancer_bastard",,,,
+hegtales_bonedancer_dance,hegtales_bonedancer,,,,"hegtales_bonedancer_dance:Head to the Dancer Floor",
+Bone Dancer Club Leave Start,hegtales_bonedancer,,"SetShortcut hegtales_bonedancer_leave ""ESCAPE""",,"hegtales_bonedancer_leave:Leave the Club",
+Bone Dancer Club Leave,DialogOptionSelected,"$option == hegtales_bonedancer_leave","ShowDefaultVisual
+FireAll PopulateOptions
+sfcplaymusic","You leave the club and take a shuttle back to your ship.",,
+"#END Bone Dancer Hub!",,,,,,
+,,,,,,
+# Bar Main Hub,,,,,,
+Bar Meet Granger First,hegtales_bonedancer_bar,"!$meetgranger","$meetgranger = true",,"hegtales_granger_question_hub_first_time:Talk with the Bartender",
+Bar Meet Granger,hegtales_bonedancer_bar,"$meetgranger",,,"hegtales_granger_question_hub:Talk with Granger",
+Bar Drink Start,hegtales_bonedancer_bar,,,,"hegtales_granger_drink:Ask for a Drink",
+Bar Drink,DialogOptionSelected,"$option == hegtales_granger_drink",,"The bartender doesn’t reply, just turns, grabs a bottle from somewhere below the counter and pours you something strong into a scratched glass. It slides across to you with a practiced motion. When you look back up, she’s already watching you.",,
+Bar Leave Start,hegtales_bonedancer_bar,,,,"hegtales_granger_leave_bar:Leave the bar",
+Bar Leave,DialogOptionSelected,"$option == hegtales_granger_leave_bar","FireAll hegtales_bonedancer
+SetShortcut hegtales_bonedancer_leave ""ESCAPE""","You step away from the counter, the bartender’s back to her routine and the noise of the club swallows you up again.",,
+"#END Bar Main Hub",,,,,,
+,,,,,,
+# Granger Talk,,,,,,
+Granger First time talk,DialogOptionSelected,"$option == hegtales_granger_question_hub_first_time","BeginConversation hegtales_granger
+ShowPersonVisual
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","She glances up at you, her eyes lingering for a moment as she sizes you up. You get the sense she’s already decided you’re worth acknowledging, if only barely. She sets the glass aside, resting one hand on the counter.
+
+“What’ll it be?”","hegtales_granger_question_bonedancer:""What's this place?""
+hegtales_granger_question_about:""Who are you?""
+hegtales_granger_question_job:""Do you have any jobs?""
+hegtales_granger_question_cancel:""I'm good.""",
+Granger Questions Hub,DialogOptionSelected,"$option == hegtales_granger_question_hub","BeginConversation hegtales_granger
+ShowPersonVisual
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""Yeah?"" The woman says as she flicks her red mane.
+OR
+""Mmhmhm."" The woman simply lifts her eyebrows.
+OR
+""Aha."" She taps the glass on the counter.
+OR
+""Alright?"" She simply stares at you.","hegtales_granger_question_bonedancer:""What's this place?""
+hegtales_granger_question_about:""Who are you?""
+hegtales_granger_question_job:""Do you have any jobs?""
+hegtales_granger_question_cancel:""I'm good.""",
+Granger Questions the Club,DialogOptionSelected,"$option == hegtales_granger_question_bonedancer
+$id == hegtales_granger score:100",,"She lets out a short chuckle, shaking her head as if the answer should be obvious. ""The Bone Dancer."" she says plainly, like that explains everything. The way she goes back to her glass makes it clear she has nothing more to add.",,
+Granger Questions about her,DialogOptionSelected,"$option == hegtales_granger_question_about
+$id == hegtales_granger score:100",,"“The bartender.” The answer comes without hesitation. She doesn’t look up this time, continuing to clean the same glass with slow, deliberate movements. ""Name's Granger.""",,
+Granger Questions Job?,DialogOptionSelected,"$option == hegtales_granger_question_job
+$id == hegtales_granger score:100",,"That gets a reaction. She pauses, then glances around the bar as if expecting someone to laugh. When no one does, she taps the rim of the glass against the counter once, thinking. ""Not the kind you ask for like that."" she says after a moment.",,
+Granger Question Cancel,DialogOptionSelected,"$option == hegtales_granger_question_cancel
+$id == hegtales_granger score:100","EndConversation
+ShowImageVisual bone_dancer
+FireAll hegtales_bonedancer
+SetShortcut hegtales_bonedancer_leave ""ESCAPE""
+","She shrugs, already losing interest before you even finish the words.",,
+"#END Granger Talk",,,,,,
+"#END Finding the Club!",,,,,,
+"#END The Pirate Storyline!",,,,,,
 ,,,,,,
 # DEV MODE HEGTALES,,,,,,
 HegtalesdevMenuOption,PopulateOptions,"$market.id == eventide

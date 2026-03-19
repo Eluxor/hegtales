@@ -20,6 +20,7 @@ import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.BaseThemeGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.SalvageSpecialAssigner;
 import com.fs.starfarer.api.impl.campaign.rulecmd.AddRemoveCommodity;
+import com.fs.starfarer.api.impl.campaign.rulecmd.BaseCommandPlugin;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.special.ShipRecoverySpecial;
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.special.ShipRecoverySpecial.ShipCondition;
 import com.fs.starfarer.api.impl.campaign.world.TTBlackSite;
@@ -30,6 +31,13 @@ import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.ids.Entities;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.ids.Ranks;
+
+import com.fs.starfarer.api.campaign.InteractionDialogAPI;
+import com.fs.starfarer.api.campaign.SectorEntityToken;
+import com.fs.starfarer.api.impl.MusicPlayerPluginImpl;
+import java.util.List;
+import java.util.Map;
+import org.apache.log4j.Logger;
 
 import com.fs.starfarer.api.impl.campaign.fleets.PersonalFleetAustralis;
 import com.fs.starfarer.api.impl.campaign.ids.People;
@@ -46,6 +54,8 @@ public class hegtales extends BaseModPlugin {
 
     //Characters and the Retribution Generation
     protected SectorEntityToken debris;
+    public static String POST_BARTENDER = "bartender";
+    public static String WARMASTER = "warmaster";
     public static String SPACE_REARADMIRAL = "rearadmiral";
     public static String POST_EXECUTIVE_COUNCILLOR = "councillor";
 
@@ -291,6 +301,77 @@ public class hegtales extends BaseModPlugin {
 
                     Global.getSector().getImportantPeople().addPerson(frusca);
                 }
+
+                market = Global.getSector().getEconomy().getMarket("qaras");
+                if (market != null) {
+
+                    //Cranium
+                    PersonAPI cranium = Global.getFactory().createPerson();
+                    cranium.setFaction("pirates");
+                    cranium.setGender(FullName.Gender.MALE);
+                    cranium.setPostId(Ranks.POST_BASE_COMMANDER);
+                    cranium.setRankId(WARMASTER);
+                    cranium.getName().setFirst("Cranium");
+                    cranium.getName().setLast("Voss");
+                    cranium.setVoice(Voices.SOLDIER);
+                    cranium.setImportance(PersonImportance.VERY_HIGH);
+                    cranium.setPortraitSprite("graphics/hegtales/portraits/hegtales_cranium.png");
+                    cranium.setId("hegtales_cranium");
+                    cranium.getStats().setSkillLevel(Skills.POINT_DEFENSE, 2);
+                    cranium.getStats().setSkillLevel(Skills.HELMSMANSHIP, 2);
+                    cranium.getStats().setSkillLevel(Skills.TARGET_ANALYSIS, 2);
+                    cranium.getStats().setSkillLevel(Skills.POLARIZED_ARMOR, 2);
+                    cranium.getStats().setSkillLevel(Skills.IMPACT_MITIGATION, 2);
+                    cranium.getStats().setSkillLevel(Skills.FIELD_MODULATION, 1);
+                    cranium.getStats().setSkillLevel(Skills.COMBAT_ENDURANCE, 2);
+                    cranium.getStats().setSkillLevel(Skills.BALLISTIC_MASTERY, 2);
+                    cranium.getStats().setLevel(8); //(OP asf but its on purpose.))
+                    market.getCommDirectory().addPerson(cranium, 0);
+                    People.assignPost(market, Ranks.POST_BASE_COMMANDER , cranium);
+                    market.getCommDirectory().getEntryForPerson(cranium).setHidden(false);
+                    market.addPerson(cranium);
+
+                    //Granger
+                    PersonAPI granger = Global.getFactory().createPerson();
+                    granger.setId("hegtales_granger");
+                    granger.setRankId(Ranks.CITIZEN);
+                    granger.setPostId(POST_BARTENDER);
+                    granger.setImportance(PersonImportance.HIGH);
+                    granger.addTag("trade");
+                    granger.addTag("underworld");
+                    granger.getName().setFirst("Granger");
+                    granger.getName().setLast("Storm-Voss");
+                    granger.setGender(FullName.Gender.FEMALE);
+                    granger.setPortraitSprite("graphics/hegtales/portraits/hegtales_granger.png");
+                    granger.setFaction("pirates");
+                    market.addPerson(granger);
+                    market.getCommDirectory().addPerson(granger, 1);
+                    market.addPerson(granger);
+                    ip.addPerson(granger);
+                    market.getCommDirectory().getEntryForPerson(granger).setHidden(true);
+                    Global.getSector().getImportantPeople().addPerson(granger);
+
+                    //Bastard
+                    PersonAPI bastard = Global.getFactory().createPerson();
+                    bastard.setId("hegtales_bastard");
+                    bastard.setRankId(Ranks.GROUND_LIEUTENANT);
+                    bastard.setPostId(Ranks.POST_SUPPLY_OFFICER);
+                    bastard.setImportance(PersonImportance.HIGH);
+                    bastard.addTag("trade");
+                    bastard.addTag("underworld");
+                    bastard.getName().setFirst("The Bastard");
+                    bastard.setGender(FullName.Gender.MALE);
+                    bastard.setPortraitSprite("graphics/hegtales/portraits/hegtales_bastard.png");
+                    bastard.setFaction("pirates");
+                    market.addPerson(bastard);
+                    market.getCommDirectory().addPerson(bastard, 2);
+                    market.addPerson(bastard);
+                    ip.addPerson(bastard);
+                    market.getCommDirectory().getEntryForPerson(bastard).setHidden(false);
+                    People.assignPost(market, Ranks.POST_SUPPLY_OFFICER , bastard);
+                    Global.getSector().getImportantPeople().addPerson(bastard);
+
+                }
             }
         }
         if (Global.getSector().getMemoryWithoutUpdate().get("$hegtales_debris_generated") == null) {
@@ -345,5 +426,18 @@ public class hegtales extends BaseModPlugin {
         }
     }
 
-    // You can add more methods from ModPlugin here. Press Control-O in IntelliJ to see options.
+    // Funny Bone Dancer music!
+    protected boolean callAction(String action, String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params,
+                                 Map<String, MemoryAPI> memoryMap) {
+
+        if ("playMusicBoneDancer".equals(action))
+        {
+            Global.getSoundPlayer().playCustomMusic(1, 1, "bone_dancer_song_theme", true);
+            return true;
+        }
+
+        return false;
+    }
+
+
 }
