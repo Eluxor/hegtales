@@ -2332,14 +2332,14 @@ The establishment in question is... underwhelming.
 From the outside, the building looks like it’s been standing purely out of spite. Rust creeps along its metal panels, and several sections appear to have been hastily repaired or barely repaired at all. Whatever this place once was, it certainly wasn’t built to be a club.
 And yet, there it is.
 
-A large neon sign flickers above the entrance, the words “The Bone Dancer” sputtering in uneven intervals, occasionally plunging the façade into momentary darkness before buzzing back to life. Despite the state of the exterior, a low, heavy rhythm leaks from inside, the bass strong enough to be felt through the ground.","hegtales_bonedancer_first2: Continue",
+A large neon sign flickers above the entrance, the words “The Bone Dancer” sputtering in uneven intervals, occasionally plunging the façade into momentary darkness before buzzing back to life. Despite the state of the exterior, a low, heavy rhythm leaks from inside, the bass strong enough to be felt through the ground.","hegtales_bonedancer_first2:Continue",
 Bone Dancer FIRST TIME 2,DialogOptionSelected,"$option == hegtales_bonedancer_first2  score:1000",,"Standing at the entrance is a bouncer watching everything.
 His gaze settles on you as you approach, giving you a slow, deliberate once-over. For a moment, it seems like he might stop you.
 Then he notices your shuttle.
 
 Whatever conclusions he draws, they seem to work in your favor. He steps aside without a word, granting you entry.
-","hegtales_bonedancer_first_enter: Enter the Club
-hegtales_bonedancer_leave: Leave the Club",
+","hegtales_bonedancer_first_enter:Enter the Club
+hegtales_bonedancer_leave:Leave the Club",
 Bone Dancers Inside First Time 1,DialogOptionSelected,"$option == hegtales_bonedancer_first_enter","
 ShowImageVisual bone_dancer
 ","The moment you step inside, the noise hits you like a physical force.
@@ -2415,7 +2415,7 @@ Dance Floor Dance Start,hegtales_bonedancer_dance,,,,"hegtales_bonedancer_dance_
 Dance Floor Dance Bad Rep Pirates,DialogOptionSelected,"$option == hegtales_bonedancer_dance_dance
 RepLTE pirates SUSPICIOUS score: 1000",,"You step onto the dance floor, trying to find your place among the shifting crowd, but it doesn’t take long before something feels off. A few heads turn subtle at first, then not so much. The music keeps pounding, but the space around you tightens in a way that has nothing to do with the rhythm.
 
-A couple of rough-looking patrons push through the crowd toward you, not bothering to hide their intent. One of them gives you a hard shove to the shoulder, enough to throw you off balance. “Not your spot.” he mutters over the noise. They just keep pressing until you’re forced back off the floor. A few nearby faces watch for a second, then lose interest. Whatever this was, it’s already over.",,
+A couple of rough-looking patrons push through the crowd toward you, not bothering to hide their intent. One of them gives you a hard shove to the shoulder, enough to throw you off balance. ""Not your spot."" he mutters over the noise. They just keep pressing until you’re forced back off the floor. A few nearby faces watch for a second, then lose interest. Whatever this was, it’s already over.",,
 Dance Floor Dance Normal,DialogOptionSelected,"$option == hegtales_bonedancer_dance_dance",,"You push further into the crowd and let the rhythm take over. The music is harsh, mechanical, more pulse than melody, beating in steady, industrial waves that seem to sync with your own movements. It’s not graceful, not even coordinated, but it doesn’t need to be.
 
 Around you, the mass shifts and twists under the flickering lights, people moving however they can, however they want. For a moment, the noise, the smoke, the pressure of everything else fades into the background. There’s just the beat, the movement, and the strange sense that this place, loud, filthy, and forgettable, makes a kind of sense while you’re in it.",,
