@@ -15,6 +15,7 @@ import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.characters.ImportantPeopleAPI;
 import com.fs.starfarer.api.impl.campaign.DerelictShipEntityPlugin;
 import com.fs.starfarer.api.impl.campaign.missions.DelayedFleetEncounter;
+import com.fs.starfarer.api.impl.campaign.missions.hub.BaseMissionHub;
 import com.fs.starfarer.api.impl.campaign.missions.hub.HubMissionWithTriggers;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.procgen.themes.BaseThemeGenerator;
@@ -58,6 +59,7 @@ public class hegtales extends BaseModPlugin {
     public static String WARMASTER = "warmaster";
     public static String SPACE_REARADMIRAL = "rearadmiral";
     public static String POST_EXECUTIVE_COUNCILLOR = "councillor";
+    public static String hegtales_granger = "granger";
 
     //@Override
     public void onGameLoad(boolean newGame)  {
@@ -330,15 +332,16 @@ public class hegtales extends BaseModPlugin {
                     People.assignPost(market, Ranks.POST_BASE_COMMANDER , cranium);
                     market.getCommDirectory().getEntryForPerson(cranium).setHidden(false);
                     market.addPerson(cranium);
+                    // Cranium offers a bit more work than a normal non-priority contact, just like Seb!
+                    cranium.getMemoryWithoutUpdate().set(BaseMissionHub.NUM_BONUS_MISSIONS, 1);
+                    BaseMissionHub.set(cranium, new BaseMissionHub(cranium));
 
                     //Granger
                     PersonAPI granger = Global.getFactory().createPerson();
-                    granger.setId("hegtales_granger");
+                    granger.setId(hegtales_granger);
                     granger.setRankId(Ranks.CITIZEN);
                     granger.setPostId(POST_BARTENDER);
-                    granger.setImportance(PersonImportance.HIGH);
-                    granger.addTag("trade");
-                    granger.addTag("underworld");
+                    granger.setImportance(PersonImportance.MEDIUM);
                     granger.getName().setFirst("Granger");
                     granger.getName().setLast("Storm-Voss");
                     granger.setGender(FullName.Gender.FEMALE);

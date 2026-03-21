@@ -2,7 +2,6 @@ package data.scripts.ids;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.characters.PersonAPI;
-
 public class hegtalesIDs {
 
         public static final String HEGTALES = "hegtales";
