@@ -2,5 +2,6 @@ mission id,person id,tagsAll,tagsAny,tagsNotAny,tags,freq,min timeout,max timeou
 hegtales_Quest1,,,,,,,,,,,,,,,graphics/hegtales/icons/servum.png,data.scripts.quests.hegtales_Quest1
 hegtales_Quest2,,,,,,,,,,,,,,,graphics/hegtales/icons/hannah.png,data.scripts.quests.hegtales_Quest2
 hegtales_Quest3,,,,,,,,,,,,,,,graphics/hegtales/icons/retaliation.png,data.scripts.quests.hegtales_Quest3
+BDhegtales_Quest1,,,,,,,,,,,,,,,graphics/icons/missions/anh.png,data.scripts.quests.BoneDancer_Quest1
 bdvip,hegtales_cranium,,,,,10,30,60,INHOSPITABLE,,,,,,graphics/icons/missions/shuttle_vip.png,data.scripts.quests.BDDeliverVIP
 bdb,hegtales_cranium,,,,,10,30,60,INHOSPITABLE,,,,,,graphics/icons/missions/underworld_bounty.png,data.scripts.quests.BoneDancerBounty

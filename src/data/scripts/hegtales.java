@@ -59,7 +59,6 @@ public class hegtales extends BaseModPlugin {
     public static String WARMASTER = "warmaster";
     public static String SPACE_REARADMIRAL = "rearadmiral";
     public static String POST_EXECUTIVE_COUNCILLOR = "councillor";
-    public static String hegtales_granger = "granger";
 
     //@Override
     public void onGameLoad(boolean newGame)  {
@@ -215,7 +214,6 @@ public class hegtales extends BaseModPlugin {
                     Global.getSector().getImportantPeople().addPerson(person8);
                     // so the person can be retrieved by id
 
-
                 }
                 //No one added in Chico... Yet.
                 //market =  Global.getSector().getEconomy().getMarket("chicomoztoc");
@@ -332,13 +330,14 @@ public class hegtales extends BaseModPlugin {
                     People.assignPost(market, Ranks.POST_BASE_COMMANDER , cranium);
                     market.getCommDirectory().getEntryForPerson(cranium).setHidden(false);
                     market.addPerson(cranium);
+                    // Moved this to a mission reward
                     // Cranium offers a bit more work than a normal non-priority contact, just like Seb!
-                    cranium.getMemoryWithoutUpdate().set(BaseMissionHub.NUM_BONUS_MISSIONS, 1);
-                    BaseMissionHub.set(cranium, new BaseMissionHub(cranium));
+                    //cranium.getMemoryWithoutUpdate().set(BaseMissionHub.NUM_BONUS_MISSIONS, 1);
+                    //BaseMissionHub.set(cranium, new BaseMissionHub(cranium));
 
                     //Granger
                     PersonAPI granger = Global.getFactory().createPerson();
-                    granger.setId(hegtales_granger);
+                    granger.setId("hegtales_granger");
                     granger.setRankId(Ranks.CITIZEN);
                     granger.setPostId(POST_BARTENDER);
                     granger.setImportance(PersonImportance.MEDIUM);
@@ -352,7 +351,6 @@ public class hegtales extends BaseModPlugin {
                     market.addPerson(granger);
                     ip.addPerson(granger);
                     market.getCommDirectory().getEntryForPerson(granger).setHidden(true);
-                    Global.getSector().getImportantPeople().addPerson(granger);
 
                     //Bastard
                     PersonAPI bastard = Global.getFactory().createPerson();
@@ -372,6 +370,10 @@ public class hegtales extends BaseModPlugin {
                     ip.addPerson(bastard);
                     market.getCommDirectory().getEntryForPerson(bastard).setHidden(false);
                     People.assignPost(market, Ranks.POST_SUPPLY_OFFICER , bastard);
+
+
+                    Global.getSector().getImportantPeople().addPerson(granger);
+                    Global.getSector().getImportantPeople().addPerson(cranium);
                     Global.getSector().getImportantPeople().addPerson(bastard);
 
                 }

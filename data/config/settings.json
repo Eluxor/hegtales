@@ -29,7 +29,9 @@
 		"illustrations":{
 			"ossum_castle":"graphics/hegtales/illustrations/ossum_castle.jpg",
 			"house_ossum":"graphics/hegtales/illustrations/house_ossum.jpg",
-			"bone_dancer":"graphics/hegtales/illustrations/bone_dancer.jpg"
+			"bone_dancer":"graphics/hegtales/illustrations/bone_dancer.jpg",
+			"bone_dancer_bar":"graphics/hegtales/illustrations/bone_dancer_bar.jpg",
+			"bone_dancer_dance":"graphics/hegtales/illustrations/bone_dancer_dance.jpg"
 		}
 	},
 	"ruleCommandPackages":[

@@ -1127,10 +1127,10 @@ $global.paidfruscanosteal = true
 
 Call $global.hegtales_Quest3_ref updateStage","Frusca glances at the screen as the credit transfer completes. He turns back to his monitors, tapping through several feeds before finally nodding toward you.
 
-""Good. The satellite is stored in a nearby warehouse. I’m sending you the coordinates now."" Your comms officer signals a thumbs-up, confirming the data has been received.
+""Good. The satellite is stored in a nearby warehouse. I'm sending you the coordinates now."" Your comms officer signals a thumbs-up, confirming the data has been received.
 
-Frusca leans closer to the screen. ""Just a little reminder, $playerName. Isaias, the Sindrian, is expecting a drug shipment. If you’re clever, you might be able to use that to get the information you need from him without a pointless fight.""",hegtales_frusca_talkAccept2:Continue,
-hegtales_frusca_talkAccept2,DialogOptionSelected,$option == hegtales_frusca_talkAccept2,AddPotentialContact hegtales_frusca,"He leans back in his chair. ""In any case, if you’re looking for more work, feel free to contact me. You seem like a... useful individual.""",cutCommLink:Close comms,
+Frusca leans closer to the screen. ""Just a little reminder, $playerName. Isaias, the Sindrian, is expecting a drug shipment. If you're clever, you might be able to use that to get the information you need from him without a pointless fight.""",hegtales_frusca_talkAccept2:Continue,
+hegtales_frusca_talkAccept2,DialogOptionSelected,$option == hegtales_frusca_talkAccept2,AddPotentialContact hegtales_frusca,"He leans back in his chair. ""In any case, if you're looking for more work, feel free to contact me. You seem like a... useful individual.""",cutCommLink:Close comms,
 hegtales_Quest3_frusca_raid,PopulateOptions,"$id == hegtales_frusca
 $global.hegtales_Quest3_GO_TO_UMBRA
 $metfrusca
@@ -1157,9 +1157,9 @@ $global.raidedfrusca = true
 #$option = cutCommLinkNoText 0
 #FireBest DialogOptionSelected","""So, that's how you treat the people you need help from, huh?"" He spits out a broken tooth, the sound of it hitting the deck adding weight to his words.
 
-""The satellite you're looking for is in a warehouse, not far from the place you blew up. Activate it, and it’ll send a signal to Isaias. He’s a Diktat lieutenant running a smuggling ring with some of the pirates around here. That’s how they usually summon him. Once the signal’s sent, he’ll come to you.""
+""The satellite you're looking for is in a warehouse, not far from the place you blew up. Activate it, and it'll send a signal to Isaias. He's a Diktat lieutenant running a smuggling ring with some of the pirates around here. That's how they usually summon him. Once the signal's sent, he'll come to you.""
 
-Frusca struggles with his binds. ""Now, can you unbind me and take me back to Umbra? I’ve got more work to do.""","hegtales_frusca_RaidKill:""Space him.""
+Frusca struggles with his binds. ""Now, can you unbind me and take me back to Umbra? I've got more work to do.""","hegtales_frusca_RaidKill:""Space him.""
 hegtales_frusca_RaidLive:""Let him go.""",
 hegtales_Quest3_frusca_RaidKill,DialogOptionSelected,$option == hegtales_frusca_RaidKill,"$option = cutCommLinkNoText 0
 AddTextSmall ""You get the feeling Corby is going to hear about this."" grey
@@ -1184,7 +1184,7 @@ $market.id == umbra
 $menuState == main
 $global.hegtales_Quest3_SET_THE_BEACON
 !$satset",SetOptionColor setumbrasatellite highlight,,0:setumbrasatellite:Set up Frusca's Satellite,
-hegtales_Quest3_sat_set,DialogOptionSelected,$option == setumbrasatellite,"AddTextSmall ""Launching the satellite will undoubtedly draw the Sindrian Diktat attention, most likely turning them hostile and forcing you into conflict with their forces."" gray","Your crew works efficiently, preparing the satellite in your ship's hold. Engineers double-check its systems and readiness, ensuring it’s primed to be launched into orbit. 
+hegtales_Quest3_sat_set,DialogOptionSelected,$option == setumbrasatellite,"AddTextSmall ""Launching the satellite will undoubtedly draw the Sindrian Diktat attention, most likely turning them hostile and forcing you into conflict with their forces."" gray","Your crew works efficiently, preparing the satellite in your ship's hold. Engineers double-check its systems and readiness, ensuring it's primed to be launched into orbit. 
 
 The comms officer approaches, their expression its usual cheery self. ""Captain, the satellite is ready. Once deployed and activated, it will transmit the signal to summon the Diktat fleet.""","setumbrasatellite_yes:Activate the Sat.
 setumbrasatellite_no:Not now.",
@@ -1237,9 +1237,9 @@ MakeOtherFleetPreventDisengage true","""What are you... hey, I recognize your fa
 With that, the comms are cut, and you're left facing a battle.",cutCommLink:Cut the comm link,
 hegtales_Quest3IsaiasOption2_2,DialogOptionSelected,$option == hegtales_Quest3IsaiasOption2_2,"SetEnabled hegtales_Quest3IsaiasDrugAccept false
 SetTooltip hegtales_Quest3IsaiasDrugAccept ""You do not have 200 units of Recreational drugs.""
-FireBest hegtalesQuest3IsaiasDrugscheck","Isaias’s expression shifts subtly, his demeanor changing as he realizes he’s speaking to someone new, likely a smuggler, rather than yet another bumbling pirate or independent convoy.
+FireBest hegtalesQuest3IsaiasDrugscheck","Isaias's expression shifts subtly, his demeanor changing as he realizes he's speaking to someone new, likely a smuggler, rather than yet another bumbling pirate or independent convoy.
 
-""Yes, do you have it?"" he continues, ""You don’t know how much of a headache it is convincing the higher-ups to authorize my trips out here on short notice. Just send me the 200 units, and I’ll pay the usual rates.""
+""Yes, do you have it?"" he continues, ""You don't know how much of a headache it is convincing the higher-ups to authorize my trips out here on short notice. Just send me the 200 units, and I'll pay the usual rates.""
 
 His eyes narrow slightly. He's really twitchy.","hegtales_Quest3IsaiasDrugAccept:Send him the 200 units of Recreational Drugs
 hegtales_Quest3IsaiasEndHostile:Tell him that you aren't giving him drugs",
@@ -1248,7 +1248,7 @@ SetTooltip hegtales_Quest3IsaiasDrugAccept ""Give 200 Recreational Drugs to Isai
 hegtales_Quest3IsaiasDrugAccept,DialogOptionSelected,$option == hegtales_Quest3IsaiasDrugAccept,"AddRemoveCommodity drugs -200 true
 AddCredits 30000","""There we go... Someone, go check that cargo!"" Isaias barks at one of his crew.
 
-He turns his attention back to the comms, his gaze locking onto you with an air of impatience. ""You’re still here,"" he remarks,  ""your payment has been sent. What else do you need?""
+He turns his attention back to the comms, his gaze locking onto you with an air of impatience. ""You're still here,"" he remarks,  ""your payment has been sent. What else do you need?""
 
 His expression betrays a hint of suspicion.","hegtales_Quest3IsaiasDrugNow:""Now that you know I mean business. Where is Defectum?""",
 hegtales_Quest3IsaiasDrugNow,DialogOptionSelected,$option == hegtales_Quest3IsaiasDrugNow,"SetEnabled hegtales_Quest3IsaiasDrugAccept2 false
@@ -1304,7 +1304,7 @@ MakeOtherFleetPreventDisengage true","""Wait a minute...""",hegtales_Quest3Isaia
 hegtales_Quest3IsaiasOption1_2,DialogOptionSelected,$option == hegtales_Quest3IsaiasOption1_2,"MakeOtherFleetHostile true
 MakeOtherFleetAggressive true
 $entity.ignorePlayerCommRequests = true
-MakeOtherFleetPreventDisengage true","""Then you won’t mind submitting to a boarding action, or you will be fired upon.""
+MakeOtherFleetPreventDisengage true","""Then you won't mind submitting to a boarding action, or you will be fired upon.""
 
 With that, the comms cut out.",cutCommLink:Cut the comm link,
 hegtales_Quest3IsaiasEndHostile,DialogOptionSelected,$option == hegtales_Quest3IsaiasEndHostile,"MakeOtherFleetHostile true
@@ -1364,45 +1364,45 @@ MakeOtherFleetPreventDisengage true","""What...?"" He seems surprised by your wo
 With that, the comms cut out.",cutCommLink:Cut the comm link,
 hegtales_Quest3DefectumOption2_2,DialogOptionSelected,$option == hegtales_Quest3DefectumOption2_2,Call $global.hegtales_Quest3_ref playMusicDefectum,"Defectum's eyes widen behind his sunglasses for a moment.
 
-""I knew it,"" he spits, venom dripping from every word. ""Sooner or later, those pesky, honorbound boys would send someone to kill me. They don’t have the guts to do it themselves."" His tone is laced with contempt, his eyes narrow as he leans closer to the screen.
+""I knew it,"" he spits, venom dripping from every word. ""Sooner or later, those pesky, honorbound boys would send someone to kill me. They don't have the guts to do it themselves."" His tone is laced with contempt, his eyes narrow as he leans closer to the screen.
 
-""Let’s cut the charade. You’re here to kill me. For following Andrada. For killing Christian Ossum. I accept that. And I will destroy you for trying.""
+""Let's cut the charade. You're here to kill me. For following Andrada. For killing Christian Ossum. I accept that. And I will destroy you for trying.""
 
 He pauses. ""But I am honorable too.""
 
-""Let’s talk before you do this.""","hegtales_Quest3Question1:""Why did you Join Andrada?""
+""Let's talk before you do this.""","hegtales_Quest3Question1:""Why did you Join Andrada?""
 hegtales_Quest3Question2:""Why you didn't return the HSS Retaliation?""
 hegtales_Quest3Question3:""Are you sure that I am not going to kill you?""
 hegtales_Quest3Question4:""Can't we resolve this peacefully?""
 hegtales_Quest3QuestionEnd:""It's time.""",
 hegtales_Quest3Question1,DialogOptionSelected,$option == hegtales_Quest3Question1,,"""Under Andrada, the Hegemony was at its peak,"" Defectum begins. ""We were so close to consolidating the sector, to bringing true order to this fractured corner of humanity. And yet, the Hegemony Council, those self-serving bureaucrats and nobles, blamed him for what happened to Opis. They wanted to kill our hero, the man who destroyed Warlord Loke.""
 
-""When Christian Ossum told us to fire upon our own men, to ram our way into Andrada’s ship..."" He pauses, his gaze distant as if replaying the moment in his mind. ""I had to act. And so we did it."" He exhales softly.
+""When Christian Ossum told us to fire upon our own men, to ram our way into Andrada's ship..."" He pauses, his gaze distant as if replaying the moment in his mind. ""I had to act. And so we did it."" He exhales softly.
 
-""Nowadays, things are more complicated. People talk. Even in the Lion’s Guard, whispers of dissent and doubt grow louder. But until the day Philip Andrada breathes his last, I will follow his dream. His vision for a unified sector, a sector that bows to no one.""
+""Nowadays, things are more complicated. People talk. Even in the Lion's Guard, whispers of dissent and doubt grow louder. But until the day Philip Andrada breathes his last, I will follow his dream. His vision for a unified sector, a sector that bows to no one.""
 
-Defectum’s eyes meet yours. ""You may call it treason. I call it loyalty to a greater cause.""",,
-hegtales_Quest3Question2,DialogOptionSelected,$option == hegtales_Quest3Question2,,"""Christian Ossum represented the rot that has seeped into the Hegemony. Those damn Luddics with their sanctimonious ideals and backward thoughts. The Hegemony was supposed to be the continuation of the Domain — the pinnacle of humanity, the best of the best. But Eventide and its so-called noble houses? They’ve dragged the Hegemony into decay. They’re rotten to the core, clinging to outdated traditions and petty squabbles.""
+Defectum's eyes meet yours. ""You may call it treason. I call it loyalty to a greater cause.""",,
+hegtales_Quest3Question2,DialogOptionSelected,$option == hegtales_Quest3Question2,,"""Christian Ossum represented the rot that has seeped into the Hegemony. Those damn Luddics with their sanctimonious ideals and backward thoughts. The Hegemony was supposed to be the continuation of the Domain — the pinnacle of humanity, the best of the best. But Eventide and its so-called noble houses? They've dragged the Hegemony into decay. They're rotten to the core, clinging to outdated traditions and petty squabbles.""
 
-""Under the Lion of Sindria, Philip Andrada, we’ve found purpose. He is the only one who saw through the Hegemony’s hypocrisy. On Sindria, the Luddics have no influence. There, we forge our own path, unshackled by their nonsense.""
+""Under the Lion of Sindria, Philip Andrada, we've found purpose. He is the only one who saw through the Hegemony's hypocrisy. On Sindria, the Luddics have no influence. There, we forge our own path, unshackled by their nonsense.""
 
-""I know exactly where it is. It’s a grave now. Those men who refused to see the truth, who clung to their hollow ideals, they lie there as a testament to their failure.""",,
-hegtales_Quest3Question3,DialogOptionSelected,$option == hegtales_Quest3Question3,,"Defectum smirks as he adjusts his sunglasses. ""For more than twenty years, I have lived with an Ossum family target painted squarely on my back. And yet, here I am — still standing, still leading my men. You’re not the first upstart captain to come after me, not the first to talk about settling some so-called debt.""
+""I know exactly where it is. It's a grave now. Those men who refused to see the truth, who clung to their hollow ideals, they lie there as a testament to their failure.""",,
+hegtales_Quest3Question3,DialogOptionSelected,$option == hegtales_Quest3Question3,,"Defectum smirks as he adjusts his sunglasses. ""For more than twenty years, I have lived with an Ossum family target painted squarely on my back. And yet, here I am — still standing, still leading my men. You're not the first upstart captain to come after me, not the first to talk about settling some so-called debt.""
 
-""Let me give you some advice,"" he continues, ""make yourself useful and walk away. Some things are best left buried, forgotten in the ashes of the past. And let’s be honest — your so-called family? They’ll never truly see you as one of their own.""
+""Let me give you some advice,"" he continues, ""make yourself useful and walk away. Some things are best left buried, forgotten in the ashes of the past. And let's be honest — your so-called family? They'll never truly see you as one of their own.""
 ",,
 hegtales_Quest3Question4,DialogOptionSelected,$option == hegtales_Quest3Question4,,"His face hardens. ""No,"" he says flatly, his tone leaving no room for negotiation. 
 
-""I will never give you the access codes to the minefield guarding the HSS Retaliation. I will never reveal its location. And with that minefield in place, you’ll never reach it without blowing it, and yourself, to smithereens.""
+""I will never give you the access codes to the minefield guarding the HSS Retaliation. I will never reveal its location. And with that minefield in place, you'll never reach it without blowing it, and yourself, to smithereens.""
 
-""There’s only one way this ends peacefully: you turn around, leave, and stop playing lapdog to those Hegemonic blue-blooded morons. Walk away, and maybe, just maybe — you’ll live to regret it.""
+""There's only one way this ends peacefully: you turn around, leave, and stop playing lapdog to those Hegemonic blue-blooded morons. Walk away, and maybe, just maybe — you'll live to regret it.""
 
 Defectum reclines back into his chair, his gaze piercing and unyielding. ""Your move, Captain.""",,
 hegtales_Quest3QuestionEnd,DialogOptionSelected,$option == hegtales_Quest3QuestionEnd,"MakeOtherFleetHostile warnAttack true
 MakeOtherFleetAggressive true
 Call $global.hegtales_Quest3_ref playMusicDefectum
 $entity.ignorePlayerCommRequests = true
-MakeOtherFleetPreventDisengage true","""I led my fleet here under the pretense of a show of exercises for the people of Nortia. Now I’ll give them a real show, a demonstration of the Sindrian Diktat’s might, by turning you and your fleet into dust.""
+MakeOtherFleetPreventDisengage true","""I led my fleet here under the pretense of a show of exercises for the people of Nortia. Now I'll give them a real show, a demonstration of the Sindrian Diktat's might, by turning you and your fleet into dust.""
 
 He leans closer to the comms. 
 ""Burn bright, Captain. And when you meet Christian in the void, be sure to give him my regards.""
@@ -1443,38 +1443,38 @@ hegtales_Quest3_ReturnRet2,DialogOptionSelected,$option == hegtales_Quest3_Retur
 In response, you lift the brass pin recovered from the wreck of the HSS Retaliation into view through the comms. The simple object gleams faintly, its significance far outweighing its humble appearance.
 
 Borealis seems shocked. ""Tell me everything. How did you manage this?""",hegtales_Quest3_ReturnRet3:Tell him what happened,
-hegtales_Quest3_ReturnRet3,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet3,ShowImageVisual ossum_castle,"Not long after presenting proof of your success, Borealis insists, almost demands, that you bring his father’s belongings and remains to Ossum Castle aboard a shuttle. 
+hegtales_Quest3_ReturnRet3,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet3,ShowImageVisual ossum_castle,"Not long after presenting proof of your success, Borealis insists, almost demands, that you bring his father's belongings and remains to Ossum Castle aboard a shuttle. 
 
-As your shuttle touches down on the castle’s expansive landing pad, you’re greeted by an imposing scene. Guards stand at attention in formal Hegemony attire, their polished armor reflecting the dim light of the overcast sky. Officers in dress uniforms form a quiet, respectful line. All of House Ossum is present. Even Hannah stands with a composed yet somber air, her hands clasped tightly before her. Beside Australis is a woman wearing glasses, her presence unassuming but her closeness to him evident. Most likely his wife.",hegtales_Quest3_ReturnRet4:Continue,
-hegtales_Quest3_ReturnRet4,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet4,ShowImageVisual eventide,"As the shuttle’s ramp lowers with a metallic hiss, you and an escort of Hegemony marines carefully carry the casket down to the platform. The casket is draped in a ceremonial cloth bearing the Ossum family crest. Borealis steps forward, his usually stoic demeanor faltering as he takes hold of the front of the casket. For a moment, he becomes just a grieving son, rather than a high-ranking Hegemony official. Without a word, he helps bear the weight, leading the procession past his family and through the towering gates of the castle.",hegtales_Quest3_ReturnRet5:Continue,
+As your shuttle touches down on the castle's expansive landing pad, you're greeted by an imposing scene. Guards stand at attention in formal Hegemony attire, their polished armor reflecting the dim light of the overcast sky. Officers in dress uniforms form a quiet, respectful line. All of House Ossum is present. Even Hannah stands with a composed yet somber air, her hands clasped tightly before her. Beside Australis is a woman wearing glasses, her presence unassuming but her closeness to him evident. Most likely his wife.",hegtales_Quest3_ReturnRet4:Continue,
+hegtales_Quest3_ReturnRet4,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet4,ShowImageVisual eventide,"As the shuttle's ramp lowers with a metallic hiss, you and an escort of Hegemony marines carefully carry the casket down to the platform. The casket is draped in a ceremonial cloth bearing the Ossum family crest. Borealis steps forward, his usually stoic demeanor faltering as he takes hold of the front of the casket. For a moment, he becomes just a grieving son, rather than a high-ranking Hegemony official. Without a word, he helps bear the weight, leading the procession past his family and through the towering gates of the castle.",hegtales_Quest3_ReturnRet5:Continue,
 hegtales_Quest3_ReturnRet5,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet5,"BeginConversation hegtales_australis
-AdjustRepPerson hegtales_australis FRIENDLY 10","You pause at the entrance, watching as Borealis and his family carry the casket into the castle’s shadowed interior. Before you can linger too long, Australis approaches you, placing a hand on your shoulder, his grip firm but not unkind.
+AdjustRepPerson hegtales_australis FRIENDLY 10","You pause at the entrance, watching as Borealis and his family carry the casket into the castle's shadowed interior. Before you can linger too long, Australis approaches you, placing a hand on your shoulder, his grip firm but not unkind.
 
-""You’ve done well, Captain,"" he says. ""You can leave if you wish. This is a family matter now.""
+""You've done well, Captain,"" he says. ""You can leave if you wish. This is a family matter now.""
 
-He pauses, glancing toward the castle’s entrance where the procession has disappeared. ""But know this, you’ve earned the respect of House Ossum. That’s no small thing.""","hegtales_Quest3_ReturnRet6:""I want to stay.""
+He pauses, glancing toward the castle's entrance where the procession has disappeared. ""But know this, you've earned the respect of House Ossum. That's no small thing.""","hegtales_Quest3_ReturnRet6:""I want to stay.""
 hegtales_Quest3_ReturnEnd:Say your goodbyes",
-hegtales_Quest3_ReturnRet6,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet6,ShowImageVisual house_ossum,"Your words catch Australis off guard. His brow raises slightly, but he doesn’t question your decision. With a small nod, he gestures for you to follow, leading you inside the grand halls of Ossum Castle. There is a huge contrast, the laughter and playful chatter of children echo through the corridors. They dart past, their carefree energy a stark juxtaposition to the heavy air surrounding the ceremony.
+hegtales_Quest3_ReturnRet6,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet6,ShowImageVisual house_ossum,"Your words catch Australis off guard. His brow raises slightly, but he doesn't question your decision. With a small nod, he gestures for you to follow, leading you inside the grand halls of Ossum Castle. There is a huge contrast, the laughter and playful chatter of children echo through the corridors. They dart past, their carefree energy a stark juxtaposition to the heavy air surrounding the ceremony.
 
 The procession moves deeper into the castle, its path deliberate and unhurried. Finally, it comes to a halt in a vast hall. The space is grand yet somber, its vaulted ceilings adorned with banners bearing the Ossum family crest and Hegemony flags, and you even notice the flag of the Domain. At the center of the hall stands a pedestal, intricately carved from dark stone, clearly prepared for this moment. The casket is carefully placed upon it.",hegtales_Quest3_ReturnRet7:Continue,
 hegtales_Quest3_ReturnRet7,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet7,"BeginConversation hegtales_borealis
-AdjustRepPerson hegtales_borealis FRIENDLY 5","As the family and their attendants step back, their attention shifts to the casket, each lost in their own thoughts. You remain near the entrance, observing the scene. Borealis notices you haven’t left. His green eyes lock onto yours, and for a moment, he seems unsure of what to say. Then, with purposeful strides, he approaches you.
+AdjustRepPerson hegtales_borealis FRIENDLY 5","As the family and their attendants step back, their attention shifts to the casket, each lost in their own thoughts. You remain near the entrance, observing the scene. Borealis notices you haven't left. His green eyes lock onto yours, and for a moment, he seems unsure of what to say. Then, with purposeful strides, he approaches you.
 
 Without a word, he extends his hand, and you meet it with a firm handshake.
 
 ""Thank you, the Hegemony... No, I thank you, $playerName.""
 
-For a man of his stature and rank.. It’s not just gratitude — it’s respect, the kind earned through action and trust.",hegtales_Quest3_ReturnRet8:Continue,
+For a man of his stature and rank.. It's not just gratitude — it's respect, the kind earned through action and trust.",hegtales_Quest3_ReturnRet8:Continue,
 hegtales_Quest3_ReturnRet8,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet8,"ShowImageVisual eventide
 AdjustRep hegemony FRIENDLY 5","The remainder of the day unfolds in a mixture of solemnity and celebration. The ceremony honoring Admiral Christian Ossum is a grand affair, attended by members of numerous noble houses. Among them is the increasingly influential House Rao. The great hall is filled with quiet murmurs of condolences and speeches extolling the Admiral's virtues, his dedication to the Hegemony and his loyalty.
 
-Throughout the event, no one dares to mention how the information leading to his remains was obtained. It’s an unspoken agreement, a shared understanding that some truths are best left unspoken.
+Throughout the event, no one dares to mention how the information leading to his remains was obtained. It's an unspoken agreement, a shared understanding that some truths are best left unspoken.
 
 A banquet follows the ceremony, transforming the somber atmosphere into one of camaraderie and celebration. The clinking of glasses, the low hum of music and the laughter of nobles fill the air. Stories are shared, toasts are made and bonds between houses reaffirmed. The event becomes as much about the living as it is about honoring the dead.",hegtales_Quest3_ReturnRet9:Continue,
 hegtales_Quest3_ReturnRet9,DialogOptionSelected,$option == hegtales_Quest3_ReturnRet9,ShowImageVisual ossum_castle,"You navigate the crowd with quiet grace, exchanging nods and pleasantries but remaining an outsider to the intricate dance of noble politics. Eventually, the festivities wind down, and you find yourself stepping away from the opulence of Ossum Castle. You finally return to your shuttle.
 
-As the shuttle ascends, you take a moment to reflect. The day has been one of closure for the Ossum family and a reminder of the complex web of duty, honor, and sacrifice that binds the Hegemony together. Yet, for you, it’s just another day.",hegtales_Quest3_ReturnEnd:Continue,
-hegtales_Quest3_ReturnEnd,DialogOptionSelected,$option == hegtales_Quest3_ReturnEnd,BeginConversation hegtales_borealis,"A few hours later, your comms officer informs you of an incoming transmission from Borealis. Though he appears immersed in his work, the presence of a half-empty bottle of Eventide brandy nearby suggests he’s taken a moment to unwind after the day’s events.
+As the shuttle ascends, you take a moment to reflect. The day has been one of closure for the Ossum family and a reminder of the complex web of duty, honor, and sacrifice that binds the Hegemony together. Yet, for you, it's just another day.",hegtales_Quest3_ReturnEnd:Continue,
+hegtales_Quest3_ReturnEnd,DialogOptionSelected,$option == hegtales_Quest3_ReturnEnd,BeginConversation hegtales_borealis,"A few hours later, your comms officer informs you of an incoming transmission from Borealis. Though he appears immersed in his work, the presence of a half-empty bottle of Eventide brandy nearby suggests he's taken a moment to unwind after the day's events.
 
 ""Captain $playerLastName."" His tone is measured but carries a hint of warmth. ""House Ossum is sending you the reward for your mission, as previously agreed. The transfer should be completed shortly.""",hegtales_Quest3_ReturnEnd2:Continue,
 hegtales_Quest3_ReturnEnd2,DialogOptionSelected,$option == hegtales_Quest3_ReturnEnd2,"AddStoryPoints 1
@@ -1625,26 +1625,26 @@ AddTextSmall ""You shouldn't have asked a stupid question."" gray","""No.""
 
 His answer is simple and direct.",,
 hegtales_Quest2_Greenhearttalk_ask_knight,DialogOptionSelected,$option == hegtales_Greenhearth_ask_knight,,"Greenheart Salt clears his throat. 
-""I have always been a follower of Ludd. Since my childhood, I’ve fought for the Greater Ludd. I rose through the ranks of the Knights to become a captain, leading my own men into battle. But the doctrine of the Church… It's too restrictive. Why do they seek to control us? Why do they dictate which of Ludd’s words are ‘correct’, as if the rest are meaningless? Why must they decide where we can live, how we must live, and when we can live freely?""
+""I have always been a follower of Ludd. Since my childhood, I've fought for the Greater Ludd. I rose through the ranks of the Knights to become a captain, leading my own men into battle. But the doctrine of the Church… It's too restrictive. Why do they seek to control us? Why do they dictate which of Ludd's words are ‘correct', as if the rest are meaningless? Why must they decide where we can live, how we must live, and when we can live freely?""
 
-Salt’s expression hardens, ""Each day, more Knights desert their ranks to join the Path. And those who follow me know we are not bloodthirsty maniacs. We are not terrorists, as some would label us. We simply seek freedom — to interpret Ludd’s teachings without the chains of the Church’s dogma.""
+Salt's expression hardens, ""Each day, more Knights desert their ranks to join the Path. And those who follow me know we are not bloodthirsty maniacs. We are not terrorists, as some would label us. We simply seek freedom — to interpret Ludd's teachings without the chains of the Church's dogma.""
 
 He pauses, his voice softening slightly. ""That is why I remain here, on Hesperus. To be open, to guide, and to help any brother or sister who wishes to walk the Path freely, without fear or coercion.""",,
 hegtales_Quest2_Greenhearttalk_ask_pather,DialogOptionSelected,"$option == hegtales_Greenhearth_ask_pather
-",,"""I am a leader of men, if that’s what you’re asking,"" Saltus replies, ""the Luddic Path, what most outsiders call the countless, perhaps infinite, groupings of divergent Luddic beliefs, is not centralized. Not even the Church operates that way. Why would we?""
+",,"""I am a leader of men, if that's what you're asking,"" Saltus replies, ""the Luddic Path, what most outsiders call the countless, perhaps infinite, groupings of divergent Luddic beliefs, is not centralized. Not even the Church operates that way. Why would we?""
 
 For a brief moment, the faintest hint of a smile touches his lips.
 
-""People heed my words. They follow me. Other leaders respect me and listen when I speak. I am the highest-ranking knight among my peers. But does that make me the leader of a ‘cell’? Perhaps. Or perhaps I am simply a man guiding others along the Path."" He shrugs. ",,
+""People heed my words. They follow me. Other leaders respect me and listen when I speak. I am the highest-ranking knight among my peers. But does that make me the leader of a ‘cell'? Perhaps. Or perhaps I am simply a man guiding others along the Path."" He shrugs. ",,
 hegtales_Quest2_Greenhearttalk_ask_saltus,DialogOptionSelected,$option == hegtales_Greenhearth_ask_saltus,"FireAll salthuboptions
 $askedsaltusstupid = true","""Because she finds it funny.""",,
 hegtales_Quest2_Greenhearttalk_ask_cotton,DialogOptionSelected,$option == hegtales_Greenhearth_ask_cotton,,"""He walks his own path,"" Salt speaks ominously, before he realizes he should say something more. 
 
- ""I’ve met him a few times. He claims angels sang to him. I have never heard an angel, so I can’t say if what he heard was truly one.""
+ ""I've met him a few times. He claims angels sang to him. I have never heard an angel, so I can't say if what he heard was truly one.""
  
-He pauses. ""Brother Cotton might be the most wanted terrorist in the sector, but he tries, every single day, to do something for Ludd. His methods might be extreme, even misguided to some, but his conviction? That’s undeniable.""
+He pauses. ""Brother Cotton might be the most wanted terrorist in the sector, but he tries, every single day, to do something for Ludd. His methods might be extreme, even misguided to some, but his conviction? That's undeniable.""
 
-""And conviction like that… it’s a Path worth respecting, even if not everyone agrees with how he walks it.""",,
+""And conviction like that… it's a Path worth respecting, even if not everyone agrees with how he walks it.""",,
 hegtales_Quest2_Greenhearttalk_ask_cancel,DialogOptionSelected,$option == hegtales_Greenhearth_ask_cancel,FireAll salthuboptions,"""...""",,
 #END Saltus Dialogue,,,,,,
 ,,,,,,
@@ -1679,48 +1679,48 @@ $taxedborealis = true","He affixes you with a cold, piercing stare, his expressi
 
 ""You have a way of testing my patience.""
 
-""But I won't waste my energy on anger. Say what you came here to say, and let’s get this over with.""",,
+""But I won't waste my energy on anger. Say what you came here to say, and let's get this over with.""",,
 hegtales_borealistalkQuestionsBorealisStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsBorealis:""Tell me about yourself.""",
 hegtales_borealistalkQuestionEventideStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsEventide:""What can you tell me about Eventide?.""",
 hegtales_borealistalkQuestionsLuddicStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsLuddic:""Are you a Luddic?""",
 hegtales_borealistalkQuestionsDaudStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsHegemon:""What can you tell me about the High Hegemon?""",
 hegtales_borealistalkQuestionsCouncilStart,hegtales_borealistalkQuestions,,,,"hegtales_borealistalkQuestionsCouncil:""How did you become part of the Council?",
 hegtales_borealistalkQuestionsEventide,DialogOptionSelected,$option == hegtales_borealistalkQuestionsEventide,,"""The Jewel of the Hegemony."" 
-""Home. There’s a reason the Declaration of Hegemony was signed here. Why High Hegemon Kali Molina chose to accept the old Houses. It's more than a planet. For 150 cycles, it has been the place where heroes are born.""
+""Home. There's a reason the Declaration of Hegemony was signed here. Why High Hegemon Kali Molina chose to accept the old Houses. It's more than a planet. For 150 cycles, it has been the place where heroes are born.""
 
-""Australis has likely told you about our ancestors, about the bloodlines and their storied past. But understand this: we are the true Perseans. We’ve been here longer than anyone, even before the Luddics arrived, heeding Ludd’s call to this sector. Our roots run deeper than any doctrine or rebellion, we worked the machines that made this planet what it is today,  and the blood of my kin remains in the stellar mirrors. House Ossum will always exist, even if Eventide does not.""
+""Australis has likely told you about our ancestors, about the bloodlines and their storied past. But understand this: we are the true Perseans. We've been here longer than anyone, even before the Luddics arrived, heeding Ludd's call to this sector. Our roots run deeper than any doctrine or rebellion, we worked the machines that made this planet what it is today,  and the blood of my kin remains in the stellar mirrors. House Ossum will always exist, even if Eventide does not.""
 
-""We are the Domain’s legacy. The last bastion of its ideals, its strength. And we will prevail.""",,
-hegtales_borealistalkQuestionsBorealis,DialogOptionSelected,$option == hegtales_borealistalkQuestionsBorealis,,"He seems momentarily taken aback by your question. It wasn’t every day that someone outside of a journalist or official inquiry asked him about his personal life.
+""We are the Domain's legacy. The last bastion of its ideals, its strength. And we will prevail.""",,
+hegtales_borealistalkQuestionsBorealis,DialogOptionSelected,$option == hegtales_borealistalkQuestionsBorealis,,"He seems momentarily taken aback by your question. It wasn't every day that someone outside of a journalist or official inquiry asked him about his personal life.
 
 ""Borealis of House Ossum,"" he begins,""Admiral of the Hegemony Navy. Member of the Executive Council. Brother to Australis, husband to Hannah…"" He pauses briefly. ""You saved her. For that, you have my thanks. That whole ordeal was... complicated.""
 
-He shifts his stance slightly, his expression softening before continuing. ""As for my role, I’m one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You’ve likely seen for yourself how thinly we’re stretched — dangerously so at times. Yet, we endure. The Domain endures.""
+He shifts his stance slightly, his expression softening before continuing. ""As for my role, I'm one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You've likely seen for yourself how thinly we're stretched — dangerously so at times. Yet, we endure. The Domain endures.""
 
 ""Any more words about myself would be in vain.""",,
 hegtales_borealistalkQuestionsBorealisOssum,DialogOptionSelected,"$option == hegtales_borealistalkQuestionsBorealis
-$global.hegtales_house_ossum_start score:1500",,"He seems momentarily taken aback by your question. It wasn’t every day that someone outside of a journalist or official inquiry asked him about his personal life.
+$global.hegtales_house_ossum_start score:1500",,"He seems momentarily taken aback by your question. It wasn't every day that someone outside of a journalist or official inquiry asked him about his personal life.
 
 ""Borealis of House Ossum,"" he begins,""Admiral of the Hegemony Navy. Member of the Executive Council. Brother to Australis, husband to Hannah, your uncle...""
 
-He shifts his stance slightly, his expression softening before continuing. ""As for my role, I’m one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You’ve likely seen for yourself how thinly we’re stretched—dangerously so at times. Yet, we endure. The Domain endures.""
+He shifts his stance slightly, his expression softening before continuing. ""As for my role, I'm one of the people tasked with leading the Hegemony. My focus is primarily on logistics and ensuring our operations run smoothly. You've likely seen for yourself how thinly we're stretched—dangerously so at times. Yet, we endure. The Domain endures.""
 
 ""Any more words about myself would be in vain.""",,
 hegtales_borealistalkQuestionsDaud,DialogOptionSelected,$option == hegtales_borealistalkQuestionsHegemon,,"""He is one of those rare men who define their generation,"" Borealis says, his tone measured but respectful. ""I cannot imagine another man in his position. Humble, pragmatic... and simply efficient.""
 
-""I’ve served with him since my academy days. I fought alongside him in orbit over Chicomoztoc during the final days of the Second AI War... And he ordered me to rescue the disabled ship of my future wife... He is the godfather of my second son. He is precisely what the Hegemony needs, a strong, decisive and unwavering High Hegemon. House Ossum supports him wholeheartedly.""
+""I've served with him since my academy days. I fought alongside him in orbit over Chicomoztoc during the final days of the Second AI War... And he ordered me to rescue the disabled ship of my future wife... He is the godfather of my second son. He is precisely what the Hegemony needs, a strong, decisive and unwavering High Hegemon. House Ossum supports him wholeheartedly.""
 
-He pauses for a moment. ""But even a man like Daud needs a counterweight. That’s why the Council exists. We’re here to maintain equilibrium, to ensure that no single vision dominates the Hegemony entirely. As much as I respect him, we cannot simply do everything he wants or wishes. Balance is the key to enduring strength.""",,
+He pauses for a moment. ""But even a man like Daud needs a counterweight. That's why the Council exists. We're here to maintain equilibrium, to ensure that no single vision dominates the Hegemony entirely. As much as I respect him, we cannot simply do everything he wants or wishes. Balance is the key to enduring strength.""",,
 hegtales_borealistalkQuestionsLuddic,DialogOptionSelected,$option == hegtales_borealistalkQuestionsLuddic,,"The Admiral rests his hands on the desk, a thoughtful expression crossing his face. ""I suppose I could be considered one. When I was young, my father took my brother and me to all the shrines. Back then, I could recite a large part of the Book of Ludd from memory..."" His voice trails off momentarily, as if lost in the echoes of the past.
 
-Returning to the present, he continues, ""The Hegemony has always been pragmatic. My wife and brother might lean a bit too heavily into their faith, but that devotion gives us allies — something the Hegemony desperately needs these days. Ludd’s teachings about a simpler, more grounded life... they’ve always stayed with me, even if I don’t follow them as strictly as others. As the Domain taught us, AI is a tool. A tool to be controlled and guarded, by those rightful enough to wield it. Not for the masses.""
+Returning to the present, he continues, ""The Hegemony has always been pragmatic. My wife and brother might lean a bit too heavily into their faith, but that devotion gives us allies — something the Hegemony desperately needs these days. Ludd's teachings about a simpler, more grounded life... they've always stayed with me, even if I don't follow them as strictly as others. As the Domain taught us, AI is a tool. A tool to be controlled and guarded, by those rightful enough to wield it. Not for the masses.""
 
 He meets your gaze, a faint smile tugging at his lips. ""Does that answer your question?""",,
 hegtales_borealistalkQuestionsIronShell,DialogOptionSelected,$option == hegtales_borealistalkQuestionsIronShell,,"""I deal with Quy in our weekly meetings with the rest of the council,"" his tone dismissive. ""The Iron Shell Charter was something I opposed and voted against. It stretches our resources too thin, diluting what little strength we have left to consolidate. But Daud, in his usual wisdom and charisma, managed to push it through.""
 
-He sighs. ""They’re still part of the Hegemony, and they follow orders — more or less. Their focus, however, seems to drift toward... taxation and administrative matters, rather than true military or logistical support. A bureaucracy within a bureaucracy.""
+He sighs. ""They're still part of the Hegemony, and they follow orders — more or less. Their focus, however, seems to drift toward... taxation and administrative matters, rather than true military or logistical support. A bureaucracy within a bureaucracy.""
 
-Borealis’ eyes narrow slightly. ""I believe the Charter’s days are numbered. It won’t be renewed indefinitely. The Hegemony needs unity, not fragmented auxiliaries.""",,
+Borealis' eyes narrow slightly. ""I believe the Charter's days are numbered. It won't be renewed indefinitely. The Hegemony needs unity, not fragmented auxiliaries.""",,
 hegtales_borealistalkQuestionsCouncil,DialogOptionSelected,$option == hegtales_borealistalkQuestionsCouncil,FireAll hegtales_borealistalkNepo,"""My father was a member of the Council,"" Borealis begins. ""When he passed away, his seat was left vacant until I came of age and achieved the necessary rank. Do not call it nepotism, House Ossum has worked tirelessly to shape the Hegemony into what it is today. We have earned our place.""",,
 hegtales_borealistalkQuestionsCouncilContinueOPT,hegtales_borealistalkNepo,,,,hegtales_borealistalkQuestionsCouncilContinue: Continue,
 hegtales_borealistalkQuestionsCouncilNepoOPT,hegtales_borealistalkNepo,"!$nepobaby
@@ -1742,14 +1742,14 @@ hegtales_borealistalkQuestionsLordOfBonesYesOpt,DialogOptionSelected,$option == 
 hegtales_borealistalkQuestionsLordOfBonesYes,hegtales_borealistalkBones,,$askedlordofbones = true,,"hegtales_borealistalkQuestionsLordOfBonesYes:""Yes, I want to know.""",
 hegtales_borealistalkQuestionsLordOfBonesNo,hegtales_borealistalkBones,,$askedlordofbones = true,,"hegtales_borealistalkQuestionsLordOfBonesNo:""No, it's alright.""",
 hegtales_borealistalkQuestionsLordofBonesYesContinue,DialogOptionSelected,$option == hegtales_borealistalkQuestionsLordOfBonesYes,"AdjustRepPerson hegtales_borealis SUSPICIOUS -5
-FireAll hegtales_borealistalkQuestions","""They call me the Lord of Bones because Ossum means bones in an old Earth language,"" Borealis explains, in an annoyed tone. ""And as a noble it’s only fitting that I am the Lord of Bones.""
+FireAll hegtales_borealistalkQuestions","""They call me the Lord of Bones because Ossum means bones in an old Earth language,"" Borealis explains, in an annoyed tone. ""And as a noble it's only fitting that I am the Lord of Bones.""
 
-""Perhaps the title also comes from my strict discipline, my old crew would certainly attest to that. Or maybe it’s a relic of my younger years, back when I commanded ships as a patrol commander and was... less cautious, shall we say. Reckless, even.""
+""Perhaps the title also comes from my strict discipline, my old crew would certainly attest to that. Or maybe it's a relic of my younger years, back when I commanded ships as a patrol commander and was... less cautious, shall we say. Reckless, even.""
 
 ""Happy?""",,
-hegtales_borealistalkQuestionsLordofBonesNoContinue,DialogOptionSelected,$option == hegtales_borealistalkQuestionsLordOfBonesNo,FireAll hegtales_borealistalkQuestions,"""Good, I am very glad that I don’t need to waste my time explaining the foolish behaviors and misguided ideas of people outside my control.""
+hegtales_borealistalkQuestionsLordofBonesNoContinue,DialogOptionSelected,$option == hegtales_borealistalkQuestionsLordOfBonesNo,FireAll hegtales_borealistalkQuestions,"""Good, I am very glad that I don't need to waste my time explaining the foolish behaviors and misguided ideas of people outside my control.""
 
-He sighs softly. ""It’s bad enough dealing with the nonsense of Tri-Tachyon. Let’s not add any more to the pile, shall we?""",,
+He sighs softly. ""It's bad enough dealing with the nonsense of Tri-Tachyon. Let's not add any more to the pile, shall we?""",,
 hegtales_borealistalkQuestionsIronShellStart,hegtales_borealistalkQuestions,HEG_HasModId timid_xiv score:100,,,"hegtales_borealistalkQuestionsIronShell:""What do you think of Iron Shell?""",
 hegtales_borealistalkQuestionsLordofBonesStart,hegtales_borealistalkQuestions,!$askedlordofbones,,,"hegtales_borealistalkQuestionsLordOfBones:""Why do they call you the Lord of Bones?""",
 hegtales_borealistalkQuestionsCancelStart,hegtales_borealistalkQuestions,,"SetShortcut hegtales_borealistalkQuestionsCancel ""ESCAPE""",,"hegtales_borealistalkQuestionsCancel:""That would be all.""",
@@ -1865,7 +1865,7 @@ You hug her back, before sending her to get acquainted with the rest of the offi
 hegtales_borealis_recruit_prima3,DialogOptionSelected,$option == hegtales_borealis_recruit_prima3,"BeginConversation hegtales_borealis
 FireAll PopulateOptions","""Treat her well, Captain. Ossums are far and in between.""
 
-His green eyes lock onto yours through the comms. ""She’s more than just an officer. She’s family.""",,
+His green eyes lock onto yours through the comms. ""She's more than just an officer. She's family.""",,
 hegtales_borealis_recruit_prima3Family,DialogOptionSelected,"$option == hegtales_borealis_recruit_prima3 score:100
 $global.hegtales_house_ossum_start","BeginConversation hegtales_borealis
 FireAll PopulateOptions","""Treat her well, Captain. Ossums stick together.""
@@ -1897,9 +1897,9 @@ AddRemoveCommodity uaf_bakery_choco_lava -1 true
 $borealiscakeoffered = true 60
 SetEnabled hegtales_borealiscakegift false","Borealis immediately raises an eyebrow, giving you an expression so unique and fleeting that it might never be seen again.
 
-""A cake?"" he repeats. Then, after a moment, he nods. ""Yes... Of course. I’ll share it with my wife and children. They’ll appreciate the gesture.""
+""A cake?"" he repeats. Then, after a moment, he nods. ""Yes... Of course. I'll share it with my wife and children. They'll appreciate the gesture.""
 
-""You have my thanks, Captain $PlayerName. I’ll send a cadet in a shuttle to retrieve it shortly. And... I suppose I’ll have to ensure they don’t eat it on the way back.""",,
+""You have my thanks, Captain $PlayerName. I'll send a cadet in a shuttle to retrieve it shortly. And... I suppose I'll have to ensure they don't eat it on the way back.""",,
 #END UAF CAKE BOMB,,,,,,
 ,,,,,,
 # Borealis Greet,,,,,,
@@ -2315,33 +2315,43 @@ AustralisQuestHubCancel,DialogOptionSelected,$option == AustralisQuestHubCancel,
 #END Australis Dialogue!,,,,,,
 #END Character Dialogues!,,,,,,
 ,,,,,,
-# The Pirate Storyline!,,,,,,
-,,,,,,
-# Cranium's Dialogue,,,,,,
-Cranium Greet First,PickGreeting,"$id == hegtales_cranium score:10000
-","BeginConversation hegtales_cranium
-FireAll PopulateOptions","""Who the fuck is this?""",,
-Cranium Greet Known,PickGreeting,"$id == hegtales_cranium score:100
-RepGTE $faction.id WELCOMING
-$global.CraniumQuestsUnlocked","BeginConversation hegtales_cranium
-FireAll PopulateOptions","""Mhmhmmh. Its you again.""",,
-Cranium Greet Hostile,PickGreeting,"$id == hegtales_cranium score:1000
-RepLTE $faction.id WELCOMING
-","BeginConversation hegtales_cranium
-FireAll PopulateOptions","""Fuck off.""",,
-#END Cranium's Dialogue,,,,,,
+# DEV MODE HEGTALES,,,,,,
+HegtalesdevMenuOption,PopulateOptions,"$market.id == eventide
+$global.isDevMode","SetOptionColor hegtalestestingmenu gray
+",,200:hegtalestestingmenu:>> (dev) Hegtales menu,
+HegtalesdevOptionOpen,DialogOptionSelected,$option == hegtalestestingmenu,FireAll hegtalesTestMenuOptions,MENU,,
+hegtales_finish_Quest3,hegtalesTestMenuOptions,,,,"hegtales_skipquest3:quest3 skip
+",
+hegtales_finish_Quest2,hegtalesTestMenuOptions,,,,"hegtales_skipquest2:quest2 skip
+",
+hegtales_finish_Quest1,hegtalesTestMenuOptions,,,,hegtales_skipquest1:quest1 skip,
+hegtales_finish_Quest33,DialogOptionSelected,$option == hegtales_skipquest3,"$global.hegtales_Quest3_missionCompleted = true
+FireAll hegtalesTestMenuOptions",MISSION 3 SKIPPED,,
+hegtales_finish_Quest22,DialogOptionSelected,$option == hegtales_skipquest2,"$global.hegtales_Quest2_missionCompleted = true
+SetPersonHidden hegtales_hannah false
+SetPersonHidden hegtales_saltus false
+
+FireAll hegtalesTestMenuOptions",MISSION 2 SKIPPED,,
+hegtales_finish_Quest11,DialogOptionSelected,$option == hegtales_skipquest1,"$global.hegtales_Quest1_missionCompleted = true
+SetPersonHidden hegtales_corby false
+$player.hegmod_metCorbystart = true
+SetPersonHidden hegtales_australis false
+
+FireAll hegtalesTestMenuOptions",MISSION 1 SKIPPED,,
+hegtales_finish_return,hegtalesTestMenuOptions,,,,cutCommLink:return,
+#END DEV MODE HEGTALES,,,,,,
 ,,,,,,
 # Bone Dancer Quests,,,,,,
 ,,,,,,
 # Cranium's Quest Dialogue,,,,,,
-Cranium Generic Quests Start,UpdateMHOpenOptionText,"$id == hegtales_cranium score:1000
+Cranium Generic Quests Start,UpdateMHOpenOptionText,"$id == hegtales_cranium score:100
 $global.CraniumQuestsUnlocked","SetOptionText mh_open """"Do you have any jobs for me?""""",,,
 Cranium Generic Quests Start2,PopulateOptions,"$id == hegtales_cranium score:1000
-!$global.CraniumQuestsUnlocked",,,"craniumquestrejection:""Do you have any jobs for me?""",
-Cranium Generic Quest Rejection,DialogOptionSelected,$option == craniumquestrejection:1100,,"""You’ve got the wrong idea."" he says flatly. ""I don’t take random calls."" A short pause follows, irritation clear even through the filter. ""Don’t bother me again."" The transmission cuts abruptly, leaving only static behind.",cutCommLinkNoText:Continue,
-Cranium Generic Quest Talk,MHOpenText,$id == hegtales_cranium score:1000,FireBest craniumPreMissionListText,"""Work?"" he repeats, almost absently. There’s a short pause as he reviews the screen, then a slight nod follows. ""There’s always something."" He flicks the datapad. ""Take a look. If anything there interests you, act on it.""",,
+!$global.CraniumQuestsUnlocked",,,"craniumquestrejection:""Do you have any Jobs?""",
+Cranium Generic Quest Rejection,DialogOptionSelected,$option == craniumquestrejection,,"""You've got the wrong idea."" he says flatly. ""I don't take random calls."" A short pause follows, irritation clear even through the filter. ""Don't bother me again."" The transmission cuts abruptly, leaving only static behind.",cutCommLinkNoText:Continue,
+Cranium Generic Quest Talk,MHOpenText,$id == hegtales_cranium score:1000,FireBest craniumPreMissionListText,"""Work?"" he repeats, almost absently. There's a short pause as he reviews the screen, then a slight nod follows. ""There's always something."" He flicks the datapad. ""Take a look. If anything there interests you, act on it.""",,
 craniumNoMissions,craniumPreMissionListText,"$id == hegtales_cranium score:1000
-$mh_count <= 0",,"""…Nothing."" he says after a moment, almost to himself. A low, amused sound follows. ""Seems you’re out of luck."" The helmet tilts slightly toward the display. ""No work. Try again later.""",,
+$mh_count <= 0",,"""…Nothing."" he says after a moment, almost to himself. A low, amused sound follows. ""Seems you're out of luck."" The helmet tilts slightly toward the display. ""No work. Try again later.""",,
 craniumOneMission,craniumPreMissionListText,"$id == hegtales_cranium score:1000
 $mh_count == 1
 $mh_firstInlineBlurb != null",$mh_doNotPrintBlurbs = true 0,"Cranium glances down at his datapad, scrolling briefly before stopping.  ""I have just the one job, Captain."" A short pause follows as he looks back toward the display.",,
@@ -2353,13 +2363,18 @@ craniumAddMhubCloseOption,AddMHCloseOption,$id == hegtales_cranium score:1000,"S
 craniumAddMhubCloseOptionNothing,AddMHCloseOption,"$id == hegtales_cranium score:1000
 $mh_count <= 0","SetShortcut mh_close ""ESCAPE""",,"1000:mh_close:""Alright.""",
 craniumMissionAcceptGeneric,DialogOptionSelected,$option == cranium_accept,"Call $mHub accept $missionId
-Call $mHub returnToList","""Good."" he says simply. ""Then it’s yours.""
+Call $mHub returnToList","""Good."" he says simply. ""Then it's yours.""
 OR
-""Accepted."" he mutters. ""Don’t make it a problem I have to deal with later.""
+""Accepted."" he mutters. ""Don't make it a problem I have to deal with later.""
 OR
 ""Done."" Cranium says. A slight tilt of the helmet follows. ""Get it handled.""
 OR
-""Good enough."" he says. ""We’ll see how it turns out.""",,
+""Good enough."" he says. ""We'll see how it turns out.""",,
+craniumMissionDeclineGeneric,DialogOptionSelected,$option == cranium_decline,Call $mHub returnToList,"He looks a bit annoyed, somehow you know. ""Do not waste my time.""
+OR
+""Right."" he says, disappointed.
+OR
+""What do you mean no? "" he seems to realize that you declined the mission after a moment.",,
 #END Cranium's Quest Dialogue,,,,,,
 ,,,,,,
 # Bone Dancer Generic Missions,,,,,,
@@ -2387,7 +2402,7 @@ $PersonName swipes the holo away and pulls up a sector map, ""We've set $bcb_tar
 ,,,,,,
 # Bone Dancer Bounties Start,,,,,,
 bdbBlurb,bdb_blurb,,,"""I've got a list of targets that need killing,"" $personName says nonchalantly. ""You could earn yourself some good credits with one of these jobs.""",,
-,bdb_option,,,,bdb_start:Ask about taking on one of the bounty jobs,
+bdbBlurbOption,bdb_option,,,,bdb_start:Ask about taking on one of the bounty jobs,
 bdbOfferTextContact,DialogOptionSelected,$option == bdb_start,"$missionId = bdb
 $option = bdb_showOptions 0
 FireBest DialogOptionSelected","""Would you like to get your hands dirty?"" $HeOrShe bares $hisOrHer teeth in an expression that's too bloodthirsty to be called a smile. ""I've got a few jobs here that might fit your talents.""",,
@@ -2410,55 +2425,53 @@ contact_decline:Decline - maybe another time",
 #END Bone Dancer Bounties!,,,,,,
 ,,,,,,
 # BD - deliver VIP mission,,,,,,
-bdvipBlurb,bdvip_blurb,,,"""Simple job, someone needs priority transport to $bdvip_marketName, in the $bdvip_starName system. Short timeframe. They’re paying to not be delayed. So don’t be.""",,
+bdvipBlurb,bdvip_blurb,,,"""Simple job, someone needs priority transport to $bdvip_marketName, in the $bdvip_starName system. Short timeframe. They're paying to not be delayed. So don't be.""",,
 bdvipBlurbOfferOption,bdvip_option,,,,bdvip_start:Ask about the transport job.,
 bdvipBlurbMissionTextBasic,DialogOptionSelected,"$option == bdvip_start
 $bdvip_variation == BASIC","$missionId = bdvip
 SetTextHighlights $bdvip_timeLimit$bdvip_reward
-Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium glances at his datapad, scrolling briefly before speaking. ""Secure transport job. Discreet. The kind people pay extra for when they’re nervous.""
+Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium glances at his datapad, scrolling briefly before speaking. ""Secure transport job. Discreet. The kind people pay extra for when they're nervous.""
 
-He taps the side of the datapad once. ""The passenger is a person of interest ,$bdvip_subjectRelation of $bdvip_VIPName. $bdvip_VIPPost of $bdvip_marketName."" A short pause. ""They need priority transport to $bdvip_marketName in the $bdvip_starName system for $bdvip_event. You’ve got $bdvip_timeLimit days. Payment’s $bdvip_reward credits. Easy run, if nothing goes wrong.""","cranium_accept:Accept
+He taps the side of the datapad once. ""The passenger is a person of interest ,$bdvip_subjectRelation of $bdvip_VIPName. $bdvip_VIPPost of $bdvip_marketName."" A short pause. ""They need priority transport to $bdvip_marketName in the $bdvip_starName system for $bdvip_event. You've got $bdvip_timeLimit days. Payment's $bdvip_reward credits. Easy run, if nothing goes wrong.""","cranium_accept:Accept
 cranium_decline:Decline
 bdvip_threats:""Any dangers?""",
 bdvipBlurbMissionTextBasicThreats,DialogOptionSelected,$option == bdvip_threats,,"Cranium lets out a low, filtered laugh at the question, the sound brief but genuine. ""Dangers?"" he repeats.
 
-""There’s always dangers, Captain."" he adds, almost amused. A slight shift of the helmet follows. ""That’s the spice of it.”
+""There's always dangers, Captain."" he adds, almost amused. A slight shift of the helmet follows. ""That's the spice of it.""
 
 ""...do you have the guts?""","cranium_accept:Accept
 cranium_decline:Decline",
 bdvipBlurbMissionTextKanta,DialogOptionSelected,"$option == bdvip_start
 $bdvip_variation == KANTA","$missionId = bdvip
 SetTextHighlights $bdvip_timeLimit $bdvip_reward
-Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium pauses as he reads the datapad, then lets out a quiet, amused breath. ""Right. This one’s personal.""
+Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium pauses as he reads the datapad, then lets out a quiet, amused breath. ""Right. This one's personal.""
 
-He taps the screen once. ""The person of interest is a relative of mine, $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta’s Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment’s $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
+He taps the screen once. ""The person of interest is a relative of mine, $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta's Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment's $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
 cranium_decline:Decline
 bdvip_extra:""Personal? Relative?""",
 bdvipBlurbMissionTextKantaExtra,DialogOptionSelected,"$option == bdvip_extra
 $bdvip_variation == KANTA","$missionId = bdvip
-$hegtales_cranium.craniummom = true","Cranium tilts his helmet slightly at the question, a low mechanical hum following the movement. ""Yeah. Personal.""
+$faction.craniummom = true","Cranium tilts his helmet slightly at the question, a low mechanical hum following the movement. ""Yeah. Personal.""
 
-He pauses for a moment before continuing, voice even. ""I’m Kanta’s son. Oldest, if that matters."" A faint shift in posture follows. ""That makes this one of mine too. Family, extended or otherwise."" The helmet turns just enough to settle back on you. ""So it gets handled properly. No shortcuts.""",,
+He pauses for a moment before continuing, voice even. ""I'm Kanta's son. Oldest, if that matters."" A faint shift in posture follows. ""That makes this one of mine too. Family, extended or otherwise."" The helmet turns just enough to settle back on you. ""So it gets handled properly. No shortcuts.""",,
 bdvipBlurbMissionTextOssum,DialogOptionSelected,"$option == bdvip_start
 $bdvip_variation == OSSUM","$missionId = bdvip
 SetTextHighlights $bdvip_timeLimit $bdvip_reward
 Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium pauses as he reads the datapad, then lets out a quiet, amused breath. ""Right. This one is important.""
 
-He taps the screen once. 2Person of interest is a relative of mine, $bdvip_subjectRelation of $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta’s Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment’s $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
-cranium_decline:Decline
-bdvip_extra:""Personal?""",
+He taps the screen once. 2Person of interest is a relative of mine, $bdvip_subjectRelation of $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta's Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment's $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
+cranium_decline:Decline",
 bdvipBlurbMissionTextOSSUMExtra,DialogOptionSelected,"$option == bdvip_extra
 $bdvip_variation == OSSUM",$missionId = bdvip,"Cranium tilts his helmet slightly at the question, a low mechanical hum following the movement. ""Yeah. Personal.""
 
-He pauses for a moment before continuing, voice even. ""I’m Kanta’s son. Oldest, if that matters."" A faint shift in posture follows. ""That makes this one of mine too. Family, extended or otherwise."" The helmet turns just enough to settle back on you. ""So it gets handled properly. No shortcuts.""",,
-,,,,,,
+He pauses for a moment before continuing, voice even. ""I'm Kanta's son. Oldest, if that matters."" A faint shift in posture follows. ""That makes this one of mine too. Family, extended or otherwise."" The helmet turns just enough to settle back on you. ""So it gets handled properly. No shortcuts.""",,
 ,,,,,,
 # BD - deliver VIP mission Complete,,,,,,
 bdvipquest_checkCompletionCont,MarketPostDock,"$market.bdvip_target score:1000
 Call $global.bdvip_ref updateData
 !$bdvipquest_noCompleteShown",,,bdvip_completeDelivery0:Continue,
 bdvipquest_checkCompletion,DialogOptionSelected,"$option == bdvip_completeDelivery0
-$tradeMode != NONE",,"They’ve been expecting you. As you enter the traffic-controlled volume of $bdvipquest_marketName, an incoming transmission is routed to your bridge, priority clearance, already arranged.
+$tradeMode != NONE",,"They've been expecting you. As you enter the traffic-controlled volume of $bdvipquest_marketName, an incoming transmission is routed to your bridge, priority clearance, already arranged.
 
 The message is brief and direct, confirming your arrival and directing you to a designated drop-off point. Arrangements are made quickly for the transfer of the $bdvipquest_subjectRelation, with little room for delay.",bdvip_completeDelivery:Continue,
 bdvipquest_completedButNoDocking,DialogOptionSelected,"$option == bdvip_completeDelivery0
@@ -2470,9 +2483,9 @@ AdjustRepPerson $bdvip_VIP COOPERATIVE 5
 AdjustRep $bdvip_VIP_faction COOPERATIVE 1",,marketArrivalEventContinue:Continue,
 bdvipquest_checkCompletionKanta,DialogOptionSelected,"$option == bdvipt_completeDelivery0
 $tradeMode != NONE
-$bdvip_variation == KANTA",,"They’ve been expecting you. As you approach the traffic-controlled volume of $bdvipquest_marketName, your nav systems are fed a narrow course, threaded carefully through what your sensors register as a field of stealth mines.
+$bdvip_variation == KANTA",,"They've been expecting you. As you approach the traffic-controlled volume of $bdvipquest_marketName, your nav systems are fed a narrow course, threaded carefully through what your sensors register as a field of stealth mines.
 
-Not long after, an incoming transmission cuts in. The sender is unmistakable, one of Kanta’s relatives. Instructions follow without delay, directing you to a secure drop-off point for their $bdvipquest_subjectRelation.",bdvip_completeDelivery:Continue,
+Not long after, an incoming transmission cuts in. The sender is unmistakable, one of Kanta's relatives. Instructions follow without delay, directing you to a secure drop-off point for their $bdvipquest_subjectRelation.",bdvip_completeDelivery:Continue,
 ,,,,,,
 # Space Police,,,,,,
 bdvipPirateEncounter,BeginFleetEncounter,"$bdvip_pirate score:1000
@@ -2691,40 +2704,30 @@ cutCommLink:Say nothing",
 bdvipRevengeOssumWhy,DialogOptionSelected,$option == bdvip_revWhy,,"The commander smiles.
 
 The comm link snaps closed before you have a chance to respond.",cutCommLinkNoText:Continue,
-,,,,,,
-# DEV MODE HEGTALES,,,,,,
-HegtalesdevMenuOption,PopulateOptions,"$market.id == eventide
-$global.isDevMode","SetOptionColor hegtalestestingmenu gray
-",,200:hegtalestestingmenu:>> (dev) Hegtales menu,
-HegtalesdevOptionOpen,DialogOptionSelected,$option == hegtalestestingmenu,FireAll hegtalesTestMenuOptions,MENU,,
-hegtales_finish_Quest3,hegtalesTestMenuOptions,,,,"hegtales_skipquest3:quest3 skip
-",
-hegtales_finish_Quest2,hegtalesTestMenuOptions,,,,"hegtales_skipquest2:quest2 skip
-",
-hegtales_finish_Quest1,hegtalesTestMenuOptions,,,,hegtales_skipquest1:quest1 skip,
-hegtales_finish_Quest33,DialogOptionSelected,$option == hegtales_skipquest3,"$global.hegtales_Quest3_missionCompleted = true
-FireAll hegtalesTestMenuOptions",MISSION 3 SKIPPED,,
-hegtales_finish_Quest22,DialogOptionSelected,$option == hegtales_skipquest2,"$global.hegtales_Quest2_missionCompleted = true
-SetPersonHidden hegtales_hannah false
-SetPersonHidden hegtales_saltus false
-
-FireAll hegtalesTestMenuOptions",MISSION 2 SKIPPED,,
-hegtales_finish_Quest11,DialogOptionSelected,$option == hegtales_skipquest1,"$global.hegtales_Quest1_missionCompleted = true
-SetPersonHidden hegtales_corby false
-$player.hegmod_metCorbystart = true
-SetPersonHidden hegtales_australis false
-
-FireAll hegtalesTestMenuOptions",MISSION 1 SKIPPED,,
-hegtales_finish_return,hegtalesTestMenuOptions,,,,cutCommLink:return,
-#END DEV MODE HEGTALES,,,,,,
 "#END Betrayed Ossums, YOU FUCKED UP!!!",,,,,,
 "#END betrayed Kanta, fleet that shows up",,,,,,
-#END merc kidnappers,,,,,,
+#END THE POLICE,,,,,,
 #END Space Police,,,,,,
 #END BD - deliver VIP mission Complete,,,,,,
 #END BD - deliver VIP mission,,,,,,
 #END Bone Dancer Generic Missions,,,,,,
 #END Bone Dancer Quests,,,,,,
+,,,,,,
+# The Pirate Storyline!,,,,,,
+,,,,,,
+# Cranium's Dialogue,,,,,,
+Cranium Greet First,PickGreeting,"$id == hegtales_cranium score:10000
+","BeginConversation hegtales_cranium
+FireAll PopulateOptions","""Who the fuck is this?""",,
+Cranium Greet Known,PickGreeting,"$id == hegtales_cranium score:100
+RepGTE $faction.id WELCOMING
+$global.CraniumQuestsUnlocked","BeginConversation hegtales_cranium
+FireAll PopulateOptions","""Mhmhmmh. Its you again.""",,
+Cranium Greet Hostile,PickGreeting,"$id == hegtales_cranium score:1000
+RepLTE $faction.id WELCOMING
+","BeginConversation hegtales_cranium
+FireAll PopulateOptions","""Fuck off.""",,
+#END Cranium's Dialogue,,,,,,
 ,,,,,,
 # The Club! Bone Dancer!,,,,,,
 ,,,,,,
@@ -2736,7 +2739,7 @@ Bone Dancer FIRST TIME,DialogOptionSelected,"$option == visitBoneDancer  score:1
 !$player.hasenteredbd","sfcplaymusic ""bone_dancer_song_theme""","You eventually arrive at the coordinates, your shuttle descending through layers of dim industrial haze before touching down nearby.
 The establishment in question is... underwhelming.
 
-From the outside, the building looks like it’s been standing purely out of spite. Rust creeps along its metal panels, and several sections appear to have been hastily repaired or barely repaired at all. Whatever this place once was, it certainly wasn’t built to be a club.
+From the outside, the building looks like it's been standing purely out of spite. Rust creeps along its metal panels, and several sections appear to have been hastily repaired or barely repaired at all. Whatever this place once was, it certainly wasn't built to be a club.
 And yet, there it is.
 
 A large neon sign flickers above the entrance, the words ""The Bone Dancer"" sputtering in uneven intervals, occasionally plunging the façade into momentary darkness before buzzing back to life. Despite the state of the exterior, a low, heavy rhythm leaks from inside, the bass strong enough to be felt through the ground.",hegtales_bonedancer_first2:Continue,
@@ -2753,11 +2756,11 @@ ShowImageVisual bone_dancer
 The music is loud, aggressively so, looping in a relentless rhythm that drowns out nearly everything else. Layers of distorted beats and synthetic tones pulse through the space, vibrating through the floor and into your bones. The air is thick. Smoke hangs low, mixed with the sharp tang of cheap stimulants and something less identifiable something stale.
 
 You take a moment to adjust and then you notice the crowd.
-It’s... not what you expected.",hegtales_bonedancer_first_enter2:Continue,
+It's... not what you expected.",hegtales_bonedancer_first_enter2:Continue,
 Bone Dancers Inside First Time 2,DialogOptionSelected,$option == hegtales_bonedancer_first_enter2,"$player.hasenteredbd = true
-FireAll hegtales_bonedancer","The interior, while dimly lit and chaotic, is far more alive than the exterior suggested. Patrons pack the space, traders, drifters, mercenaries and figures that don’t quite fit into any category you’d care to define. Conversations happen in tight clusters, deals likely being made just out of earshot.
+FireAll hegtales_bonedancer","The interior, while dimly lit and chaotic, is far more alive than the exterior suggested. Patrons pack the space, traders, drifters, mercenaries and figures that don't quite fit into any category you'd care to define. Conversations happen in tight clusters, deals likely being made just out of earshot.
 
-Still, there’s a pattern to it. Most of them carry themselves with a certain edge. The kind of people who prefer places where questions aren’t asked and answers aren’t recorded.
+Still, there's a pattern to it. Most of them carry themselves with a certain edge. The kind of people who prefer places where questions aren't asked and answers aren't recorded.
 A pirate crowd, if you had to name it.
 
 This place is loud, dirty and probably dangerous.
@@ -2778,17 +2781,19 @@ SetShortcut hegtales_bonedancer_leave ""ESCAPE""
 sfcplaymusic ""bone_dancer_song_theme""","Outside, the bouncer barely spared you a glance this time.
 
 You step into the club once more. The music crashes into you in heavy, distorted waves, while the thick air laden with smoke, cheap stimulants and something harder to place, settles in your lungs like an old habit. Whatever initial shock this place once had is gone now.",,
-Bone Dancer Club VIP Start Denied,hegtales_bonedancer,!$bdvipunlocked,,,hegtales_bonedancer_vip_denied:Go to the VIP Area,
-Bone Dancer Club VIP Start,hegtales_bonedancer,$bdvipunlocked,,,hegtales_bonedancer_vip:Go to the VIP Area,
+Bone Dancer Club VIP Start Denied,hegtales_bonedancer,!$faction.bdvipunlocked,,,hegtales_bonedancer_vip:Go to the VIP Area,
+Bone Dancer Club VIP Start,hegtales_bonedancer,$faction.bdvipunlocked,,,hegtales_bonedancer_vip:Meet with Cranium,
 Bone Dancer Club Bar Start,hegtales_bonedancer,,,,hegtales_bonedancer_bar:Go to the Bar,
 Bone Dancer Club Bar,DialogOptionSelected,$option == hegtales_bonedancer_bar,"FireAll hegtales_bonedancer_bar
-SetShortcut hegtales_granger_leave_bar ""ESCAPE""","You make your way to the bar, pushing past the crowd until the noise settles into something more manageable. The counter is worn and stained, its surface telling the story of years of heavy use. Behind it stands a middle-aged woman with red hair, calmly washing a glass as if the chaos around her doesn’t exist.","
+ShowImageVisual bone_dancer_bar
+SetShortcut hegtales_granger_leave_bar ""ESCAPE""","You make your way to the bar, pushing past the crowd until the noise settles into something more manageable. The counter is worn and stained, its surface telling the story of years of heavy use. Behind it stands a middle-aged woman with red hair, calmly washing a glass as if the chaos around her doesn't exist.","
 
 ",
 hegtales_bonedancer_bastard,hegtales_bonedancer,$option == hegtales_bonedancer_bastard,,,,
 Bone Dancer Dance Floor Start,hegtales_bonedancer,,,,hegtales_bonedancer_dance:Head to the Dancer Floor,
 Bone Dancer Dance Floor,DialogOptionSelected,$option == hegtales_bonedancer_dance,"FireAll hegtales_bonedancer_dance
-SetShortcut hegtales_bonedancer_dance_leave ""ESCAPE""","You step onto the dance floor, the noise intensifying as the crowd presses in from all sides. The lights flicker in uneven patterns, barely illuminating the mass of bodies moving in sync or at least trying to. Some dance with purpose, others just sway, lost in whatever haze they’ve chosen to indulge in.
+ShowImageVisual bone_dancer_dance
+SetShortcut hegtales_bonedancer_dance_leave ""ESCAPE""","You step onto the dance floor, the noise intensifying as the crowd presses in from all sides. The lights flicker in uneven patterns, barely illuminating the mass of bodies moving in sync or at least trying to. Some dance with purpose, others just sway, lost in whatever haze they've chosen to indulge in.
 
 No one pays you much attention. The music keeps pounding, steady and relentless, giving you a simple choice.
 
@@ -2804,51 +2809,52 @@ FireAll PopulateOptions
 Bar Meet Granger First,hegtales_bonedancer_bar,!$faction.meetgranger,,,hegtales_granger_question_hub_first_time:Talk with the Bartender,
 Bar Meet Granger,hegtales_bonedancer_bar,$faction.meetgranger,,,hegtales_granger_question_hub:Talk with Granger,
 Bar Drink Start,hegtales_bonedancer_bar,,,,hegtales_granger_drink:Ask for a Drink,
-Bar Drink,DialogOptionSelected,$option == hegtales_granger_drink,,"The bartender doesn’t reply, just turns, grabs a bottle from somewhere below the counter and pours you something strong into a scratched glass. It slides across to you with a practiced motion. When you look back up, she’s already watching you.","hegtales_granger_drink_end1:Drink it.
+Bar Drink,DialogOptionSelected,$option == hegtales_granger_drink,,"The bartender doesn't reply, just turns, grabs a bottle from somewhere below the counter and pours you something strong into a scratched glass. It slides across to you with a practiced motion. When you look back up, she's already watching you.","hegtales_granger_drink_end1:Drink it.
 hegtales_granger_drink_end2:Don't Drink it.",
 Bar Return From Drink1,DialogOptionSelected,$option == hegtales_granger_drink_end1,FireAll hegtales_bonedancer_bar,The drink somehow burns your throat. It's quite nice... in a sense.,,
 Bar Return From Drink2,DialogOptionSelected,$option == hegtales_granger_drink_end2,FireAll hegtales_bonedancer_bar,"You take a moment to look at the other patrons around you, as you discretely slide the drink towards an unsuspecting pirate.",,
 Bar Leave Start,hegtales_bonedancer_bar,,,,hegtales_granger_leave_bar:Leave the Bar,
 Bar Leave,DialogOptionSelected,$option == hegtales_granger_leave_bar,"FireAll hegtales_bonedancer
-SetShortcut hegtales_bonedancer_leave ""ESCAPE""","You step away from the counter, the bartender’s back to her routine and the noise of the club swallows you up again.",,
+ShowImageVisual bone_dancer
+SetShortcut hegtales_bonedancer_leave ""ESCAPE""","You step away from the counter, the bartender's back to her routine and the noise of the club swallows you up again.",,
 #END Bar Main Hub,,,,,,
 ,,,,,,
 # VIp Main Hub,,,,,,
 VIP Entry denied!,DialogOptionSelected,"$option == hegtales_bonedancer_vip score: 1000
-!$faction.CraniumTalkUnlocked",,"You make your way toward a sectioned-off part of the club, where the lighting shifts and the crowd thins just enough to notice. A set of reinforced doors stands ahead, marked only by a faint glow and the presence of two large figures standing guard.
+!$faction.bdvipunlocked",,"You make your way toward a sectioned-off part of the club, where the lighting shifts and the crowd thins just enough to notice. A set of reinforced doors stands ahead, marked only by a faint glow and the presence of two large figures standing guard.
 
-They stop you before you get close. One steps forward, blocking the way while the other watches in silence. ""VIP only."" the first one says, giving you a quick look over. No further explanation follows and it’s clear you’re not getting through without a reason.",,
+They stop you before you get close. One steps forward, blocking the way while the other watches in silence. ""VIP only."" the first one says, giving you a quick look over. No further explanation follows and it's clear you're not getting through without a reason.",,
 VIP Entry Accepted First,DialogOptionSelected,"$option == hegtales_bonedancer_vip score: 500
-$faction.CraniumTalkUnlocked
-",,"You make your way toward a sectioned-off part of the club, where the lighting shifts and the crowd thins just enough to notice. A set of reinforced doors stands ahead, marked only by a faint glow and the presence of two large figures standing guard.
+$faction.bdvipunlocked
+!$faction.MetCranium",,"You make your way toward a sectioned-off part of the club, where the lighting shifts and the crowd thins just enough to notice. A set of reinforced doors stands ahead, marked only by a faint glow and the presence of two large figures standing guard.
 
 The doors open with a heavy push and the noise of the club dulls into a distant thrum as you step into the VIP section. The air is clearer here and the lighting lower A wide space opens up before you, dominated by a large, worn couch surrounded by scattered tables, half-finished drinks and a handful of armed figures at ease.
 
 At the center of it all sits a man in full powered armor.",hegtales_bonedancer_vip_2:Continue,
-VIP Entry Accepted First2,DialogOptionSelected,$option == hegtales_bonedancer_vip2 score: 500,"BeginConversation hegtales_cranium
+VIP Entry Accepted First2,DialogOptionSelected,$option == hegtales_bonedancer_vip_2,"BeginConversation hegtales_cranium
 ShowPersonVisual
-$hegtales_cranium.MetCranium = true","It’s custom work, more than marine-grade by the look of it, reinforced in places that suggest long use. The helmet is unmistakable: a skull-shaped faceplate staring out from beneath a crude metal crown. Around him, his lieutenants lounge without concern, talking, drinking, even laughing.
+$faction.MetCranium = true","It's custom work, more than marine-grade by the look of it, reinforced in places that suggest long use. The helmet is unmistakable: a skull-shaped faceplate staring out from beneath a crude metal crown. Around him, his lieutenants lounge without concern, talking, drinking, even laughing.
 
 Then he notices you.
 
-The movement is subtle, a slight shift of the helmet. Conversation around him doesn’t stop, but it quiets just enough to make it clear that you’ve been acknowledged. The skull-faced warmaster leans back into the couch, one armored arm resting along its edge.
+The movement is subtle, a slight shift of the helmet. Conversation around him doesn't stop, but it quiets just enough to make it clear that you've been acknowledged. The skull-faced warmaster leans back into the couch, one armored arm resting along its edge.
 
 ""And now... Who the fuck are you?"" he says, voice filtered through the helmet, flat but not unfriendly.","hegtales_bonedancer_vip_31:""I am Captain X""
 hegtales_bonedancer_vip_32:""I am just looking for work""
 hegtales_bonedancer_vip_33:""I am here to kill you.""
-hegtales_bonedancer_vip_33:""Wrong room, sorry.""",
-VIP Entry Accepted First31,DialogOptionSelected,$option == hegtales_bonedancer_vip31,FireAll bd_cranium_questions,"There's a brief pause. The helmet tilts slightly. One of the lieutenants lets out a quiet scoff, but Cranium raises a hand just enough to silence it.
+hegtales_bonedancer_vip_34:""Wrong room, sorry.""",
+VIP Entry Accepted First31,DialogOptionSelected,$option == hegtales_bonedancer_vip_31,FireAll bd_cranium_questions,"There's a brief pause. The helmet tilts slightly. One of the lieutenants lets out a quiet scoff, but Cranium raises a hand just enough to silence it.
 
-""Captain, huh."" A small nod follows. ""Good. Means you’ve got something worth losing.""",,
-VIP Entry Accepted First32,DialogOptionSelected,$option == hegtales_bonedancer_vip32,FireAll bd_cranium_questions,"A low chuckle escapes the helmet, distorted but clear enough. One of the men nearby shifts, amused.
+""Captain, huh."" A small nod follows. ""Good. Means you've got something worth losing.""",,
+VIP Entry Accepted First32,DialogOptionSelected,$option == hegtales_bonedancer_vip_32,FireAll bd_cranium_questions,"A low chuckle escapes the helmet, distorted but clear enough. One of the men nearby shifts, amused.
 
 ""You and everyone else who walks in here,"" Cranium replies, leaning forward slightly. ""Difference is, you made it past the door."" A short pause. ""That might count for something.""",,
-VIP Entry Accepted First33,DialogOptionSelected,$option == hegtales_bonedancer_vip33,FireAll bd_cranium_questions,"There’s a moment of silence then laughter.
+VIP Entry Accepted First33,DialogOptionSelected,$option == hegtales_bonedancer_vip_33,FireAll bd_cranium_questions,"There's a moment of silence then laughter.
 
 Not just from him, but from the whole room. Cranium leans back into the couch, clearly entertained, one gauntleted hand tapping against the armrest.
 
 ""I like you already,"" he says. ""Takes nerve to say that out loud in here."" The helmet turns slightly toward you again. ""Or stupidity. Either works.""",,
-VIP Entry Accepted First34,DialogOptionSelected,$option == hegtales_bonedancer_vip34,FireAll bd_cranium_questions,"One of the lieutenants chuckles, shaking her head, while Cranium simply waves a hand dismissively. ""Happens.""
+VIP Entry Accepted First34,DialogOptionSelected,$option == hegtales_bonedancer_vip_34,FireAll bd_cranium_questions,"One of the lieutenants chuckles, shaking her head, while Cranium simply waves a hand dismissively. ""Happens.""
 
 You are about to turn around when he speaks again.
 ""Now you are here. Speak or get fucked.""",,
@@ -2856,7 +2862,7 @@ You are about to turn around when he speaks again.
 # VIP Cranium Talk,,,,,,
 Cranium Talk Hub,DialogOptionSelected,"$option == hegtales_bonedancer_vip score: 1000
 $faction.CraniumTalkUnlocked
-$hegtales_cranium.MetCranium","BeginConversation hegtales_cranium
+$faction.MetCranium","BeginConversation hegtales_cranium
 ShowPersonVisual
 FireAll bd_cranium_questions
 SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","You step into the VIP section again and this time no one questions your presence. The guards let you through without a word.
@@ -2865,19 +2871,19 @@ Cranium is where you expect him to be, seated among his lieutenants. The atmosph
 
 ""You.""
 OR
-The VIP room feels quieter than usual. A couple of Cranium’s usual companions are missing, and those present speak in lower tones.
+The VIP room feels quieter than usual. A couple of Cranium's usual companions are missing, and those present speak in lower tones.
 
 He sits forward on the couch, one elbow resting on his knee, armored fingers idly tapping against the plating. When you enter, his gaze shifts immediately.
 
-""Good timing... Or bad. Haven’t decided yet."" He pauses. ""Which is it?""
+""Good timing... Or bad. Haven't decided yet."" He pauses. ""Which is it?""
 OR
-You’re waved through the VIP entrance with little more than a glance. Inside, the mood is lighter than before, someone’s laughing, a bottle gets passed around and even the guards seem less rigid.
+You're waved through the VIP entrance with little more than a glance. Inside, the mood is lighter than before, someone's laughing, a bottle gets passed around and even the guards seem less rigid.
 
-Cranium leans back in his usual spot, one arm stretched across the couch. He notices you, and there’s a slight pause before he speaks.
+Cranium leans back in his usual spot, one arm stretched across the couch. He notices you, and there's a slight pause before he speaks.
 
-""You’re getting comfortable here,"" he says. ""Careful. That can get expensive.""
+""You're getting comfortable here,"" he says. ""Careful. That can get expensive.""
 OR
-The moment you enter, you can tell something’s different.
+The moment you enter, you can tell something's different.
 
 The room is tense. Conversations stop short and a few of the lieutenants glance your way before looking back to Cranium. He remains seated, still as ever, but the way he turns his helmet toward you is a sign of him being annoyed.
 
@@ -2885,15 +2891,15 @@ The room is tense. Conversations stop short and a few of the lieutenants glance 
 Cranium Talk about him,bd_cranium_questions,!$askedabouthim,,,"hegtales_cranium_talk_about:""Can you tell me more about you?""",
 Cranium Talk the Club,bd_cranium_questions,!$askedclub,,,"hegtales_cranium_talk_bonedancer:""What's this place?""",
 Cranium Talk Job,bd_cranium_questions,!$askedJob,,,"hegtales_cranium_talk_job:""Do you have any jobs for me?""",
-Cranium Talk Granger,bd_cranium_questions,!$askedGranger,,,"hegtales_cranium_talk_granger:""What’s your relationship with Granger?""",
+Cranium Talk Granger,bd_cranium_questions,!$askedGranger,,,"hegtales_cranium_talk_granger:""What's your relationship with Granger?""",
 Cranium Talk Kanta,bd_cranium_questions,!$askedKanta,,,"hegtales_cranium_talk_kanta:""What can you tell me about Kanta?""",
 Cranium Talk Mother,bd_cranium_questions,"!$askedMother
-$hegtales_cranium.craniummom",,,"hegtales_cranium_talk_mom:""Wait, you told me Kanta is your mother?""",
+$faction.craniummom",,,"hegtales_cranium_talk_mom:""Wait, you told me Kanta is your mother?""",
 Cranium Talk Cancel,bd_cranium_questions,,,,"hegtales_cranium_talk_cancel:""That's all.""",
 Cranium Talk about him Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_about
 $id == hegtales_cranium score:100","$askedabouthim = true 0
 FireAll bd_cranium_questions
-SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","Cranium shifts slightly in his seat, the armor giving a low mechanical hum. ""I’m one of the League’s leaders,"" he says. ""Not the Persean kind. Wawa League. Qaras runs on it.""
+SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","Cranium shifts slightly in his seat, the armor giving a low mechanical hum. ""I'm one of the League's leaders,"" he says. ""Not the Persean kind. Wawa League. Qaras runs on it.""
 
 He pauses, then adds ""I also speak for Kanta in this system. Envoy, representative… call it what you want. I handle what needs handling.""",,
 Cranium Talk the Club Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_bonedancer
@@ -2908,30 +2914,30 @@ $faction.CraniumTalkUnlocked = true
 FireAll bd_cranium_questions
 SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","He cuts the question off with a small motion of his hand. ""Not here.""
 
-""If you’re looking for work, you contact me through comms. Proper channels."" His helmet turns slightly toward you. ""This place is for unwinding, not negotiations. You'll get a better answer when I’m not sitting on a couch.""",,
+""If you're looking for work, you contact me through comms. Proper channels."" His helmet turns slightly toward you. ""This place is for unwinding, not negotiations. You'll get a better answer when I'm not sitting on a couch.""",,
 Cranium Talk Kanta Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_kanta
 $id == hegtales_cranium score:100","$askedKanta = true 0
 FireAll bd_cranium_questions
 SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","Cranium goes still for a moment, the room around him continuing as normal while he considers the question.
 
-""Render unto Kanta the things that are Kanta’s…"" he says evenly, voice steady through the filter. There’s a slight shift in posture before he finishes, ""…and unto Ludd the things that are Ludd’s."" He doesn’t elaborate further.",,
+""Render unto Kanta the things that are Kanta's…"" he says evenly, voice steady through the filter. There's a slight shift in posture before he finishes, ""…and unto Ludd the things that are Ludd's."" He doesn't elaborate further.",,
 Cranium Talk Granger Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_granger
 $id == hegtales_cranium score:100","$askedGranger = true 0
 FireAll bd_cranium_questions
 SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","That earns a low, filtered chuckle from behind the helmet and a couple of the lieutenants glance your way.
 
-""Mah wife."" he says without hesitation. ""She runs the bar... keeps things in order."" A short pause. ""And she decides who’s worth dealing with. If she lets someone get this far, I usually take a look.""",,
+""Mah wife."" he says without hesitation. ""She runs the bar... keeps things in order."" A short pause. ""And she decides who's worth dealing with. If she lets someone get this far, I usually take a look.""",,
 Cranium Talk Mom Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_mom
 $id == hegtales_cranium score:100","$askedMother = true 0
 FireAll bd_cranium_questions
 SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","""Yes.""
 
-He leaves it at that for a moment before continuing. ""I was there when she turned. When she broke away from the Hegemony and took control of her own destiny."" A faint pause follows. ""I was just a baby back then. Didn’t matter much at the time.""
+He leaves it at that for a moment before continuing. ""I was there when she turned. When she broke away from the Hegemony and took control of her own destiny."" A faint pause follows. ""I was just a baby back then. Didn't matter much at the time.""
 
 Another small shift of the helmet. ""She became Warlord. I grew into something else... her Warmaster.""",,
 Cranium Talk Cancel End,DialogOptionSelected,"$option == hegtales_cranium_talk_cancel
 $id == hegtales_cranium score:100","EndConversation
-FireAll hegtales_bonedancer_bar
+FireAll hegtales_bonedancer
 ShowImageVisual bone_dancer
 SetShortcut hegtales_granger_leave_bar ""ESCAPE""
 ","He gives a small, dismissive wave, already turning his attention back to his lieutenants as the conversation around him picks up again.
@@ -2943,26 +2949,29 @@ You step away without interruption, the noise of the club rising to meet you as 
 # Dance Floor Hub,,,,,,
 Dance Floor Dance Start,hegtales_bonedancer_dance,,,,hegtales_bonedancer_dance_dance:Dance!,
 Dance Floor Dance Bad Rep Pirates,DialogOptionSelected,"$option == hegtales_bonedancer_dance_dance
-RepLTE pirates SUSPICIOUS score: 1000",FireAll hegtales_bonedancer,"You step onto the dance floor, trying to find your place among the shifting crowd, but it doesn’t take long before something feels off. A few heads turn subtle at first, then not so much. The music keeps pounding, but the space around you tightens in a way that has nothing to do with the rhythm.
+RepLTE pirates SUSPICIOUS score: 1000","FireAll hegtales_bonedancer
+ShowImageVisual bone_dancer","You step onto the dance floor, trying to find your place among the shifting crowd, but it doesn't take long before something feels off. A few heads turn subtle at first, then not so much. The music keeps pounding, but the space around you tightens in a way that has nothing to do with the rhythm.
 
-A couple of rough-looking patrons push through the crowd toward you, not bothering to hide their intent. One of them gives you a hard shove to the shoulder, enough to throw you off balance. ""Not your spot."" he mutters over the noise. They just keep pressing until you’re forced back off the floor. A few nearby faces watch for a second, then lose interest. Whatever this was, it’s already over.",,
+A couple of rough-looking patrons push through the crowd toward you, not bothering to hide their intent. One of them gives you a hard shove to the shoulder, enough to throw you off balance. ""Not your spot."" he mutters over the noise. They just keep pressing until you're forced back off the floor. A few nearby faces watch for a second, then lose interest. Whatever this was, it's already over.",,
 Dance Floor Dance Normal,DialogOptionSelected,"$option == hegtales_bonedancer_dance_dance
-FireAll hegtales_bonedancer",FireAll hegtales_bonedancer,"You push further into the crowd and let the rhythm take over. The music is harsh, mechanical, more pulse than melody, beating in steady, industrial waves that seem to sync with your own movements. It’s not graceful, not even coordinated, but it doesn’t need to be.
+FireAll hegtales_bonedancer","FireAll hegtales_bonedancer
+ShowImageVisual bone_dancer","You push further into the crowd and let the rhythm take over. The music is harsh, mechanical, more pulse than melody, beating in steady, industrial waves that seem to sync with your own movements. It's not graceful, not even coordinated, but it doesn't need to be.
 
-Around you, the mass shifts and twists under the flickering lights, people moving however they can, however they want. For a moment, the noise, the smoke, the pressure of everything else fades into the background. There’s just the beat, the movement, and the strange sense that this place, loud, filthy, and forgettable, makes a kind of sense while you’re in it.",,
+Around you, the mass shifts and twists under the flickering lights, people moving however they can, however they want. For a moment, the noise, the smoke, the pressure of everything else fades into the background. There's just the beat, the movement, and the strange sense that this place, loud, filthy, and forgettable, makes a kind of sense while you're in it.",,
 Dance Floor Leave Start,hegtales_bonedancer_dance,,,,hegtales_bonedancer_dance_leave:Leave the Dance Floor,
 Dance Floor Leave,DialogOptionSelected,,"FireAll hegtales_bonedancer
+ShowImageVisual bone_dancer
 SetShortcut hegtales_bonedancer_leave ""ESCAPE""",,,
 #END Dance Floor Hub,,,,,,
 ,,,,,,
 # Granger Talk,,,,,,
-Granger First time talk,DialogOptionSelected,$option == hegtales_granger_question_hub_first_time,"BeginConversation granger
+Granger First time talk,DialogOptionSelected,$option == hegtales_granger_question_hub_first_time,"BeginConversation hegtales_granger
 ShowPersonVisual
 FireAll bd_granger_questions
-SetShortcut hegtales_granger_question_cancel ""ESCAPE""","She glances up at you, her eyes lingering for a moment as she sizes you up. You get the sense she’s already decided you’re worth acknowledging, if only barely. She sets the glass aside, resting one hand on the counter.
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","She glances up at you, her eyes lingering for a moment as she sizes you up. You get the sense she's already decided you're worth acknowledging, if only barely. She sets the glass aside, resting one hand on the counter.
 
-""What’ll it be?""",,
-Granger Questions Hub,DialogOptionSelected,$option == hegtales_granger_question_hub,"BeginConversation granger
+""What'll it be?""",,
+Granger Questions Hub,DialogOptionSelected,$option == hegtales_granger_question_hub,"BeginConversation hegtales_granger
 ShowPersonVisual
 FireAll bd_granger_questions
 SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""Yeah?"" The woman says as she flicks her red mane.
@@ -2983,34 +2992,123 @@ Granger Questions about her,bd_granger_questions,!$askedabouther,$faction.meetgr
 Granger Questions Job,bd_granger_questions,!$askedJob,,,"hegtales_granger_question_job:""Do you have any jobs?""",
 Granger Question Cancel,bd_granger_questions,,,,"hegtales_granger_question_cancel:""I'm good.""",
 Granger Questions the Club Answer,DialogOptionSelected,"$option == hegtales_granger_question_bonedancer
-$id == granger score:100","$askedclub = true 0
+$id == hegtales_granger score:100","$askedclub = true 0
 FireAll bd_granger_questions
 SetShortcut hegtales_granger_question_cancel ""ESCAPE""","She lets out a short chuckle, shaking her head as if the answer should be obvious. ""The Bone Dancer."" she says plainly, like that explains everything. The way she goes back to her glass makes it clear she has nothing more to add.",,
 Granger Questions about her Answer,DialogOptionSelected,"$option == hegtales_granger_question_about
-$id == granger score:100","$askedabouther = true 0
+$id == hegtales_granger score:100","$askedabouther = true 0
 FireAll bd_granger_questions
-SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""The bartender."" The answer comes without hesitation. She doesn’t look up this time, continuing to clean the same glass with slow, deliberate movements. ""Name's Granger.""",,
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""The bartender."" The answer comes without hesitation. She doesn't look up this time, continuing to clean the same glass with slow, deliberate movements. ""Name's Granger.""",,
 Granger Questions Job Answer,DialogOptionSelected,"$option == hegtales_granger_question_job
-$id == granger score:100","$askedJob = true 0
-$faction.CraniumTalkUnlocked = true
+$id == hegtales_granger score:100
+$faction.grangerpachamission","$askedJob = true 0
+$faction.bdvipunlocked = true
 FireAll bd_granger_questions
 SetShortcut hegtales_granger_question_cancel ""ESCAPE""","That gets a reaction. She pauses, then glances around the bar as if expecting someone to laugh. When no one does, she taps the rim of the glass against the counter once, thinking. ""Not for your kind."" she says after a moment.",,
 Granger Question Cancel End,DialogOptionSelected,"$option == hegtales_granger_question_cancel
-$id == granger score:100","EndConversation
+$id == hegtales_granger score:100","EndConversation
 FireAll hegtales_bonedancer_bar
-ShowImageVisual bone_dancer
+ShowImageVisual bone_dancer_bar
 SetShortcut hegtales_granger_leave_bar ""ESCAPE""
 ","She shrugs, already losing interest before you even finish the words.",,
-craniumMissionDeclineGeneric,DialogOptionSelected,$option == cranium_decline,Call $mHub returnToList,"He looks a bit crestfallen, but makes an effort to put on a smile. ""Do let me know if you change your mind!""
-OR
-""Oh,"" he says, disappointed for a moment. But he quickly cheers up, ""Maybe something else?""
-OR
-""Um, of course. I understand completely."" Sebestyen rapidly scans his datapad, ""Let's see what else there is here... ""
-OR
-""Great! You can- "" he seems to realize that you declined the mission after a moment.
-
-""You don't want to do it? Oh. Okay. Well. Maybe,"" he taps his datapad on his desk, ""Maybe we can find something else for you?""",,
 #END Granger Talk,,,,,,
 #END The Club! Bone Dancer!,,,,,,
 #END The Pirate Storyline!,,,,,,
+,,,,,,
+# BDhegtales_Quest1 - A New Hope aka Passage to Volturn,,,,,,
+"This Might be helpful
+",,"!$market.isHidden
+$market.id == asharu
+!$global.BDhegtales_Quest1_missionCompleted
+!$global.BDhegtales_Quest1_inProgress
+$player.fcm_faction != sindrian_diktat
+RollProbability 0.25
+$global.daysSinceStart > 30","AddBarEvent BDhegtales_Quest1_grangerAsk ""See what the old man wants"" ""You see an old man followed by a kid and a chunky robot trying to talk to some of the seedier-looking space captains.""",,,
+BDhegtales_Quest1 Granger AskStart,DialogOptionSelected,"$option == hegtales_granger_question_job
+$id == hegtales_granger score:100","BeginMission BDhegtales_Quest1
+Call $global.BDhegtales_Quest1_ref updateData
+$faction.grangerpachamission = true
+FireAll BDhegtales_Quest1grangerAskHubOptions","The old man looks like a hermit who's been living out in the wastes for countless cycles. His robes are dusty, his skin creased and tanned.
+
+He smiles mysteriously as you approach, and speaks both to you and the mop-haired kid, more a youth of not yet 20 cycles.
+
+""I have a good feeling about this one.""",,
+BDhegtales_Quest1 Granger AskAccept,BDhegtales_Quest1grangerAskHubOptions,,,,"BDhegtales_Quest1_grangerAccept:""Okay, you have a deal.""",
+BDhegtales_Quest1 Granger Accept,DialogOptionSelected,$option == BDhegtales_Quest1_grangerAccept,"AcceptMission
+Call $global.BDhegtales_Quest1_ref cranium_contact","You make arrangements for the old man, the youth, and their robot to be shuttled to your $shipOrFleet.
+
+They don't seem especially dangerous. Surely no one in the Hegemony or Sindrian Diktat is putting much effort into tracking their movements.",BDhegtales_Quest1_grangerReturn:Return to the bar,
+BDhegtales_Quest1 Granger Return,DialogOptionSelected,$option == BDhegtales_Quest1_grangerReturn,"EndConversation
+FireAll hegtales_bonedancer_bar
+ShowImageVisual bone_dancer_bar
+SetShortcut hegtales_granger_leave_bar ""ESCAPE""",,,
+,,,,,,
+# BDhegtales_Quest1 - interception by Diktat patrol,,,,,,
+BDhegtales_Quest1DiktatPatrolEncounter,BeginFleetEncounter,"$BDhegtales_Quest1_diktatPatrol score:1000
+!$encounteredAlready ","FleetDesc
+HailPlayer
+$encounteredAlready = true
+Call $global.BDhegtales_Quest1_ref updateData",,,
+BDhegtales_Quest1DiktatPatrolGreeting,OpenCommLink,"$entity.BDhegtales_Quest1_diktatPatrol score:1000
+Call $global.BDhegtales_Quest1_ref updateData","Call $entity.ahn_ref makeUnimportant
+SetStoryOption BDhegtales_Quest1_diktatPatrolBluff general ""Bluffed Sindrian Diktat patrol about charitably transporting sand farmers from Asharu""","""Captain,"" the Sindrian Diktat officers says in a level tone, ""We have reason to believe that you carry a terrorist known to the Sindrian Security Directorate.""
+
+$HeOrShe barely lifts a finger, and a supplementary data package is transmitted to you. Your comms officer attaches the contents to a secondary display: it's the old man from Asharu. Much younger in this looping holo, wearing the military uniform of some minor polity instead of robes.
+
+""It would expedite my investigation if this individual found his way to my flagship."" $HeOrShe smiles the coldest, smallest smile in the Sector.","BDhegtales_Quest1_diktatPatrolBluff:""I'm transporting a couple sand farmers. It's a charitable act.""
+BDhegtales_Quest1_diktatPatrolNope:""That isn't going to happen.""
+BDhegtales_Quest1_patrolHostileEnd:Cut the comm link",
+BDhegtales_Quest1DiktatPatrolGreetingAgain,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolGreetingAgain,FireAll BDhegtales_Quest1DiktatPatrolAgainOptions,"The Diktat officer looks less patient now, the polite smile barely a memory. 
+
+""Captain,"" $heOrShe says in full knowledge of your lies, and knowing you know $heOrShe knows, ""I trust you've thoroughly reviewed your passenger manifest.""",,
+BDhegtales_Quest1DiktatPatrolAgainOptionC,BDhegtales_Quest1DiktatPatrolAgainOptions,,"SetStoryOption BDhegtales_Quest1_diktatPatrolBluff general ""Bluffed Sindrian Diktat patrol about charitably transporting sand farmers from Asharu""",,"BDhegtales_Quest1_diktatPatrolBluff:""I'm transporting a couple sand farmers. It's a charitable act.""",
+BDhegtales_Quest1DiktatPatrolAgainOptionD,BDhegtales_Quest1DiktatPatrolAgainOptions,,,,"BDhegtales_Quest1_diktatPatrolRights:""You have no right to kidnap my passengers.""",
+BDhegtales_Quest1DiktatPatrolNope,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolNope,,"""Then,"" $heOrShe seems to find pleasure in $hisOrHer words for the first time, ""You are resisting a lawful search performed under the authority of the Supreme Executor. A hostile act of terrorism against our dear Sindrian Diktat.""",BDhegtales_Quest1_patrolHostileEnd:Continue,
+BDhegtales_Quest1DiktatPatrolBluff,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff,,"""Transporting sand farmers,"" the Diktat officer repeats, ""For charity.""
+
+More than a hint of disbelief slips out at the final word.",BDhegtales_Quest1_diktatPatrolBluff1:Continue,
+BDhegtales_Quest1DiktatPatrolBluff1,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff1,,"Then anger cracks across $hisOrHer face, ""That is the most preposterous lie I've ever-"" 
+
+A ping from the other bridge comes across the comms, interrupting the beginning of $hisOrHer tirade. The Diktat officer gives you a killing look then exchanges quiet words with some underlings; your comms officer gives you a tentative nod.",BDhegtales_Quest1_diktatPatrolBluff2:Continue,
+BDhegtales_Quest1DiktatPatrolBluff2,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff2,,"Your quick-thinking bridge crew has provided a fake manifest on your behalf, of course.
+
+Of course they would have a plausible but misleading pre-generated crew and passenger manifest ready for just such a situation. If you offered it with enough confidence - and very little delay - it might just work.
+
+You wait with saintly patience as the Diktat officer has an underling run the fake manifest through the latest Diktat search and verification algorithms.",BDhegtales_Quest1_patrolBluffEnd:Continue,
+BDhegtales_Quest1DiktatPatrolHostileEnd,DialogOptionSelected,$option == BDhegtales_Quest1_patrolHostileEnd,"AdjustRepActivePerson SUSPICIOUS -10
+AdjustRep $personFaction.id SUSPICIOUS -5
+Call $entity.BDhegtales_Quest1_ref makeUnimportant
+$global.BDhegtales_Quest1_diktatPatrolHostile = true
+$ignorePlayerCommRequests = true 1
+MakeOtherFleetHostile true
+MakeOtherFleetAggressive true","""We shall take no prisoners!"" the Diktat officer shouts, ""Those who harbor terrorists are themselves terrorists, and will be treated as-""
+
+The link cuts out. Your comms officer gives you an apologetic look.","cutCommLink:""Battle stations.""",
+BDhegtales_Quest1DiktatPatrolBluffEnd,DialogOptionSelected,$option == BDhegtales_Quest1_patrolBluffEnd,"AdjustRepActivePerson SUSPICIOUS -1
+AdjustRep $personFaction.id SUSPICIOUS -1
+Call $entity.BDhegtales_Quest1_ref makeUnimportant
+$entity.ignorePlayerCommRequests = true
+$global.BDhegtales_Quest1_diktatPatrolBluffed = true
+MakeOtherFleetGoAway true
+MakeOtherFleetNonHostile true
+MakeOtherFleetAvoidContact true","You hear an angry call of ""Run it again!"" that perhaps was not intended to get picked up by comms. It takes a few more minutes. 
+
+""Very well,"" the Diktat officer says with what sounds like clenched teeth, ""Your manifest has been verified. Technically.""
+
+With a sharp motion, $heOrShe signals to $hisOrHer comms to cut the link.",cutCommLink:Cut the comm link,
+,,,,,,
+# BDhegtales_Quest1 - arrive at Volturn,,,,,,
+BDhegtales_Quest1CheckCompletionCont,MarketPostDock,"$market.BDhegtales_Quest1_tookTheJob score:100
+Call $global.BDhegtales_Quest1_ref updateData
+!$BDhegtales_Quest1_noCompleteShown",,,BDhegtales_Quest1_completeDelivery0:Continue,
+BDhegtales_Quest1CompleteDelivery,DialogOptionSelected,$option == BDhegtales_Quest1_completeDelivery,"FireAll BDhegtales_Quest1RewardTrigger
+$global.BDhegtales_Quest1_completed = true
+Call $global.BDhegtales_Quest1_ref updateStage
+$option = marketArrivalEventContinue 0
+FireBest DialogOptionSelected","The old man smiles and simply says, ""Thank you, my friend,"" then turns up the hood of his robe and leads the strange party into the underworld of Volturn.",,
+BDhegtales_Quest1RewardHigh,BDhegtales_Quest1RewardTrigger,$global.BDhegtales_Quest1_chargeMore,"AddTextSmall ""Delivered reinforcements to the Volturnian Resistance?"" highlight
+AddCredits 17000
+unset $global.BDhegtales_Quest1_chargeMore",,,
+BDhegtales_Quest1RewardLow,BDhegtales_Quest1RewardTrigger,!$global.BDhegtales_Quest1_chargeMore,"AddTextSmall ""Delivered reinforcements to the Volturnian Resistance?"" highlight
+AddCredits 10000",,,
 ,,,,,,
