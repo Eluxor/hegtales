@@ -2317,267 +2317,56 @@ AustralisQuestHubCancel,DialogOptionSelected,$option == AustralisQuestHubCancel,
 ,,,,,,
 # The Pirate Storyline!,,,,,,
 ,,,,,,
-# Finding the Club!,,,,,,
-,DialogOptionSelected,"$option == hegtales_bonedancer_vip
-!$player.hasenteredbd",$player.hasenteredbd = true,,,
+# Cranium's Dialogue,,,,,,
+Cranium Greet First,PickGreeting,"$id == hegtales_cranium score:10000
+","BeginConversation hegtales_cranium
+FireAll PopulateOptions","""Who the fuck is this?""",,
+Cranium Greet Known,PickGreeting,"$id == hegtales_cranium score:100
+RepGTE $faction.id WELCOMING
+$global.CraniumQuestsUnlocked","BeginConversation hegtales_cranium
+FireAll PopulateOptions","""Mhmhmmh. Its you again.""",,
+Cranium Greet Hostile,PickGreeting,"$id == hegtales_cranium score:1000
+RepLTE $faction.id WELCOMING
+","BeginConversation hegtales_cranium
+FireAll PopulateOptions","""Fuck off.""",,
+#END Cranium's Dialogue,,,,,,
 ,,,,,,
-# Welcome to the Bone Dancer,,,,,,
-hegtales_bonedancer_start,PopulateOptions,"$hasMarket
-$market.id == qaras
-$menuState == main",SetOptionColor visitBoneDancer highlight,,3:visitBoneDancer:Take a shuttle to the Bone Dancer,
-Bone Dancer FIRST TIME,DialogOptionSelected,"$option == visitBoneDancer  score:1000
-!$player.hasenteredbd","sfcplaymusic ""bone_dancer_song_theme""","You eventually arrive at the coordinates, your shuttle descending through layers of dim industrial haze before touching down nearby.
-The establishment in question is... underwhelming.
-
-From the outside, the building looks like it’s been standing purely out of spite. Rust creeps along its metal panels, and several sections appear to have been hastily repaired or barely repaired at all. Whatever this place once was, it certainly wasn’t built to be a club.
-And yet, there it is.
-
-A large neon sign flickers above the entrance, the words “The Bone Dancer” sputtering in uneven intervals, occasionally plunging the façade into momentary darkness before buzzing back to life. Despite the state of the exterior, a low, heavy rhythm leaks from inside, the bass strong enough to be felt through the ground.",hegtales_bonedancer_first2:Continue,
-Bone Dancer FIRST TIME 2,DialogOptionSelected,$option == hegtales_bonedancer_first2  score:1000,,"Standing at the entrance is a bouncer watching everything.
-His gaze settles on you as you approach, giving you a slow, deliberate once-over. For a moment, it seems like he might stop you.
-Then he notices your shuttle.
-
-Whatever conclusions he draws, they seem to work in your favor. He steps aside without a word, granting you entry.
-","hegtales_bonedancer_first_enter:Enter the Club
-hegtales_bonedancer_leave:Leave the Club",
-Bone Dancers Inside First Time 1,DialogOptionSelected,$option == hegtales_bonedancer_first_enter,"
-ShowImageVisual bone_dancer
-","The moment you step inside, the noise hits you like a physical force.
-The music is loud, aggressively so, looping in a relentless rhythm that drowns out nearly everything else. Layers of distorted beats and synthetic tones pulse through the space, vibrating through the floor and into your bones. The air is thick. Smoke hangs low, mixed with the sharp tang of cheap stimulants and something less identifiable something stale.
-
-You take a moment to adjust and then you notice the crowd.
-It’s... not what you expected.",hegtales_bonedancer_first_enter2:Continue,
-Bone Dancers Inside First Time 2,DialogOptionSelected,$option == hegtales_bonedancer_first_enter2,"$player.hasenteredbd = true
-FireAll hegtales_bonedancer","The interior, while dimly lit and chaotic, is far more alive than the exterior suggested. Patrons pack the space, traders, drifters, mercenaries and figures that don’t quite fit into any category you’d care to define. Conversations happen in tight clusters, deals likely being made just out of earshot.
-
-Still, there’s a pattern to it. Most of them carry themselves with a certain edge. The kind of people who prefer places where questions aren’t asked and answers aren’t recorded.
-A pirate crowd, if you had to name it.
-
-This place is loud, dirty and probably dangerous.
-
-The question is—
-Do you stay?
-","hegtales_bonedancer_vip:Go to the VIP Area
-hegtales_bonedancer_bar:Go to the Bar
-hegtales_bonedancer_bastard:Go to the Shady Corner
-hegtales_bonedancer_dancefloor:Head to the Dancer Floor
-hegtales_bonedancer_leave: Leave the Club",
-#END Welcome to the Bone Dancer,,,,,,
+# Bone Dancer Quests,,,,,,
 ,,,,,,
-# Bone Dancer Hub!,,,,,,
-hegtales_THE_BONE_DANCER,DialogOptionSelected,$option == visitBoneDancer,"FireAll hegtales_bonedancer
-ShowImageVisual bone_dancer
-SetShortcut hegtales_bonedancer_leave ""ESCAPE""
-sfcplaymusic ""bone_dancer_song_theme""","Outside, the bouncer barely spared you a glance this time.
-
-You step into the club once more. The music crashes into you in heavy, distorted waves, while the thick air laden with smoke, cheap stimulants and something harder to place, settles in your lungs like an old habit. Whatever initial shock this place once had is gone now.",,
-Bone Dancer Club VIP Start Denied,hegtales_bonedancer,!$bdvipunlocked,,,hegtales_bonedancer_vip_denied:Go to the VIP Area,
-Bone Dancer Club VIP Start,hegtales_bonedancer,$bdvipunlocked,,,hegtales_bonedancer_vip:Go to the VIP Area,
-Bone Dancer Club Bar Start,hegtales_bonedancer,,,,hegtales_bonedancer_bar:Go to the Bar,
-Bone Dancer Club Bar,DialogOptionSelected,$option == hegtales_bonedancer_bar,"FireAll hegtales_bonedancer_bar
-SetShortcut hegtales_granger_leave_bar ""ESCAPE""","You make your way to the bar, pushing past the crowd until the noise settles into something more manageable. The counter is worn and stained, its surface telling the story of years of heavy use. Behind it stands a middle-aged woman with red hair, calmly washing a glass as if the chaos around her doesn’t exist.","
-
-",
-hegtales_bonedancer_bastard,hegtales_bonedancer,$option == hegtales_bonedancer_bastard,,,,
-Bone Dancer Dance Floor Start,hegtales_bonedancer,,,,hegtales_bonedancer_dance:Head to the Dancer Floor,
-Bone Dancer Dance Floor,DialogOptionSelected,$option == hegtales_bonedancer_dance,"FireAll hegtales_bonedancer_dance
-SetShortcut hegtales_bonedancer_dance_leave ""ESCAPE""","You step onto the dance floor, the noise intensifying as the crowd presses in from all sides. The lights flicker in uneven patterns, barely illuminating the mass of bodies moving in sync or at least trying to. Some dance with purpose, others just sway, lost in whatever haze they’ve chosen to indulge in.
-
-No one pays you much attention. The music keeps pounding, steady and relentless, giving you a simple choice.
-
-Blend in or step away.",,
-Bone Dancer Club Leave Start,hegtales_bonedancer,,"SetShortcut hegtales_bonedancer_leave ""ESCAPE""",,hegtales_bonedancer_leave:Leave the Club,
-Bone Dancer Club Leave,DialogOptionSelected,$option == hegtales_bonedancer_leave,"ShowDefaultVisual
-sfcplaymusic
-FireAll PopulateOptions
-",You leave the club and take a shuttle back to your ship.,,
-#END Bone Dancer Hub!,,,,,,
-,,,,,,
-# Bar Main Hub,,,,,,
-Bar Meet Granger First,hegtales_bonedancer_bar,!$player.meetgranger,,,hegtales_granger_question_hub_first_time:Talk with the Bartender,
-Bar Meet Granger,hegtales_bonedancer_bar,$player.meetgranger,,,hegtales_granger_question_hub:Talk with Granger,
-Bar Drink Start,hegtales_bonedancer_bar,,,,hegtales_granger_drink:Ask for a Drink,
-Bar Drink,DialogOptionSelected,$option == hegtales_granger_drink,,"The bartender doesn’t reply, just turns, grabs a bottle from somewhere below the counter and pours you something strong into a scratched glass. It slides across to you with a practiced motion. When you look back up, she’s already watching you.","hegtales_granger_drink_end1:Drink it.
-hegtales_granger_drink_end2:Don't Drink it.",
-Bar Return From Drink1,DialogOptionSelected,$option == hegtales_granger_drink_end1,FireAll hegtales_bonedancer_bar,The drink somehow burns your throat. It's quite nice... in a sense.,,
-Bar Return From Drink2,DialogOptionSelected,$option == hegtales_granger_drink_end2,FireAll hegtales_bonedancer_bar,"You take a moment to look at the other patrons around you, as you discretely slide the drink towards an unsuspecting pirate.",,
-Bar Leave Start,hegtales_bonedancer_bar,,,,hegtales_granger_leave_bar:Leave the Bar,
-Bar Leave,DialogOptionSelected,$option == hegtales_granger_leave_bar,"FireAll hegtales_bonedancer
-SetShortcut hegtales_bonedancer_leave ""ESCAPE""","You step away from the counter, the bartender’s back to her routine and the noise of the club swallows you up again.",,
-#END Bar Main Hub,,,,,,
-,,,,,,
-# VIp Main Hub,,,,,,
-VIP Entry denied!,DialogOptionSelected,$option == hegtales_bonedancer_vip_denied,,"You make your way toward a sectioned-off part of the club, where the lighting shifts and the crowd thins just enough to notice. A set of reinforced doors stands ahead, marked only by a faint glow and the presence of two large figures standing guard.
-
-They stop you before you get close. One steps forward, blocking the way while the other watches in silence. ""VIP only."" the first one says, giving you a quick look over. No further explanation follows and it’s clear you’re not getting through without a reason.",,
-VIP Entry Accepted,,,,,,
-#END VIp Main Hub,,,,,,
-,,,,,,
-# Dance Floor Hub,,,,,,
-Dance Floor Dance Start,hegtales_bonedancer_dance,,,,hegtales_bonedancer_dance_dance:Dance!,
-Dance Floor Dance Bad Rep Pirates,DialogOptionSelected,"$option == hegtales_bonedancer_dance_dance
-RepLTE pirates SUSPICIOUS score: 1000",FireAll hegtales_bonedancer,"You step onto the dance floor, trying to find your place among the shifting crowd, but it doesn’t take long before something feels off. A few heads turn subtle at first, then not so much. The music keeps pounding, but the space around you tightens in a way that has nothing to do with the rhythm.
-
-A couple of rough-looking patrons push through the crowd toward you, not bothering to hide their intent. One of them gives you a hard shove to the shoulder, enough to throw you off balance. ""Not your spot."" he mutters over the noise. They just keep pressing until you’re forced back off the floor. A few nearby faces watch for a second, then lose interest. Whatever this was, it’s already over.",,
-Dance Floor Dance Normal,DialogOptionSelected,"$option == hegtales_bonedancer_dance_dance
-FireAll hegtales_bonedancer",FireAll hegtales_bonedancer,"You push further into the crowd and let the rhythm take over. The music is harsh, mechanical, more pulse than melody, beating in steady, industrial waves that seem to sync with your own movements. It’s not graceful, not even coordinated, but it doesn’t need to be.
-
-Around you, the mass shifts and twists under the flickering lights, people moving however they can, however they want. For a moment, the noise, the smoke, the pressure of everything else fades into the background. There’s just the beat, the movement, and the strange sense that this place, loud, filthy, and forgettable, makes a kind of sense while you’re in it.",,
-Dance Floor Leave Start,hegtales_bonedancer_dance,,,,hegtales_bonedancer_dance_leave:Leave the Dance Floor,
-Dance Floor Leave,DialogOptionSelected,,"FireAll hegtales_bonedancer
-SetShortcut hegtales_bonedancer_leave ""ESCAPE""",,,
-#END Dance Floor Hub,,,,,,
-,,,,,,
-# Granger Talk,,,,,,
-Granger First time talk,DialogOptionSelected,$option == hegtales_granger_question_hub_first_time,"BeginConversation granger
-ShowPersonVisual
-FireAll bd_granger_questions
-SetShortcut hegtales_granger_question_cancel ""ESCAPE""","She glances up at you, her eyes lingering for a moment as she sizes you up. You get the sense she’s already decided you’re worth acknowledging, if only barely. She sets the glass aside, resting one hand on the counter.
-
-“What’ll it be?”",,
-Granger Questions Hub,DialogOptionSelected,$option == hegtales_granger_question_hub,"BeginConversation granger
-ShowPersonVisual
-FireAll bd_granger_questions
-SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""Yeah?"" The woman says as she flicks her red mane.
-OR
-""Mmhmhm."" The woman simply lifts her eyebrows.
-OR
-""Aha."" She taps the glass on the counter.
-OR
-""Alright?"" She simply stares at you.",,
-Granger Questions Return Hub,DialogOptionSelected,$option == granger_questionshub,"FireAll bd_granger_questions
-SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""Yep."" The woman simply lifts her eyebrows.
-OR
-""Aha."" She taps the glass on the counter.
-OR
-""Anything else?"" She simply stares at you.",,
-Granger Questions the Club,bd_granger_questions,!$askedclub,,,"hegtales_granger_question_bonedancer:""What's this place?""",
-Granger Questions about her ,bd_granger_questions,!$askedabouther,$player.meetgranger = true,,"hegtales_granger_question_about:""Who are you?""",
-Granger Questions Job,bd_granger_questions,!$askedJob,,,"hegtales_granger_question_job:""Do you have any jobs?""",
-Granger Question Cancel,bd_granger_questions,,,,"hegtales_granger_question_cancel:""I'm good.""",
-Granger Questions the Club Answer,DialogOptionSelected,"$option == hegtales_granger_question_bonedancer
-$id == granger score:100","$askedclub = true 0
-FireAll bd_granger_questions
-SetShortcut hegtales_granger_question_cancel ""ESCAPE""","She lets out a short chuckle, shaking her head as if the answer should be obvious. ""The Bone Dancer."" she says plainly, like that explains everything. The way she goes back to her glass makes it clear she has nothing more to add.",,
-Granger Questions about her Answer,DialogOptionSelected,"$option == hegtales_granger_question_about
-$id == granger score:100","$askedabouther = true 0
-FireAll bd_granger_questions
-SetShortcut hegtales_granger_question_cancel ""ESCAPE""","“The bartender.” The answer comes without hesitation. She doesn’t look up this time, continuing to clean the same glass with slow, deliberate movements. ""Name's Granger.""",,
-Granger Questions Job Answer,DialogOptionSelected,"$option == hegtales_granger_question_job
-$id == granger score:100","$askedJob = true 0
-FireAll bd_granger_questions
-SetShortcut hegtales_granger_question_cancel ""ESCAPE""","That gets a reaction. She pauses, then glances around the bar as if expecting someone to laugh. When no one does, she taps the rim of the glass against the counter once, thinking. ""Not for your kind."" she says after a moment.",,
-Granger Question Cancel End,DialogOptionSelected,"$option == hegtales_granger_question_cancel
-$id == granger score:100","EndConversation
-FireAll hegtales_bonedancer_bar
-ShowImageVisual bone_dancer
-SetShortcut hegtales_granger_leave_bar ""ESCAPE""
-","She shrugs, already losing interest before you even finish the words.",,
-,,,,,,
-#END Granger Talk,,,,,,
-#END Finding the Club!,,,,,,
-,,,,,,
-craniumOpenMHOptionText,UpdateMHOpenOptionText,$id == hegtales_cranium score:1000,"SetOptionText mh_open ""Inquire about available jobs""",,,
-craniumMHOpenText,MHOpenText,$id == hegtales_cranium score:1000,FireBest craniumPreMissionListText,"He taps at a datapad. ""Let me look at what we�ve got lined up for you today... """,,
+# Cranium's Quest Dialogue,,,,,,
+Cranium Generic Quests Start,UpdateMHOpenOptionText,"$id == hegtales_cranium score:1000
+$global.CraniumQuestsUnlocked","SetOptionText mh_open """"Do you have any jobs for me?""""",,,
+Cranium Generic Quests Start2,PopulateOptions,"$id == hegtales_cranium score:1000
+!$global.CraniumQuestsUnlocked",,,"craniumquestrejection:""Do you have any jobs for me?""",
+Cranium Generic Quest Rejection,DialogOptionSelected,$option == craniumquestrejection:1100,,"""You’ve got the wrong idea."" he says flatly. ""I don’t take random calls."" A short pause follows, irritation clear even through the filter. ""Don’t bother me again."" The transmission cuts abruptly, leaving only static behind.",cutCommLinkNoText:Continue,
+Cranium Generic Quest Talk,MHOpenText,$id == hegtales_cranium score:1000,FireBest craniumPreMissionListText,"""Work?"" he repeats, almost absently. There’s a short pause as he reviews the screen, then a slight nod follows. ""There’s always something."" He flicks the datapad. ""Take a look. If anything there interests you, act on it.""",,
 craniumNoMissions,craniumPreMissionListText,"$id == hegtales_cranium score:1000
-$mh_count <= 0",,"""Oh, that's too bad. It looks like there aren�t any current requests,"" he says. He sounds genuinely sorry for you, but manages to perk up, ""Maybe next time?""",,
+$mh_count <= 0",,"""…Nothing."" he says after a moment, almost to himself. A low, amused sound follows. ""Seems you’re out of luck."" The helmet tilts slightly toward the display. ""No work. Try again later.""",,
 craniumOneMission,craniumPreMissionListText,"$id == hegtales_cranium score:1000
 $mh_count == 1
-$mh_firstInlineBlurb != null",$mh_doNotPrintBlurbs = true 0,"""I have just the one request here. $mh_firstInlineBlurb"", he looks to you expectantly, ""It's yours if you want it.""",,
+$mh_firstInlineBlurb != null",$mh_doNotPrintBlurbs = true 0,"Cranium glances down at his datapad, scrolling briefly before stopping.  ""I have just the one job, Captain."" A short pause follows as he looks back toward the display.",,
 craniumMultipleMissionsPre,craniumPreMissionListText,"$id == hegtales_cranium score:1000
 $mh_count > 1",,,,
 craniumMultipleMissionsPost,MHPostMissionListText,"$id == hegtales_cranium score:1000
-$mh_count > 1",,"""So those sound nice. Interested in anything?""",,
-craniumAddMhubCloseOption,AddMHCloseOption,$id == hegtales_cranium score:1000,"SetShortcut mh_close ""ESCAPE""",,"1000:mh_close:""Not right now.""",
+$mh_count > 1",,"""If you want one. Speak.""",,
+craniumAddMhubCloseOption,AddMHCloseOption,$id == hegtales_cranium score:1000,"SetShortcut mh_close ""ESCAPE""",,"1000:mh_close:""Right now I am busy.""",
 craniumAddMhubCloseOptionNothing,AddMHCloseOption,"$id == hegtales_cranium score:1000
-$mh_count <= 0","SetShortcut mh_close ""ESCAPE""",,"1000:mh_close:""Maybe next time.""",
+$mh_count <= 0","SetShortcut mh_close ""ESCAPE""",,"1000:mh_close:""Alright.""",
 craniumMissionAcceptGeneric,DialogOptionSelected,$option == cranium_accept,"Call $mHub accept $missionId
-Call $mHub returnToList","""Great! Is there anything else I can do for you today?""
+Call $mHub returnToList","""Good."" he says simply. ""Then it’s yours.""
 OR
-""Wonderful! I'll transmit the relevant information.""
+""Accepted."" he mutters. ""Don’t make it a problem I have to deal with later.""
 OR
-""Good to hear. I'll make sure you have everything you need.""
+""Done."" Cranium says. A slight tilt of the helmet follows. ""Get it handled.""
 OR
-""Always a pleasure to work with you, captain.""
-OR
-""Glad to hear it! Is there anything else you need?""",,
-craniumMissionDeclineGeneric,DialogOptionSelected,$option == cranium_decline,Call $mHub returnToList,"He looks a bit crestfallen, but makes an effort to put on a smile. ""Do let me know if you change your mind!""
-OR
-""Oh,"" he says, disappointed for a moment. But he quickly cheers up, ""Maybe something else?""
-OR
-""Um, of course. I understand completely."" Sebestyen rapidly scans his datapad, ""Let's see what else there is here... ""
-OR
-""Great! You can- "" he seems to realize that you declined the mission after a moment.
-
-""You don't want to do it? Oh. Okay. Well. Maybe,"" he taps his datapad on his desk, ""Maybe we can find something else for you?""",,
+""Good enough."" he says. ""We’ll see how it turns out.""",,
+#END Cranium's Quest Dialogue,,,,,,
 ,,,,,,
-# BD - deliver VIP mission,,,,,,
-bdvipBlurb,bdvip_blurb,,,"""A student from an influential family requires priority transport to $bdvip_marketName in the $bdvip_starName system within a short timeframe.""",,
-bdvipBlurbOfferOption,bdvip_option,,,,bdvip_start:Ask about the VIP transport,
-bdvipBlurbMissionTextBasic,DialogOptionSelected,"$option == bdvip_start
-$bdvip_variation == BASIC","$missionId = bdvip
-SetTextHighlights $bdvip_timeLimit$bdvip_reward
-Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","""The Academy provides secure and, and discreet transport to the very, very important students who attend. These are often rich or famous families you know, and there have been..."" Sebestyen looks like he's trying not to look concerned. ""Threats? Maybe. You never know. So."" 
-
-He taps a datapad on his desk a couple times before deciding he should just plow ahead.
-
-""This student is the $bdvip_subjectRelation of $bdvip_VIPName - that's the $bdvip_VIPPost of $bdvip_marketName, did you know? How exciting! Ah, and they require priority transport to $bdvip_marketName in the $bdvip_starName system for $bdvip_event within $bdvip_timeLimit days. We've been authorized an honorarium of... "", Sebestyen checks another datapad, ""$bdvip_reward credits. That's pretty good for an easy trip through the Core Worlds, right?""","cranium_accept:Accept
-cranium_decline:Decline
-bdvip_threats:""Threats?""",
-bdvipBlurbMissionTextBasicThreats,DialogOptionSelected,$option == bdvip_threats,,"He goes a shade paler. ""Oh um. You know. Threats."" 
-
-You wait for him to elaborate. He gives in almost instantly.
-
-""There are a lot of very bad people out there that say all kinds of things about important people and their, er, relations. And possibly, specifically, targeting a $bdvip_subjectRelation of said family. They're usually not serious. Usually.""
-
-""...So are you still interested?""","cranium_accept:Accept
-cranium_decline:Decline",
-bdvipBlurbMissionTextKanta,DialogOptionSelected,"$option == bdvip_start
-$bdvip_variation == KANTA",$missionId = bdvip,"""Oh."" Sebestyen looks again at the datapad in his hands. ""Oh! My.""
-
-The academician seems to realize what this mission entails, suddenly. ""That's ... that Kanta, isn't it? Oh. Wow, well yes. The Academy guarantees discretion and security to every family that entrusts us with their young students, no matter who. Whom, I mean.""
-
-Sebestyen puts on a serious look into the middle distance, ""I am proud that we stand for the principles of education and knowledge, no matter where you, or anyone, comes from!""","bdvip_briefingCont:Without comment, let him finish",
-bdvipBlurbMissionTextKanta2,DialogOptionSelected,$option == bdvip_briefingCont,"SetTextHighlights $bdvip_timeLimit $bdvip_reward
-Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","He shakes his head and turns back to the datapad, ""Where was- right, so the $bdvip_subjectRelation of $bdvip_kantaRelationFirstName Kanta - I wonder how closely they're related to the... Uh, never mind- they're a somebody at Kanta's Den. That will be priority transport to Kanta's Den in the Magec system within $bdvip_timeLimit days. We've authorized an honorarium of, oh that's more than usual fee! $bdvip_reward. Good, right?""
-
-""Just-"" he looks over his shoulder, then says quietly, ""-be careful around those people, okay?""","cranium_accept:Accept
-cranium_decline:Decline
-bdvip_extra:""You know her?""",
-bdvipBlurbMissionTextKantaExtra,DialogOptionSelected,"$option == bdvip_extra
-$bdvip_variation == KANTA",$missionId = bdvip,"""Yeah. She's my mother.""",,
+# Bone Dancer Generic Missions,,,,,,
 ,,,,,,
+# Bone Dancer Bounties!,,,,,,
 ,,,,,,
-# custom underworld bounty,,,,,,
-bdbBlurb,bdb_blurb,,,"""I've got a list of targets that need killing,"" $personName says nonchalantly. ""You could earn yourself some good credits with one of these jobs.""",,
-bdbOfferOption,bdb_option,,,,bdb_start:Ask about taking on one of the bounty jobs,
-bdbOfferTextContact,DialogOptionSelected,$option == bdb_start,"$missionId = bdb
-$option = bdb_showOptions 0
-FireBest DialogOptionSelected","""Would you like to get your hands dirty?"" $HeOrShe bares $hisOrHer teeth in an expression that's too bloodthirsty to be called a smile. ""I've got a few jobs here that might fit your talents.""",,
-bdbLowSel,DialogOptionSelected,$option == bdb_low,"$bdb_difficulty = LOW 0
-FireBest bdbShowBounty",,,
-bdbNormalSel,DialogOptionSelected,$option == bdb_normal,"$bdb_difficulty = NORMAL 0
-FireBest bdbShowBounty",,,
-bdbHighSel,DialogOptionSelected,$option == bdb_high,"$bdb_difficulty = HIGH 0
-FireBest bdbShowBounty",,,
-bdbShowBounty,bdbShowBounty,,Call $bdb_ref showBountyDetail,,bdb_showIntel:Continue,
-bdbShowBountyShowShips,DialogOptionSelected,$option == bdb_showIntel,Call $bdb_ref showBountyAssessment,,"contact_accept:Accept
-contact_decline:Decline
-bdb_showOptions:Ask about one of the other targets",
-bdbShowBountyShowShipsBar,DialogOptionSelected,$option == bdb_showIntelBar,Call $bdb_ref showBountyAssessment,,"contact_acceptBar:Accept
-contact_declineBarNoContinue:Decline
-bdb_showOptionsBar:Ask about one of the other targets",
-bdbGoBackSel,DialogOptionSelected,$option == bdb_showOptions,"# removes map
-ShowPersonVisual",,"bdb_low:""I'd prefer a more manageable target.""
-bdb_normal:""Whatever you've got works for me.""
-bdb_high:""I can handle a more challenging target.""
-contact_decline:Decline - maybe another time",
-bdbGoBackBarSel,DialogOptionSelected,$option == bdb_showOptionsBar,"# removes map
-ShowPersonVisual",,"bdb_low:""I'd prefer a more manageable target.""
-bdb_normal:""Whatever you've got works for me.""
-bdb_high:""I can handle a more challenging target.""
-contact_declineBarNoContinue:Decline - maybe another time",
-# custom bounty offer details - underworld,,,,,,
+# Bone Dancer Bounties Details,,,,,,
 CBTrader,CBTraderOfferDesc,,Highlight $bcb_dist $bcb_reward $bcb_days,"""This job is for a trade fleet. The owner needs to receive a stern message."" 
 
 $HeOrShe pulls up what looks like an internal customs inspection order, with attached fleet disposition report. ""We've put in a word to a, ah, friendly officer in the customs department to hold them up for inspection in the $bcb_systemName, $bcb_dist light-years away."" $HeOrShe smirks, ""Very convenient, that. Less convenient is the patrol on guard to ensure they don't leave too soon, so I'll leave it to you to figure out how to get around that little complication.""
@@ -2594,30 +2383,96 @@ CBMercUW,CBMercUWOfferDesc,,Highlight $bcb_dist $bcb_reward $bcb_days,"$HeOrShe 
 $PersonName swipes the holo away and pulls up a sector map, ""We've set $bcb_targetHimOrHer up on a wild goose chase in the $bcb_systemName, only $bcb_dist light-years away. $bcb_TargetHeOrShe thinks $bcb_targetHeOrShe is tracking down a dead-drop of advanced weapons,"" $heOrShe smiles ruthlessly.
 
 ""I'm arranging this as a favor for my friend, and my friend has agreed to pay whoever takes the job $bcb_reward credits. Time to complete is $bcb_days days. Can you take care of it?""",,
+#END Bone Dancer Bounties Details,,,,,,
+,,,,,,
+# Bone Dancer Bounties Start,,,,,,
+bdbBlurb,bdb_blurb,,,"""I've got a list of targets that need killing,"" $personName says nonchalantly. ""You could earn yourself some good credits with one of these jobs.""",,
+,bdb_option,,,,bdb_start:Ask about taking on one of the bounty jobs,
+bdbOfferTextContact,DialogOptionSelected,$option == bdb_start,"$missionId = bdb
+$option = bdb_showOptions 0
+FireBest DialogOptionSelected","""Would you like to get your hands dirty?"" $HeOrShe bares $hisOrHer teeth in an expression that's too bloodthirsty to be called a smile. ""I've got a few jobs here that might fit your talents.""",,
+bdbLowSel,DialogOptionSelected,$option == bdb_low,"$bdb_difficulty = LOW 0
+FireBest bdbShowBounty",,,
+bdbNormalSel,DialogOptionSelected,$option == bdb_normal,"$bdb_difficulty = NORMAL 0
+FireBest bdbShowBounty",,,
+bdbHighSel,DialogOptionSelected,$option == bdb_high,"$bdb_difficulty = HIGH 0
+FireBest bdbShowBounty",,,
+bdbShowBounty,bdbShowBounty,,Call $bdb_ref showBountyDetail,,bdb_showIntel:Continue,
+bdbShowBountyShowShips,DialogOptionSelected,$option == bdb_showIntel,Call $bdb_ref showBountyAssessment,,"contact_accept:Accept
+contact_decline:Decline
+bdb_showOptions:Ask about one of the other targets",
+bdbGoBackSel,DialogOptionSelected,$option == bdb_showOptions,"# removes map
+ShowPersonVisual",,"bdb_low:""I'd prefer a more manageable target.""
+bdb_normal:""Whatever you've got works for me.""
+bdb_high:""I can handle a more challenging target.""
+contact_decline:Decline - maybe another time",
+#END Bone Dancer Bounties Start,,,,,,
+#END Bone Dancer Bounties!,,,,,,
+,,,,,,
+# BD - deliver VIP mission,,,,,,
+bdvipBlurb,bdvip_blurb,,,"""Simple job, someone needs priority transport to $bdvip_marketName, in the $bdvip_starName system. Short timeframe. They’re paying to not be delayed. So don’t be.""",,
+bdvipBlurbOfferOption,bdvip_option,,,,bdvip_start:Ask about the transport job.,
+bdvipBlurbMissionTextBasic,DialogOptionSelected,"$option == bdvip_start
+$bdvip_variation == BASIC","$missionId = bdvip
+SetTextHighlights $bdvip_timeLimit$bdvip_reward
+Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium glances at his datapad, scrolling briefly before speaking. ""Secure transport job. Discreet. The kind people pay extra for when they’re nervous.""
+
+He taps the side of the datapad once. ""The passenger is a person of interest ,$bdvip_subjectRelation of $bdvip_VIPName. $bdvip_VIPPost of $bdvip_marketName."" A short pause. ""They need priority transport to $bdvip_marketName in the $bdvip_starName system for $bdvip_event. You’ve got $bdvip_timeLimit days. Payment’s $bdvip_reward credits. Easy run, if nothing goes wrong.""","cranium_accept:Accept
+cranium_decline:Decline
+bdvip_threats:""Any dangers?""",
+bdvipBlurbMissionTextBasicThreats,DialogOptionSelected,$option == bdvip_threats,,"Cranium lets out a low, filtered laugh at the question, the sound brief but genuine. ""Dangers?"" he repeats.
+
+""There’s always dangers, Captain."" he adds, almost amused. A slight shift of the helmet follows. ""That’s the spice of it.”
+
+""...do you have the guts?""","cranium_accept:Accept
+cranium_decline:Decline",
+bdvipBlurbMissionTextKanta,DialogOptionSelected,"$option == bdvip_start
+$bdvip_variation == KANTA","$missionId = bdvip
+SetTextHighlights $bdvip_timeLimit $bdvip_reward
+Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium pauses as he reads the datapad, then lets out a quiet, amused breath. ""Right. This one’s personal.""
+
+He taps the screen once. ""The person of interest is a relative of mine, $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta’s Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment’s $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
+cranium_decline:Decline
+bdvip_extra:""Personal? Relative?""",
+bdvipBlurbMissionTextKantaExtra,DialogOptionSelected,"$option == bdvip_extra
+$bdvip_variation == KANTA","$missionId = bdvip
+$hegtales_cranium.craniummom = true","Cranium tilts his helmet slightly at the question, a low mechanical hum following the movement. ""Yeah. Personal.""
+
+He pauses for a moment before continuing, voice even. ""I’m Kanta’s son. Oldest, if that matters."" A faint shift in posture follows. ""That makes this one of mine too. Family, extended or otherwise."" The helmet turns just enough to settle back on you. ""So it gets handled properly. No shortcuts.""",,
+bdvipBlurbMissionTextOssum,DialogOptionSelected,"$option == bdvip_start
+$bdvip_variation == OSSUM","$missionId = bdvip
+SetTextHighlights $bdvip_timeLimit $bdvip_reward
+Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium pauses as he reads the datapad, then lets out a quiet, amused breath. ""Right. This one is important.""
+
+He taps the screen once. 2Person of interest is a relative of mine, $bdvip_subjectRelation of $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta’s Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment’s $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
+cranium_decline:Decline
+bdvip_extra:""Personal?""",
+bdvipBlurbMissionTextOSSUMExtra,DialogOptionSelected,"$option == bdvip_extra
+$bdvip_variation == OSSUM",$missionId = bdvip,"Cranium tilts his helmet slightly at the question, a low mechanical hum following the movement. ""Yeah. Personal.""
+
+He pauses for a moment before continuing, voice even. ""I’m Kanta’s son. Oldest, if that matters."" A faint shift in posture follows. ""That makes this one of mine too. Family, extended or otherwise."" The helmet turns just enough to settle back on you. ""So it gets handled properly. No shortcuts.""",,
 ,,,,,,
 ,,,,,,
-"# BD - deliver VIP mission Complete
-",,,,,,
+# BD - deliver VIP mission Complete,,,,,,
 bdvipquest_checkCompletionCont,MarketPostDock,"$market.bdvip_target score:1000
 Call $global.bdvip_ref updateData
 !$bdvipquest_noCompleteShown",,,bdvip_completeDelivery0:Continue,
 bdvipquest_checkCompletion,DialogOptionSelected,"$option == bdvip_completeDelivery0
-$tradeMode != NONE",,"They've been expecting you. Upon entering the traffic controlled volume of $bdvipquest_marketName, you receive an incoming comms transmission from the offices of $bdvipquest_VIPName. You arrange a dropoff point for $bdvipquest_VIPhisOrHer $bdvipquest_subjectRelation.
+$tradeMode != NONE",,"They’ve been expecting you. As you enter the traffic-controlled volume of $bdvipquest_marketName, an incoming transmission is routed to your bridge, priority clearance, already arranged.
 
-Before stepping off the transport, the young student turns back toward you and speaks.",bdvip_completeDelivery:Continue,
+The message is brief and direct, confirming your arrival and directing you to a designated drop-off point. Arrangements are made quickly for the transfer of the $bdvipquest_subjectRelation, with little room for delay.",bdvip_completeDelivery:Continue,
 bdvipquest_completedButNoDocking,DialogOptionSelected,"$option == bdvip_completeDelivery0
 !$bdvip_noCompleteShown
-$tradeMode == NONE",$bdvip_noCompleteShown = true 0,You're unable to complete the VIP delivery right now.,marketArrivalEventContinue:Continue,
-bdvipquest_completeDelivery,DialogOptionSelected,$option == bdvip_completeDelivery,"FireBest GAVIPStudentComment
-$global.bdvip_delivered = true
+$tradeMode == NONE",$bdvip_noCompleteShown = true 0,You're unable to complete the Person of Interest delivery right now.,marketArrivalEventContinue:Continue,
+bdvipquest_completeDelivery,DialogOptionSelected,$option == bdvip_completeDelivery,"$global.bdvip_delivered = true
 Call $global.bdvip_ref updateStage
 AdjustRepPerson $bdvip_VIP COOPERATIVE 5
 AdjustRep $bdvip_VIP_faction COOPERATIVE 1",,marketArrivalEventContinue:Continue,
 bdvipquest_checkCompletionKanta,DialogOptionSelected,"$option == bdvipt_completeDelivery0
 $tradeMode != NONE
-$bdvip_variation == KANTA",,"They've been expecting you. What passes for traffic control provides you a course past a field of stealth mines to enter the volume of $bdvipquest_marketName. Soon you receive an incoming comms transmission from a grim boss of the Kanta dynasty, instructing you to make a drop-off for their $bdvipquest_subjectRelation.
+$bdvip_variation == KANTA",,"They’ve been expecting you. As you approach the traffic-controlled volume of $bdvipquest_marketName, your nav systems are fed a narrow course, threaded carefully through what your sensors register as a field of stealth mines.
 
-Before stepping off the transport, the young student turns back toward you and speaks.",bdvip_completeDelivery:Continue,
+Not long after, an incoming transmission cuts in. The sender is unmistakable, one of Kanta’s relatives. Instructions follow without delay, directing you to a secure drop-off point for their $bdvipquest_subjectRelation.",bdvip_completeDelivery:Continue,
 ,,,,,,
 # Space Police,,,,,,
 bdvipPirateEncounter,BeginFleetEncounter,"$bdvip_pirate score:1000
@@ -2630,12 +2485,12 @@ bdvipPirateOpenComm,OpenCommLink,"$entity.bdvip_pirate score:1000
 Call $global.bdvip_ref updateData","$entity.ignorePlayerCommRequests = true
 SetStoryOption bdvip_pirateBluff 1 bdvip_pirateBluff general ""Convinced pirate kidnapper you were working for Kanta""","The pirate captain saunters into view as the comms line flickers to clarity.
 
-""Captain! Are you in such a hurry?"" $heOrShe says theatrically. ""Let us talk a moment about a small matter."" $HeOrShe leans in, and you can almost smell the acrid sweat and vacuum-burn. ""We are here to take your very special little passenger.""
+""Captain! Are you in such a hurry?"" $heOrShe says theatrically. ""Let us talk a moment about a small matter."" $HeOrShe leans in, and you can almost smell the acrid sweat and vacuum-burn. ""We are here to take your very special passenger.""
 
 $HeOrShe smiles carnivorously.
 
-""No one will be hurt, it's a simple kidnap and ransom job. We are civilized folk, after all. It's not worth dyin' and killin' over some aristo's fancy spawn eh?""","bdvip_pirateRefuse:Refuse
-bdvip_pirateAgree:Agree to give up the VIP passenger
+""No one will be hurt, it's a simple kidnap and ransom job. We are civilized folk, after all. It's not worth dyin' and killin' over some worthless person eh?""","bdvip_pirateRefuse:Refuse
+bdvip_pirateAgree:Agree to give up the passenger
 bdvip_pirateDemand:""Only if you pay $bdvip_piratePayment credits. Up-front.""
 bdvip_pirateBluff:Bluff the pirate by saying you're working for Warlord Kanta",
 bdvipPirateRefuse,DialogOptionSelected,$option == bdvip_pirateRefuse,,"The pirate captain gives you a philosophical frown when you refuse $hisOrHer terms.
@@ -2643,10 +2498,10 @@ bdvipPirateRefuse,DialogOptionSelected,$option == bdvip_pirateRefuse,,"The pirat
 ""It is to be expected,"" $heOrShe says, ""We each have a role to play in this great drama."" $HeOrShe turns away from you, ""Charge the guns and set the engines to full burn!"" $HeOrShe turns back to you with a wild grin on $hisOrHer face, ""My good captain, I shall meet you in Ludd's blackest hell!""
 
 The comms are cut as the pirate fleet moves to engage.",cutCommLinkNoText:Continue,
-bdvipPirateAgree,DialogOptionSelected,$option == bdvip_pirateAgree,FireBest GAVIPGaveVIPToPirate,"The pirate grins with merciless glee. ""Excellent, wonderful! You couldn't have made a better decision, my good captain. I am so pleased we could come to an agreement.""
+bdvipPirateAgree,DialogOptionSelected,$option == bdvip_pirateAgree,FireBest bdvipGaveVIPToPirate,"The pirate grins with merciless glee. ""Excellent, wonderful! You couldn't have made a better decision, my good captain. I am so pleased we could come to an agreement.""
 
-As arrangements are made to surrender the VIP passenger to the pirate fleet, you consider how best to break the bad news to the Galatia Academy. The Persean Sector is a dangerous place, you reflect, so perhaps they will be understanding.",,
-bdvipPirateAgreeResult,GAVIPGaveVIPToPirate,,,,bdvip_gaveVIPtoPirateCont:Continue,
+As arrangements are made to surrender the passenger to the pirate fleet, you consider how best to break the bad news to the Cranium.",,
+bdvipPirateAgreeResult,bdvipGaveVIPToPirate,,,,bdvip_gaveVIPtoPirateCont:Continue,
 bdvipPirateAgreeResult2,DialogOptionSelected,$option == bdvip_gaveVIPtoPirateCont,"MakeOtherFleetNonHostile bdvip true
 MakeOtherFleetGoAway true
 $global.bdvip_failed = true
@@ -2659,9 +2514,9 @@ bdvipPirateDemandPayment,DialogOptionSelected,$option == bdvip_pirateDemand,,"Th
 ""Captain! I had no idea,"" $heOrShe says, ""Your heart is so black; I am smitten, truly. Of course I agree to your terms. The sheer audacity! You would truly sell out your little sop to me?""","bdvip_pirateDemandConfirm:Confirm the deal
 bdvip_pirateDemandNo:""Actually, no."" ",
 bdvipPirateDemandPaymentConfirm,DialogOptionSelected,$option == bdvip_pirateDemandConfirm,"$piratePayment = $bdvip_piratePayment
-FireBest GAVIPGaveVIPToPirate","The pirate laughs again, shaking $hisOrHer head. $HeOrShe waves an arm at an underling, ""The credits; see to it that my good friend here is paid their silver.""
+FireBest bdvipGaveVIPToPirate","The pirate laughs again, shaking $hisOrHer head. $HeOrShe waves an arm at an underling, ""The credits; see to it that my good friend here is paid their silver.""
 
-The credits come in, and you arrange for a very confused VIP passenger to be transferred via escape pod to the pirate fleet. As you refresh your credit account balance on your personal TriPad you consider the lie you'll have to use to cover for this little incident. The Academy won't be happy no matter what, so it's all down to damage control.",,
+The credits come in, and you arrange for the passenger to be transferred via escape pod to the pirate fleet. As you refresh your credit account balance on your personal TriPad you consider the lie you'll have to use to cover for this little incident. Cranium is not going to be happy.",,
 bdvipPirateDemandPaymentNo,DialogOptionSelected,$option == bdvip_pirateDemandNo,,"The pirate looks betrayed and inhales, presumably to say something overwrought in response to your bold-faced turnaround, but you cut the comms before they can speak.
 
 You order tactical to high alert. From here, it's fight or flight.",cutCommLinkNoText:Continue,
@@ -2676,7 +2531,7 @@ MakeOtherFleetGoAway true","The bravado and theater evaporate like sunward frost
 
 You snap the comms link off while the pirate is still attempting an awkward half-bow.",cutCommLinkNoText:Continue,
 ,,,,,,
-# merc kidnappers,,,,,,
+# THE POLICE,,,,,,
 bdvipMercEncounter,BeginFleetEncounter,"$bdvip_merc score:1000
 !$bdvip_encounteredAlready
 Call $global.bdvip_ref updateData","$bdvip_encounteredAlready = true
@@ -2685,15 +2540,15 @@ HailPlayer",,,
 bdvipMercOpenComm,OpenCommLink,"$entity.bdvip_merc score:1000
 !$entity.ignorePlayerCommRequests
 Call $global.bdvip_ref updateData","$entity.ignorePlayerCommRequests = true
-FireAll VIPMercOptions","The mercenary captain stands unmoving before you as the comms link opens. 
+FireAll bdVIPMercOptions","The mercenary captain stands unmoving before you as the comms link opens. 
 
 ""Captain $playerName I presume,"" $heOrShe says. ""I have reason to believe that you are transporting an individual associated with the notorious Kanta pirate gang. I have been authorized by $bdvip_theMercFaction to apprehend this individual for questioning. Please surrender the passenger to my custody immediately.""",,
-bdvipMercOption1,VIPMercOptions,!$askedWhatCrime,,,"0:bdvip_mercWhatCrime:""What crime have they committed?""",
-bdvipMercOption2,VIPMercOptions,!$askedWhatAuthority,,,"1:bdvip_mercWhatAuthority:""By what authority?""",
-bdvipMercOption3,VIPMercOptions,!$askedOrElse,,,"2:bdvip_mercOrElse:""Or else what?""",
-bdvipMercOption4,VIPMercOptions,,,,3:bdvip_mercRefuse:Refuse,
-bdvipMercOption5,VIPMercOptions,,,,4:bdvip_mercAgree:Agree to surrender the VIP,
-bdvipMercOption6,VIPMercOptions,,"SetStoryOption bdvip_mercSendFake 1 bdvip_mercSendFake general ""Tricked mercenary looking to kidnap Kanta's relative""",,5:bdvip_mercSendFake:Send a fake and con the merc for credits,
+bdvipMercOption1,bdVIPMercOptions,!$askedWhatCrime,,,"0:bdvip_mercWhatCrime:""What crime have they committed?""",
+bdvipMercOption2,bdVIPMercOptions,!$askedWhatAuthority,,,"1:bdvip_mercWhatAuthority:""By what authority?""",
+bdvipMercOption3,bdVIPMercOptions,!$askedOrElse,,,"2:bdvip_mercOrElse:""Or else what?""",
+bdvipMercOption4,bdVIPMercOptions,,,,3:bdvip_mercRefuse:Refuse,
+bdvipMercOption5,bdVIPMercOptions,,,,4:bdvip_mercAgree:Agree to surrender the VIP,
+bdvipMercOption6,bdVIPMercOptions,,"SetStoryOption bdvip_mercSendFake 1 bdvip_mercSendFake general ""Tricked mercenary looking to kidnap Kanta's relative""",,5:bdvip_mercSendFake:Send a fake and con the merc for credits,
 bdvipMercOption1Sel,DialogOptionSelected,$option == bdvip_mercWhatCrime,$askedWhatCrime = true 0,"The mercenary's eyes flick off to one side and $hisOrHer jaw clenches. $HeOrShe obviously doesn't like being questioned.
 
 ""It's irrelevant. They are an associate of the Kanta pirate gang and are required for questioning. The Kantas are behind countless murders and terroristic acts, as you well know.""","bdvip_mercHub:""So they've committed no crime. Got it.""",
@@ -2703,7 +2558,7 @@ bdvipMercOption2Sel,DialogOptionSelected,$option == bdvip_mercWhatAuthority,$ask
 bdvipMercOption3Sel,DialogOptionSelected,$option == bdvip_mercOrElse,$askedOrElse = true 0,"The mercenary glares at you, face unmoving, with timeless hatred. It's like staring down the barrel of a Tachyon Lance.
 
 ""You are protecting an individual with intimate knowledge of the workings of the greatest criminal empire the Persean Sector has known, captain. I suggest you do the right thing.""","bdvip_mercHub:""Or else nothing. Got it.""",
-bdvipReturnToHub,DialogOptionSelected,$option == bdvip_mercHub,FireAll VIPMercOptions,"The mercenary captain looks even more annoyed than before, but manages to restrain $hisOrHer anger. ""Captain. I say again, transfer the suspect into my custody immediately or face the consequences.""",,
+bdvipReturnToHub,DialogOptionSelected,$option == bdvip_mercHub,FireAll bdVIPMercOptions,"The mercenary captain looks even more annoyed than before, but manages to restrain $hisOrHer anger. ""Captain. I say again, transfer the suspect into my custody immediately or face the consequences.""",,
 bdvipReturnToHubGoHostile,DialogOptionSelected,"$option == bdvip_mercHub
 $askedWhatCrime
 $askedWhatAuthority
@@ -2723,17 +2578,18 @@ You turn to the officer at the communications console and confirm that the entir
 ""Captain,"" your tactical officer says, ""They're withdrawing.""",cutCommLinkNoText:Continue,
 bdvipMercAgree,DialogOptionSelected,$option == bdvip_mercAgree,,"The merc lifts $hisOrHer chin up a few degrees. ""Very good, captain. I shall expect immediate transfer of the pris- passenger to my flagship.""","bdvip_mercTransfer:Transfer the VIP to the merc's ship
 bdvip_mercPayment:""Hold on, we haven't discussed my payment.""",
-bdvipMercTransferVIP,DialogOptionSelected,$option == bdvip_mercTransfer,,"As the shuttle leaves your $shipOrFleet bearing some obscure relative of the Warlord Kanta, you consider how you're going to break the news to the Galatia Academy.
+bdvipMercTransferVIP,DialogOptionSelected,$option == bdvip_mercTransfer,,"As the shuttle leaves your $shipOrFleet bearing some obscure relative of the Warlord Kanta, you consider how you're going to break the news to Cranium.
 
-You also try not to consider how Kanta is going to feel about the whole situation. Rumor has it she's rather protective of family, no matter how distant the relation.",bdvip_mercTransferCont:Continue,
+You also try not to consider how Kanta and Cranium are going to feel about the whole situation. Rumor has it they are rather protective of family, no matter how distant the relation.",bdvip_mercTransferCont:Continue,
 bdvipMercTransferVIP1,DialogOptionSelected,$option == bdvip_mercTransferCont,"MakeOtherFleetNonHostile bdvip true
 MakeOtherFleetGoAway true
 AddCommodity credits $mercPayment
 Call $global.bdvip_ref betrayal
 $global.bdvip_failed = true
 Call $global.bdvip_ref updateStage
-AdjustRepPerson $bdvip_VIP VENGEFUL -25
-AdjustRep $bdvip_VIP_faction VENGEFUL -10",,cutCommLinkNoText:Continue,
+AdjustRepPerson $bdvip_VIP VENGEFUL -50
+AdjustRepPerson hegtales_cranium VENGEFUL -100
+AdjustRep $bdvip_VIP_faction VENGEFUL -25",,cutCommLinkNoText:Continue,
 bdvipMercVIPPayment,DialogOptionSelected,$option == bdvip_mercPayment,,"$HisOrHer head immediately levels with the display, giving a look as though you had spit in $hisOrHer face. An eyebrow raises.
 
 ""Excuse me?""","bdvip_mercTransfer:""I must have misspoke. Passenger transfer incoming."" (back down)
@@ -2773,6 +2629,7 @@ $askedOrElse = true 0
 FireBest DialogOptionSelected",,,
 bdvipMercDecidesNonHostile,DialogOptionSelected,$option == bdvip_mercDecides,"$option = bdvip_mercRefuse 0
 FireBest DialogOptionSelected",,,
+,,,,,,
 "# betrayed Kanta, fleet that shows up",,,,,,
 bdvipRevengeEncounter,BeginFleetEncounter,"$bdvip_kantaConsequences score:1000
 !$bdvip_encounteredAlready","$bdvip_encounteredAlready = true
@@ -2780,16 +2637,16 @@ FleetDesc
 HailPlayer",,,
 bdvipRevengeOpenComm,OpenCommLink,"$entity.bdvip_kantaConsequences score:1000
 !$entity.ignorePlayerCommRequests","$entity.ignorePlayerCommRequests = true
-FireBest GAVIPRevSetStoryOption","""Captain $playerName I presume,"" the mercenary commander says coolly. $HeOrShe knows who you are, of course. 
+FireBest bdVIPRevSetStoryOption","""Captain $playerName I presume,"" the mercenary commander says coolly. $HeOrShe knows who you are, of course. 
 
-""The Warlord Kanta sends her regards.""
+""Warlord Kanta sends her regards.""
 
 $HeOrShe nods an order to some underling, then moves with unhurried contempt to close the connection.","bdvip_revWhy:""What's this about?""
 bdvip_revTrick:""Good, you're here.""
 cutCommLink2:""I'll see you in hell. Save a place for me when you get there.""
 cutCommLink:Say nothing",
-bdvipRevengeStoryWeaker,GAVIPRevSetStoryOption,$entity.relativeStrength > 0,SetStoryColor bdvip_revTrick,,,
-bdvipRevengeStoryNotWeaker,GAVIPRevSetStoryOption,$entity.relativeStrength <= 0,"SetStoryOption bdvip_revTrick 1 bdvip_revTrick general ""Tricked mercenary sent by Kanta to eliminate you""",,,
+bdvipRevengeStoryWeaker,bdVIPRevSetStoryOption,$entity.relativeStrength > 0,SetStoryColor bdvip_revTrick,,,
+bdvipRevengeStoryNotWeaker,bdVIPRevSetStoryOption,$entity.relativeStrength <= 0,"SetStoryOption bdvip_revTrick 1 bdvip_revTrick general ""Tricked mercenary sent by Kanta to eliminate you""",,,
 bdvipRevengeWhy,DialogOptionSelected,$option == bdvip_revWhy,,"The mercenary commander actually looks indignant, raising a hand to halt what you presume is the attack order.
 
 ""You sold out one of Kanta's kin. But""- $heOrShe grinds out, with apparent difficulty- ""you forgot about it? There must be no greater fool than you in the entire Sector.""
@@ -2860,4 +2717,300 @@ SetPersonHidden hegtales_australis false
 FireAll hegtalesTestMenuOptions",MISSION 1 SKIPPED,,
 hegtales_finish_return,hegtalesTestMenuOptions,,,,cutCommLink:return,
 #END DEV MODE HEGTALES,,,,,,
+"#END Betrayed Ossums, YOU FUCKED UP!!!",,,,,,
+"#END betrayed Kanta, fleet that shows up",,,,,,
+#END merc kidnappers,,,,,,
+#END Space Police,,,,,,
+#END BD - deliver VIP mission Complete,,,,,,
+#END BD - deliver VIP mission,,,,,,
+#END Bone Dancer Generic Missions,,,,,,
+#END Bone Dancer Quests,,,,,,
+,,,,,,
+# The Club! Bone Dancer!,,,,,,
+,,,,,,
+# Welcome to the Bone Dancer,,,,,,
+hegtales_bonedancer_start,PopulateOptions,"$hasMarket
+$market.id == qaras
+$menuState == main",SetOptionColor visitBoneDancer highlight,,3:visitBoneDancer:Take a shuttle to the Bone Dancer,
+Bone Dancer FIRST TIME,DialogOptionSelected,"$option == visitBoneDancer  score:1000
+!$player.hasenteredbd","sfcplaymusic ""bone_dancer_song_theme""","You eventually arrive at the coordinates, your shuttle descending through layers of dim industrial haze before touching down nearby.
+The establishment in question is... underwhelming.
+
+From the outside, the building looks like it’s been standing purely out of spite. Rust creeps along its metal panels, and several sections appear to have been hastily repaired or barely repaired at all. Whatever this place once was, it certainly wasn’t built to be a club.
+And yet, there it is.
+
+A large neon sign flickers above the entrance, the words ""The Bone Dancer"" sputtering in uneven intervals, occasionally plunging the façade into momentary darkness before buzzing back to life. Despite the state of the exterior, a low, heavy rhythm leaks from inside, the bass strong enough to be felt through the ground.",hegtales_bonedancer_first2:Continue,
+Bone Dancer FIRST TIME 2,DialogOptionSelected,$option == hegtales_bonedancer_first2  score:1000,,"Standing at the entrance is a bouncer watching everything.
+His gaze settles on you as you approach, giving you a slow, deliberate once-over. For a moment, it seems like he might stop you.
+Then he notices your shuttle.
+
+Whatever conclusions he draws, they seem to work in your favor. He steps aside without a word, granting you entry.
+","hegtales_bonedancer_first_enter:Enter the Club
+hegtales_bonedancer_leave:Leave the Club",
+Bone Dancers Inside First Time 1,DialogOptionSelected,$option == hegtales_bonedancer_first_enter,"
+ShowImageVisual bone_dancer
+","The moment you step inside, the noise hits you like a physical force.
+The music is loud, aggressively so, looping in a relentless rhythm that drowns out nearly everything else. Layers of distorted beats and synthetic tones pulse through the space, vibrating through the floor and into your bones. The air is thick. Smoke hangs low, mixed with the sharp tang of cheap stimulants and something less identifiable something stale.
+
+You take a moment to adjust and then you notice the crowd.
+It’s... not what you expected.",hegtales_bonedancer_first_enter2:Continue,
+Bone Dancers Inside First Time 2,DialogOptionSelected,$option == hegtales_bonedancer_first_enter2,"$player.hasenteredbd = true
+FireAll hegtales_bonedancer","The interior, while dimly lit and chaotic, is far more alive than the exterior suggested. Patrons pack the space, traders, drifters, mercenaries and figures that don’t quite fit into any category you’d care to define. Conversations happen in tight clusters, deals likely being made just out of earshot.
+
+Still, there’s a pattern to it. Most of them carry themselves with a certain edge. The kind of people who prefer places where questions aren’t asked and answers aren’t recorded.
+A pirate crowd, if you had to name it.
+
+This place is loud, dirty and probably dangerous.
+
+The question is—
+Do you stay?
+","hegtales_bonedancer_vip:Go to the VIP Area
+hegtales_bonedancer_bar:Go to the Bar
+hegtales_bonedancer_bastard:Go to the Shady Corner
+hegtales_bonedancer_dancefloor:Head to the Dancer Floor
+hegtales_bonedancer_leave: Leave the Club",
+#END Welcome to the Bone Dancer,,,,,,
+,,,,,,
+# Bone Dancer Hub!,,,,,,
+hegtales_THE_BONE_DANCER,DialogOptionSelected,$option == visitBoneDancer,"FireAll hegtales_bonedancer
+ShowImageVisual bone_dancer
+SetShortcut hegtales_bonedancer_leave ""ESCAPE""
+sfcplaymusic ""bone_dancer_song_theme""","Outside, the bouncer barely spared you a glance this time.
+
+You step into the club once more. The music crashes into you in heavy, distorted waves, while the thick air laden with smoke, cheap stimulants and something harder to place, settles in your lungs like an old habit. Whatever initial shock this place once had is gone now.",,
+Bone Dancer Club VIP Start Denied,hegtales_bonedancer,!$bdvipunlocked,,,hegtales_bonedancer_vip_denied:Go to the VIP Area,
+Bone Dancer Club VIP Start,hegtales_bonedancer,$bdvipunlocked,,,hegtales_bonedancer_vip:Go to the VIP Area,
+Bone Dancer Club Bar Start,hegtales_bonedancer,,,,hegtales_bonedancer_bar:Go to the Bar,
+Bone Dancer Club Bar,DialogOptionSelected,$option == hegtales_bonedancer_bar,"FireAll hegtales_bonedancer_bar
+SetShortcut hegtales_granger_leave_bar ""ESCAPE""","You make your way to the bar, pushing past the crowd until the noise settles into something more manageable. The counter is worn and stained, its surface telling the story of years of heavy use. Behind it stands a middle-aged woman with red hair, calmly washing a glass as if the chaos around her doesn’t exist.","
+
+",
+hegtales_bonedancer_bastard,hegtales_bonedancer,$option == hegtales_bonedancer_bastard,,,,
+Bone Dancer Dance Floor Start,hegtales_bonedancer,,,,hegtales_bonedancer_dance:Head to the Dancer Floor,
+Bone Dancer Dance Floor,DialogOptionSelected,$option == hegtales_bonedancer_dance,"FireAll hegtales_bonedancer_dance
+SetShortcut hegtales_bonedancer_dance_leave ""ESCAPE""","You step onto the dance floor, the noise intensifying as the crowd presses in from all sides. The lights flicker in uneven patterns, barely illuminating the mass of bodies moving in sync or at least trying to. Some dance with purpose, others just sway, lost in whatever haze they’ve chosen to indulge in.
+
+No one pays you much attention. The music keeps pounding, steady and relentless, giving you a simple choice.
+
+Blend in or step away.",,
+Bone Dancer Club Leave Start,hegtales_bonedancer,,"SetShortcut hegtales_bonedancer_leave ""ESCAPE""",,hegtales_bonedancer_leave:Leave the Club,
+Bone Dancer Club Leave,DialogOptionSelected,$option == hegtales_bonedancer_leave,"ShowDefaultVisual
+sfcplaymusic
+FireAll PopulateOptions
+",You leave the club and take a shuttle back to your ship.,,
+#END Bone Dancer Hub!,,,,,,
+,,,,,,
+# Bar Main Hub,,,,,,
+Bar Meet Granger First,hegtales_bonedancer_bar,!$faction.meetgranger,,,hegtales_granger_question_hub_first_time:Talk with the Bartender,
+Bar Meet Granger,hegtales_bonedancer_bar,$faction.meetgranger,,,hegtales_granger_question_hub:Talk with Granger,
+Bar Drink Start,hegtales_bonedancer_bar,,,,hegtales_granger_drink:Ask for a Drink,
+Bar Drink,DialogOptionSelected,$option == hegtales_granger_drink,,"The bartender doesn’t reply, just turns, grabs a bottle from somewhere below the counter and pours you something strong into a scratched glass. It slides across to you with a practiced motion. When you look back up, she’s already watching you.","hegtales_granger_drink_end1:Drink it.
+hegtales_granger_drink_end2:Don't Drink it.",
+Bar Return From Drink1,DialogOptionSelected,$option == hegtales_granger_drink_end1,FireAll hegtales_bonedancer_bar,The drink somehow burns your throat. It's quite nice... in a sense.,,
+Bar Return From Drink2,DialogOptionSelected,$option == hegtales_granger_drink_end2,FireAll hegtales_bonedancer_bar,"You take a moment to look at the other patrons around you, as you discretely slide the drink towards an unsuspecting pirate.",,
+Bar Leave Start,hegtales_bonedancer_bar,,,,hegtales_granger_leave_bar:Leave the Bar,
+Bar Leave,DialogOptionSelected,$option == hegtales_granger_leave_bar,"FireAll hegtales_bonedancer
+SetShortcut hegtales_bonedancer_leave ""ESCAPE""","You step away from the counter, the bartender’s back to her routine and the noise of the club swallows you up again.",,
+#END Bar Main Hub,,,,,,
+,,,,,,
+# VIp Main Hub,,,,,,
+VIP Entry denied!,DialogOptionSelected,"$option == hegtales_bonedancer_vip score: 1000
+!$faction.CraniumTalkUnlocked",,"You make your way toward a sectioned-off part of the club, where the lighting shifts and the crowd thins just enough to notice. A set of reinforced doors stands ahead, marked only by a faint glow and the presence of two large figures standing guard.
+
+They stop you before you get close. One steps forward, blocking the way while the other watches in silence. ""VIP only."" the first one says, giving you a quick look over. No further explanation follows and it’s clear you’re not getting through without a reason.",,
+VIP Entry Accepted First,DialogOptionSelected,"$option == hegtales_bonedancer_vip score: 500
+$faction.CraniumTalkUnlocked
+",,"You make your way toward a sectioned-off part of the club, where the lighting shifts and the crowd thins just enough to notice. A set of reinforced doors stands ahead, marked only by a faint glow and the presence of two large figures standing guard.
+
+The doors open with a heavy push and the noise of the club dulls into a distant thrum as you step into the VIP section. The air is clearer here and the lighting lower A wide space opens up before you, dominated by a large, worn couch surrounded by scattered tables, half-finished drinks and a handful of armed figures at ease.
+
+At the center of it all sits a man in full powered armor.",hegtales_bonedancer_vip_2:Continue,
+VIP Entry Accepted First2,DialogOptionSelected,$option == hegtales_bonedancer_vip2 score: 500,"BeginConversation hegtales_cranium
+ShowPersonVisual
+$hegtales_cranium.MetCranium = true","It’s custom work, more than marine-grade by the look of it, reinforced in places that suggest long use. The helmet is unmistakable: a skull-shaped faceplate staring out from beneath a crude metal crown. Around him, his lieutenants lounge without concern, talking, drinking, even laughing.
+
+Then he notices you.
+
+The movement is subtle, a slight shift of the helmet. Conversation around him doesn’t stop, but it quiets just enough to make it clear that you’ve been acknowledged. The skull-faced warmaster leans back into the couch, one armored arm resting along its edge.
+
+""And now... Who the fuck are you?"" he says, voice filtered through the helmet, flat but not unfriendly.","hegtales_bonedancer_vip_31:""I am Captain X""
+hegtales_bonedancer_vip_32:""I am just looking for work""
+hegtales_bonedancer_vip_33:""I am here to kill you.""
+hegtales_bonedancer_vip_33:""Wrong room, sorry.""",
+VIP Entry Accepted First31,DialogOptionSelected,$option == hegtales_bonedancer_vip31,FireAll bd_cranium_questions,"There's a brief pause. The helmet tilts slightly. One of the lieutenants lets out a quiet scoff, but Cranium raises a hand just enough to silence it.
+
+""Captain, huh."" A small nod follows. ""Good. Means you’ve got something worth losing.""",,
+VIP Entry Accepted First32,DialogOptionSelected,$option == hegtales_bonedancer_vip32,FireAll bd_cranium_questions,"A low chuckle escapes the helmet, distorted but clear enough. One of the men nearby shifts, amused.
+
+""You and everyone else who walks in here,"" Cranium replies, leaning forward slightly. ""Difference is, you made it past the door."" A short pause. ""That might count for something.""",,
+VIP Entry Accepted First33,DialogOptionSelected,$option == hegtales_bonedancer_vip33,FireAll bd_cranium_questions,"There’s a moment of silence then laughter.
+
+Not just from him, but from the whole room. Cranium leans back into the couch, clearly entertained, one gauntleted hand tapping against the armrest.
+
+""I like you already,"" he says. ""Takes nerve to say that out loud in here."" The helmet turns slightly toward you again. ""Or stupidity. Either works.""",,
+VIP Entry Accepted First34,DialogOptionSelected,$option == hegtales_bonedancer_vip34,FireAll bd_cranium_questions,"One of the lieutenants chuckles, shaking her head, while Cranium simply waves a hand dismissively. ""Happens.""
+
+You are about to turn around when he speaks again.
+""Now you are here. Speak or get fucked.""",,
+,,,,,,
+# VIP Cranium Talk,,,,,,
+Cranium Talk Hub,DialogOptionSelected,"$option == hegtales_bonedancer_vip score: 1000
+$faction.CraniumTalkUnlocked
+$hegtales_cranium.MetCranium","BeginConversation hegtales_cranium
+ShowPersonVisual
+FireAll bd_cranium_questions
+SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","You step into the VIP section again and this time no one questions your presence. The guards let you through without a word.
+
+Cranium is where you expect him to be, seated among his lieutenants. The atmosphere is relaxed, low conversation, a few drinks, nothing urgent. He notices you sooner this time, giving a slight tilt of the helmet.
+
+""You.""
+OR
+The VIP room feels quieter than usual. A couple of Cranium’s usual companions are missing, and those present speak in lower tones.
+
+He sits forward on the couch, one elbow resting on his knee, armored fingers idly tapping against the plating. When you enter, his gaze shifts immediately.
+
+""Good timing... Or bad. Haven’t decided yet."" He pauses. ""Which is it?""
+OR
+You’re waved through the VIP entrance with little more than a glance. Inside, the mood is lighter than before, someone’s laughing, a bottle gets passed around and even the guards seem less rigid.
+
+Cranium leans back in his usual spot, one arm stretched across the couch. He notices you, and there’s a slight pause before he speaks.
+
+""You’re getting comfortable here,"" he says. ""Careful. That can get expensive.""
+OR
+The moment you enter, you can tell something’s different.
+
+The room is tense. Conversations stop short and a few of the lieutenants glance your way before looking back to Cranium. He remains seated, still as ever, but the way he turns his helmet toward you is a sign of him being annoyed.
+
+""Captain."" He speaks plainly.",,
+Cranium Talk about him,bd_cranium_questions,!$askedabouthim,,,"hegtales_cranium_talk_about:""Can you tell me more about you?""",
+Cranium Talk the Club,bd_cranium_questions,!$askedclub,,,"hegtales_cranium_talk_bonedancer:""What's this place?""",
+Cranium Talk Job,bd_cranium_questions,!$askedJob,,,"hegtales_cranium_talk_job:""Do you have any jobs for me?""",
+Cranium Talk Granger,bd_cranium_questions,!$askedGranger,,,"hegtales_cranium_talk_granger:""What’s your relationship with Granger?""",
+Cranium Talk Kanta,bd_cranium_questions,!$askedKanta,,,"hegtales_cranium_talk_kanta:""What can you tell me about Kanta?""",
+Cranium Talk Mother,bd_cranium_questions,"!$askedMother
+$hegtales_cranium.craniummom",,,"hegtales_cranium_talk_mom:""Wait, you told me Kanta is your mother?""",
+Cranium Talk Cancel,bd_cranium_questions,,,,"hegtales_cranium_talk_cancel:""That's all.""",
+Cranium Talk about him Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_about
+$id == hegtales_cranium score:100","$askedabouthim = true 0
+FireAll bd_cranium_questions
+SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","Cranium shifts slightly in his seat, the armor giving a low mechanical hum. ""I’m one of the League’s leaders,"" he says. ""Not the Persean kind. Wawa League. Qaras runs on it.""
+
+He pauses, then adds ""I also speak for Kanta in this system. Envoy, representative… call it what you want. I handle what needs handling.""",,
+Cranium Talk the Club Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_bonedancer
+$id == hegtales_cranium score:100","$askedclub = true 0
+FireAll bd_cranium_questions
+SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","He leans back into the couch, one armored arm stretched along its edge. ""The Bone Dancer. My place.""
+
+""The Second AI War left this system in a useful position. Hegemony and Tri-Tachyon both agreed to keep it quiet, demilitarized... on paper."" A faint tilt of the helmet follows. ""Gave me room to build something without them interfering.""",,
+Cranium Talk Job Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_job
+$id == hegtales_cranium score:100","$askedJob = true 0
+$faction.CraniumTalkUnlocked = true
+FireAll bd_cranium_questions
+SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","He cuts the question off with a small motion of his hand. ""Not here.""
+
+""If you’re looking for work, you contact me through comms. Proper channels."" His helmet turns slightly toward you. ""This place is for unwinding, not negotiations. You'll get a better answer when I’m not sitting on a couch.""",,
+Cranium Talk Kanta Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_kanta
+$id == hegtales_cranium score:100","$askedKanta = true 0
+FireAll bd_cranium_questions
+SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","Cranium goes still for a moment, the room around him continuing as normal while he considers the question.
+
+""Render unto Kanta the things that are Kanta’s…"" he says evenly, voice steady through the filter. There’s a slight shift in posture before he finishes, ""…and unto Ludd the things that are Ludd’s."" He doesn’t elaborate further.",,
+Cranium Talk Granger Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_granger
+$id == hegtales_cranium score:100","$askedGranger = true 0
+FireAll bd_cranium_questions
+SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","That earns a low, filtered chuckle from behind the helmet and a couple of the lieutenants glance your way.
+
+""Mah wife."" he says without hesitation. ""She runs the bar... keeps things in order."" A short pause. ""And she decides who’s worth dealing with. If she lets someone get this far, I usually take a look.""",,
+Cranium Talk Mom Answer,DialogOptionSelected,"$option == hegtales_cranium_talk_mom
+$id == hegtales_cranium score:100","$askedMother = true 0
+FireAll bd_cranium_questions
+SetShortcut hegtales_cranium_talk_cancel ""ESCAPE""","""Yes.""
+
+He leaves it at that for a moment before continuing. ""I was there when she turned. When she broke away from the Hegemony and took control of her own destiny."" A faint pause follows. ""I was just a baby back then. Didn’t matter much at the time.""
+
+Another small shift of the helmet. ""She became Warlord. I grew into something else... her Warmaster.""",,
+Cranium Talk Cancel End,DialogOptionSelected,"$option == hegtales_cranium_talk_cancel
+$id == hegtales_cranium score:100","EndConversation
+FireAll hegtales_bonedancer_bar
+ShowImageVisual bone_dancer
+SetShortcut hegtales_granger_leave_bar ""ESCAPE""
+","He gives a small, dismissive wave, already turning his attention back to his lieutenants as the conversation around him picks up again.
+
+You step away without interruption, the noise of the club rising to meet you as you leave the VIP area behind.",,
+#END VIP Cranium Talk,,,,,,
+#END VIp Main Hub,,,,,,
+,,,,,,
+# Dance Floor Hub,,,,,,
+Dance Floor Dance Start,hegtales_bonedancer_dance,,,,hegtales_bonedancer_dance_dance:Dance!,
+Dance Floor Dance Bad Rep Pirates,DialogOptionSelected,"$option == hegtales_bonedancer_dance_dance
+RepLTE pirates SUSPICIOUS score: 1000",FireAll hegtales_bonedancer,"You step onto the dance floor, trying to find your place among the shifting crowd, but it doesn’t take long before something feels off. A few heads turn subtle at first, then not so much. The music keeps pounding, but the space around you tightens in a way that has nothing to do with the rhythm.
+
+A couple of rough-looking patrons push through the crowd toward you, not bothering to hide their intent. One of them gives you a hard shove to the shoulder, enough to throw you off balance. ""Not your spot."" he mutters over the noise. They just keep pressing until you’re forced back off the floor. A few nearby faces watch for a second, then lose interest. Whatever this was, it’s already over.",,
+Dance Floor Dance Normal,DialogOptionSelected,"$option == hegtales_bonedancer_dance_dance
+FireAll hegtales_bonedancer",FireAll hegtales_bonedancer,"You push further into the crowd and let the rhythm take over. The music is harsh, mechanical, more pulse than melody, beating in steady, industrial waves that seem to sync with your own movements. It’s not graceful, not even coordinated, but it doesn’t need to be.
+
+Around you, the mass shifts and twists under the flickering lights, people moving however they can, however they want. For a moment, the noise, the smoke, the pressure of everything else fades into the background. There’s just the beat, the movement, and the strange sense that this place, loud, filthy, and forgettable, makes a kind of sense while you’re in it.",,
+Dance Floor Leave Start,hegtales_bonedancer_dance,,,,hegtales_bonedancer_dance_leave:Leave the Dance Floor,
+Dance Floor Leave,DialogOptionSelected,,"FireAll hegtales_bonedancer
+SetShortcut hegtales_bonedancer_leave ""ESCAPE""",,,
+#END Dance Floor Hub,,,,,,
+,,,,,,
+# Granger Talk,,,,,,
+Granger First time talk,DialogOptionSelected,$option == hegtales_granger_question_hub_first_time,"BeginConversation granger
+ShowPersonVisual
+FireAll bd_granger_questions
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","She glances up at you, her eyes lingering for a moment as she sizes you up. You get the sense she’s already decided you’re worth acknowledging, if only barely. She sets the glass aside, resting one hand on the counter.
+
+""What’ll it be?""",,
+Granger Questions Hub,DialogOptionSelected,$option == hegtales_granger_question_hub,"BeginConversation granger
+ShowPersonVisual
+FireAll bd_granger_questions
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""Yeah?"" The woman says as she flicks her red mane.
+OR
+""Mmhmhm."" The woman simply lifts her eyebrows.
+OR
+""Aha."" She taps the glass on the counter.
+OR
+""Alright?"" She simply stares at you.",,
+Granger Questions Return Hub,DialogOptionSelected,$option == granger_questionshub,"FireAll bd_granger_questions
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""Yep."" The woman simply lifts her eyebrows.
+OR
+""Aha."" She taps the glass on the counter.
+OR
+""Anything else?"" She simply stares at you.",,
+Granger Questions the Club,bd_granger_questions,!$askedclub,,,"hegtales_granger_question_bonedancer:""What's this place?""",
+Granger Questions about her,bd_granger_questions,!$askedabouther,$faction.meetgranger = true,,"hegtales_granger_question_about:""Who are you?""",
+Granger Questions Job,bd_granger_questions,!$askedJob,,,"hegtales_granger_question_job:""Do you have any jobs?""",
+Granger Question Cancel,bd_granger_questions,,,,"hegtales_granger_question_cancel:""I'm good.""",
+Granger Questions the Club Answer,DialogOptionSelected,"$option == hegtales_granger_question_bonedancer
+$id == granger score:100","$askedclub = true 0
+FireAll bd_granger_questions
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","She lets out a short chuckle, shaking her head as if the answer should be obvious. ""The Bone Dancer."" she says plainly, like that explains everything. The way she goes back to her glass makes it clear she has nothing more to add.",,
+Granger Questions about her Answer,DialogOptionSelected,"$option == hegtales_granger_question_about
+$id == granger score:100","$askedabouther = true 0
+FireAll bd_granger_questions
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","""The bartender."" The answer comes without hesitation. She doesn’t look up this time, continuing to clean the same glass with slow, deliberate movements. ""Name's Granger.""",,
+Granger Questions Job Answer,DialogOptionSelected,"$option == hegtales_granger_question_job
+$id == granger score:100","$askedJob = true 0
+$faction.CraniumTalkUnlocked = true
+FireAll bd_granger_questions
+SetShortcut hegtales_granger_question_cancel ""ESCAPE""","That gets a reaction. She pauses, then glances around the bar as if expecting someone to laugh. When no one does, she taps the rim of the glass against the counter once, thinking. ""Not for your kind."" she says after a moment.",,
+Granger Question Cancel End,DialogOptionSelected,"$option == hegtales_granger_question_cancel
+$id == granger score:100","EndConversation
+FireAll hegtales_bonedancer_bar
+ShowImageVisual bone_dancer
+SetShortcut hegtales_granger_leave_bar ""ESCAPE""
+","She shrugs, already losing interest before you even finish the words.",,
+craniumMissionDeclineGeneric,DialogOptionSelected,$option == cranium_decline,Call $mHub returnToList,"He looks a bit crestfallen, but makes an effort to put on a smile. ""Do let me know if you change your mind!""
+OR
+""Oh,"" he says, disappointed for a moment. But he quickly cheers up, ""Maybe something else?""
+OR
+""Um, of course. I understand completely."" Sebestyen rapidly scans his datapad, ""Let's see what else there is here... ""
+OR
+""Great! You can- "" he seems to realize that you declined the mission after a moment.
+
+""You don't want to do it? Oh. Okay. Well. Maybe,"" he taps his datapad on his desk, ""Maybe we can find something else for you?""",,
+#END Granger Talk,,,,,,
+#END The Club! Bone Dancer!,,,,,,
+#END The Pirate Storyline!,,,,,,
 ,,,,,,
