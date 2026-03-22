@@ -371,7 +371,6 @@ public class hegtales extends BaseModPlugin {
                     market.getCommDirectory().getEntryForPerson(bastard).setHidden(false);
                     People.assignPost(market, Ranks.POST_SUPPLY_OFFICER , bastard);
 
-
                     Global.getSector().getImportantPeople().addPerson(granger);
                     Global.getSector().getImportantPeople().addPerson(cranium);
                     Global.getSector().getImportantPeople().addPerson(bastard);

@@ -5,7 +5,6 @@ import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
-import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.missions.hub.HubMissionWithSearch;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.impl.campaign.missions.hub.BaseMissionHub;
@@ -21,15 +20,14 @@ public class BoneDancer_Quest1 extends HubMissionWithSearch {
     public enum Stage {
         GO_TO_HANAN,
         COMPLETED,
+        FAILED,
     }
 
     protected PersonAPI granger2;
     protected PersonAPI cranium1;
     protected MarketAPI salamanca;
-    protected PlanetAPI hanan_pacha;
 
-
-    public static float MISSION_DAYS = 120f;
+    public static float MISSION_DAYS = 30f;
 
     protected int payment;
     protected int paymentHigh;
@@ -52,6 +50,9 @@ public class BoneDancer_Quest1 extends HubMissionWithSearch {
         
         setStartingStage(Stage.GO_TO_HANAN);
         addSuccessStages(Stage.COMPLETED);
+        addFailureStages(Stage.FAILED);
+
+        setTimeLimit(Stage.FAILED, MISSION_DAYS, null);
 
         setStoryMission();
 
@@ -61,6 +62,7 @@ public class BoneDancer_Quest1 extends HubMissionWithSearch {
 
         makeImportant(hanan_pacha, "$BDhegtales_Quest1_tookTheJob", Stage.GO_TO_HANAN);
         setStageOnGlobalFlag(Stage.COMPLETED, "$BDhegtales_Quest1_completed");
+        setStageOnGlobalFlag(BDDeliverVIP.Stage.FAILED, "$BDhegtales_Quest1_failed");
 
         setRepFactionChangesNone();
         setRepPersonChangesNone();
@@ -70,15 +72,22 @@ public class BoneDancer_Quest1 extends HubMissionWithSearch {
         StarSystemAPI Yma = Global.getSector().getStarSystem("Yma");
         SectorEntityToken hanan_pacha_planet = Yma.getEntityById("hanan_pacha");
         triggerCreateFleet(FleetSize.SMALL, FleetQuality.DEFAULT, Factions.PERSEAN, FleetTypes.PATROL_SMALL, Yma);
+
+        triggerMakeFleetIgnoreOtherFleets(); // don't go chasing pirates, please.
+        triggerMakeFleetIgnoreOtherFleetsExceptPlayer();
+        triggerMakeFleetIgnoredByOtherFleets();
+        triggerMakeFleetGoAwayAfterDefeat();
+        triggerMakeLowRepImpact();
         triggerAutoAdjustFleetStrengthMajor();
         triggerMakeHostileAndAggressive();
-        triggerFleetAllowLongPursuit();
-        triggerSetFleetAlwaysPursue();
+
         triggerPickLocationAroundEntity(hanan_pacha_planet, 50.0f);
         triggerSpawnFleetAtPickedLocation("$BDhegtales_Quest1_perseanPatrol", null);
         triggerSetFleetMissionRef("$BDhegtales_Quest1_ref");
         triggerOrderFleetInterceptPlayer();
         triggerFleetMakeImportant(null, Stage.GO_TO_HANAN);
+        triggerFleetSetPatrolActionText("looking for a fleet.");
+        triggerOrderFleetPatrol(true, hanan_pacha_planet);
         endTrigger();
 
         beginStageTrigger(Stage.COMPLETED);

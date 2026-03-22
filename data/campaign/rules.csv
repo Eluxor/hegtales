@@ -2343,6 +2343,108 @@ hegtales_finish_return,hegtalesTestMenuOptions,,,,cutCommLink:return,
 ,,,,,,
 # Bone Dancer Quests,,,,,,
 ,,,,,,
+# Researchers to Hacha!,,,,,,
+This Might be helpful,,"!$market.isHidden
+$market.id == asharu
+!$global.BDhegtales_Quest1_missionCompleted
+!$global.BDhegtales_Quest1_inProgress
+$player.fcm_faction != sindrian_diktat
+RollProbability 0.25
+$global.daysSinceStart > 30","AddBarEvent BDhegtales_Quest1_grangerAsk ""See what the old man wants"" ""You see an old man followed by a kid and a chunky robot trying to talk to some of the seedier-looking space captains.""",,,
+,,,,,,
+# Granger First mission,,,,,,
+BDhegtales_Quest1 Granger Start,DialogOptionSelected,"$option == hegtales_granger_question_job
+$id == hegtales_granger score:100","BeginMission BDhegtales_Quest1
+Call $global.BDhegtales_Quest1_ref updateData
+$faction.grangerpachamission = true
+FireAll BDhegtales_Quest1grangerAskHubOptions","The old man looks like a hermit who's been living out in the wastes for countless cycles. His robes are dusty, his skin creased and tanned.
+
+He smiles mysteriously as you approach, and speaks both to you and the mop-haired kid, more a youth of not yet 20 cycles.
+
+""I have a good feeling about this one.""",,
+BDhegtales_Quest1 Granger AskAccept,BDhegtales_Quest1grangerAskHubOptions,,,,"BDhegtales_Quest1_grangerAccept:""Okay, you have a deal.""",
+BDhegtales_Quest1 Granger Accept,DialogOptionSelected,$option == BDhegtales_Quest1_grangerAccept,"AcceptMission
+Call $global.BDhegtales_Quest1_ref cranium_contact","You make arrangements for the old man, the youth, and their robot to be shuttled to your $shipOrFleet.
+
+They don't seem especially dangerous. Surely no one in the Hegemony or Sindrian Diktat is putting much effort into tracking their movements.",BDhegtales_Quest1_grangerReturn:Return to the bar,
+BDhegtales_Quest1 Granger Return,DialogOptionSelected,$option == BDhegtales_Quest1_grangerReturn,"EndConversation
+FireAll hegtales_bonedancer_bar
+ShowImageVisual bone_dancer_bar
+SetShortcut hegtales_granger_leave_bar ""ESCAPE""",,,
+#END Granger First mission,,,,,,
+,,,,,,
+# BDhegtales_Quest1 - arrive at Volturn,,,,,,
+BDhegtales_Quest1CheckCompletionCont,MarketPostDock,"$market.BDhegtales_Quest1_tookTheJob score:100
+Call $global.BDhegtales_Quest1_ref updateData
+!$BDhegtales_Quest1_noCompleteShown",,,BDhegtales_Quest1_completeDelivery0:Continue,
+BDhegtales_Quest1CompleteDelivery,DialogOptionSelected,$option == BDhegtales_Quest1_completeDelivery,"FireAll BDhegtales_Quest1RewardTrigger
+$global.BDhegtales_Quest1_completed = true
+Call $global.BDhegtales_Quest1_ref updateStage
+$option = marketArrivalEventContinue 0
+FireBest DialogOptionSelected","The old man smiles and simply says, ""Thank you, my friend,"" then turns up the hood of his robe and leads the strange party into the underworld of Volturn.",,
+BDhegtales_Quest1RewardHigh,BDhegtales_Quest1RewardTrigger,$global.BDhegtales_Quest1_chargeMore,"AddTextSmall ""Delivered reinforcements to the Volturnian Resistance?"" highlight
+AddCredits 17000
+unset $global.BDhegtales_Quest1_chargeMore",,,
+BDhegtales_Quest1RewardLow,BDhegtales_Quest1RewardTrigger,!$global.BDhegtales_Quest1_chargeMore,"AddTextSmall ""Delivered reinforcements to the Volturnian Resistance?"" highlight
+AddCredits 10000",,,
+#END BDhegtales_Quest1 - arrive at Volturn,,,,,,
+,,,,,,
+# BDhegtales_Quest1 - interception by Persean patrol,,,,,,
+BDhegtales_Quest1DiktatPatrolEncounter,BeginFleetEncounter,"$BDhegtales_Quest1_perseanPatrol score:1000
+!$encounteredAlready ","FleetDesc
+HailPlayer
+$encounteredAlready = true
+Call $global.BDhegtales_Quest1_ref updateData",,,
+BDhegtales_Quest1DiktatPatrolGreeting,OpenCommLink,"$entity.BDhegtales_Quest1_perseanPatrol score:1000
+Call $global.BDhegtales_Quest1_ref updateData","Call $entity.ahn_ref makeUnimportant
+SetStoryOption BDhegtales_Quest1_diktatPatrolBluff general ""Bluffed Sindrian Diktat patrol about charitably transporting sand farmers from Asharu""","""Captain,"" the Sindrian Diktat officers says in a level tone, ""We have reason to believe that you carry a terrorist known to the Sindrian Security Directorate.""
+
+$HeOrShe barely lifts a finger, and a supplementary data package is transmitted to you. Your comms officer attaches the contents to a secondary display: it's the old man from Asharu. Much younger in this looping holo, wearing the military uniform of some minor polity instead of robes.
+
+""It would expedite my investigation if this individual found his way to my flagship."" $HeOrShe smiles the coldest, smallest smile in the Sector.","BDhegtales_Quest1_diktatPatrolBluff:""I'm transporting a couple sand farmers. It's a charitable act.""
+BDhegtales_Quest1_diktatPatrolNope:""That isn't going to happen.""
+BDhegtales_Quest1_patrolHostileEnd:Cut the comm link",
+BDhegtales_Quest1DiktatPatrolGreetingAgain,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolGreetingAgain,FireAll BDhegtales_Quest1DiktatPatrolAgainOptions,"The Diktat officer looks less patient now, the polite smile barely a memory. 
+
+""Captain,"" $heOrShe says in full knowledge of your lies, and knowing you know $heOrShe knows, ""I trust you've thoroughly reviewed your passenger manifest.""",,
+BDhegtales_Quest1DiktatPatrolAgainOptionC,BDhegtales_Quest1DiktatPatrolAgainOptions,,"SetStoryOption BDhegtales_Quest1_diktatPatrolBluff general ""Bluffed Sindrian Diktat patrol about charitably transporting sand farmers from Asharu""",,"BDhegtales_Quest1_diktatPatrolBluff:""I'm transporting a couple sand farmers. It's a charitable act.""",
+BDhegtales_Quest1DiktatPatrolAgainOptionD,BDhegtales_Quest1DiktatPatrolAgainOptions,,,,"BDhegtales_Quest1_diktatPatrolRights:""You have no right to kidnap my passengers.""",
+BDhegtales_Quest1DiktatPatrolNope,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolNope,,"""Then,"" $heOrShe seems to find pleasure in $hisOrHer words for the first time, ""You are resisting a lawful search performed under the authority of the Supreme Executor. A hostile act of terrorism against our dear Sindrian Diktat.""",BDhegtales_Quest1_patrolHostileEnd:Continue,
+BDhegtales_Quest1DiktatPatrolBluff,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff,,"""Transporting sand farmers,"" the Diktat officer repeats, ""For charity.""
+
+More than a hint of disbelief slips out at the final word.",BDhegtales_Quest1_diktatPatrolBluff1:Continue,
+BDhegtales_Quest1DiktatPatrolBluff1,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff1,,"Then anger cracks across $hisOrHer face, ""That is the most preposterous lie I've ever-"" 
+
+A ping from the other bridge comes across the comms, interrupting the beginning of $hisOrHer tirade. The Diktat officer gives you a killing look then exchanges quiet words with some underlings; your comms officer gives you a tentative nod.",BDhegtales_Quest1_diktatPatrolBluff2:Continue,
+BDhegtales_Quest1DiktatPatrolBluff2,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff2,,"Your quick-thinking bridge crew has provided a fake manifest on your behalf, of course.
+
+Of course they would have a plausible but misleading pre-generated crew and passenger manifest ready for just such a situation. If you offered it with enough confidence - and very little delay - it might just work.
+
+You wait with saintly patience as the Diktat officer has an underling run the fake manifest through the latest Diktat search and verification algorithms.",BDhegtales_Quest1_patrolBluffEnd:Continue,
+BDhegtales_Quest1DiktatPatrolHostileEnd,DialogOptionSelected,$option == BDhegtales_Quest1_patrolHostileEnd,"AdjustRepActivePerson SUSPICIOUS -10
+AdjustRep $personFaction.id SUSPICIOUS -5
+Call $entity.BDhegtales_Quest1_ref makeUnimportant
+$global.BDhegtales_Quest1_diktatPatrolHostile = true
+$ignorePlayerCommRequests = true 1
+MakeOtherFleetHostile true
+MakeOtherFleetAggressive true","""We shall take no prisoners!"" the Diktat officer shouts, ""Those who harbor terrorists are themselves terrorists, and will be treated as-""
+
+The link cuts out. Your comms officer gives you an apologetic look.","cutCommLink:""Battle stations.""",
+BDhegtales_Quest1DiktatPatrolBluffEnd,DialogOptionSelected,$option == BDhegtales_Quest1_patrolBluffEnd,"AdjustRepActivePerson SUSPICIOUS -1
+AdjustRep $personFaction.id SUSPICIOUS -1
+Call $entity.BDhegtales_Quest1_ref makeUnimportant
+$entity.ignorePlayerCommRequests = true
+$global.BDhegtales_Quest1_diktatPatrolBluffed = true
+MakeOtherFleetGoAway true
+MakeOtherFleetNonHostile true
+MakeOtherFleetAvoidContact true","You hear an angry call of ""Run it again!"" that perhaps was not intended to get picked up by comms. It takes a few more minutes. 
+
+""Very well,"" the Diktat officer says with what sounds like clenched teeth, ""Your manifest has been verified. Technically.""
+
+With a sharp motion, $heOrShe signals to $hisOrHer comms to cut the link.",cutCommLink:Cut the comm link,
+#END BDhegtales_Quest1 - interception by Persean patrol,,,,,,
+#END Researchers to Hacha!,,,,,,
+,,,,,,
 # Cranium's Quest Dialogue,,,,,,
 Cranium Generic Quests Start,UpdateMHOpenOptionText,"$id == hegtales_cranium score:100
 $global.CraniumQuestsUnlocked","SetOptionText mh_open """"Do you have any jobs for me?""""",,,
@@ -2444,9 +2546,10 @@ cranium_decline:Decline",
 bdvipBlurbMissionTextKanta,DialogOptionSelected,"$option == bdvip_start
 $bdvip_variation == KANTA","$missionId = bdvip
 SetTextHighlights $bdvip_timeLimit $bdvip_reward
-Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium pauses as he reads the datapad, then lets out a quiet, amused breath. ""Right. This one's personal.""
+Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium pauses as he reads the datapad, then lets out a quiet, amused breath. ""Right. This one is personal.""
 
-He taps the screen once. ""The person of interest is a relative of mine, $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta's Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment's $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
+He taps the screen once. ""Person of interest is a relative of mine, $bdvip_subjectRelation of $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta's Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment's $bdvip_reward. Higher than usual, for obvious reasons.""
+","cranium_accept:Accept
 cranium_decline:Decline
 bdvip_extra:""Personal? Relative?""",
 bdvipBlurbMissionTextKantaExtra,DialogOptionSelected,"$option == bdvip_extra
@@ -2459,12 +2562,13 @@ $bdvip_variation == OSSUM","$missionId = bdvip
 SetTextHighlights $bdvip_timeLimit $bdvip_reward
 Call $global.bdvip_ref showMap ""Destination: $bdvip_marketName""","Cranium pauses as he reads the datapad, then lets out a quiet, amused breath. ""Right. This one is important.""
 
-He taps the screen once. 2Person of interest is a relative of mine, $bdvip_subjectRelation of $bdvip_kantaRelationFirstName Kanta. They need priority transport to Kanta's Den in the Magec system within $bdvip_timeLimit days."" A brief pause. ""Payment's $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
-cranium_decline:Decline",
+He taps the screen once. ""Person of interest is a member of House Ossum, $bdvip_subjectRelation of $bdvip_VIPName. They need priority transport to Eventide in the Samara system within $bdvip_timeLimit days."" A brief pause. ""Payment's $bdvip_reward. Higher than usual, for obvious reasons.""","cranium_accept:Accept
+cranium_decline:Decline
+bdvip_extra:""House Ossum?""",
 bdvipBlurbMissionTextOSSUMExtra,DialogOptionSelected,"$option == bdvip_extra
-$bdvip_variation == OSSUM",$missionId = bdvip,"Cranium tilts his helmet slightly at the question, a low mechanical hum following the movement. ""Yeah. Personal.""
+$bdvip_variation == OSSUM",$missionId = bdvip,"Cranium tilts his helmet slightly at the question, a low mechanical hum following the movement. 
 
-He pauses for a moment before continuing, voice even. ""I'm Kanta's son. Oldest, if that matters."" A faint shift in posture follows. ""That makes this one of mine too. Family, extended or otherwise."" The helmet turns just enough to settle back on you. ""So it gets handled properly. No shortcuts.""",,
+""House Ossum from Eventide. Hegemony's Nobles."" A faint shift in posture follows. ""I don't ask why they got here or what they were doing.""",,
 ,,,,,,
 # BD - deliver VIP mission Complete,,,,,,
 bdvipquest_checkCompletionCont,MarketPostDock,"$market.bdvip_target score:1000
@@ -2808,8 +2912,8 @@ FireAll PopulateOptions
 # Bar Main Hub,,,,,,
 Bar Meet Granger First,hegtales_bonedancer_bar,!$faction.meetgranger,,,hegtales_granger_question_hub_first_time:Talk with the Bartender,
 Bar Meet Granger,hegtales_bonedancer_bar,$faction.meetgranger,,,hegtales_granger_question_hub:Talk with Granger,
-Bar Drink Start,hegtales_bonedancer_bar,,,,hegtales_granger_drink:Ask for a Drink,
-Bar Drink,DialogOptionSelected,$option == hegtales_granger_drink,,"The bartender doesn't reply, just turns, grabs a bottle from somewhere below the counter and pours you something strong into a scratched glass. It slides across to you with a practiced motion. When you look back up, she's already watching you.","hegtales_granger_drink_end1:Drink it.
+Bar Drink Start,hegtales_bonedancer_bar,!$grangerdrink,,,hegtales_granger_drink:Ask for a Drink,
+Bar Drink,DialogOptionSelected,$option == hegtales_granger_drink,$grangerdrink = true 0,"The bartender doesn't reply, just turns, grabs a bottle from somewhere below the counter and pours you something strong into a scratched glass. It slides across to you with a practiced motion. When you look back up, she's already watching you.","hegtales_granger_drink_end1:Drink it.
 hegtales_granger_drink_end2:Don't Drink it.",
 Bar Return From Drink1,DialogOptionSelected,$option == hegtales_granger_drink_end1,FireAll hegtales_bonedancer_bar,The drink somehow burns your throat. It's quite nice... in a sense.,,
 Bar Return From Drink2,DialogOptionSelected,$option == hegtales_granger_drink_end2,FireAll hegtales_bonedancer_bar,"You take a moment to look at the other patrons around you, as you discretely slide the drink towards an unsuspecting pirate.",,
@@ -3014,101 +3118,4 @@ SetShortcut hegtales_granger_leave_bar ""ESCAPE""
 #END Granger Talk,,,,,,
 #END The Club! Bone Dancer!,,,,,,
 #END The Pirate Storyline!,,,,,,
-,,,,,,
-# BDhegtales_Quest1 - A New Hope aka Passage to Volturn,,,,,,
-"This Might be helpful
-",,"!$market.isHidden
-$market.id == asharu
-!$global.BDhegtales_Quest1_missionCompleted
-!$global.BDhegtales_Quest1_inProgress
-$player.fcm_faction != sindrian_diktat
-RollProbability 0.25
-$global.daysSinceStart > 30","AddBarEvent BDhegtales_Quest1_grangerAsk ""See what the old man wants"" ""You see an old man followed by a kid and a chunky robot trying to talk to some of the seedier-looking space captains.""",,,
-BDhegtales_Quest1 Granger AskStart,DialogOptionSelected,"$option == hegtales_granger_question_job
-$id == hegtales_granger score:100","BeginMission BDhegtales_Quest1
-Call $global.BDhegtales_Quest1_ref updateData
-$faction.grangerpachamission = true
-FireAll BDhegtales_Quest1grangerAskHubOptions","The old man looks like a hermit who's been living out in the wastes for countless cycles. His robes are dusty, his skin creased and tanned.
-
-He smiles mysteriously as you approach, and speaks both to you and the mop-haired kid, more a youth of not yet 20 cycles.
-
-""I have a good feeling about this one.""",,
-BDhegtales_Quest1 Granger AskAccept,BDhegtales_Quest1grangerAskHubOptions,,,,"BDhegtales_Quest1_grangerAccept:""Okay, you have a deal.""",
-BDhegtales_Quest1 Granger Accept,DialogOptionSelected,$option == BDhegtales_Quest1_grangerAccept,"AcceptMission
-Call $global.BDhegtales_Quest1_ref cranium_contact","You make arrangements for the old man, the youth, and their robot to be shuttled to your $shipOrFleet.
-
-They don't seem especially dangerous. Surely no one in the Hegemony or Sindrian Diktat is putting much effort into tracking their movements.",BDhegtales_Quest1_grangerReturn:Return to the bar,
-BDhegtales_Quest1 Granger Return,DialogOptionSelected,$option == BDhegtales_Quest1_grangerReturn,"EndConversation
-FireAll hegtales_bonedancer_bar
-ShowImageVisual bone_dancer_bar
-SetShortcut hegtales_granger_leave_bar ""ESCAPE""",,,
-,,,,,,
-# BDhegtales_Quest1 - interception by Diktat patrol,,,,,,
-BDhegtales_Quest1DiktatPatrolEncounter,BeginFleetEncounter,"$BDhegtales_Quest1_diktatPatrol score:1000
-!$encounteredAlready ","FleetDesc
-HailPlayer
-$encounteredAlready = true
-Call $global.BDhegtales_Quest1_ref updateData",,,
-BDhegtales_Quest1DiktatPatrolGreeting,OpenCommLink,"$entity.BDhegtales_Quest1_diktatPatrol score:1000
-Call $global.BDhegtales_Quest1_ref updateData","Call $entity.ahn_ref makeUnimportant
-SetStoryOption BDhegtales_Quest1_diktatPatrolBluff general ""Bluffed Sindrian Diktat patrol about charitably transporting sand farmers from Asharu""","""Captain,"" the Sindrian Diktat officers says in a level tone, ""We have reason to believe that you carry a terrorist known to the Sindrian Security Directorate.""
-
-$HeOrShe barely lifts a finger, and a supplementary data package is transmitted to you. Your comms officer attaches the contents to a secondary display: it's the old man from Asharu. Much younger in this looping holo, wearing the military uniform of some minor polity instead of robes.
-
-""It would expedite my investigation if this individual found his way to my flagship."" $HeOrShe smiles the coldest, smallest smile in the Sector.","BDhegtales_Quest1_diktatPatrolBluff:""I'm transporting a couple sand farmers. It's a charitable act.""
-BDhegtales_Quest1_diktatPatrolNope:""That isn't going to happen.""
-BDhegtales_Quest1_patrolHostileEnd:Cut the comm link",
-BDhegtales_Quest1DiktatPatrolGreetingAgain,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolGreetingAgain,FireAll BDhegtales_Quest1DiktatPatrolAgainOptions,"The Diktat officer looks less patient now, the polite smile barely a memory. 
-
-""Captain,"" $heOrShe says in full knowledge of your lies, and knowing you know $heOrShe knows, ""I trust you've thoroughly reviewed your passenger manifest.""",,
-BDhegtales_Quest1DiktatPatrolAgainOptionC,BDhegtales_Quest1DiktatPatrolAgainOptions,,"SetStoryOption BDhegtales_Quest1_diktatPatrolBluff general ""Bluffed Sindrian Diktat patrol about charitably transporting sand farmers from Asharu""",,"BDhegtales_Quest1_diktatPatrolBluff:""I'm transporting a couple sand farmers. It's a charitable act.""",
-BDhegtales_Quest1DiktatPatrolAgainOptionD,BDhegtales_Quest1DiktatPatrolAgainOptions,,,,"BDhegtales_Quest1_diktatPatrolRights:""You have no right to kidnap my passengers.""",
-BDhegtales_Quest1DiktatPatrolNope,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolNope,,"""Then,"" $heOrShe seems to find pleasure in $hisOrHer words for the first time, ""You are resisting a lawful search performed under the authority of the Supreme Executor. A hostile act of terrorism against our dear Sindrian Diktat.""",BDhegtales_Quest1_patrolHostileEnd:Continue,
-BDhegtales_Quest1DiktatPatrolBluff,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff,,"""Transporting sand farmers,"" the Diktat officer repeats, ""For charity.""
-
-More than a hint of disbelief slips out at the final word.",BDhegtales_Quest1_diktatPatrolBluff1:Continue,
-BDhegtales_Quest1DiktatPatrolBluff1,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff1,,"Then anger cracks across $hisOrHer face, ""That is the most preposterous lie I've ever-"" 
-
-A ping from the other bridge comes across the comms, interrupting the beginning of $hisOrHer tirade. The Diktat officer gives you a killing look then exchanges quiet words with some underlings; your comms officer gives you a tentative nod.",BDhegtales_Quest1_diktatPatrolBluff2:Continue,
-BDhegtales_Quest1DiktatPatrolBluff2,DialogOptionSelected,$option == BDhegtales_Quest1_diktatPatrolBluff2,,"Your quick-thinking bridge crew has provided a fake manifest on your behalf, of course.
-
-Of course they would have a plausible but misleading pre-generated crew and passenger manifest ready for just such a situation. If you offered it with enough confidence - and very little delay - it might just work.
-
-You wait with saintly patience as the Diktat officer has an underling run the fake manifest through the latest Diktat search and verification algorithms.",BDhegtales_Quest1_patrolBluffEnd:Continue,
-BDhegtales_Quest1DiktatPatrolHostileEnd,DialogOptionSelected,$option == BDhegtales_Quest1_patrolHostileEnd,"AdjustRepActivePerson SUSPICIOUS -10
-AdjustRep $personFaction.id SUSPICIOUS -5
-Call $entity.BDhegtales_Quest1_ref makeUnimportant
-$global.BDhegtales_Quest1_diktatPatrolHostile = true
-$ignorePlayerCommRequests = true 1
-MakeOtherFleetHostile true
-MakeOtherFleetAggressive true","""We shall take no prisoners!"" the Diktat officer shouts, ""Those who harbor terrorists are themselves terrorists, and will be treated as-""
-
-The link cuts out. Your comms officer gives you an apologetic look.","cutCommLink:""Battle stations.""",
-BDhegtales_Quest1DiktatPatrolBluffEnd,DialogOptionSelected,$option == BDhegtales_Quest1_patrolBluffEnd,"AdjustRepActivePerson SUSPICIOUS -1
-AdjustRep $personFaction.id SUSPICIOUS -1
-Call $entity.BDhegtales_Quest1_ref makeUnimportant
-$entity.ignorePlayerCommRequests = true
-$global.BDhegtales_Quest1_diktatPatrolBluffed = true
-MakeOtherFleetGoAway true
-MakeOtherFleetNonHostile true
-MakeOtherFleetAvoidContact true","You hear an angry call of ""Run it again!"" that perhaps was not intended to get picked up by comms. It takes a few more minutes. 
-
-""Very well,"" the Diktat officer says with what sounds like clenched teeth, ""Your manifest has been verified. Technically.""
-
-With a sharp motion, $heOrShe signals to $hisOrHer comms to cut the link.",cutCommLink:Cut the comm link,
-,,,,,,
-# BDhegtales_Quest1 - arrive at Volturn,,,,,,
-BDhegtales_Quest1CheckCompletionCont,MarketPostDock,"$market.BDhegtales_Quest1_tookTheJob score:100
-Call $global.BDhegtales_Quest1_ref updateData
-!$BDhegtales_Quest1_noCompleteShown",,,BDhegtales_Quest1_completeDelivery0:Continue,
-BDhegtales_Quest1CompleteDelivery,DialogOptionSelected,$option == BDhegtales_Quest1_completeDelivery,"FireAll BDhegtales_Quest1RewardTrigger
-$global.BDhegtales_Quest1_completed = true
-Call $global.BDhegtales_Quest1_ref updateStage
-$option = marketArrivalEventContinue 0
-FireBest DialogOptionSelected","The old man smiles and simply says, ""Thank you, my friend,"" then turns up the hood of his robe and leads the strange party into the underworld of Volturn.",,
-BDhegtales_Quest1RewardHigh,BDhegtales_Quest1RewardTrigger,$global.BDhegtales_Quest1_chargeMore,"AddTextSmall ""Delivered reinforcements to the Volturnian Resistance?"" highlight
-AddCredits 17000
-unset $global.BDhegtales_Quest1_chargeMore",,,
-BDhegtales_Quest1RewardLow,BDhegtales_Quest1RewardTrigger,!$global.BDhegtales_Quest1_chargeMore,"AddTextSmall ""Delivered reinforcements to the Volturnian Resistance?"" highlight
-AddCredits 10000",,,
 ,,,,,,
